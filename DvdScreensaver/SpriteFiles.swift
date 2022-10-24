@@ -11,22 +11,21 @@ import AVFoundation
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
+    
     var ballNode: SKNode
     private var raqueteNode : SKNode
     private var nuvemNode: SKNode
-    private var moveTransformBall = CGAffineTransform(translationX: 1, y: -1)
-    private var moveTransformRaquete = CGAffineTransform(translationX: 0, y: 0)
-    private var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.1)
     
-    public var ballPositionX: CGFloat = 0
-    public var ballPositionY: CGFloat = 0
+    private var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
+    private var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.1) // função para mover a nuvem
+    var moveRaquete = CGAffineTransform(translationX: 0, y: 0)
     
     
     public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode) {
-        self.ballNode = ballNode
+        self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode = nuvem
-        super.init(size: size)
+        super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
     
@@ -35,15 +34,17 @@ public class PongScene: SKScene {
     }
     
     private func setup() {
-        addChild(ballNode)
+        addChild(ballNode) // colocando os objetos na Scene
         addChild(raqueteNode)
         addChild(nuvemNode)
+        ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
-        nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2))
-        ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar "CGFloat(nuvemNode.frame.size.height)/2" para corrigir, por a função "position(x:,y:)" sempre usa o midX e midY
     }
     
-    var speeed : Float = 1
+    var ballPositionX: CGFloat = 0
+    var ballPositionY: CGFloat = 0
+    var speeed : Float = 2 // velocidade inicial da bola
     
     // Update is called once per frame
     public override func update(_ currentTime: TimeInterval) {
@@ -57,7 +58,6 @@ public class PongScene: SKScene {
         // Update the node's position by applying the transform
         ballNode.position = ballNode.position.applying(moveTransformBall)
         nuvemNode.position = nuvemNode.position.applying(moveTransformNuvem)
-        raqueteNode.position = raqueteNode.position.applying(moveTransformRaquete)
         
         ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
         ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
@@ -77,8 +77,8 @@ public class PongScene: SKScene {
         if ballFrame.minX <= self.frame.minX-15 {
             moveTransformBall.tx = CGFloat(+speeed)
         }
-        
-        // Bottom bound
+
+        // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.maxY-35{
             moveTransformBall.ty = CGFloat(+speeed)
         }
@@ -91,14 +91,12 @@ public class PongScene: SKScene {
             if ballPositionX/self.frame.maxX >= 0 {
                 tocador.pan = Float((ballPositionX - self.frame.midX)/self.frame.midX) // -1 -> 1
                 tocador.volume = Float(1 - (ballPositionY/(self.frame.height - 60))) // alto 0 -> baixo 1
-                print(tocador.volume)
 //                tocador.pan = 1 // esquerda
 //                tocador.pan = -1 // direita
             }
-//            tocador.pan += Float(ballPositionX/self.frame.maxX)
         }
         else {
-            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")
+            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
             
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
@@ -107,10 +105,11 @@ public class PongScene: SKScene {
                 guard let urlString = urlString else {
                     return
                 }
+
                 
                 tocador = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
                 
-                guard let tocador = tocador else {
+                guard let tocador = tocador else { // unraping
                     return
                 }
                 
@@ -132,14 +131,14 @@ public class PongScene: SKScene {
                 raqueteNode.position.x = location.x
             }
             
-            // Right bound
+            // Right bound safe
             if frameRaquete.maxX >= self.frame.maxX {
-                raqueteNode.position.x = raqueteNode.position.x - 3
+                raqueteNode.position.x = raqueteNode.position.x - 2.5
             }
 
-            // Left bound
+            // Left bound safe
             if frameRaquete.minX <= self.frame.minX {
-                raqueteNode.position.x = raqueteNode.position.x + 3
+                raqueteNode.position.x = raqueteNode.position.x + 2.5
             }
             
         }

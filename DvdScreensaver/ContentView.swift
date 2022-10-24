@@ -16,30 +16,23 @@ struct ContentView: View {
             ZStack{
                 SpriteView(scene: skScene)
                     .frame(width: geo.size.width, height: geo.size.height)
-            }.onTapGesture {
-                aaa()
             }
         }.ignoresSafeArea()
     }
-    
-    var skScene: SKScene{
-        let viewFrame = CGRect(x: 0.5, y: 0.5, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        let view = SKView(frame: viewFrame)
-        let ballNode = SKSpriteNode(imageNamed: "neonBall")
+
+    var skScene: SKScene{ // SKScene lembra muito uma view
+        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        let ballNode = SKSpriteNode(imageNamed: "neonBall")  // Node = Objetos
         ballNode.size = CGSize(width: 60, height: 60)
         
         let raqueteNode = SKSpriteNode(color: .purple, size: CGSize(width: 150, height: 20))
         let nuvemNode = SKSpriteNode(color: .systemPurple, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
-        let scene = PongScene(ballNode: ballNode, size: view.frame.size, raquete: raqueteNode, nuvem: nuvemNode)
-        scene.scaleMode = .aspectFit
+        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode)
         scene.backgroundColor = .darkGray
         
         return scene
-    }
-    
-    func aaa(){
-       // print(skScene.childNode(withName: "ballNode")?.position)
     }
     
     struct ContentView_Previews: PreviewProvider {
