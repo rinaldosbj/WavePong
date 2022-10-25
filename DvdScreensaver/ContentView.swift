@@ -7,11 +7,8 @@
 
 import SwiftUI
 import SpriteKit
-import CoreHaptics
 
 struct ContentView: View {
-    
-    @State var engine: CHHapticEngine?
     
     var body: some View {
         GeometryReader{

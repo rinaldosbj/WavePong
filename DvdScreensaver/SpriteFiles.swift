@@ -7,14 +7,17 @@
 
 import SpriteKit
 import AVFoundation
-import CoreHaptics
 import SwiftUI
+
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+}
 
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
-    
-    @State var engine: CHHapticEngine?
     
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -49,7 +52,7 @@ public class PongScene: SKScene {
         
         score.text = "0"
         
-        prepareHapics()
+        
     }
     
     var ballPositionX: CGFloat = 0
@@ -88,16 +91,13 @@ public class PongScene: SKScene {
             moveTransformBall.tx = CGFloat(+speeed)
         }
         
-        let generator = UINotificationFeedbackGenerator() // Generator of the simple Vibration
-        
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
             
             if speeed > (primeiraSpeeed + 0.0003){
                 primeiraSpeeed = speeed
                 moveTransformBall.ty = CGFloat(+speeed)
-                generator.notificationOccurred(.success) // Default success vibration starts
-                vibrates()
+                UIDevice.vibrate()
                 
                 scoreCount += 1
                 score.text = String(scoreCount)
@@ -116,7 +116,7 @@ public class PongScene: SKScene {
             }
         }
         else {
-            let urlString = Bundle.main.path(forResource: "Relaxing Brown Noise For 10 Minutes - Noise Canceling", ofType: "mp3")// defining the song
+            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)
@@ -153,35 +153,5 @@ public class PongScene: SKScene {
                 raqueteNode.position.x = raqueteNode.position.x + 2.5
             }
         }
-    }
-    
-    func prepareHapics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("Error creating the engine: \(error.localizedDescription)")
-        }
-    }
-    
-    func vibrates() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
-        var events = [CHHapticEvent]()
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity,sharpness], relativeTime: 0)
-        
-        events.append(event)
-    
-        do {
-            let pattern = try CHHapticPattern(events: events, parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play pattern \(error.localizedDescription)")
-        }
-        
     }
 }
