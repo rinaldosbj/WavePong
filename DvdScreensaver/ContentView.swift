@@ -26,7 +26,7 @@ struct ContentView: View {
         let ballNode = SKSpriteNode(imageNamed: "neonBall")  // Node = Objetos
         ballNode.size = CGSize(width: 60, height: 60)
         
-        let raqueteNode = SKSpriteNode(color: .purple, size: CGSize(width: 150, height: 20))
+        let raqueteNode = SKSpriteNode(color: .purple, size: CGSize(width: UIScreen.main.bounds.width/2.5, height: 25))
         let nuvemNode = SKSpriteNode(color: .systemPurple, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
         let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode)
