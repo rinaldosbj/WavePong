@@ -1,16 +1,19 @@
 //
-//  SpriteFiles.swift
-//  DvdScreensaver
+// SpriteFiles.swift
+// DvdScreensaver
 //
-//  Created by rsbj on 18/10/22.
+// Created by rsbj on 18/10/22.
 //
 
 import SpriteKit
 import AVFoundation
+import CoreHaptics
 
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
+    
+    var engine: CHHapticEngine?
     
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -19,13 +22,12 @@ public class PongScene: SKScene {
     
     var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
     var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.3) // função para mover a nuvem
-    var moveRaquete = CGAffineTransform(translationX: 0, y: 0)
     
-    
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, engine: CHHapticEngine) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode = nuvem
+        self.engine = engine
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -43,9 +45,11 @@ public class PongScene: SKScene {
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
         score.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.maxY)-70))
-        nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar "CGFloat(nuvemNode.frame.size.height)/2" para corrigir, por a função "position(x:,y:)" sempre usa o midX e midY
+        nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
         
         score.text = "0"
+        
+        prepareHapics()
     }
     
     var ballPositionX: CGFloat = 0
@@ -58,15 +62,14 @@ public class PongScene: SKScene {
     public override func update(_ currentTime: TimeInterval) {
         speeed = speeed + 0.0001
         
-        // Collect a reference frame for the node's current position
+        // Collect a reference frame for the node’s current position
         let ballFrame = ballNode.calculateAccumulatedFrame()
         let frameRaquete = raqueteNode.calculateAccumulatedFrame()
         let frameNuvem = nuvemNode.calculateAccumulatedFrame()
         
-        // Update the node's position by applying the transform
+        // Update the node’s position by applying the transform
         ballNode.position = ballNode.position.applying(moveTransformBall)
         nuvemNode.position = nuvemNode.position.applying(moveTransformNuvem)
-        
         ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
         ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
         
@@ -80,13 +83,13 @@ public class PongScene: SKScene {
             moveTransformBall.tx = CGFloat(-speeed)
         }
         
-        
         // Left bound
         if ballFrame.minX <= self.frame.minX-15 {
             moveTransformBall.tx = CGFloat(+speeed)
         }
         
         let generator = UINotificationFeedbackGenerator() // Generator of the simple Vibration
+        
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
             
@@ -97,6 +100,7 @@ public class PongScene: SKScene {
                 scoreCount += 1
                 score.text = String(scoreCount)
             }
+            
         }
         
         if frameNuvem.minY <= self.frame.minY+80{
@@ -107,28 +111,20 @@ public class PongScene: SKScene {
             if ballPositionX/self.frame.maxX >= 0 {
                 tocador.pan = Float((ballPositionX - self.frame.midX)/self.frame.midX) // -1 -> 1
                 tocador.volume = Float(1 - (ballPositionY/(self.frame.height - 60))) // alto 0 -> baixo 1
-                //                tocador.pan = 1 // esquerda
-                //                tocador.pan = -1 // direita
             }
         }
         else {
             let urlString = Bundle.main.path(forResource: "Relaxing Brown Noise For 10 Minutes - Noise Canceling", ofType: "mp3")// defining the song
-            
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)
-                
                 guard let urlString = urlString else {
                     return
                 }
-                
-                
                 tocador = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
-                
                 guard let tocador = tocador else { // unraping
                     return
                 }
-                
                 tocador.play()
             }
             catch{
@@ -146,17 +142,27 @@ public class PongScene: SKScene {
             if frameRaquete.maxX <= self.frame.maxX && frameRaquete.minX >= self.frame.minX{
                 raqueteNode.position.x = location.x
             }
-            
             // Right bound safe
             if frameRaquete.maxX >= self.frame.maxX {
                 raqueteNode.position.x = raqueteNode.position.x - 2.5
             }
-            
             // Left bound safe
             if frameRaquete.minX <= self.frame.minX {
                 raqueteNode.position.x = raqueteNode.position.x + 2.5
             }
-            
         }
+    }
+    
+    func prepareHapics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("Error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func vibrates() {
     }
 }
