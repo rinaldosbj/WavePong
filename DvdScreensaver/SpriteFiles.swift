@@ -8,12 +8,13 @@
 import SpriteKit
 import AVFoundation
 import CoreHaptics
+import SwiftUI
 
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
     
-    var engine: CHHapticEngine?
+    @State var engine: CHHapticEngine?
     
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -23,11 +24,10 @@ public class PongScene: SKScene {
     var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
     var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.3) // função para mover a nuvem
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, engine: CHHapticEngine) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode = nuvem
-        self.engine = engine
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -97,6 +97,8 @@ public class PongScene: SKScene {
                 primeiraSpeeed = speeed
                 moveTransformBall.ty = CGFloat(+speeed)
                 generator.notificationOccurred(.success) // Default success vibration starts
+                vibrates()
+                
                 scoreCount += 1
                 score.text = String(scoreCount)
             }
@@ -164,5 +166,22 @@ public class PongScene: SKScene {
     }
     
     func vibrates() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        var events = [CHHapticEvent]()
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity,sharpness], relativeTime: 0)
+        
+        events.append(event)
+    
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern \(error.localizedDescription)")
+        }
+        
     }
 }
