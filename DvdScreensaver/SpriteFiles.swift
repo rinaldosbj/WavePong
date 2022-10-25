@@ -77,10 +77,12 @@ public class PongScene: SKScene {
         if ballFrame.minX <= self.frame.minX-15 {
             moveTransformBall.tx = CGFloat(+speeed)
         }
-
+        
+        let generator = UINotificationFeedbackGenerator() // Generator of the simple Vibration
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.maxY-35{
             moveTransformBall.ty = CGFloat(+speeed)
+            generator.notificationOccurred(.success) // Default success vibration starts
         }
         
         if frameNuvem.minY <= self.frame.minY+80{
