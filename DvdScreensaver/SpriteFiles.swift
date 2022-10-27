@@ -9,8 +9,15 @@ import SpriteKit
 import AVFoundation
 import SwiftUI
 
+
 class UserScore: ObservableObject {  // Trying to use ObservableObject to update Score
     @Published var score = 0
+}
+
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
 }
 
 public class PongScene: SKScene {
@@ -18,7 +25,7 @@ public class PongScene: SKScene {
     var tocador: AVAudioPlayer?
     
     @ObservedObject var user = UserScore()
-    
+
     var ballNode: SKNode
     var raqueteNode : SKNode
     var nuvemNode: SKNode
@@ -43,7 +50,6 @@ public class PongScene: SKScene {
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
         nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
-        
     }
     
     var ballPositionX: CGFloat = 0
@@ -82,15 +88,13 @@ public class PongScene: SKScene {
             moveTransformBall.tx = CGFloat(+speeed)
         }
         
-        let generator = UINotificationFeedbackGenerator() // Generator of the simple Vibration
-        
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
             
             if speeed > (primeiraSpeeed + 0.0003){
                 primeiraSpeeed = speeed
                 moveTransformBall.ty = CGFloat(+speeed)
-                generator.notificationOccurred(.success) // Default success vibration starts
+                UIDevice.vibrate()
                 
                 scoreCount += 1
                 user.score = scoreCount
@@ -110,7 +114,7 @@ public class PongScene: SKScene {
             }
         }
         else {
-            let urlString = Bundle.main.path(forResource: "Relaxing Brown Noise For 10 Minutes - Noise Canceling", ofType: "mp3")// defining the song
+            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)
@@ -149,7 +153,7 @@ public class PongScene: SKScene {
             }
         }
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
