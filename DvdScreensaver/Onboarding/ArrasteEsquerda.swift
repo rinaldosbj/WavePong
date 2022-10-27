@@ -13,7 +13,7 @@ struct ArrasteEsquerda: View {
     
     var body: some View {
         ZStack{
-            NavigationLink("",destination: DoisDedos() ,isActive: $shouldShow)
+            NavigationLink("",destination: DoisDedos().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()

@@ -16,7 +16,7 @@ struct ToqueUma: View {
     var body: some View {
 
         ZStack{
-            NavigationLink("",destination: ToqueDuas() ,isActive: $shouldShow)
+            NavigationLink("",destination: ToqueDuas().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()
@@ -47,7 +47,6 @@ struct ToqueUma: View {
         }.onTapGesture {
             shouldShow.toggle()
         }
-        
     }
     
     struct ToqueUma_Previews: PreviewProvider {

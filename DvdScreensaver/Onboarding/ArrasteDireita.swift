@@ -15,7 +15,7 @@ struct ArrasteDireita: View {
   
     var body: some View {
         ZStack{
-            NavigationLink("",destination: ArrasteEsquerda() ,isActive: $shouldShow)
+            NavigationLink("",destination: ArrasteEsquerda().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()

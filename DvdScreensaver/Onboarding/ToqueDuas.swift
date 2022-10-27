@@ -17,7 +17,7 @@ struct ToqueDuas: View {
     var body: some View {
         
         ZStack{
-            NavigationLink("",destination: ArrasteDireita() ,isActive: $shouldShow)
+            NavigationLink("",destination: ArrasteDireita().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()

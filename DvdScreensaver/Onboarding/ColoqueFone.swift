@@ -15,7 +15,7 @@ struct ColoqueFone: View {
         
         NavigationView{
             ZStack{
-                NavigationLink("",destination: ToqueUma() ,isActive: $shouldShow)
+                NavigationLink("",destination: ToqueUma().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
                 
                 Image("background")
                     .resizable()
