@@ -20,12 +20,14 @@ struct ContentView: View {
                     .frame(width: geo.size.width, height: geo.size.height)
                 VStack{
                     Text("\(user.score)")
+                        .foregroundColor(.white)
                         .font(.system(size: 5000))
                         .minimumScaleFactor(0.01)
                         .scaledToFill()
                         .frame(width: 50, height: 50)
                         .padding(.top, 40)
                     Text("Pontos")
+                        .foregroundColor(.white)
                     Spacer()
                 }
             }.onTapGesture {
