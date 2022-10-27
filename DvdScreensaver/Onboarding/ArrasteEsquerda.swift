@@ -1,30 +1,29 @@
 //
-//  OnboardingDois.swift
+//  OnboardingQuatro.swift
 //  DvdScreensaver
 //
-//  Created by Mariane Vilarim on 26/10/22.
+//  Created by Mariane Vilarim on 27/10/22.
 //
 
 import SwiftUI
 
-struct OnboardingDois: View {
+struct ArrasteEsquerda: View {
     var body: some View {
         VStack{
-            Text("Toque uma vez para ouvir o que está na tela")
+            Text("Arraste para os lados para navegar pelo menu")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
                     .padding()
                     .onTapGesture(count: 1) {
                         print("toquei")
                     }
-            Image("dois toques")
+            Image("arraste esquerda")
+        }
     }
-
 }
 
-struct OnboardingDois_Previews: PreviewProvider {
+struct ArrasteEsquerda_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingDois()
+        ArrasteEsquerda()
     }
-}
 }

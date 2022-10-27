@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8616105C290A080F00DCD37B /* OnboardingDois.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105B290A080F00DCD37B /* OnboardingDois.swift */; };
+		8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105B290A080F00DCD37B /* ToqueUma.swift */; };
+		86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105F290A4B2400DCD37B /* ToqueDuas.swift */; };
+		86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */; };
+		86161064290A4B8100DCD37B /* DoisDedos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161063290A4B8100DCD37B /* DoisDedos.swift */; };
+		8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161069290A516B00DCD37B /* ArrasteDireita.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
-		864FCABF2908674300CA0664 /* OnboardingUm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864FCABE2908674300CA0664 /* OnboardingUm.swift */; };
+		864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864FCABE2908674300CA0664 /* ColoqueFone.swift */; };
 		D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D37599612906F45E00BFEB64 /* soundtrack.mp3 */; };
 		D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
@@ -20,10 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8616105B290A080F00DCD37B /* OnboardingDois.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDois.swift; sourceTree = "<group>"; };
+		8616105B290A080F00DCD37B /* ToqueUma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueUma.swift; sourceTree = "<group>"; };
+		8616105F290A4B2400DCD37B /* ToqueDuas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueDuas.swift; sourceTree = "<group>"; };
+		86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrasteEsquerda.swift; sourceTree = "<group>"; };
+		86161063290A4B8100DCD37B /* DoisDedos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoisDedos.swift; sourceTree = "<group>"; };
+		86161069290A516B00DCD37B /* ArrasteDireita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrasteDireita.swift; sourceTree = "<group>"; };
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		864FCABE2908674300CA0664 /* OnboardingUm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUm.swift; sourceTree = "<group>"; };
+		864FCABE2908674300CA0664 /* ColoqueFone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoqueFone.swift; sourceTree = "<group>"; };
 		D37599612906F45E00BFEB64 /* soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundtrack.mp3; sourceTree = "<group>"; };
 		D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3"; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,8 +56,12 @@
 		8616105E290A0BF100DCD37B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				864FCABE2908674300CA0664 /* OnboardingUm.swift */,
-				8616105B290A080F00DCD37B /* OnboardingDois.swift */,
+				864FCABE2908674300CA0664 /* ColoqueFone.swift */,
+				8616105B290A080F00DCD37B /* ToqueUma.swift */,
+				8616105F290A4B2400DCD37B /* ToqueDuas.swift */,
+				86161069290A516B00DCD37B /* ArrasteDireita.swift */,
+				86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */,
+				86161063290A4B8100DCD37B /* DoisDedos.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -178,9 +190,13 @@
 			files = (
 				D3BF928028FEF6CD00EEF09B /* ContentView.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
-				8616105C290A080F00DCD37B /* OnboardingDois.swift in Sources */,
-				864FCABF2908674300CA0664 /* OnboardingUm.swift in Sources */,
+				86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */,
+				8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */,
+				8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */,
+				864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */,
+				86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */,
 				D3BF928C28FF26E300EEF09B /* SpriteFiles.swift in Sources */,
+				86161064290A4B8100DCD37B /* DoisDedos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = LJM46THP47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
@@ -339,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = LJM46THP47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;

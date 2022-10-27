@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingUm: View {
+struct ColoqueFone: View {
     var body: some View {
         
         VStack{
@@ -23,8 +23,8 @@ struct OnboardingUm: View {
     }
 }
 
-struct Onboarding_Previews: PreviewProvider {
+struct ColoqueFone_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingUm()
+        ColoqueFone()
     }
 }
