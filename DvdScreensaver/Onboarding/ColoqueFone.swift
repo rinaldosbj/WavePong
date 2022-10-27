@@ -9,16 +9,32 @@ import SwiftUI
 
 struct ColoqueFone: View {
     var body: some View {
-        
-        VStack{
-            Text("Coloque o fone de ouvido, depois toque na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
-                .bold()
-                .padding()
-                .onTapGesture(count: 1) {
-                    print("toquei")
+        NavigationView{
+            ZStack{
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                
+                VStack{
+                    Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
+                        .foregroundColor(.white)
+                        .bold()
+                        .minimumScaleFactor(15)
+                        .multilineTextAlignment(.center)
+                        .padding(40)
+                        .onTapGesture(count: 1) {
+                            print("toquei")
+                        }
+                        .padding()
+                    
+                    Image("fone")
                 }
                 
-            Image("fone")
+                NavigationLink(destination: ToqueUma()){
+                    Color(.clear)
+                }
+            }
         }
     }
 }

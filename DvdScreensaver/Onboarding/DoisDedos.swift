@@ -9,15 +9,25 @@ import SwiftUI
 
 struct DoisDedos: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 60){
-            Text("Toque duas vezes para selecionar o que deseja ")
-                .font(.custom("DaysOne-Regular", size: 35))
+        ZStack{
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 60){
+                Text("\(Text("Clique").foregroundColor(.yellow)) com os \(Text("dois dedos").foregroundColor(.yellow)) para ouvir as \(Text("instruções").foregroundColor(.yellow)) novamente")
+                    .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
-                    .padding()
+                    .minimumScaleFactor(15)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(40)
                     .onTapGesture(count: 1) {
                         print("toquei")
                     }
-            Image("dois dedos")
+                Image("dois dedos")
+            }
         }
     }
 }
