@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct ArrasteEsquerda: View {
+    
+    @State private var shouldShow: Bool = false
+    
     var body: some View {
         ZStack{
+            NavigationLink("",destination: DoisDedos() ,isActive: $shouldShow)
+            
             Image("background")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+            
             VStack{
                 Text("\(Text("Arraste").foregroundColor(.yellow)) para os lados para \(Text("navegar").foregroundColor(.yellow)) pelo menu")
                     .font(.custom("DaysOne-Regular", size: 35))
@@ -22,9 +28,7 @@ struct ArrasteEsquerda: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
+
                 Image("arraste esquerda")
             }
         }.highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
@@ -42,10 +46,10 @@ struct ArrasteEsquerda: View {
                               )
     }
     func  swipeRightToLeft(){
-        print("swipou pra esquerda")
+        shouldShow.toggle()
     }
     func swipeLeftToRight(){
-        print("swipou pra direita")
+        shouldShow.toggle()
     }
 }
 

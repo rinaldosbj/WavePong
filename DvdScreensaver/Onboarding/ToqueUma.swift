@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ToqueUma: View {
     
-    @State var scale: CGFloat = 1.0
+    @State private var scale: CGFloat = 1.0
     
+    @State private var shouldShow: Bool = false
+  
     var body: some View {
-        
+
         ZStack{
+            NavigationLink("",destination: ToqueDuas() ,isActive: $shouldShow)
+            
             Image("background")
                 .resizable()
                 .scaledToFill()
@@ -27,9 +31,6 @@ struct ToqueUma: View {
                     .minimumScaleFactor(15)
                     .multilineTextAlignment(.center)
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
                 
                 Image("um toque")
                     .scaleEffect(scale)
@@ -43,10 +44,8 @@ struct ToqueUma: View {
                         self.scale += 2
                     }
             }
-            
-            NavigationLink(destination: ToqueDuas()){
-                Color(.clear)
-            }
+        }.onTapGesture {
+            shouldShow.toggle()
         }
         
     }

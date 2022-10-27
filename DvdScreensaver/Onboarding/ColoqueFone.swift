@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ColoqueFone: View {
+   
+    @State private var shouldShow: Bool = false
+ 
     var body: some View {
+        
         NavigationView{
             ZStack{
+                NavigationLink("",destination: ToqueUma() ,isActive: $shouldShow)
+                
                 Image("background")
                     .resizable()
                     .scaledToFill()
@@ -23,16 +29,11 @@ struct ColoqueFone: View {
                         .minimumScaleFactor(15)
                         .multilineTextAlignment(.center)
                         .padding(40)
-                        .onTapGesture(count: 1) {
-                            print("toquei")
-                        }
                         .padding()
                     
                     Image("fone")
-                }
-                
-                NavigationLink(destination: ToqueUma()){
-                    Color(.clear)
+                }.onTapGesture {
+                    shouldShow.toggle()
                 }
             }
         }

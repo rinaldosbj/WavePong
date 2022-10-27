@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct DoisDedos: View {
+    
+    @State private var shouldShow: Bool = false
+    
     var body: some View {
         ZStack{
+            NavigationLink("",destination: ContentView() ,isActive: $shouldShow)
+            
             Image("background")
                 .resizable()
                 .scaledToFill()
@@ -23,11 +28,11 @@ struct DoisDedos: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
+
                 Image("dois dedos")
             }
+        }.onTapGesture {
+            shouldShow.toggle()
         }
     }
 }
