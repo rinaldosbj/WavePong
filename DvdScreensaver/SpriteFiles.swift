@@ -31,7 +31,7 @@ public class PongScene: SKScene {
     var nuvemNode: SKNode
     
     var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
-    var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.3) // função para mover a nuvem
+    var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.4) // função para mover a nuvem
     
     public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode) {
         self.ballNode = ballNode // pegando os dados da ContentView
@@ -88,12 +88,16 @@ public class PongScene: SKScene {
             moveTransformBall.tx = CGFloat(+speeed)
         }
         
-        // Bottom bound -> raquete
-        if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
+        let generator = UINotificationFeedbackGenerator() // Generator fot the vibration
+        // Raquete
+        if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.midY && moveTransformBall.tx != 0
+        {
             
-            if speeed > (primeiraSpeeed + 0.0003){
+            if speeed > (primeiraSpeeed + 0.001) {
                 primeiraSpeeed = speeed
                 moveTransformBall.ty = CGFloat(+speeed)
+                
+                generator.notificationOccurred(.success)
                 UIDevice.vibrate()
                 
                 scoreCount += 1
@@ -102,18 +106,29 @@ public class PongScene: SKScene {
             }
         }
         
+        // Bottom bound
+        if ballFrame.maxY <= self.frame.minY && moveTransformBall.tx != 0 {
+            tocador?.stop()
+            moveTransformBall.tx = 0
+            moveTransformBall.ty = 0
+            moveTransformNuvem.ty = 0
+            nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem.size.height/2)
+            self.backgroundColor = .red
+            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem.size.height/2)
+        }
+        
         if frameNuvem.minY <= self.frame.minY+80{
             moveTransformNuvem.ty = 0
         }
         
         // Audio System
-        if let tocador = tocador, tocador.isPlaying{
+        if let tocador = tocador, tocador.isPlaying && moveTransformBall.tx != 0 {
             if ballPositionX/self.frame.maxX >= 0 {
                 tocador.pan = Float((ballPositionX - self.frame.midX)/self.frame.midX) // -1 -> 1
                 tocador.volume = Float(1 - (ballPositionY/(self.frame.height - 60))) // alto 0 -> baixo 1
             }
         }
-        else {
+        else if moveTransformBall.tx != 0{
             let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
