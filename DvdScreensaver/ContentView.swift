@@ -7,11 +7,10 @@
 
 import SwiftUI
 import SpriteKit
-import CoreHaptics
 
 struct ContentView: View {
     
-    @State var engine: CHHapticEngine?
+    @StateObject var user = UserScore()
     
     var body: some View {
         GeometryReader{
@@ -19,6 +18,18 @@ struct ContentView: View {
             ZStack{
                 SpriteView(scene: skScene)
                     .frame(width: geo.size.width, height: geo.size.height)
+                VStack{
+                    Text("\(user.score)")
+                        .font(.system(size: 5000))
+                        .minimumScaleFactor(0.01)
+                        .scaledToFill()
+                        .frame(width: 50, height: 50)
+                        .padding(.top, 40)
+                    Text("Pontos")
+                    Spacer()
+                }
+            }.onTapGesture {
+                print("aa\(user.score)")
             }
         }.ignoresSafeArea()
     }

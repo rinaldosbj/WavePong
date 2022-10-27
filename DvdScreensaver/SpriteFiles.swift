@@ -7,19 +7,21 @@
 
 import SpriteKit
 import AVFoundation
-import CoreHaptics
 import SwiftUI
+
+class UserScore: ObservableObject {  // Trying to use ObservableObject to update Score
+    @Published var score = 0
+}
 
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
     
-    @State var engine: CHHapticEngine?
+    @ObservedObject var user = UserScore()
     
     var ballNode: SKNode
     var raqueteNode : SKNode
     var nuvemNode: SKNode
-    var score = SKLabelNode()
     
     var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
     var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.3) // função para mover a nuvem
@@ -32,24 +34,16 @@ public class PongScene: SKScene {
         setup()
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
     
     private func setup() {
         addChild(ballNode) // colocando os objetos na Scene
         addChild(raqueteNode)
         addChild(nuvemNode)
-        addChild(score)
         
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
-        score.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.maxY)-70))
         nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
         
-        score.text = "0"
-        
-        prepareHapics()
     }
     
     var ballPositionX: CGFloat = 0
@@ -97,19 +91,19 @@ public class PongScene: SKScene {
                 primeiraSpeeed = speeed
                 moveTransformBall.ty = CGFloat(+speeed)
                 generator.notificationOccurred(.success) // Default success vibration starts
-                vibrates()
                 
                 scoreCount += 1
-                score.text = String(scoreCount)
+                user.score = scoreCount
+                print(user.score)
             }
-            
         }
         
         if frameNuvem.minY <= self.frame.minY+80{
             moveTransformNuvem.ty = 0
         }
         
-        if let tocador = tocador, tocador.isPlaying {
+        // Audio System
+        if let tocador = tocador, tocador.isPlaying{
             if ballPositionX/self.frame.maxX >= 0 {
                 tocador.pan = Float((ballPositionX - self.frame.midX)/self.frame.midX) // -1 -> 1
                 tocador.volume = Float(1 - (ballPositionY/(self.frame.height - 60))) // alto 0 -> baixo 1
@@ -120,6 +114,7 @@ public class PongScene: SKScene {
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback, options: .duckOthers)
                 guard let urlString = urlString else {
                     return
                 }
@@ -130,7 +125,7 @@ public class PongScene: SKScene {
                 tocador.play()
             }
             catch{
-                print("Deu erro ae mané")
+                print("Deu erro ae mané: \(error.localizedDescription)")
             }
         }
     }
@@ -155,33 +150,7 @@ public class PongScene: SKScene {
         }
     }
     
-    func prepareHapics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("Error creating the engine: \(error.localizedDescription)")
-        }
-    }
-    
-    func vibrates() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
-        var events = [CHHapticEvent]()
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity,sharpness], relativeTime: 0)
-        
-        events.append(event)
-    
-        do {
-            let pattern = try CHHapticPattern(events: events, parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play pattern \(error.localizedDescription)")
-        }
-        
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError()
     }
 }
