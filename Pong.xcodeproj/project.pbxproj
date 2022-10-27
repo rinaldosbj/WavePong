@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8616105C290A080F00DCD37B /* OnboardingDois.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105B290A080F00DCD37B /* OnboardingDois.swift */; };
+		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
+		864FCABF2908674300CA0664 /* OnboardingUm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864FCABE2908674300CA0664 /* OnboardingUm.swift */; };
 		D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D37599612906F45E00BFEB64 /* soundtrack.mp3 */; };
 		D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
@@ -17,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8616105B290A080F00DCD37B /* OnboardingDois.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDois.swift; sourceTree = "<group>"; };
+		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
+		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864FCABE2908674300CA0664 /* OnboardingUm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUm.swift; sourceTree = "<group>"; };
 		D37599612906F45E00BFEB64 /* soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundtrack.mp3; sourceTree = "<group>"; };
 		D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3"; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +45,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8616105E290A0BF100DCD37B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				864FCABE2908674300CA0664 /* OnboardingUm.swift */,
+				8616105B290A080F00DCD37B /* OnboardingDois.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		864FCABC2908663900CA0664 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +81,15 @@
 		D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */ = {
 			isa = PBXGroup;
 			children = (
+				864FCABD2908665A00CA0664 /* Info.plist */,
 				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
 				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				D3BF927F28FEF6CD00EEF09B /* ContentView.swift */,
 				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
+				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
+				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
 			path = DvdScreensaver;
@@ -136,6 +163,7 @@
 			files = (
 				D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */,
 				D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */,
+				864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */,
 				D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */,
 				D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */,
 			);
@@ -150,6 +178,8 @@
 			files = (
 				D3BF928028FEF6CD00EEF09B /* ContentView.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
+				8616105C290A080F00DCD37B /* OnboardingDois.swift in Sources */,
+				864FCABF2908674300CA0664 /* OnboardingUm.swift in Sources */,
 				D3BF928C28FF26E300EEF09B /* SpriteFiles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +312,7 @@
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DvdScreensaver/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -311,6 +342,7 @@
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DvdScreensaver/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
