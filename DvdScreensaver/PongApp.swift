@@ -11,7 +11,8 @@ import SwiftUI
 struct PongApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            ToqueDuas()
         }
     }
 }

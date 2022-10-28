@@ -13,7 +13,7 @@ struct ToqueDuas: View {
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 60 ){
+        VStack(alignment: .center, spacing: 60){
             Text("Toque duas vezes para selecionar o que deseja ")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
