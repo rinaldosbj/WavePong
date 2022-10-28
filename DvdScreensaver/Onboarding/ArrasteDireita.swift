@@ -13,7 +13,7 @@ struct ArrasteDireita: View {
             Text("Arraste para os lados para navegar pelo menu")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
-                    .padding()
+                    .padding(40)
                     .onTapGesture(count: 1) {
                         print("toquei")
                     }

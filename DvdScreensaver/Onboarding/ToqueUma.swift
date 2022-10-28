@@ -16,30 +16,39 @@ struct ToqueUma: View {
             Text("Toque uma vez para ouvir o que está na tela")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
-                    .padding()
+                    .padding(40)
                     .onTapGesture(count: 1) {
                         print("toquei")
                     }
             
-            Image("um toque")
-                .scaleEffect(scale)
-//                .frame(width: 107, height: 107)
-                .animation(
-                    Animation
-                        .easeIn(duration:2)
-                        .repeatForever()
+            HStack{
+            Image(systemName: "circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50, alignment: .center)
+                .padding(10)
+                .blur(radius: scale, opaque: false)
+                .foregroundColor(.yellow)
+                .overlay(
+                    Circle()
+                        .stroke(Color.yellow)
+                        .blur(radius: scale)
+                        .scaleEffect(scale)
+                        .opacity(Double(2 - scale))
+                        .animation(.easeOut(duration: 2)
+                            .repeatForever(autoreverses: false))
                 )
+                
                 .onAppear{
                     self.scale += 1
-                }
-                
+            }
+        }
     }
-
 }
 
 struct ToqueUma_Previews: PreviewProvider {
     static var previews: some View {
-        ToqueUma()
+            ToqueUma()
+        }
     }
-}
 }
