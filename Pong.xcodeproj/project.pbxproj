@@ -61,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D35AAC0F290A164F00FE654C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
+				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		8616105E290A0BF100DCD37B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				864FCABD2908665A00CA0664 /* Info.plist */,
-				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
-				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
+				D35AAC0F290A164F00FE654C /* Audio */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				D3BF927F28FEF6CD00EEF09B /* ContentView.swift */,
 				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
@@ -349,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = W6U37W8KCJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
