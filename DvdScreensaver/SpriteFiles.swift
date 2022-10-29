@@ -28,15 +28,21 @@ public class PongScene: SKScene {
 
     var ballNode: SKNode
     var raqueteNode : SKNode
-    var nuvemNode: SKNode
+    var nuvemNode1: SKNode
+    var nuvemNode2: SKNode
+    var nuvemNode3: SKNode
     
     var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
-    var moveTransformNuvem = CGAffineTransform(translationX: 0, y: -0.4) // função para mover a nuvem
+    var moveTransformNuvem = CGAffineTransform(translationX: 4, y: -0.4) // função para mover a nuvem
+    var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
+    var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
-        self.nuvemNode = nuvem
+        self.nuvemNode1 = nuvem
+        self.nuvemNode2 = nuvem2
+        self.nuvemNode3 = nuvem3
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -45,11 +51,15 @@ public class PongScene: SKScene {
     private func setup() {
         addChild(ballNode) // colocando os objetos na Scene
         addChild(raqueteNode)
-        addChild(nuvemNode)
+        addChild(nuvemNode3)
+        addChild(nuvemNode2)
+        addChild(nuvemNode1)
         
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
-        nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode.frame.size.height)/2)) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
+        nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode1.frame.size.height)/2)+10) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
+        nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2))
+        nuvemNode3.position = CGPoint(x: self.frame.midX+10, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2)-2)
     }
     
     var ballPositionX: CGFloat = 0
@@ -65,11 +75,16 @@ public class PongScene: SKScene {
         // Collect a reference frame for the node’s current position
         let ballFrame = ballNode.calculateAccumulatedFrame()
         let frameRaquete = raqueteNode.calculateAccumulatedFrame()
-        let frameNuvem = nuvemNode.calculateAccumulatedFrame()
+        let frameNuvem1 = nuvemNode1.calculateAccumulatedFrame()
+        let frameNuvem2 = nuvemNode2.calculateAccumulatedFrame()
+        let frameNuvem3 = nuvemNode3.calculateAccumulatedFrame()
         
         // Update the node’s position by applying the transform
         ballNode.position = ballNode.position.applying(moveTransformBall)
-        nuvemNode.position = nuvemNode.position.applying(moveTransformNuvem)
+        nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
+        nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
+        nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
+        
         ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
         ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
         
@@ -112,13 +127,41 @@ public class PongScene: SKScene {
             moveTransformBall.tx = 0
             moveTransformBall.ty = 0
             moveTransformNuvem.ty = 0
-            nuvemNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem.size.height/2)
+            moveTransformNuvem2.ty = 0
+            moveTransformNuvem3.ty = 0
+            nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
+            nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem2.size.height/2)
+            nuvemNode3.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem3.size.height/2)
             self.backgroundColor = .red
-            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem.size.height/2)
+            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
         }
         
-        if frameNuvem.minY <= self.frame.minY+80{
+        if frameNuvem1.minY <= self.frame.minY+80{
             moveTransformNuvem.ty = 0
+        }
+        if frameNuvem1.midX >= self.frame.maxX{
+            moveTransformNuvem.tx = -4
+        }
+        if frameNuvem1.midX <= self.frame.minX{
+            moveTransformNuvem.tx = 4
+        }
+        if frameNuvem2.minY <= self.frame.minY+80{
+            moveTransformNuvem2.ty = 0
+        }
+        if frameNuvem2.midX >= self.frame.maxX{
+            moveTransformNuvem2.tx = -4
+        }
+        if frameNuvem2.midX <= self.frame.minX{
+            moveTransformNuvem2.tx = 4
+        }
+        if frameNuvem3.minY <= self.frame.minY+80{
+            moveTransformNuvem3.ty = 0
+        }
+        if frameNuvem3.midX >= self.frame.maxX{
+            moveTransformNuvem3.tx = -6
+        }
+        if frameNuvem3.midX <= self.frame.minX{
+            moveTransformNuvem3.tx = 6
         }
         
         // Audio System

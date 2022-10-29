@@ -25,13 +25,11 @@ struct ContentView: View {
                         .minimumScaleFactor(0.01)
                         .scaledToFill()
                         .frame(width: 50, height: 50)
-                        .padding(.top, 40)
+                        .padding(.top, 70)
                     Text("Pontos")
                         .foregroundColor(.white)
                     Spacer()
                 }
-            }.onTapGesture {
-                print("aa\(user.score)")
             }
         }.ignoresSafeArea()
     }
@@ -43,9 +41,17 @@ struct ContentView: View {
         ballNode.size = CGSize(width: 60, height: 60)
         
         let raqueteNode = SKSpriteNode(color: .purple, size: CGSize(width: UIScreen.main.bounds.width/2.5, height: 25))
-        let nuvemNode = SKSpriteNode(color: .systemPurple, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
-        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode)
+        let nuvemNode = SKSpriteNode(imageNamed: "wave")
+        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
+        
+        let nuvemNode2 = SKSpriteNode(imageNamed: "wave2")
+        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
+        
+        let nuvemNode3 = SKSpriteNode(imageNamed: "wave3")
+        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
+        
+        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3)
         scene.backgroundColor = .darkGray
         
         return scene
