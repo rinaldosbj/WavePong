@@ -17,9 +17,9 @@ struct ArrasteEsquerda: View {
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
+//                    .onTapGesture(count: 1) {
+//                        print("toquei")
+//                    }
             ZStack(alignment: .leading){
                 
                 Capsule()
@@ -31,12 +31,12 @@ struct ArrasteEsquerda: View {
                 Circle()
                     .frame(width: 50, height: 50)
                     .foregroundColor(.yellow)
+                    .offset(x: arraste ? 0: 130)
                     .animation(.linear(duration: 2)
-                               
-                        .repeatForever(autoreverses: false)
-                    )
+                        .repeatForever(autoreverses: false))
+
                     .onAppear{
-                        self.arraste = false
+                        arraste = true
                     }
             }
         }

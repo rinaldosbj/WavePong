@@ -14,6 +14,10 @@
 		8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161069290A516B00DCD37B /* ArrasteDireita.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864FCABE2908674300CA0664 /* ColoqueFone.swift */; };
+		86F7873D290C78C200CD5306 /* BolaGuiada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7873C290C78C200CD5306 /* BolaGuiada.swift */; };
+		86F7873F290C78E600CD5306 /* DeslizeDedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7873E290C78E600CD5306 /* DeslizeDedo.swift */; };
+		86F78742290CCEE600CD5306 /* BolaVibração.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F78741290CCEE600CD5306 /* BolaVibração.swift */; };
+		86F78744290CCF0600CD5306 /* PausarJogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F78743290CCF0600CD5306 /* PausarJogo.swift */; };
 		D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D37599612906F45E00BFEB64 /* soundtrack.mp3 */; };
 		D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
@@ -32,6 +36,10 @@
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864FCABE2908674300CA0664 /* ColoqueFone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoqueFone.swift; sourceTree = "<group>"; };
+		86F7873C290C78C200CD5306 /* BolaGuiada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BolaGuiada.swift; sourceTree = "<group>"; };
+		86F7873E290C78E600CD5306 /* DeslizeDedo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeslizeDedo.swift; sourceTree = "<group>"; };
+		86F78741290CCEE600CD5306 /* BolaVibração.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BolaVibração.swift"; sourceTree = "<group>"; };
+		86F78743290CCF0600CD5306 /* PausarJogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarJogo.swift; sourceTree = "<group>"; };
 		D37599612906F45E00BFEB64 /* soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundtrack.mp3; sourceTree = "<group>"; };
 		D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3"; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +82,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		86F78740290C78F500CD5306 /* Jogo Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				86F7873E290C78E600CD5306 /* DeslizeDedo.swift */,
+				86F7873C290C78C200CD5306 /* BolaGuiada.swift */,
+				86F78741290CCEE600CD5306 /* BolaVibração.swift */,
+				86F78743290CCF0600CD5306 /* PausarJogo.swift */,
+			);
+			path = "Jogo Onboarding";
+			sourceTree = "<group>";
+		};
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +118,7 @@
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				D3BF927F28FEF6CD00EEF09B /* ContentView.swift */,
 				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
+				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				864FCABC2908663900CA0664 /* Fonts */,
@@ -191,12 +211,16 @@
 				D3BF928028FEF6CD00EEF09B /* ContentView.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */,
+				86F7873F290C78E600CD5306 /* DeslizeDedo.swift in Sources */,
 				8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */,
 				8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */,
 				864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */,
+				86F7873D290C78C200CD5306 /* BolaGuiada.swift in Sources */,
 				86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */,
 				D3BF928C28FF26E300EEF09B /* SpriteFiles.swift in Sources */,
+				86F78742290CCEE600CD5306 /* BolaVibração.swift in Sources */,
 				86161064290A4B8100DCD37B /* DoisDedos.swift in Sources */,
+				86F78744290CCF0600CD5306 /* PausarJogo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
