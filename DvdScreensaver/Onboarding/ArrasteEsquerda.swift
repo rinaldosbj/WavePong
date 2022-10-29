@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArrasteEsquerda: View {
     
-    @State var arraste = false
+    @State var arraste = 100
     
     var body: some View {
         VStack(alignment: .center, spacing: 60){
@@ -20,23 +20,23 @@ struct ArrasteEsquerda: View {
 //                    .onTapGesture(count: 1) {
 //                        print("toquei")
 //                    }
-            ZStack(alignment: .leading){
+            ZStack(alignment: .center){
                 
-                Capsule()
-                    .fill(LinearGradient(gradient: .init(colors: [Color("laranja"),Color("amarelo").opacity(0.30)]), startPoint: .leading, endPoint: .trailing))
-                    .frame(width: 183, height: 50, alignment: .center)
+//                Capsule()
+//                    .fill(LinearGradient(gradient: .init(colors: [Color("laranja"),Color("amarelo").opacity(0.30)]), startPoint: .leading, endPoint: .trailing))
+//                    .frame(width: 183, height: 50, alignment: .center)
                     
                 
                 
                 Circle()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 50, height: 50, alignment: .center)
                     .foregroundColor(.yellow)
-                    .offset(x: arraste ? 0: 130)
-                    .animation(.linear(duration: 2)
-                        .repeatForever(autoreverses: false))
+                    .offset(x: CGFloat(arraste))
+                    .animation(.easeInOut(duration: 2)
+                        .repeatForever(autoreverses: true))
 
                     .onAppear{
-                        arraste = true
+                        arraste = -100
                     }
             }
         }

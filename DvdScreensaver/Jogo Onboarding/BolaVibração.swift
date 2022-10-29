@@ -20,17 +20,18 @@ struct BolaVibrac_a_o: View {
                 Text("A posição da bola será guiada pela música")
                     .font(.custom("DaysOne-Regular", size: 35))
                         .bold()
-                        .padding(40)
-                Spacer()
-                    .frame(height:90)
+                        .frame(width: 310, height: 270, alignment: .center)
+//                Spacer()
+//                    .frame(height:90)
                 
             ZStack(alignment: .center){
                 Circle()
                     .frame(width: 50, height: 50)
                     .foregroundColor(.yellow)
-                    .offset(x: bola ? 45: 0, y: bola ? 0: 100)
+                    .offset(x: bola ? 45: 0, y: bola ? 0: 70)
                     .animation(.linear(duration: 2)
                         .repeatForever(autoreverses: false))
+
                 
                 
                 VStack {
@@ -38,6 +39,8 @@ struct BolaVibrac_a_o: View {
 
                     Image("raquete")
                         .frame(width: 145, height: 33, alignment: .center)
+                        .padding(20)
+
                     }
 
                     .onAppear{

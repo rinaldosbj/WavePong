@@ -17,18 +17,19 @@ struct BolaGuiada: View {
             Spacer()
                 .frame(height:100)
             
-            Text("A posição da bola será guiada pelas música")
+            Text("A posição da bola será guiada pela música")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
-                    .padding(40)
-            Spacer()
-                .frame(height:90)
+                    .frame(width: 310, height: 270, alignment: .center)
+//            Spacer()
+//                .frame(height:40)
             
         ZStack(alignment: .leading){
             Circle()
                 .frame(width: 50, height: 50)
                 .foregroundColor(.yellow)
-                .offset(x: bola ? 45: 0, y: bola ? 100: 0)
+//            Image("Ball")
+                .offset(x: bola ? 55: 0, y: bola ? 70: 0)
                 .animation(.linear(duration: 2)
                     .repeatForever(autoreverses: false))
             
@@ -38,7 +39,8 @@ struct BolaGuiada: View {
 
                 Image("raquete")
                     .frame(width: 145, height: 33, alignment: .center)
-                    
+                    .padding(20)
+
                 }
 
                 .onAppear{

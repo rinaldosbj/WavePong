@@ -19,7 +19,7 @@ struct PausarJogo: View {
             Text("Toque com os dois dedos para pausar o jogo")
                 .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
-                    .padding(40)
+                    .frame(width: 310, height: 270, alignment: .center)
                     .onTapGesture(count: 1) {
                         print("toquei")
                     }

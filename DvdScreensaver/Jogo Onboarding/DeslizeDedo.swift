@@ -13,37 +13,48 @@ struct DeslizeDedo: View {
 
     
     var body: some View {
+//        ZStack{
+//
+//            Image("background")
+//                .resizable()
+//                .scaledToFill()
+//                .ignoresSafeArea()
                 
-        VStack(alignment: .center){
-            
-            Spacer()
-                .frame(height:130)
-            
-            Text("Deslize os dedos para os lados para mover a raquete e rebater a bola")
-                .font(.custom("DaysOne-Regular", size: 35))
-                    .bold()
-                    .padding(40)
-//                    .onTapGesture(count: 1) {
-//                        print("toquei")
-//                    }
-            
-           Spacer()
-                    .frame(height:250)
-            
-        HStack{
-            
-                Image("raquete")
-                    .frame(width: 145, height: 33, alignment: .center)
-                    .offset(x: CGFloat(deslize))
-                    .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true))
+            VStack(alignment: .center){
+                
+                Spacer()
+                    .frame(height:100)
+                
+                Text("Deslize os dedos para os lados para mover a raquete e rebater a bola")
+                    .font(.custom("DaysOne-Regular", size: 35))
+                        .bold()
+//                        .padding(40)
+                        .frame(width: 310, height: 270, alignment: .center)
+    //                    .onTapGesture(count: 1) {
+    //                        print("toquei")
+    //                    }
+                
+//               Spacer()
+//                        .frame(height:)
+                
+            VStack{
+                
+                    Spacer()
+                
+                    Image("raquete")
+                        .frame(width: 145, height: 33, alignment: .center)
+                        .offset(x: CGFloat(deslize))
+                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true))
+                        .padding(20)
 
-                    .onAppear{
-                            deslize = -100
-                        }
-               }
+                        .onAppear{
+                                deslize = -100
+                            }
+                    }
+                }
+            }
         }
-    }
-}
+//}
 
 struct DeslizeDedo_Previews: PreviewProvider {
     static var previews: some View {

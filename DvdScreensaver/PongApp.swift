@@ -12,7 +12,7 @@ struct PongApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            BolaGuiada()
+            DeslizeDedo()
         }
     }
 }
