@@ -9,19 +9,30 @@ import SwiftUI
 
 struct ToqueUma: View {
     
-    @State var scale: CGFloat = 1.0
+    @State private var scale: CGFloat = 1.0
     
+    @State private var shouldShow: Bool = false
+  
     var body: some View {
-        VStack(alignment: .center, spacing: 60 ){
-            Text("Toque uma vez para ouvir o que está na tela")
-                .font(.custom("DaysOne-Regular", size: 35))
-                    .bold()
-                    .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
+
+        ZStack{
+            NavigationLink("",destination: ToqueDuas().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
-            HStack{
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 60 ){
+                Text("\(Text("Toque uma").foregroundColor(.yellow)) vez para \(Text("ouvir").foregroundColor(.yellow)) o que está na tela")
+                    .font(.custom("DaysOne-Regular", size: 35))
+                    .foregroundColor(.white)
+                    .bold()
+                    .minimumScaleFactor(15)
+                    .multilineTextAlignment(.center)
+                    .padding(40)
+                
+                HStack{
             Image(systemName: "circle.fill")
                 .resizable()
                 .scaledToFit()
@@ -42,12 +53,14 @@ struct ToqueUma: View {
                 .onAppear{
                     self.scale += 1
             }
+            }
+        }.onTapGesture {
+            shouldShow.toggle()
         }
     }
-}
-
-struct ToqueUma_Previews: PreviewProvider {
-    static var previews: some View {
+    
+    struct ToqueUma_Previews: PreviewProvider {
+        static var previews: some View {
             ToqueUma()
         }
     }

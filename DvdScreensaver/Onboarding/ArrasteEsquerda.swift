@@ -9,25 +9,28 @@ import SwiftUI
 
 struct ArrasteEsquerda: View {
     
+    @State private var shouldShow: Bool = false
+    
     @State var arraste = 100
     
     var body: some View {
-        VStack(alignment: .center, spacing: 60){
-            Text("Arraste para os lados para navegar pelo menu")
-                .font(.custom("DaysOne-Regular", size: 35))
+        ZStack{
+            NavigationLink("",destination: DoisDedos().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack{
+                Text("\(Text("Arraste").foregroundColor(.yellow)) para os lados para \(Text("navegar").foregroundColor(.yellow)) pelo menu")
+                    .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
+                    .minimumScaleFactor(15)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
                     .padding(40)
-//                    .onTapGesture(count: 1) {
-//                        print("toquei")
-//                    }
-            ZStack(alignment: .center){
-                
-//                Capsule()
-//                    .fill(LinearGradient(gradient: .init(colors: [Color("laranja"),Color("amarelo").opacity(0.30)]), startPoint: .leading, endPoint: .trailing))
-//                    .frame(width: 183, height: 50, alignment: .center)
-                    
-                
-                
+
                 Circle()
                     .frame(width: 50, height: 50, alignment: .center)
                     .foregroundColor(.yellow)
@@ -37,9 +40,26 @@ struct ArrasteEsquerda: View {
 
                     .onAppear{
                         arraste = -100
-                    }
             }
-        }
+        }.highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
+            .onEnded { value in
+                if abs(value.translation.height) < abs(value.translation.width) {
+                    if abs(value.translation.width) > 50.0 {
+                        if value.translation.width < 0 {
+                            self.swipeRightToLeft()
+                        } else if value.translation.width > 0 {
+                            self.swipeLeftToRight()
+                        }
+                    }
+                }
+            }
+                              )
+    }
+    func  swipeRightToLeft(){
+        shouldShow.toggle()
+    }
+    func swipeLeftToRight(){
+        shouldShow.toggle()
     }
 }
 struct ArrasteEsquerda_Previews: PreviewProvider {

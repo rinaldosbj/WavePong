@@ -8,17 +8,34 @@
 import SwiftUI
 
 struct ColoqueFone: View {
+   
+    @State private var shouldShow: Bool = false
+ 
     var body: some View {
         
-        VStack{
-            Text("Coloque o fone de ouvido, depois toque na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
-                .bold()
-                .padding()
-                .onTapGesture(count: 1) {
-                    print("toquei")
-                }
+        NavigationView{
+            ZStack{
+                NavigationLink("",destination: ToqueUma().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
                 
-            Image("fone")
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                
+                VStack{
+                    Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
+                        .foregroundColor(.white)
+                        .bold()
+                        .minimumScaleFactor(15)
+                        .multilineTextAlignment(.center)
+                        .padding(40)
+                        .padding()
+                    
+                    Image("fone")
+                }.onTapGesture {
+                    shouldShow.toggle()
+                }
+            }
         }
     }
 }

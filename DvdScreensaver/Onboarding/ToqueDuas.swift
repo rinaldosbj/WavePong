@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct ToqueDuas: View {
+    @State private var shouldShow: Bool = false
+  
     
     @State var scale: CGFloat = 1
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 60){
-            Text("Toque duas vezes para selecionar o que deseja ")
-                .font(.custom("DaysOne-Regular", size: 35))
+        ZStack{
+            NavigationLink("",destination: ArrasteDireita().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack{
+                Text("\(Text("Toque duas").foregroundColor(.yellow)) vezes para \(Text("selecionar").foregroundColor(.yellow)) o que deseja ")
+                    .font(.custom("DaysOne-Regular", size: 35))
+                    .foregroundColor(.white)
                     .bold()
+                    .minimumScaleFactor(15)
+                    .multilineTextAlignment(.center)
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
-            HStack{
+                
+                HStack{
             Image(systemName: "circle.fill")
                 .resizable()
                 .scaledToFit()
@@ -52,14 +63,16 @@ struct ToqueDuas: View {
                 .onAppear{
                     self.scale += 1
             }
-                
-        }
+            }
+        }.onTapGesture(count: 2, perform: doubleClicked)
+    }
+    func doubleClicked() {
+        shouldShow.toggle()
     }
 }
 
 struct ToqueDuas_Previews: PreviewProvider {
     static var previews: some View {
         ToqueDuas()
-        }
     }
 }

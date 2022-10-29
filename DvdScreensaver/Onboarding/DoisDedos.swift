@@ -9,18 +9,30 @@ import SwiftUI
 
 struct DoisDedos: View {
     
+    @State private var shouldShow: Bool = false
+    
+    
     @State var scale: CGFloat = 1
     
     var body: some View {
-        VStack(alignment: .center, spacing: 60){
-            Text("Toque com os dois dedos para ouvir as instruções novamente")
-                .font(.custom("DaysOne-Regular", size: 35))
+        ZStack{
+            NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 60){
+                Text("\(Text("Clique").foregroundColor(.yellow)) com os \(Text("dois dedos").foregroundColor(.yellow)) para ouvir as \(Text("instruções").foregroundColor(.yellow)) novamente")
+                    .font(.custom("DaysOne-Regular", size: 35))
                     .bold()
+                    .minimumScaleFactor(15)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
                     .padding(40)
-                    .onTapGesture(count: 1) {
-                        print("toquei")
-                    }
-            HStack{
+
+                HStack{
             Image(systemName: "circle.fill")
                 .resizable()
                 .scaledToFit()
@@ -56,6 +68,9 @@ struct DoisDedos: View {
                         .onAppear{
                             self.scale += 1
                         }
+            }
+        }.onTapGesture {
+            shouldShow.toggle()
         }
     }
 }
@@ -63,6 +78,5 @@ struct DoisDedos: View {
 struct DoisDedos_Previews: PreviewProvider {
     static var previews: some View {
         DoisDedos()
-        }
     }
 }
