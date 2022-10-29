@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ArrasteDireita: View {
     
-    @State private var scale: CGFloat = 0.35
-    
     @State private var shouldShow: Bool = false
   
     var body: some View {
@@ -30,7 +28,7 @@ struct ArrasteDireita: View {
                     .minimumScaleFactor(15)
                     .multilineTextAlignment(.center)
                     .padding(40)
-
+                
                 Image("arraste direita")
             }
         }.highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
@@ -45,7 +43,8 @@ struct ArrasteDireita: View {
                     }
                 }
             }
-                              )
+        )
+
     }
     func  swipeRightToLeft(){
         shouldShow.toggle()

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ToqueDuas: View {
+    
     @State private var shouldShow: Bool = false
-  
     
     @State var scale: CGFloat = 1
     
     var body: some View {
         
         ZStack{
-            NavigationLink("",destination: ArrasteDireita().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            NavigationLink("",destination: ArrasteEsquerda().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()
@@ -33,39 +33,41 @@ struct ToqueDuas: View {
                     .padding(40)
                 
                 HStack{
-            Image(systemName: "circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50, alignment: .center)
-                .padding(10)
-                .blur(radius: scale, opaque: false)
-                .foregroundColor(.yellow)
-                .overlay(
-                    Circle()
-                        .stroke(Color.yellow)
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .blur(radius: scale)
-                        .scaleEffect(scale)
-                        .opacity(Double(2 - scale))
-                        .animation(.easeOut(duration: 2)
-                            .repeatForever(autoreverses: false))
-                )
-                .overlay(
-                    Circle()
-                        .stroke(Color.yellow)
-                        .frame(width: 60, height: 60, alignment: .center)                        .blur(radius: scale)
-                        .scaleEffect(scale)
-                        .opacity(Double(2 - scale))
-                        .animation(.easeOut(duration: 2)
-                            .repeatForever(autoreverses: false))
-                )
-                
-                .onAppear{
-                    self.scale += 1
-            }
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .padding(10)
+                        .blur(radius: scale, opaque: false)
+                        .foregroundColor(.yellow)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow)
+                                .frame(width: 80, height: 80, alignment: .center)
+                                .blur(radius: scale)
+                                .scaleEffect(scale)
+                                .opacity(Double(2 - scale))
+                                .animation(.easeOut(duration: 2)
+                                    .repeatForever(autoreverses: false))
+                        )
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow)
+                                .frame(width: 60, height: 60, alignment: .center)                        .blur(radius: scale)
+                                .scaleEffect(scale)
+                                .opacity(Double(2 - scale))
+                                .animation(.easeOut(duration: 2)
+                                    .repeatForever(autoreverses: false))
+                        )
+                    
+                        .onAppear{
+                            self.scale += 1
+                        }
+                }
             }
         }.onTapGesture(count: 2, perform: doubleClicked)
     }
+    
     func doubleClicked() {
         shouldShow.toggle()
     }

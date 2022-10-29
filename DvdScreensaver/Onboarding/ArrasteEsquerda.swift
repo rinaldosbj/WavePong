@@ -30,16 +30,17 @@ struct ArrasteEsquerda: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(40)
-
+                
                 Circle()
                     .frame(width: 50, height: 50, alignment: .center)
                     .foregroundColor(.yellow)
                     .offset(x: CGFloat(arraste))
                     .animation(.easeInOut(duration: 2)
                         .repeatForever(autoreverses: true))
-
+                
                     .onAppear{
                         arraste = -100
+                    }
             }
         }.highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
             .onEnded { value in
@@ -53,15 +54,17 @@ struct ArrasteEsquerda: View {
                     }
                 }
             }
-                              )
+        )
     }
-    func  swipeRightToLeft(){
-        shouldShow.toggle()
+        func  swipeRightToLeft(){
+            shouldShow.toggle()
+        }
+        func swipeLeftToRight(){
+            shouldShow.toggle()
+        }
     }
-    func swipeLeftToRight(){
-        shouldShow.toggle()
-    }
-}
+
+
 struct ArrasteEsquerda_Previews: PreviewProvider {
     static var previews: some View {
         ArrasteEsquerda()

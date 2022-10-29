@@ -12,9 +12,9 @@ struct ToqueUma: View {
     @State private var scale: CGFloat = 1.0
     
     @State private var shouldShow: Bool = false
-  
+    
     var body: some View {
-
+        
         ZStack{
             NavigationLink("",destination: ToqueDuas().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
@@ -33,35 +33,35 @@ struct ToqueUma: View {
                     .padding(40)
                 
                 HStack{
-            Image(systemName: "circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50, alignment: .center)
-                .padding(10)
-                .blur(radius: scale, opaque: false)
-                .foregroundColor(.yellow)
-                .overlay(
-                    Circle()
-                        .stroke(Color.yellow)
-                        .blur(radius: scale)
-                        .scaleEffect(scale)
-                        .opacity(Double(2 - scale))
-                        .animation(.easeOut(duration: 2)
-                            .repeatForever(autoreverses: false))
-                )
-                
-                .onAppear{
-                    self.scale += 1
-            }
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .padding(10)
+                        .blur(radius: scale, opaque: false)
+                        .foregroundColor(.yellow)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow)
+                                .blur(radius: scale)
+                                .scaleEffect(scale)
+                                .opacity(Double(2 - scale))
+                                .animation(.easeOut(duration: 2)
+                                    .repeatForever(autoreverses: false))
+                        )
+                        .onAppear{
+                            self.scale += 1
+                        }
+                }
             }
         }.onTapGesture {
             shouldShow.toggle()
         }
     }
-    
-    struct ToqueUma_Previews: PreviewProvider {
-        static var previews: some View {
-            ToqueUma()
-        }
+}
+
+struct ToqueUma_Previews: PreviewProvider {
+    static var previews: some View {
+        ToqueUma()
     }
 }

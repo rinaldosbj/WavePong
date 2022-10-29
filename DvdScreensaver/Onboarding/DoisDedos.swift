@@ -11,7 +11,6 @@ struct DoisDedos: View {
     
     @State private var shouldShow: Bool = false
     
-    
     @State var scale: CGFloat = 1
     
     var body: some View {
@@ -31,44 +30,45 @@ struct DoisDedos: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(40)
-
+                
                 HStack{
-            Image(systemName: "circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50, alignment: .center)
-                .padding(10)
-                .blur(radius: scale, opaque: false)
-                .foregroundColor(.yellow)
-                .overlay(
-                    Circle()
-                        .stroke(Color.yellow)
-                        .blur(radius: scale)
-                        .scaleEffect(scale)
-                        .opacity(Double(2 - scale))
-                        .animation(.easeOut(duration: 2)
-                            .repeatForever(autoreverses: false))
-                )
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .padding(10)
-                    .blur(radius: scale, opaque: false)
-                    .foregroundColor(.yellow)
-                    .overlay(
-                        Circle()
-                            .stroke(Color.yellow)
-                            .blur(radius: scale)
-                            .scaleEffect(scale)
-                            .opacity(Double(2 - scale))
-                            .animation(.easeOut(duration: 2)
-                                .repeatForever(autoreverses: false))
-                    )
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .padding(10)
+                        .blur(radius: scale, opaque: false)
+                        .foregroundColor(.yellow)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow)
+                                .blur(radius: scale)
+                                .scaleEffect(scale)
+                                .opacity(Double(2 - scale))
+                                .animation(.easeOut(duration: 2)
+                                    .repeatForever(autoreverses: false))
+                        )
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .padding(10)
+                        .blur(radius: scale, opaque: false)
+                        .foregroundColor(.yellow)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.yellow)
+                                .blur(radius: scale)
+                                .scaleEffect(scale)
+                                .opacity(Double(2 - scale))
+                                .animation(.easeOut(duration: 2)
+                                    .repeatForever(autoreverses: false))
+                        )
                         .onAppear{
                             self.scale += 1
                         }
-            }
+                }
+        }
         }.onTapGesture {
             shouldShow.toggle()
         }
@@ -80,3 +80,4 @@ struct DoisDedos_Previews: PreviewProvider {
         DoisDedos()
     }
 }
+

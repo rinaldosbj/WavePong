@@ -32,9 +32,9 @@ struct ColoqueFone: View {
                         .padding()
                     
                     Image("fone")
-                }.onTapGesture {
-                    shouldShow.toggle()
-                }
+            }
+            }.onTapGesture {
+                shouldShow.toggle()
             }
         }
     }
