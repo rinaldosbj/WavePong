@@ -38,6 +38,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D35AAC0F290A164F00FE654C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
+				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
@@ -57,8 +66,7 @@
 		D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */ = {
 			isa = PBXGroup;
 			children = (
-				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
-				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
+				D35AAC0F290A164F00FE654C /* Audio */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				D3BF927F28FEF6CD00EEF09B /* ContentView.swift */,
 				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
