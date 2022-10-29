@@ -9,11 +9,6 @@ import SpriteKit
 import AVFoundation
 import SwiftUI
 
-
-class UserScore: ObservableObject {  // Trying to use ObservableObject to update Score
-    @Published var score = 0
-}
-
 extension UIDevice {
     static func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -24,7 +19,7 @@ public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
     
-    @ObservedObject var user = UserScore()
+    @Binding var scoreBound: Int
 
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -37,12 +32,13 @@ public class PongScene: SKScene {
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode1 = nuvem
         self.nuvemNode2 = nuvem2
         self.nuvemNode3 = nuvem3
+        _scoreBound = score
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -115,9 +111,7 @@ public class PongScene: SKScene {
                 generator.notificationOccurred(.success)
                 UIDevice.vibrate()
                 
-                scoreCount += 1
-                user.score = scoreCount
-                print(user.score)
+                scoreBound += 1
             }
         }
         

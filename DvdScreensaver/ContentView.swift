@@ -9,8 +9,9 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
-    
-    @StateObject var user = UserScore()
+
+    @AppStorage("Record") var record = 0 // used for storing the record (precistent)
+    @State var score: Int = 0
     
     var body: some View {
         GeometryReader{
@@ -19,16 +20,23 @@ struct ContentView: View {
                 SpriteView(scene: skScene)
                     .frame(width: geo.size.width, height: geo.size.height)
                 VStack{
-                    Text("\(user.score)")
+                    Text("\(score)")
                         .foregroundColor(.white)
-                        .font(.system(size: 5000))
+                        .font(.system(size: 500))
                         .minimumScaleFactor(0.01)
-                        .scaledToFill()
-                        .frame(width: 50, height: 50)
+                        .scaledToFit()
+                        .frame(width: 70, height: 70)
                         .padding(.top, 70)
                     Text("Pontos")
                         .foregroundColor(.white)
                     Spacer()
+                    Text("Record: \(record)")
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+            }.onDisappear(){
+                if score > record {
+                    record = score
                 }
             }
         }.ignoresSafeArea()
@@ -51,7 +59,7 @@ struct ContentView: View {
         let nuvemNode3 = SKSpriteNode(imageNamed: "wave3")
         nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
         
-        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3)
+        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score)
         scene.backgroundColor = .darkGray
         
         return scene
