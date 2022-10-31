@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B582F39291040EC00CD5A79 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B582F38291040EC00CD5A79 /* TappableView.swift */; };
 		8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105B290A080F00DCD37B /* ToqueUma.swift */; };
 		86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105F290A4B2400DCD37B /* ToqueDuas.swift */; };
 		86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B582F38291040EC00CD5A79 /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		8616105B290A080F00DCD37B /* ToqueUma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueUma.swift; sourceTree = "<group>"; };
 		8616105F290A4B2400DCD37B /* ToqueDuas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueDuas.swift; sourceTree = "<group>"; };
 		86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrasteEsquerda.swift; sourceTree = "<group>"; };
@@ -61,15 +63,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D35AAC0F290A164F00FE654C /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
-				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
-			);
-			name = Audio;
-			sourceTree = "<group>";
-		};
 		8616105E290A0BF100DCD37B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +95,15 @@
 			path = "Jogo Onboarding";
 			sourceTree = "<group>";
 		};
+		D35AAC0F290A164F00FE654C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
+				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +131,7 @@
 				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
+				5B582F38291040EC00CD5A79 /* TappableView.swift */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
@@ -221,6 +224,7 @@
 				86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */,
 				86F7873F290C78E600CD5306 /* DeslizeDedo.swift in Sources */,
 				8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */,
+				5B582F39291040EC00CD5A79 /* TappableView.swift in Sources */,
 				8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */,
 				864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */,
 				86F7873D290C78C200CD5306 /* BolaGuiada.swift in Sources */,
@@ -357,7 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = W6U37W8KCJ;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
@@ -387,7 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;

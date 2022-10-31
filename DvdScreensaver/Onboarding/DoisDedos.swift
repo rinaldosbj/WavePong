@@ -21,6 +21,7 @@ struct DoisDedos: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                
             
             VStack(alignment: .center, spacing: 60){
                 Text("\(Text("Clique").foregroundColor(.yellow)) com os \(Text("dois dedos").foregroundColor(.yellow)) para ouvir as \(Text("instruções").foregroundColor(.yellow)) novamente")
@@ -69,9 +70,7 @@ struct DoisDedos: View {
                         }
                 }
         }
-        }.onTapGesture {
-            shouldShow.toggle()
-        }
+        }.overlay(TappableView{gesture in shouldShow.toggle()})
     }
 }
 
