@@ -20,6 +20,7 @@ public class PongScene: SKScene {
     var tocador: AVAudioPlayer?
     
     @Binding var scoreBound: Int
+    @Binding var shouldShow: Bool
     
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -32,13 +33,14 @@ public class PongScene: SKScene {
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode1 = nuvem
         self.nuvemNode2 = nuvem2
         self.nuvemNode3 = nuvem3
         _scoreBound = score
+        _shouldShow = deveMostrar
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -66,6 +68,29 @@ public class PongScene: SKScene {
     var scoreCount = 0
     
     // Update is called once per frame
+    fileprivate func didLose(_ ballFrame: CGRect) {
+        tocador?.stop()
+        moveTransformBall.tx = 0
+        moveTransformBall.ty = 0
+        moveTransformNuvem.ty = 0
+        moveTransformNuvem2.ty = 0
+        moveTransformNuvem3.ty = 0
+        //            nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
+        nuvemNode1.isHidden = true
+        //            nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem2.size.height/2)
+        nuvemNode2.isHidden = true
+        //            nuvemNode3.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem3.size.height/2)
+        nuvemNode3.isHidden = true
+        self.backgroundColor = .red
+        
+        
+        
+        //            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
+        raqueteNode.isHidden = true
+        shouldShow = true
+        
+    }
+    
     public override func update(_ currentTime: TimeInterval) {
         speeed = speeed + 0.0001
         
@@ -119,19 +144,11 @@ public class PongScene: SKScene {
                 }
             }
         }
-        // Bottom bound
+        
+        //Se a bola sai da tela
         if ballFrame.maxY <= self.frame.minY && moveTransformBall.tx != 0 {
-            tocador?.stop()
-            moveTransformBall.tx = 0
-            moveTransformBall.ty = 0
-            moveTransformNuvem.ty = 0
-            moveTransformNuvem2.ty = 0
-            moveTransformNuvem3.ty = 0
-            nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
-            nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem2.size.height/2)
-            nuvemNode3.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem3.size.height/2)
-            self.backgroundColor = .red
-            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
+            didLose(ballFrame)
+
         }
         
         if frameNuvem1.minY <= self.frame.minY+80{

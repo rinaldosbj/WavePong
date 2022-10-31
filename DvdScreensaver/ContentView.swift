@@ -9,9 +9,15 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
+    
+    
 
     @AppStorage("Record") var record = 0 // used for storing the record (precistent)
     @State var score: Int = 0
+    @State var shouldShowPopUp: Bool = false
+    let popUpRows: [GridItem] = [GridItem(.fixed(60), spacing: 10),
+                                 GridItem(.fixed(60), spacing: 10)]
+
     
     var body: some View {
         GeometryReader{
@@ -39,8 +45,34 @@ struct ContentView: View {
                     record = score
                 }
             }
+
+            .popup(isPresented: $shouldShowPopUp) {
+                        ZStack {
+                            Color.black.frame(width: geo.size.width * 3/4, height: 400)
+                            VStack(spacing: 40){
+                                Image("Game-over")
+                                LazyVGrid(columns:
+                                            popUpRows) {
+                                    Button("novo jogo") {
+                                    print("oi")
+                                    }
+                                    Button("Menu") {
+                                    print("oi")
+                                    }
+                                }
+                                
+                                
+
+                            }
+                        }
+                    }
+                
+
         }.ignoresSafeArea()
+
     }
+    
+
     
     var skScene: SKScene{ // SKScene lembra muito uma view
         let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -59,7 +91,7 @@ struct ContentView: View {
         let nuvemNode3 = SKSpriteNode(imageNamed: "wave3")
         nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
         
-        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score)
+        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score, deveMostrar: $shouldShowPopUp)
         scene.backgroundColor = .darkGray
         
         return scene
@@ -73,7 +105,18 @@ struct ContentView: View {
 }
 
 
+extension View {
 
+    public func popup<PopupContent: View>(
+        isPresented: Binding<Bool>,
+        view: @escaping () -> PopupContent) -> some View {
+        self.modifier(
+            Popup(
+                isPresented: isPresented,
+                view: view)
+        )
+    }
+}
 
 
 
