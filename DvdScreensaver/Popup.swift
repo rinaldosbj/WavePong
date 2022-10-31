@@ -80,7 +80,7 @@ struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                     .frame(width: screenWidth)
                     .offset(x: 0, y: currentOffset)
                     .animation(Animation.easeOut(duration: 0.3), value: currentOffset)
-                    
+                    .cornerRadius(10)
             }
         }
         

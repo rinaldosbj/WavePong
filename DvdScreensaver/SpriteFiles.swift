@@ -21,6 +21,7 @@ public class PongScene: SKScene {
     
     @Binding var scoreBound: Int
     @Binding var shouldShow: Bool
+    @Binding var pausedGame: Bool
     
     var ballNode: SKNode
     var raqueteNode : SKNode
@@ -33,7 +34,7 @@ public class PongScene: SKScene {
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>) {
+    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>, pausou: Binding<Bool>) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode1 = nuvem
@@ -41,6 +42,7 @@ public class PongScene: SKScene {
         self.nuvemNode3 = nuvem3
         _scoreBound = score
         _shouldShow = deveMostrar
+        _pausedGame = pausou
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -102,13 +104,22 @@ public class PongScene: SKScene {
         let frameNuvem3 = nuvemNode3.calculateAccumulatedFrame()
         
         // Update the node’s position by applying the transform
-        ballNode.position = ballNode.position.applying(moveTransformBall)
-        nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
-        nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
-        nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
-        
-        ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
-        ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
+        if pausedGame == false {
+            ballNode.position = ballNode.position.applying(moveTransformBall)
+            nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
+            nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
+            nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
+            
+            ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
+            ballPositionY = ballFrame.midY-15
+        }
+//        ballNode.position = ballNode.position.applying(moveTransformBall)
+//        nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
+//        nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
+//        nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
+//        
+//        ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
+//        ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
         
         // Top bound
         if ballFrame.maxY >= self.frame.maxY+10 {
@@ -149,6 +160,23 @@ public class PongScene: SKScene {
         if ballFrame.maxY <= self.frame.minY && moveTransformBall.tx != 0 {
             didLose(ballFrame)
 
+        }
+            
+        //MARK: Se o jogador tocou com dois dedos
+        if pausedGame == true {
+            tocador?.stop()
+            moveTransformBall.tx = 0
+            moveTransformBall.ty = 0
+            moveTransformNuvem.ty = 0
+            moveTransformNuvem2.ty = 0
+            moveTransformNuvem3.ty = 0
+            let auxBallPosition = ballNode.position
+            let auxRaquetePosition = raqueteNode.position
+            let auxCloudPosition = nuvemNode1.position
+            let auxCloudPosition2 = nuvemNode2.position
+            let auxCloudPosition3 = nuvemNode3.position
+            //imagino q va precisar chamar outra instancia dessa SKscene, sendo que passando como parame
+            shouldShow = true 
         }
         
         if frameNuvem1.minY <= self.frame.minY+80{
