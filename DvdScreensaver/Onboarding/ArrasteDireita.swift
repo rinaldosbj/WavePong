@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ArrasteDireita: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShow: Bool = false
   
     var body: some View {
@@ -44,12 +45,18 @@ struct ArrasteDireita: View {
                 }
             }
         )
-
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "onboarding3", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
+        }
     }
     func  swipeRightToLeft(){
+        self.audioPlayer.pause()
         shouldShow.toggle()
     }
     func swipeLeftToRight(){
+        self.audioPlayer.pause()
         shouldShow.toggle()
     }
 }

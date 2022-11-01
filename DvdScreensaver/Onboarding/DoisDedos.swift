@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct DoisDedos: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShow: Bool = false
     
     @State var scale: CGFloat = 1
@@ -21,6 +22,7 @@ struct DoisDedos: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                
             
             VStack(alignment: .center, spacing: 60){
                 Text("\(Text("Clique").foregroundColor(.yellow)) com os \(Text("dois dedos").foregroundColor(.yellow)) para ouvir as \(Text("instruções").foregroundColor(.yellow)) novamente")
@@ -69,8 +71,13 @@ struct DoisDedos: View {
                         }
                 }
         }
-        }.onTapGesture {
+        }.overlay(TappableView{gesture in
             shouldShow.toggle()
+            self.audioPlayer.pause()})
+        .onAppear {
+                let sound = Bundle.main.path(forResource: "onboarding4", ofType: "mp3")
+                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                self.audioPlayer.play()
         }
     }
 }

@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ToqueDuas: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShow: Bool = false
     
     @State var scale: CGFloat = 1
@@ -66,9 +67,15 @@ struct ToqueDuas: View {
                 }
             }
         }.onTapGesture(count: 2, perform: doubleClicked)
+        .onAppear {
+                let sound = Bundle.main.path(forResource: "onboarding2", ofType: "mp3")
+                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                self.audioPlayer.play()
+        }
     }
     
     func doubleClicked() {
+        self.audioPlayer.pause()
         shouldShow.toggle()
     }
 }

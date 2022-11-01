@@ -34,12 +34,21 @@ struct ContentView: View {
                         .foregroundColor(.white)
                     Spacer()
                 }
-            }.onDisappear(){
+            }
+            .onDisappear(){
                 if score > record {
                     record = score
                 }
             }
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
+        .onTapGesture(count: 2, perform: doubleClicked)
+        
+
+    }
+    
+    func doubleClicked() {
+        print ("pausa ai")
     }
     
     var skScene: SKScene{ // SKScene lembra muito uma view

@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ToqueUma: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State private var scale: CGFloat = 1.0
     
     @State private var shouldShow: Bool = false
@@ -55,7 +56,13 @@ struct ToqueUma: View {
                 }
             }
         }.onTapGesture {
+            self.audioPlayer.pause()
             shouldShow.toggle()
+        }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "onboarding1", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
         }
     }
 }
