@@ -10,44 +10,60 @@ import SwiftUI
 struct BolaGuiada: View {
     
     @State var bola = false
-
+    
+    @State private var shouldShow: Bool = false
+    
     var body: some View {
-        
-        VStack{
-            Spacer()
-                .frame(height:100)
+        ZStack{
+            NavigationLink("",destination: BolaVibrac_a_o().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
-            Text("A posição da bola será guiada pela música")
-                .font(.custom("DaysOne-Regular", size: 35))
-                    .bold()
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack{
+                Spacer().frame()
+                
+                Text("A \(Text("posição").foregroundColor(.yellow)) da bola será \(Text("guiada").foregroundColor(.yellow)) pela música")
+                    .font(.custom("DaysOne-Regular", size: 35))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
-//            Spacer()
-//                .frame(height:40)
-            
-        ZStack(alignment: .leading){
-            Circle()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.yellow)
-//            Image("Ball")
-                .offset(x: bola ? 55: 0, y: bola ? 70: 0)
-                .animation(.linear(duration: 2)
-                    .repeatForever(autoreverses: false))
-            
-            
-            VStack {
-                Spacer()
-
-                Image("raquete")
-                    .frame(width: 145, height: 33, alignment: .center)
-                    .padding(20)
-
+                Spacer().frame()
+                
+                ZStack(alignment: .center){
+                    VStack{
+                        Circle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.yellow)
+                        //            Image("Ball")
+                            .offset(x: bola ? 55: 0, y: bola ? 60: 0)
+                            .animation(.linear(duration: 2)
+                                .repeatForever(autoreverses: false))
+                        Spacer().frame()
+                    }
+                    
+                    VStack {
+                        Spacer().frame()
+                        Image("raquete")
+                            .scaledToFill()
+                            .frame(width: 145, height: 33, alignment: .center)
+                            .padding(.top, 100)
+                        
+                    }
+                    .onAppear{
+                        bola = true
+                        
+                        
+                    }
                 }
-
-                .onAppear{
-                    bola = true
-            
-            
-                }
+                Spacer().frame()
+            }
+        }.onAppear(){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                shouldShow.toggle()
             }
         }
     }

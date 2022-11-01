@@ -10,8 +10,15 @@ import SwiftUI
 @main
 struct PongApp: App {
     var body: some Scene {
+        var contentView = ContentView()
+        
         WindowGroup {
-            ColoqueFone()
+            if contentView.record >= 1 {
+                ContentView()
+            }
+            else{
+                ColoqueFone()
+            }
         }
     }
 }

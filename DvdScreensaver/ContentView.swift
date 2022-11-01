@@ -10,11 +10,10 @@ import SpriteKit
 
 struct ContentView: View {
     
-    
-    
     @AppStorage("Record") var record = 0 // used for storing the record (precistent)
     @State var score: Int = 0
     @State var shouldShowPopUp: Bool = false
+    
     let popUpRows: [GridItem] = [GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30),
                                  GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30),
                                  GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30)
@@ -74,11 +73,11 @@ struct ContentView: View {
                     }
                     
                     Spacer()
-                    Text("Record: \(record)")
-                        .foregroundColor(.white)
-                        .font(.custom("strasua", size: 36))
-                    
-                    Spacer()
+//                    Text("Record: \(record)")
+//                        .foregroundColor(.white)
+//                        .font(.custom("strasua", size: 36))
+//
+//                    Spacer()
                 }
             }.onDisappear(){
                 if score > record {
@@ -212,31 +211,6 @@ struct ContentView: View {
         
     }
     
-    
-    
-    var skScene: SKScene{ // SKScene lembra muito uma view
-        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
-        let ballNode = SKSpriteNode(imageNamed: "neonBall") // Node = Objetos
-        ballNode.size = CGSize(width: 60, height: 60)
-        
-        let raqueteNode = SKSpriteNode(imageNamed: "raquete")
-        raqueteNode.size = CGSize(width: UIScreen.main.bounds.width/2.5, height: 25)
-        
-        let nuvemNode = SKSpriteNode(imageNamed: "wave")
-        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
-        
-        let nuvemNode2 = SKSpriteNode(imageNamed: "wave2")
-        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
-        
-        let nuvemNode3 = SKSpriteNode(imageNamed: "wave3")
-        nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
-        
-        let scene = PongScene(ballNode: ballNode, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score, deveMostrar: $shouldShowPopUp, pausou: $gamePaused)
-        scene.backgroundColor = .darkGray
-        
-        return scene
-    }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -258,9 +232,6 @@ extension View {
             )
         }
 }
-
-
-
 
 
 

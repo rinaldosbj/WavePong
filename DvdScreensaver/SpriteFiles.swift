@@ -9,12 +9,6 @@ import SpriteKit
 import AVFoundation
 import SwiftUI
 
-extension UIDevice {
-    static func vibrate() {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-    }
-}
-
 public class PongScene: SKScene {
     
     var tocador: AVAudioPlayer?
@@ -61,7 +55,7 @@ public class PongScene: SKScene {
         addChild(nuvemNode1)
         
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
-        raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+45))
+        raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+60))
         
         nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode1.frame.size.height)/2)+10) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
         nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2))
@@ -83,20 +77,13 @@ public class PongScene: SKScene {
         moveTransformNuvem.ty = 0
         moveTransformNuvem2.ty = 0
         moveTransformNuvem3.ty = 0
-        //            nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
+        
         nuvemNode1.isHidden = true
-        //            nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem2.size.height/2)
         nuvemNode2.isHidden = true
-        //            nuvemNode3.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem3.size.height/2)
         nuvemNode3.isHidden = true
-//        self.backgroundColor = .red
-        
-        
-        
-        //            raqueteNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem1.size.height/2)
         raqueteNode.isHidden = true
-        shouldShow = true
         
+        shouldShow = true
     }
     
     public override func update(_ currentTime: TimeInterval) {
@@ -144,7 +131,7 @@ public class PongScene: SKScene {
         
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
-            let generator = UINotificationFeedbackGenerator() // Generator fot the vibration
+
             // Raquete
             if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.midY && moveTransformBall.tx != 0
             {
@@ -152,10 +139,8 @@ public class PongScene: SKScene {
                 if speeed > (primeiraSpeeed + 0.001) {
                     primeiraSpeeed = speeed
                     moveTransformBall.ty = CGFloat(+speeed)
-                    UIDevice.vibrate()
-                    
-                    generator.notificationOccurred(.success)
-                    UIDevice.vibrate()
+ 
+                    UIDevice.vibrate() // Vibration System
                     
                     scoreBound += 1
                 }
@@ -213,33 +198,7 @@ public class PongScene: SKScene {
             moveTransformNuvem3.tx = 6
         }
         
-        // Audio System
-        if let tocador = tocador, tocador.isPlaying && moveTransformBall.tx != 0 {
-            if ballPositionX/self.frame.maxX >= 0 {
-                tocador.pan = Float((ballPositionX - self.frame.midX)/self.frame.midX) // -1 -> 1
-                tocador.volume = Float(1 - (ballPositionY/(self.frame.height - 60))) // alto 0 -> baixo 1
-            }
-        }
-        
-        else if moveTransformBall.tx != 0{
-            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
-            do{
-                try AVAudioSession.sharedInstance().setMode(.default)
-                try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback, options: .duckOthers) // Makes audio play in silent mode
-                guard let urlString = urlString else {
-                    return
-                }
-                tocador = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
-                guard let tocador = tocador else { // unraping
-                    return
-                }
-                tocador.play()
-            }
-            catch{
-                print("Deu erro ae mané: \(error.localizedDescription)")
-            }
-        }
+        Music()
     }
     
     
