@@ -33,7 +33,7 @@ struct ContentView: View {
                     Text("Record: \(record)")
                         .foregroundColor(.white)
                     Spacer()
-                }.overlay(TappableView {gesture in print ("sdghhr")})
+                }
             }
             .onDisappear(){
                 if score > record {
