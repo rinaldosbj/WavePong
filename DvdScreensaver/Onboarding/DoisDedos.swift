@@ -16,7 +16,7 @@ struct DoisDedos: View {
     
     var body: some View {
         ZStack{
-            NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            NavigationLink("",destination: DeslizeDedo().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()

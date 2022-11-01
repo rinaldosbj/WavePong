@@ -10,51 +10,54 @@ import SwiftUI
 struct DeslizeDedo: View {
     
     @State var deslize = 100
-
+    
+    @State private var shouldShow: Bool = false
     
     var body: some View {
-//        ZStack{
-//
-//            Image("background")
-//                .resizable()
-//                .scaledToFill()
-//                .ignoresSafeArea()
-                
+        ZStack{
+            
+            NavigationLink("",destination: BolaGuiada().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
             VStack(alignment: .center){
                 
                 Spacer()
-                    .frame(height:100)
+                    .frame()
                 
-                Text("Deslize os dedos para os lados para mover a raquete e rebater a bola")
+                Text("\(Text("Deslize").foregroundColor(.yellow)) os dedos para os lados para \(Text("mover").foregroundColor(.yellow)) a raquete e rebater a bola")
                     .font(.custom("DaysOne-Regular", size: 35))
-                        .bold()
-//                        .padding(40)
-                        .frame(width: 310, height: 270, alignment: .center)
-    //                    .onTapGesture(count: 1) {
-    //                        print("toquei")
-    //                    }
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 310, height: 270, alignment: .center)
                 
-//               Spacer()
-//                        .frame(height:)
+                Spacer().frame()
                 
-            VStack{
-                
-                    Spacer()
-                
+                VStack{
+                    
                     Image("raquete")
                         .frame(width: 145, height: 33, alignment: .center)
                         .offset(x: CGFloat(deslize))
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true))
                         .padding(20)
-
+                    Spacer().frame()
                         .onAppear{
-                                deslize = -100
-                            }
-                    }
+                            deslize = -100
+                        }
                 }
             }
+        }.onAppear(){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                shouldShow.toggle()
+            }
         }
-//}
+    }
+}
+
 
 struct DeslizeDedo_Previews: PreviewProvider {
     static var previews: some View {
