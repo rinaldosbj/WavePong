@@ -49,6 +49,11 @@ public class PongScene: SKScene {
     
     
     private func setup() {
+        let background = SKSpriteNode(imageNamed: "background")
+        background.size = frame.size
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(background)
+        
         addChild(ballNode) // colocando os objetos na Scene
         addChild(raqueteNode)
         addChild(nuvemNode3)
@@ -61,6 +66,7 @@ public class PongScene: SKScene {
         nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode1.frame.size.height)/2)+10) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
         nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2))
         nuvemNode3.position = CGPoint(x: self.frame.midX+10, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2)-2)
+            
     }
     
     var ballPositionX: CGFloat = 0
@@ -83,7 +89,7 @@ public class PongScene: SKScene {
         nuvemNode2.isHidden = true
         //            nuvemNode3.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + frameNuvem3.size.height/2)
         nuvemNode3.isHidden = true
-        self.backgroundColor = .red
+//        self.backgroundColor = .red
         
         
         
@@ -170,11 +176,11 @@ public class PongScene: SKScene {
             moveTransformNuvem.ty = 0
             moveTransformNuvem2.ty = 0
             moveTransformNuvem3.ty = 0
-            let auxBallPosition = ballNode.position
-            let auxRaquetePosition = raqueteNode.position
-            let auxCloudPosition = nuvemNode1.position
-            let auxCloudPosition2 = nuvemNode2.position
-            let auxCloudPosition3 = nuvemNode3.position
+//            let auxBallPosition = ballNode.position
+//            let auxRaquetePosition = raqueteNode.position
+//            let auxCloudPosition = nuvemNode1.position
+//            let auxCloudPosition2 = nuvemNode2.position
+//            let auxCloudPosition3 = nuvemNode3.position
             //imagino q va precisar chamar outra instancia dessa SKscene, sendo que passando como parame
             shouldShow = true 
         }

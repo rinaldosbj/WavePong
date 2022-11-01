@@ -79,8 +79,7 @@ struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                     .frameGetter($sheetContentRect)
                     .frame(width: screenWidth)
                     .offset(x: 0, y: currentOffset)
-                    .animation(Animation.easeOut(duration: 0.3), value: currentOffset)
-                    .cornerRadius(10)
+                    .animation(Animation.easeInOut(duration: 0.3), value: currentOffset)
             }
         }
         
