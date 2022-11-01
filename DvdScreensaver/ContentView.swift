@@ -69,19 +69,22 @@ struct ContentView: View {
                     if gamePaused == true {
                         VStack(spacing: 40){
                             Image("Pause")
-                            LazyVGrid(columns: popUpRows) {
-                                Button("Retornar ao jogo") {
-                                    gamePaused = false
-                                    shouldShowPopUp = false
+                            ScrollView(.horizontal){
+                                LazyVGrid(columns: popUpRows) {
+                                    Button("Retornar ao jogo") {
+                                        gamePaused = false
+                                        shouldShowPopUp = false
 
+                                            
                                         
+                                    }
                                     
-                                }
-                                
-                                Button("Menu") {
-                                    print("oi")
+                                    Button("Menu") {
+                                        print("oi")
+                                    }
                                 }
                             }
+                            
                             
                         }
                         .frame(width: geo.size.width * 3/4, height: 400, alignment: .center)
@@ -110,6 +113,10 @@ struct ContentView: View {
                                         score = 0
                                         gamePaused = false
                                         
+                                        print("passou aqui")
+
+
+                                        
                                         
 
                                     }
@@ -129,8 +136,9 @@ struct ContentView: View {
                                 }
                                             .offset(x: sliderPosition + offset.width)
                                             .frame(width: geo.size.width * 2/4)
+                                            
 
-                                            .gesture(
+                                            .simultaneousGesture(
                                                 DragGesture()
                                                     .updating($offset, body: { (value, state, transaction) in
                                                         state = value.translation
