@@ -11,12 +11,16 @@ import AVKit
 struct DoisDedos: View {
     @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShow: Bool = false
-    
+    let contentView = ContentView()
     @State var scale: CGFloat = 1
     
     var body: some View {
         ZStack{
-            NavigationLink("",destination: DeslizeDedo().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            if contentView.record >= 1 {
+                NavigationLink("",destination: Menu().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            } else {
+                NavigationLink("",destination: DeslizeDedo().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            }
             
             Image("background")
                 .resizable()

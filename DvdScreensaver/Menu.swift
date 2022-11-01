@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct menu: View {
+struct Menu: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -37,6 +37,6 @@ struct menu: View {
 
 struct menu_Previews: PreviewProvider {
     static var previews: some View {
-        menu()
+        Menu()
     }
 }

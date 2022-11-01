@@ -34,7 +34,7 @@ struct ContentView: View {
             geo in
             ZStack{
                 
-                NavigationLink("",destination: menu().navigationBarBackButtonHidden(true), isActive: $shouldNav)
+                NavigationLink("",destination: Menu().navigationBarBackButtonHidden(true), isActive: $shouldNav)
                 
                 NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true), isActive: $shouldReload)
                 
@@ -47,8 +47,6 @@ struct ContentView: View {
                             
                         }
                 }
-                
-                
                 
                 VStack{
                     
