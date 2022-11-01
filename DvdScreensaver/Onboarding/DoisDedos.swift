@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct DoisDedos: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShow: Bool = false
     
     @State var scale: CGFloat = 1
@@ -70,7 +71,14 @@ struct DoisDedos: View {
                         }
                 }
         }
-        }.overlay(TappableView{gesture in shouldShow.toggle()})
+        }.overlay(TappableView{gesture in
+            shouldShow.toggle()
+            self.audioPlayer.pause()})
+        .onAppear {
+                let sound = Bundle.main.path(forResource: "onboarding4", ofType: "mp3")
+                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                self.audioPlayer.play()
+        }
     }
 }
 

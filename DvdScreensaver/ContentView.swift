@@ -33,13 +33,22 @@ struct ContentView: View {
                     Text("Record: \(record)")
                         .foregroundColor(.white)
                     Spacer()
-                }
-            }.onDisappear(){
+                }.overlay(TappableView {gesture in print ("sdghhr")})
+            }
+            .onDisappear(){
                 if score > record {
                     record = score
                 }
             }
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
+        .onTapGesture(count: 2, perform: doubleClicked)
+        
+
+    }
+    
+    func doubleClicked() {
+        print ("pausa ai")
     }
     
     var skScene: SKScene{ // SKScene lembra muito uma view
