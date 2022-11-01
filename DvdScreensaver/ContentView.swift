@@ -15,9 +15,16 @@ struct ContentView: View {
     @AppStorage("Record") var record = 0 // used for storing the record (precistent)
     @State var score: Int = 0
     @State var shouldShowPopUp: Bool = false
-    let popUpRows: [GridItem] = [GridItem(.fixed(60), spacing: 10),
-                                 GridItem(.fixed(60), spacing: 10)]
+    let popUpRows: [GridItem] = [GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30),
+                                 GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30),
+                                 GridItem(.fixed(UIScreen.main.bounds.width / 3 + 130), spacing: 30)
+                                
+                                 ]
+    
     @State var gamePaused: Bool = false
+    @State private var sliderPosition: CGFloat = 80 - UIScreen.main.bounds.width
+    @GestureState private var offset = CGSize.zero
+    
     
     
     var body: some View {
@@ -28,7 +35,7 @@ struct ContentView: View {
                 
                 if gamePaused == false {
                     SpriteView(scene: skScene)
-                        .onTapGesture(count: 4) {
+                        .onTapGesture(count: 2) {
                             gamePaused = true
                             shouldShowPopUp = true
                         }
@@ -77,26 +84,75 @@ struct ContentView: View {
                             }
                             
                         }
-                        .frame(alignment: .center)
+                        .frame(width: geo.size.width * 3/4, height: 400, alignment: .center)
+                        
                     }else{
                         VStack(spacing: 40){
                             
                             Image("Game-over")
-                            LazyVGrid(columns:
-                                        popUpRows) {
-                                Button("novo jogo") {
-                                    score = 0
-                                    gamePaused = false
+//                            ScrollView(.horizontal) {
+                                LazyVGrid(columns:
+                                            popUpRows) {
+//                                    Button("") {
+//                                        print("botao placeholder")
+//
+//
+//
+//                                    }
                                     
                                     
+                                    
+                                    Button("Menu") {
+                                        print("oi")
+                                    }
+                                    
+                                    Button("novo jogo") {
+                                        score = 0
+                                        gamePaused = false
+                                        
+                                        
 
+                                    }
+                                    
+                                    Button("Ajustes") {
+                                        print("oi")
+                                    }
+                                    
+                                    
+//                                    Button("") {
+//                                        print("botao placeholder")
+//
+//
+//
+//                                    }
+                                    
                                 }
-                                Button("Menu") {
-                                    print("oi")
-                                }
-                            }
+                                            .offset(x: sliderPosition + offset.width)
+                                            .frame(width: geo.size.width * 2/4)
+
+                                            .gesture(
+                                                DragGesture()
+                                                    .updating($offset, body: { (value, state, transaction) in
+                                                        state = value.translation
+                                                    })
+                                                    .onEnded({ (value) in
+                                                        if value.translation.width < -geo.size.width * 0.4 {
+//                                                            sliderPosition = 80 - (geo.size.width / 2)
+                                                            sliderPosition = sliderPosition - (200 + geo.size.width/4)
+                                    
+                                                            
+                                                        } else {
+                                                            sliderPosition = sliderPosition + (200 + geo.size.width/4)
+                                                        }
+                                                    })
+                                            )
+            
+//                            }
+                            
                          
                         }
+                        .frame(width: geo.size.width * 3/4, height: 400, alignment: .center)
+
                     }
                 }
 
