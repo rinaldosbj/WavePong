@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ColoqueFone: View {
-   
+    @State var audioPlayer: AVAudioPlayer!
+    
     @State private var shouldShow: Bool = false
  
     var body: some View {
@@ -32,9 +34,15 @@ struct ColoqueFone: View {
                         .padding()
                     
                     Image("fone")
-            }
+                }
             }.onTapGesture {
+                self.audioPlayer.pause()
                 shouldShow.toggle()
+            }
+            .onAppear {
+                let sound = Bundle.main.path(forResource: "coloquefone", ofType: "mp3")
+                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                self.audioPlayer.play()
             }
         }
     }

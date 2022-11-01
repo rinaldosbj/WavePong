@@ -7,6 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B06310C2910B3AA002F8E65 /* onboarding3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F12910B3A9002F8E65 /* onboarding3.mp3 */; };
+		5B06310D2910B3AA002F8E65 /* ajustes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F22910B3A9002F8E65 /* ajustes.mp3 */; };
+		5B06310E2910B3AA002F8E65 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F32910B3A9002F8E65 /* menu.mp3 */; };
+		5B06310F2910B3AA002F8E65 /* onboardingjogo3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F42910B3A9002F8E65 /* onboardingjogo3.mp3 */; };
+		5B0631102910B3AA002F8E65 /* onboardingjogo1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F52910B3A9002F8E65 /* onboardingjogo1.mp3 */; };
+		5B0631112910B3AA002F8E65 /* novorecorde2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F62910B3A9002F8E65 /* novorecorde2.mp3 */; };
+		5B0631122910B3AA002F8E65 /* wavepong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F72910B3A9002F8E65 /* wavepong1.mp3 */; };
+		5B0631132910B3AA002F8E65 /* onboarding2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F82910B3A9002F8E65 /* onboarding2.mp3 */; };
+		5B0631142910B3AA002F8E65 /* novorecorde1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F92910B3A9002F8E65 /* novorecorde1.mp3 */; };
+		5B0631152910B3AA002F8E65 /* coloquefone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FA2910B3A9002F8E65 /* coloquefone.mp3 */; };
+		5B0631162910B3AA002F8E65 /* pause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FB2910B3A9002F8E65 /* pause.mp3 */; };
+		5B0631172910B3AA002F8E65 /* recomecar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FC2910B3AA002F8E65 /* recomecar.mp3 */; };
+		5B0631182910B3AA002F8E65 /* onboardingjogo2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FD2910B3AA002F8E65 /* onboardingjogo2.mp3 */; };
+		5B0631192910B3AA002F8E65 /* desativartela.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FE2910B3AA002F8E65 /* desativartela.mp3 */; };
+		5B06311A2910B3AA002F8E65 /* gameover2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630FF2910B3AA002F8E65 /* gameover2.mp3 */; };
+		5B06311B2910B3AA002F8E65 /* jogar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631002910B3AA002F8E65 /* jogar.mp3 */; };
+		5B06311C2910B3AA002F8E65 /* onboardingjogo4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631012910B3AA002F8E65 /* onboardingjogo4.mp3 */; };
+		5B06311D2910B3AA002F8E65 /* onboarding1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631022910B3AA002F8E65 /* onboarding1.mp3 */; };
+		5B06311E2910B3AA002F8E65 /* ativarvibracao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631032910B3AA002F8E65 /* ativarvibracao.mp3 */; };
+		5B06311F2910B3AA002F8E65 /* desativarguiaauditivo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631042910B3AA002F8E65 /* desativarguiaauditivo.mp3 */; };
+		5B0631202910B3AA002F8E65 /* novorecodelula.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631052910B3AA002F8E65 /* novorecodelula.mp3 */; };
+		5B0631212910B3AA002F8E65 /* desativarvibracao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631062910B3AA002F8E65 /* desativarvibracao.mp3 */; };
+		5B0631222910B3AA002F8E65 /* gameover1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631072910B3AA002F8E65 /* gameover1.mp3 */; };
+		5B0631232910B3AA002F8E65 /* onboarding4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631082910B3AA002F8E65 /* onboarding4.mp3 */; };
+		5B0631242910B3AA002F8E65 /* gameover3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0631092910B3AA002F8E65 /* gameover3.mp3 */; };
+		5B0631252910B3AA002F8E65 /* ativartela.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B06310A2910B3AA002F8E65 /* ativartela.mp3 */; };
+		5B0631262910B3AA002F8E65 /* continuar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B06310B2910B3AA002F8E65 /* continuar.mp3 */; };
+		5B582F39291040EC00CD5A79 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B582F38291040EC00CD5A79 /* TappableView.swift */; };
 		8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105B290A080F00DCD37B /* ToqueUma.swift */; };
 		86161060290A4B2400DCD37B /* ToqueDuas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616105F290A4B2400DCD37B /* ToqueDuas.swift */; };
 		86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */; };
@@ -34,6 +62,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0630F12910B3A9002F8E65 /* onboarding3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboarding3.mp3; sourceTree = "<group>"; };
+		5B0630F22910B3A9002F8E65 /* ajustes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ajustes.mp3; sourceTree = "<group>"; };
+		5B0630F32910B3A9002F8E65 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
+		5B0630F42910B3A9002F8E65 /* onboardingjogo3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboardingjogo3.mp3; sourceTree = "<group>"; };
+		5B0630F52910B3A9002F8E65 /* onboardingjogo1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboardingjogo1.mp3; sourceTree = "<group>"; };
+		5B0630F62910B3A9002F8E65 /* novorecorde2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = novorecorde2.mp3; sourceTree = "<group>"; };
+		5B0630F72910B3A9002F8E65 /* wavepong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wavepong1.mp3; sourceTree = "<group>"; };
+		5B0630F82910B3A9002F8E65 /* onboarding2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboarding2.mp3; sourceTree = "<group>"; };
+		5B0630F92910B3A9002F8E65 /* novorecorde1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = novorecorde1.mp3; sourceTree = "<group>"; };
+		5B0630FA2910B3A9002F8E65 /* coloquefone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coloquefone.mp3; sourceTree = "<group>"; };
+		5B0630FB2910B3A9002F8E65 /* pause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pause.mp3; sourceTree = "<group>"; };
+		5B0630FC2910B3AA002F8E65 /* recomecar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = recomecar.mp3; sourceTree = "<group>"; };
+		5B0630FD2910B3AA002F8E65 /* onboardingjogo2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboardingjogo2.mp3; sourceTree = "<group>"; };
+		5B0630FE2910B3AA002F8E65 /* desativartela.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = desativartela.mp3; sourceTree = "<group>"; };
+		5B0630FF2910B3AA002F8E65 /* gameover2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover2.mp3; sourceTree = "<group>"; };
+		5B0631002910B3AA002F8E65 /* jogar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jogar.mp3; sourceTree = "<group>"; };
+		5B0631012910B3AA002F8E65 /* onboardingjogo4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboardingjogo4.mp3; sourceTree = "<group>"; };
+		5B0631022910B3AA002F8E65 /* onboarding1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboarding1.mp3; sourceTree = "<group>"; };
+		5B0631032910B3AA002F8E65 /* ativarvibracao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ativarvibracao.mp3; sourceTree = "<group>"; };
+		5B0631042910B3AA002F8E65 /* desativarguiaauditivo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = desativarguiaauditivo.mp3; sourceTree = "<group>"; };
+		5B0631052910B3AA002F8E65 /* novorecodelula.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = novorecodelula.mp3; sourceTree = "<group>"; };
+		5B0631062910B3AA002F8E65 /* desativarvibracao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = desativarvibracao.mp3; sourceTree = "<group>"; };
+		5B0631072910B3AA002F8E65 /* gameover1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover1.mp3; sourceTree = "<group>"; };
+		5B0631082910B3AA002F8E65 /* onboarding4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboarding4.mp3; sourceTree = "<group>"; };
+		5B0631092910B3AA002F8E65 /* gameover3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover3.mp3; sourceTree = "<group>"; };
+		5B06310A2910B3AA002F8E65 /* ativartela.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ativartela.mp3; sourceTree = "<group>"; };
+		5B06310B2910B3AA002F8E65 /* continuar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = continuar.mp3; sourceTree = "<group>"; };
+		5B582F38291040EC00CD5A79 /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		8616105B290A080F00DCD37B /* ToqueUma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueUma.swift; sourceTree = "<group>"; };
 		8616105F290A4B2400DCD37B /* ToqueDuas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToqueDuas.swift; sourceTree = "<group>"; };
 		86161061290A4B6400DCD37B /* ArrasteEsquerda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrasteEsquerda.swift; sourceTree = "<group>"; };
@@ -110,6 +166,33 @@
 			isa = PBXGroup;
 			children = (
 				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
+				5B0630F22910B3A9002F8E65 /* ajustes.mp3 */,
+				5B06310A2910B3AA002F8E65 /* ativartela.mp3 */,
+				5B0631032910B3AA002F8E65 /* ativarvibracao.mp3 */,
+				5B0630FA2910B3A9002F8E65 /* coloquefone.mp3 */,
+				5B06310B2910B3AA002F8E65 /* continuar.mp3 */,
+				5B0631042910B3AA002F8E65 /* desativarguiaauditivo.mp3 */,
+				5B0630FE2910B3AA002F8E65 /* desativartela.mp3 */,
+				5B0631062910B3AA002F8E65 /* desativarvibracao.mp3 */,
+				5B0631072910B3AA002F8E65 /* gameover1.mp3 */,
+				5B0630FF2910B3AA002F8E65 /* gameover2.mp3 */,
+				5B0631092910B3AA002F8E65 /* gameover3.mp3 */,
+				5B0631002910B3AA002F8E65 /* jogar.mp3 */,
+				5B0630F32910B3A9002F8E65 /* menu.mp3 */,
+				5B0631052910B3AA002F8E65 /* novorecodelula.mp3 */,
+				5B0630F92910B3A9002F8E65 /* novorecorde1.mp3 */,
+				5B0630F62910B3A9002F8E65 /* novorecorde2.mp3 */,
+				5B0631022910B3AA002F8E65 /* onboarding1.mp3 */,
+				5B0630F82910B3A9002F8E65 /* onboarding2.mp3 */,
+				5B0630F12910B3A9002F8E65 /* onboarding3.mp3 */,
+				5B0631082910B3AA002F8E65 /* onboarding4.mp3 */,
+				5B0630F52910B3A9002F8E65 /* onboardingjogo1.mp3 */,
+				5B0630FD2910B3AA002F8E65 /* onboardingjogo2.mp3 */,
+				5B0630F42910B3A9002F8E65 /* onboardingjogo3.mp3 */,
+				5B0631012910B3AA002F8E65 /* onboardingjogo4.mp3 */,
+				5B0630FB2910B3A9002F8E65 /* pause.mp3 */,
+				5B0630FC2910B3AA002F8E65 /* recomecar.mp3 */,
+				5B0630F72910B3A9002F8E65 /* wavepong1.mp3 */,
 				D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */,
 			);
 			name = Audio;
@@ -147,6 +230,7 @@
 				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
+				5B582F38291040EC00CD5A79 /* TappableView.swift */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
@@ -222,8 +306,35 @@
 				BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */,
 				D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */,
 				D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */,
+				5B0631102910B3AA002F8E65 /* onboardingjogo1.mp3 in Resources */,
+				5B06311A2910B3AA002F8E65 /* gameover2.mp3 in Resources */,
+				5B0631142910B3AA002F8E65 /* novorecorde1.mp3 in Resources */,
 				864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */,
+				5B0631222910B3AA002F8E65 /* gameover1.mp3 in Resources */,
+				5B06311E2910B3AA002F8E65 /* ativarvibracao.mp3 in Resources */,
+				5B0631172910B3AA002F8E65 /* recomecar.mp3 in Resources */,
+				5B0631162910B3AA002F8E65 /* pause.mp3 in Resources */,
+				5B0631132910B3AA002F8E65 /* onboarding2.mp3 in Resources */,
+				5B06310F2910B3AA002F8E65 /* onboardingjogo3.mp3 in Resources */,
+				5B0631182910B3AA002F8E65 /* onboardingjogo2.mp3 in Resources */,
+				5B06310E2910B3AA002F8E65 /* menu.mp3 in Resources */,
+				5B06311B2910B3AA002F8E65 /* jogar.mp3 in Resources */,
+				5B0631212910B3AA002F8E65 /* desativarvibracao.mp3 in Resources */,
+				5B0631202910B3AA002F8E65 /* novorecodelula.mp3 in Resources */,
+				5B06311C2910B3AA002F8E65 /* onboardingjogo4.mp3 in Resources */,
+				5B0631112910B3AA002F8E65 /* novorecorde2.mp3 in Resources */,
+				5B06311D2910B3AA002F8E65 /* onboarding1.mp3 in Resources */,
+				5B06311F2910B3AA002F8E65 /* desativarguiaauditivo.mp3 in Resources */,
+				5B0631122910B3AA002F8E65 /* wavepong1.mp3 in Resources */,
+				5B06310C2910B3AA002F8E65 /* onboarding3.mp3 in Resources */,
+				5B0631152910B3AA002F8E65 /* coloquefone.mp3 in Resources */,
+				5B06310D2910B3AA002F8E65 /* ajustes.mp3 in Resources */,
+				5B0631232910B3AA002F8E65 /* onboarding4.mp3 in Resources */,
+				5B0631252910B3AA002F8E65 /* ativartela.mp3 in Resources */,
+				5B0631242910B3AA002F8E65 /* gameover3.mp3 in Resources */,
+				5B0631192910B3AA002F8E65 /* desativartela.mp3 in Resources */,
 				D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */,
+				5B0631262910B3AA002F8E65 /* continuar.mp3 in Resources */,
 				D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +352,7 @@
 				86F7873F290C78E600CD5306 /* DeslizeDedo.swift in Sources */,
 				8616105C290A080F00DCD37B /* ToqueUma.swift in Sources */,
 				D3AD2ED729117D1000CA6A07 /* ContentView+skScene.swift in Sources */,
+				5B582F39291040EC00CD5A79 /* TappableView.swift in Sources */,
 				8616106A290A516B00DCD37B /* ArrasteDireita.swift in Sources */,
 				864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */,
 				86F7873D290C78C200CD5306 /* BolaGuiada.swift in Sources */,
@@ -381,7 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = W6U37W8KCJ;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
@@ -411,7 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;

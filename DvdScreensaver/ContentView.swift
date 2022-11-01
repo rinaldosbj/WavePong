@@ -79,7 +79,8 @@ struct ContentView: View {
 //
 //                    Spacer()
                 }
-            }.onDisappear(){
+            }
+            .onDisappear(){
                 if score > record {
                     record = score
                 }
@@ -208,7 +209,13 @@ struct ContentView: View {
             
             
         }.ignoresSafeArea()
+        .onTapGesture(count: 2, perform: doubleClicked)
         
+
+    }
+    
+    func doubleClicked() {
+        print ("pausa ai")
     }
     
 }
