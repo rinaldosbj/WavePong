@@ -71,11 +71,11 @@ struct ContentView: View {
                     }
                     
                     Spacer()
-//                    Text("Record: \(record)")
-//                        .foregroundColor(.white)
-//                        .font(.custom("strasua", size: 36))
-//
-//                    Spacer()
+                    //                    Text("Record: \(record)")
+                    //                        .foregroundColor(.white)
+                    //                        .font(.custom("strasua", size: 36))
+                    //
+                    //                    Spacer()
                 }
             }
             .onDisappear(){
@@ -86,7 +86,7 @@ struct ContentView: View {
             
             .popup(isPresented: $shouldShowPopUp) {
                 ZStack {
-                    Color.white.opacity(0.2)
+                    Color.black.opacity(0.2)
                     Color.black.frame(width: geo.size.width * 3/4, height: geo.size.height * 3/4)
                         .cornerRadius(20)
                     
@@ -114,6 +114,7 @@ struct ContentView: View {
                         .frame(width: geo.size.width * 3/4, height: 400, alignment: .center)
                         
                     }else{
+                        
                         VStack(spacing: 40){
                             
                             Image("Game-over")
@@ -133,11 +134,6 @@ struct ContentView: View {
                                     score = 0
                                     gamePaused = false
                                     shouldReload = true
-                                    
-                                    
-                                    
-                                    
-                                    
                                     
                                     print("passou aqui")
                                 }
@@ -185,20 +181,12 @@ struct ContentView: View {
                                                     } else {
                                                         
                                                         sliderPosition = sliderPosition + (200 + geo.size.width/4)
-                                                        
-                                                        //                                                            sliderPosition = 0
-                                                        
                                                     }
                                                 })
                                         )
                                         .animation(.spring())
-                            
-                            //                            }
-                            
-                            
                         }
                         .frame(width: geo.size.width * 3/4, height: 400, alignment: .center)
-                        
                     }
                 }
                 
@@ -207,9 +195,9 @@ struct ContentView: View {
             
             
         }.ignoresSafeArea()
-        .onTapGesture(count: 2, perform: doubleClicked)
+            .onTapGesture(count: 2, perform: doubleClicked)
         
-
+        
     }
     
     func doubleClicked() {
