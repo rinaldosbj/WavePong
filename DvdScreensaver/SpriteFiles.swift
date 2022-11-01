@@ -18,6 +18,7 @@ public class PongScene: SKScene {
     @Binding var pausedGame: Bool
     
     var ballNode: SKNode
+    var ballNodeShadow: SKNode
     var raqueteNode : SKNode
     var nuvemNode1: SKNode
     var nuvemNode2: SKNode
@@ -28,12 +29,13 @@ public class PongScene: SKScene {
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>, pausou: Binding<Bool>) {
+    public init(ballNode: SKNode, ballNodeShadow: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>, pausou: Binding<Bool>) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode1 = nuvem
         self.nuvemNode2 = nuvem2
         self.nuvemNode3 = nuvem3
+        self.ballNodeShadow = ballNodeShadow
         _scoreBound = score
         _shouldShow = deveMostrar
         _pausedGame = pausou
@@ -53,6 +55,7 @@ public class PongScene: SKScene {
         addChild(nuvemNode3)
         addChild(nuvemNode2)
         addChild(nuvemNode1)
+        addChild(ballNodeShadow)
         
         ballNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY) // definindo a posição inicial
         raqueteNode.position = CGPoint(x: self.frame.midX, y: CGFloat(Int(self.frame.minY)+60))
@@ -60,7 +63,17 @@ public class PongScene: SKScene {
         nuvemNode1.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode1.frame.size.height)/2)+10) // nessa parte, na declaração do y, a gente tem que usar “CGFloat(nuvemNode.frame.size.height)/2” para corrigir, por a função “position(x:,y:)” sempre usa o midX e midY
         nuvemNode2.position = CGPoint(x: self.frame.midX, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2))
         nuvemNode3.position = CGPoint(x: self.frame.midX+10, y: self.frame.maxY+(CGFloat(nuvemNode2.frame.size.height)/2)-2)
-            
+        
+        ballNodeShadow.position = ballNode.position
+        ballNodeShadow.isHidden = true
+    }
+    
+    fileprivate func showShadow() {
+        ballNodeShadow.position = ballNode.position
+        ballNodeShadow.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.ballNodeShadow.isHidden = true
+        }
     }
     
     var ballPositionX: CGFloat = 0
@@ -87,7 +100,7 @@ public class PongScene: SKScene {
     }
     
     public override func update(_ currentTime: TimeInterval) {
-        speeed = speeed + 0.0001
+        speeed = speeed + 0.0005
         
         // Collect a reference frame for the node’s current position
         let ballFrame = ballNode.calculateAccumulatedFrame()
@@ -115,18 +128,27 @@ public class PongScene: SKScene {
 //        ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
         
         // Top bound
-        if ballFrame.maxY >= self.frame.maxY+10 {
+        if ballFrame.maxY >= self.frame.maxY-20 {
             moveTransformBall.ty = CGFloat(-speeed)
+            if ballFrame.minY >= frameNuvem1.minY{
+                showShadow()
+            }
         }
         
         // Right bound
         if ballFrame.maxX >= self.frame.maxX+10 {
             moveTransformBall.tx = CGFloat(-speeed)
+            if ballFrame.minY >= frameNuvem1.minY{
+                showShadow()
+            }
         }
         
         // Left bound
         if ballFrame.minX <= self.frame.minX-15 {
             moveTransformBall.tx = CGFloat(+speeed)
+            if ballFrame.minY >= frameNuvem1.minY{
+                showShadow()
+            }
         }
         
         // Bottom bound -> raquete
@@ -136,7 +158,7 @@ public class PongScene: SKScene {
             if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.midY && moveTransformBall.tx != 0
             {
                 
-                if speeed > (primeiraSpeeed + 0.001) {
+                if speeed > (primeiraSpeeed + 0.0015) {
                     primeiraSpeeed = speeed
                     moveTransformBall.ty = CGFloat(+speeed)
  
@@ -173,28 +195,28 @@ public class PongScene: SKScene {
         if frameNuvem1.minY <= self.frame.minY+80{
             moveTransformNuvem.ty = 0
         }
-        if frameNuvem1.midX >= self.frame.maxX{
+        if frameNuvem1.midX >= self.frame.maxX-5{
             moveTransformNuvem.tx = -4
         }
-        if frameNuvem1.midX <= self.frame.minX{
+        if frameNuvem1.midX <= self.frame.minX+5{
             moveTransformNuvem.tx = 4
         }
         if frameNuvem2.minY <= self.frame.minY+80{
             moveTransformNuvem2.ty = 0
         }
-        if frameNuvem2.midX >= self.frame.maxX{
+        if frameNuvem2.midX >= self.frame.maxX-5{
             moveTransformNuvem2.tx = -4
         }
-        if frameNuvem2.midX <= self.frame.minX{
+        if frameNuvem2.midX <= self.frame.minX+5{
             moveTransformNuvem2.tx = 4
         }
         if frameNuvem3.minY <= self.frame.minY+80{
             moveTransformNuvem3.ty = 0
         }
-        if frameNuvem3.midX >= self.frame.maxX{
+        if frameNuvem3.midX >= self.frame.maxX-5{
             moveTransformNuvem3.tx = -6
         }
-        if frameNuvem3.midX <= self.frame.minX{
+        if frameNuvem3.midX <= self.frame.minX+5{
             moveTransformNuvem3.tx = 6
         }
         
