@@ -76,7 +76,7 @@ struct ColoqueFone: View {
                     self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
                     self.audioPlayer.play()
                 }
-            }
+            }.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
