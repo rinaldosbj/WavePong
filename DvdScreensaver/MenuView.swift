@@ -75,9 +75,8 @@ struct MenuView: View {
                             .scaledToFill()
                             .edgesIgnoringSafeArea(.all)
                         VStack(alignment: .center){
+                            Spacer().frame()
                             Image("Wave-pong")
-                                .padding(.top,UIScreen.main.bounds.height/7)
-                            
                             Spacer().frame()
                             
                             Image("menu-border")
