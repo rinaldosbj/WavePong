@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30FAB6542911B34500D54F43 /* testando.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FAB6532911B34500D54F43 /* testando.swift */; };
 		5B06310C2910B3AA002F8E65 /* onboarding3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F12910B3A9002F8E65 /* onboarding3.mp3 */; };
 		5B06310D2910B3AA002F8E65 /* ajustes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F22910B3A9002F8E65 /* ajustes.mp3 */; };
 		5B06310E2910B3AA002F8E65 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B0630F32910B3A9002F8E65 /* menu.mp3 */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30FAB6532911B34500D54F43 /* testando.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testando.swift; sourceTree = "<group>"; };
 		5B0630F12910B3A9002F8E65 /* onboarding3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onboarding3.mp3; sourceTree = "<group>"; };
 		5B0630F22910B3A9002F8E65 /* ajustes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ajustes.mp3; sourceTree = "<group>"; };
 		5B0630F32910B3A9002F8E65 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
+				30FAB6532911B34500D54F43 /* testando.swift */,
 				5B582F38291040EC00CD5A79 /* TappableView.swift */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
@@ -361,6 +364,7 @@
 				86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */,
 				D3AD2EDB29117F8100CA6A07 /* SpriteFiles+Music.swift in Sources */,
 				D3BF928C28FF26E300EEF09B /* SpriteFiles.swift in Sources */,
+				30FAB6542911B34500D54F43 /* testando.swift in Sources */,
 				86F78742290CCEE600CD5306 /* BolaVibração.swift in Sources */,
 				D3AD2ED52911796400CA6A07 /* SpriteFiles+Vibrations.swift in Sources */,
 				86161064290A4B8100DCD37B /* DoisDedos.swift in Sources */,
