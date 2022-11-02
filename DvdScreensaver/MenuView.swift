@@ -46,6 +46,7 @@ struct MenuView: View {
     @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShowGame: Bool = false
     @State private var shouldShowAjustes: Bool = false
+    var contentView = ContentView()
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -65,6 +66,12 @@ struct MenuView: View {
                             Spacer().frame()
                             Image("Wave-pong")
                             Spacer().frame()
+                            
+                            HStack{
+                                Text("\(Text("Record:").foregroundColor(.yellow)) \(contentView.record)")
+                                    .font(.custom("DaysOne-Regular", size: 30))
+                                    .foregroundColor(.white)
+                            }
                             
                             Image("menu-border")
                                 .resizable()
