@@ -75,15 +75,15 @@ struct MenuView: View {
                             .scaledToFill()
                             .edgesIgnoringSafeArea(.all)
                         VStack(alignment: .center){
-                            Spacer().frame()
                             Image("Wave-pong")
+                                .padding(.top,UIScreen.main.bounds.height/7)
                             
                             Spacer().frame()
                             
                             Image("menu-border")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3)
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
                         }
                         ZStack{
                             TabView{
@@ -99,7 +99,7 @@ struct MenuView: View {
                             }.tabViewStyle(PageTabViewStyle())
                             
                         }
-                        .padding(.top,UIScreen.main.bounds.height/10)
+                        .padding(.top,UIScreen.main.bounds.height/5)
                         
                     }
                 }.onTapGesture {
