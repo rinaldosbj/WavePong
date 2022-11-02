@@ -110,6 +110,8 @@ public class PongScene: SKScene {
         
     }
     
+    let diferenca = 3*0.0005
+    
     public override func update(_ currentTime: TimeInterval) {
         speeed = speeed + 0.0005
         
@@ -192,7 +194,7 @@ public class PongScene: SKScene {
             if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.midY && moveTransformBall.tx != 0
             {
                 
-                if speeed > (primeiraSpeeed + 0.0015) {
+                if speeed > (primeiraSpeeed + Float(diferenca*3)) {
                     primeiraSpeeed = speeed
                     moveTransformBall.ty = CGFloat(+speeed)
                     
