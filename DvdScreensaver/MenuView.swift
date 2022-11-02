@@ -88,6 +88,8 @@ struct MenuView: View {
                                 buttonViewAjustes()
                                     .onAppear(){
                                         page = 2
+                                    }.onDisappear(){
+                                        page = 1
                                     }
                             }.tabViewStyle(PageTabViewStyle())
                             
