@@ -10,19 +10,6 @@ import AVFoundation
 
 var page : Int = 0
 
-struct MyActionButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.custom("DaysOne-Regular", size: 30))
-            .foregroundColor(.white)
-            .frame(height: 67)
-            .frame(width: 140)
-            .background(
-                Image("button")
-            )
-    }
-}
-
 struct buttonViewJogar: View{
     var body: some View {
         ZStack{
@@ -67,7 +54,7 @@ struct MenuView: View {
                     ZStack(alignment: .top) {
                         
                         NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShowGame)
-                        NavigationLink("",destination: DoisDedos().navigationBarBackButtonHidden(true) ,isActive: $shouldShowAjustes)
+                        NavigationLink("",destination: Ajustes().navigationBarBackButtonHidden(true) ,isActive: $shouldShowAjustes)
                         
                         
                         Image("backgroundGame")
@@ -119,7 +106,7 @@ struct MenuView: View {
                 }.highPriorityGesture(TapGesture( count : 2).onEnded{
                     if page == 1 {
                         shouldShowGame.toggle()
-                    } else {
+                    } else if page == 2 {
                         shouldShowAjustes.toggle()
                     }
                 })
@@ -148,7 +135,7 @@ struct MenuView: View {
                             Image("menu-border")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3)
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
                         }
                         ZStack{
                             TabView{
