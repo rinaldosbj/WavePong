@@ -48,10 +48,10 @@ struct ContentView: View {
                     
                     VStack(spacing: 5) {
                         
-                        Text("\n \n \nCLIQUE DUAS VEZES NA TELA PARA PAUSAR")
-                            .foregroundColor(.white)
-                            .font(.custom("DaysOne-Regular", size: 13))
-                            .frame(alignment: .topLeading)
+//                        Text("\n \n \nCLIQUE DUAS VEZES NA TELA PARA PAUSAR")
+//                            .foregroundColor(.white)
+//                            .font(.custom("DaysOne-Regular", size: 13))
+//                            .frame(alignment: .topLeading)
                         
                         Text("\(score)")
                             .foregroundColor(.white)
