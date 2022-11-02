@@ -48,6 +48,7 @@
 		86F78742290CCEE600CD5306 /* BolaVibração.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F78741290CCEE600CD5306 /* BolaVibração.swift */; };
 		86F78744290CCF0600CD5306 /* PausarJogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F78743290CCF0600CD5306 /* PausarJogo.swift */; };
 		BCBBEDD429103A7D009600E9 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBEDD329103A7D009600E9 /* Popup.swift */; };
+		BCC2A8172912F03B00251422 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2A8162912F03B00251422 /* GameOverView.swift */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
 		D37599622906F45E00BFEB64 /* soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D37599612906F45E00BFEB64 /* soundtrack.mp3 */; };
 		D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */; };
@@ -106,6 +107,7 @@
 		86F78741290CCEE600CD5306 /* BolaVibração.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BolaVibração.swift"; sourceTree = "<group>"; };
 		86F78743290CCF0600CD5306 /* PausarJogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarJogo.swift; sourceTree = "<group>"; };
 		BCBBEDD329103A7D009600E9 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		BCC2A8162912F03B00251422 /* GameOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
 		D37599612906F45E00BFEB64 /* soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundtrack.mp3; sourceTree = "<group>"; };
 		D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				D3A7874D2912A6840089C656 /* Ajustes.swift */,
 				D3A7874F2912A6D30089C656 /* ButtonStyle.swift */,
 				BCBBEDD329103A7D009600E9 /* Popup.swift */,
+				BCC2A8162912F03B00251422 /* GameOverView.swift */,
 				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				8616105E290A0BF100DCD37B /* Onboarding */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
@@ -364,6 +367,7 @@
 				864FCABF2908674300CA0664 /* ColoqueFone.swift in Sources */,
 				86F7873D290C78C200CD5306 /* BolaGuiada.swift in Sources */,
 				BCBBEDD429103A7D009600E9 /* Popup.swift in Sources */,
+				BCC2A8172912F03B00251422 /* GameOverView.swift in Sources */,
 				86161062290A4B6400DCD37B /* ArrasteEsquerda.swift in Sources */,
 				D3AD2EDB29117F8100CA6A07 /* SpriteFiles+Music.swift in Sources */,
 				D3BF928C28FF26E300EEF09B /* SpriteFiles.swift in Sources */,

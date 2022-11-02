@@ -16,6 +16,7 @@ public class PongScene: SKScene {
     @Binding var scoreBound: Int
     @Binding var shouldShow: Bool
     @Binding var pausedGame: Bool
+    @Binding var shouldShowGameOver: Bool
     
     var ballNode: SKNode
     var ballNodeShadow: SKNode
@@ -29,7 +30,7 @@ public class PongScene: SKScene {
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
     
-    public init(ballNode: SKNode, ballNodeShadow: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>, pausou: Binding<Bool>) {
+    public init(ballNode: SKNode, ballNodeShadow: SKNode, size: CGSize, raquete: SKNode, nuvem: SKNode, nuvem2: SKNode, nuvem3: SKNode, score: Binding<Int>, deveMostrar: Binding<Bool>, pausou: Binding<Bool>, perdeu: Binding<Bool>) {
         self.ballNode = ballNode // pegando os dados da ContentView
         self.raqueteNode = raquete
         self.nuvemNode1 = nuvem
@@ -39,6 +40,7 @@ public class PongScene: SKScene {
         _scoreBound = score
         _shouldShow = deveMostrar
         _pausedGame = pausou
+        _shouldShowGameOver = perdeu
         super.init(size: size) // Definido o tamanho da Scene o tamanho dado
         setup()
     }
@@ -96,7 +98,7 @@ public class PongScene: SKScene {
         nuvemNode3.isHidden = true
         raqueteNode.isHidden = true
         
-        shouldShow = true
+        shouldShowGameOver = true
     }
     
     public override func update(_ currentTime: TimeInterval) {

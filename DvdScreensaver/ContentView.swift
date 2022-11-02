@@ -27,6 +27,8 @@ struct ContentView: View {
     @State var shouldNav = false
     @State var shouldReload = false
     
+    @State var shouldShowGameOver: Bool = false 
+    
     
     
     var body: some View {
@@ -37,6 +39,7 @@ struct ContentView: View {
                 NavigationLink("",destination: MenuView().navigationBarBackButtonHidden(true), isActive: $shouldNav)
                 
                 NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true), isActive: $shouldReload)
+                NavigationLink("",destination: GameOverView(recorde: record, score: score).navigationBarBackButtonHidden(true), isActive: $shouldShowGameOver)
                 
                 
                 if gamePaused == false {
