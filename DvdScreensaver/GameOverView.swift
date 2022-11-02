@@ -10,15 +10,31 @@
 import SwiftUI
 import AVFoundation
 
+var pageMenu = 1
 
+struct buttonViewMenu: View{
+    var body: some View {
+        ZStack{
+            Color.clear
+            
+            VStack(alignment: .center){
+                Button(action: {}) {
+                    Text("Menu")
+                }
+                .buttonStyle(MyActionButtonStyle())
+            }
+        }.frame(width: UIScreen.main.bounds.width + 70)
+    }
+    
+}
 
 struct GameOverView: View {
     
     @State var audioPlayer: AVAudioPlayer!
     @State private var shouldShowGame: Bool = false
-    @State private var shouldShowAjustes: Bool = false
+    @State private var shouldShowMenu: Bool = false
     var recorde: Int
-    var score: Int 
+    var score: Int
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -29,7 +45,7 @@ struct GameOverView: View {
                     ZStack(alignment: .top) {
                         
                         NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShowGame)
-                        NavigationLink("",destination: Ajustes().navigationBarBackButtonHidden(true) ,isActive: $shouldShowAjustes)
+                        NavigationLink("",destination: MenuView().navigationBarBackButtonHidden(true) ,isActive: $shouldShowMenu)
                         
                         
                         Image("backgroundGame")
@@ -73,12 +89,12 @@ struct GameOverView: View {
                             TabView{
                                 buttonViewJogar()
                                     .onAppear(){
-                                        page = 1
+                                        pageMenu = 1
                                     }
                                 
-                                buttonViewAjustes()
+                                buttonViewMenu()
                                     .onAppear(){
-                                        page = 2
+                                        pageMenu = 2
                                     }
                             }.tabViewStyle(PageTabViewStyle())
                             
@@ -87,27 +103,22 @@ struct GameOverView: View {
                         
                     }
                 }.onTapGesture {
-                    let sound = Bundle.main.path(forResource: "menu", ofType: "mp3")
-                    self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
-                    self.audioPlayer.play()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                        if page == 1 {
-                            let sound1 = Bundle.main.path(forResource: "jogar", ofType: "mp3")
-                            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
-                            self.audioPlayer.play()
-                        } else {
-                            let sound1 = Bundle.main.path(forResource: "ajustes", ofType: "mp3")
-                            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
-                            self.audioPlayer.play()
-                        }
+                    if pageMenu == 1 {
+                        let sound1 = Bundle.main.path(forResource: "jogar", ofType: "mp3")
+                        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
+                        self.audioPlayer.play()
+                    } else {
+                        let sound1 = Bundle.main.path(forResource: "menu", ofType: "mp3")
+                        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
+                        self.audioPlayer.play()
                     }
                 }.highPriorityGesture(TapGesture( count : 2).onEnded{
-                    if page == 1 {
+                    if pageMenu == 1 {
                         shouldShowGame.toggle()
                         shouldShowGame = true
-                    } else if page == 2 {
-                        shouldShowAjustes.toggle()
-                        shouldShowGame = true
+                    } else if pageMenu == 2 {
+                        shouldShowMenu.toggle()
+                        shouldShowMenu = true
                     }
                 })
             }
@@ -119,7 +130,7 @@ struct GameOverView: View {
                     ZStack(alignment: .top) {
                         
                         NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShowGame)
-                        NavigationLink("",destination: DoisDedos().navigationBarBackButtonHidden(true) ,isActive: $shouldShowAjustes)
+                        NavigationLink("",destination: MenuView().navigationBarBackButtonHidden(true) ,isActive: $shouldShowMenu)
                         
                         
                         Image("backgroundGame")
@@ -128,52 +139,71 @@ struct GameOverView: View {
                             .edgesIgnoringSafeArea(.all)
                         VStack(alignment: .center){
                             Spacer().frame()
-                            Image("Wave-pong")
+                            Image("Game-over")
                             
-                            Spacer().frame()
+                            if recorde == score {
+                                Text("NOVO RECORDE")
+                                    .font(.custom("DaysOne-Regular", size: 20))
+                                    .frame(alignment: .topLeading)
+                                    .foregroundColor(.yellow)
+                            }
                             
-                            Image("menu-border")
+                            
+                            VStack(spacing: 1){
+                                Text("\(score)")
+                                    .font(.custom("DaysOne-Regular", size: 60))
+                                    .frame(alignment: .topLeading)
+                                    .foregroundColor(.white)
+                                Text("pontos")
+                                    .font(.custom("DaysOne-Regular", size: 20))
+                                    .frame(alignment: .topLeading)
+                                    .foregroundColor(.white)
+                            }
+                            Spacer()
+                                .frame()
+                            Spacer()
+                                .frame()
+                            
+                            Image("raquete")
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4)
+                                .scaledToFit()
+                                .frame(width: UIScreen.main.bounds.width * 0.4,height: UIScreen.main.bounds.height * 0.4, alignment: .bottom)
+                            
                         }
                         ZStack{
                             TabView{
                                 buttonViewJogar()
                                     .onAppear(){
-                                        page = 1
+                                        pageMenu = 1
                                     }
                                 
-                                buttonViewAjustes()
+                                buttonViewMenu()
                                     .onAppear(){
-                                        page = 2
+                                        pageMenu = 2
                                     }
                             }.tabViewStyle(PageTabViewStyle())
                             
                         }
-                        .padding(.top,UIScreen.main.bounds.height/10)
+                        .padding(.top,UIScreen.main.bounds.height/5)
                         
                     }
                 }.onTapGesture {
-                    let sound = Bundle.main.path(forResource: "menu", ofType: "mp3")
-                    self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
-                    self.audioPlayer.play()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                        if page == 1 {
-                            let sound1 = Bundle.main.path(forResource: "jogar", ofType: "mp3")
-                            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
-                            self.audioPlayer.play()
-                        } else {
-                            let sound1 = Bundle.main.path(forResource: "ajustes", ofType: "mp3")
-                            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
-                            self.audioPlayer.play()
-                        }
+                    if pageMenu == 1 {
+                        let sound1 = Bundle.main.path(forResource: "jogar", ofType: "mp3")
+                        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
+                        self.audioPlayer.play()
+                    } else {
+                        let sound1 = Bundle.main.path(forResource: "menu", ofType: "mp3")
+                        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!))
+                        self.audioPlayer.play()
                     }
                 }.highPriorityGesture(TapGesture( count : 2).onEnded{
-                    if page == 1 {
+                    if pageMenu == 1 {
                         shouldShowGame.toggle()
-                    } else {
-                        shouldShowAjustes.toggle()
+                        shouldShowGame = true
+                    } else if pageMenu == 2 {
+                        shouldShowMenu.toggle()
+                        shouldShowMenu = true
                     }
                 })
             }.navigationViewStyle(StackNavigationViewStyle())
