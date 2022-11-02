@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct BolaGuiada: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State var bola = false
     
     @State private var shouldShow: Bool = false
@@ -62,9 +63,14 @@ struct BolaGuiada: View {
                 Spacer().frame()
             }
         }.onAppear(){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 shouldShow.toggle()
             }
+        }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "onboardingjogo2", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
         }
     }
 }

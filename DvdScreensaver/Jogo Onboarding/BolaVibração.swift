@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct BolaVibrac_a_o: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State var bola = false
     
     @State private var shouldShow: Bool = false
@@ -17,7 +18,7 @@ struct BolaVibrac_a_o: View {
         
         ZStack{
             
-            NavigationLink("",destination: PausarJogo().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+            NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             
             Image("background")
                 .resizable()
@@ -57,9 +58,14 @@ struct BolaVibrac_a_o: View {
             }
         }.onAppear(){
             UIDevice.vibrate()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 shouldShow.toggle()
             }
+        }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "onboardingjogo3", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
         }
     }
 }

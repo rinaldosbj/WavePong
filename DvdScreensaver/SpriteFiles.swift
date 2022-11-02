@@ -11,6 +11,7 @@ import SwiftUI
 
 public class PongScene: SKScene {
     
+    var audioPlayer: AVAudioPlayer!
     var tocador: AVAudioPlayer?
     
     @Binding var scoreBound: Int
@@ -25,7 +26,10 @@ public class PongScene: SKScene {
     var nuvemNode2: SKNode
     var nuvemNode3: SKNode
     
-    var moveTransformBall = CGAffineTransform(translationX: 2, y: -2) // função para mover a bola
+    var randomStart = Double.random(in: -1...1)
+    
+    var moveTransformBall = CGAffineTransform(translationX: Double.random(in: 2...3) * (Double.random(in: -1...1) >= 0 ? 1 : -1)
+                                              , y: Double.random(in: 2...3) * (Double.random(in: -1...1) >= 0 ? 1 : -1)) // função para mover a bola
     var moveTransformNuvem = CGAffineTransform(translationX: 4, y: -0.4) // função para mover a nuvem
     var moveTransformNuvem2 = CGAffineTransform(translationX: -4, y: -0.4)
     var moveTransformNuvem3 = CGAffineTransform(translationX: 4, y: -0.4)
@@ -99,6 +103,11 @@ public class PongScene: SKScene {
         raqueteNode.isHidden = true
         
         shouldShowGameOver = true
+        
+        let sound = Bundle.main.path(forResource: "gameover\(Int.random(in: 1...3))", ofType: "mp3")
+        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+        self.audioPlayer.play()
+        
     }
     
     public override func update(_ currentTime: TimeInterval) {
@@ -121,17 +130,24 @@ public class PongScene: SKScene {
             ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
             ballPositionY = ballFrame.midY-15
         }
-//        ballNode.position = ballNode.position.applying(moveTransformBall)
-//        nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
-//        nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
-//        nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
-//        
-//        ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
-//        ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
+        //        ballNode.position = ballNode.position.applying(moveTransformBall)
+        //        nuvemNode1.position = nuvemNode1.position.applying(moveTransformNuvem)
+        //        nuvemNode2.position = nuvemNode2.position.applying(moveTransformNuvem2)
+        //        nuvemNode3.position = nuvemNode3.position.applying(moveTransformNuvem3)
+        //
+        //        ballPositionX = ballFrame.midX-15 // Used to determinate de side were the music is coming from
+        //        ballPositionY = ballFrame.midY-15 //Used to determinate the intensity of the music
         
         // Top bound
         if ballFrame.maxY >= self.frame.maxY-20 {
             moveTransformBall.ty = CGFloat(-speeed)
+            if moveTransformBall.tx > 0 {
+                moveTransformBall.tx = CGFloat(speeed)
+            }
+            else {
+                moveTransformBall.tx = CGFloat(-speeed)
+            }
+            
             if ballFrame.minY >= frameNuvem1.minY{
                 showShadow()
             }
@@ -140,6 +156,14 @@ public class PongScene: SKScene {
         // Right bound
         if ballFrame.maxX >= self.frame.maxX+10 {
             moveTransformBall.tx = CGFloat(-speeed)
+            
+            if moveTransformBall.ty > 0 {
+                moveTransformBall.ty = CGFloat(speeed)
+            }
+            else {
+                moveTransformBall.ty = CGFloat(-speeed)
+            }
+            
             if ballFrame.minY >= frameNuvem1.minY{
                 showShadow()
             }
@@ -148,6 +172,14 @@ public class PongScene: SKScene {
         // Left bound
         if ballFrame.minX <= self.frame.minX-15 {
             moveTransformBall.tx = CGFloat(+speeed)
+            
+            if moveTransformBall.ty > 0 {
+                moveTransformBall.ty = CGFloat(speeed)
+            }
+            else {
+                moveTransformBall.ty = CGFloat(-speeed)
+            }
+            
             if ballFrame.minY >= frameNuvem1.minY{
                 showShadow()
             }
@@ -155,7 +187,7 @@ public class PongScene: SKScene {
         
         // Bottom bound -> raquete
         if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.minY{
-
+            
             // Raquete
             if frameRaquete.maxY >= ballFrame.minY+15 && ballFrame.minX <= frameRaquete.maxX-15 && ballFrame.maxX >= frameRaquete.minX+15 && frameRaquete.minY <= ballFrame.midY && moveTransformBall.tx != 0
             {
@@ -163,10 +195,27 @@ public class PongScene: SKScene {
                 if speeed > (primeiraSpeeed + 0.0015) {
                     primeiraSpeeed = speeed
                     moveTransformBall.ty = CGFloat(+speeed)
- 
+                    
                     UIDevice.vibrate() // Vibration System
                     
                     scoreBound += 1
+                    
+                    if ballFrame.midX <= (frameRaquete.midX-(frameRaquete.width/4)){
+                        moveTransformBall.tx = CGFloat(-speeed)
+                        //                        print("extrema esquerda")
+                    }
+                    else if ballFrame.midX <= frameRaquete.midX && ballFrame.midX >= (frameRaquete.midX-(frameRaquete.width/4)){
+                        moveTransformBall.tx = CGFloat(-speeed)/2
+                        //                        print("mid esquerda")
+                    }
+                    else if ballFrame.midX > (frameRaquete.midX+(frameRaquete.width/4)){
+                        moveTransformBall.tx = CGFloat(speeed)
+                        //                        print("extrema direita")
+                    }
+                    else if ballFrame.midX > frameRaquete.midX && ballFrame.midX <= (frameRaquete.midX+(frameRaquete.width/4)){
+                        moveTransformBall.tx = CGFloat(speeed)/2
+                        //                        print("mid direita")
+                    }
                 }
             }
         }
@@ -174,9 +223,9 @@ public class PongScene: SKScene {
         //Se a bola sai da tela
         if ballFrame.maxY <= self.frame.minY && moveTransformBall.tx != 0 {
             didLose(ballFrame)
-
-        }
             
+        }
+        
         //MARK: Se o jogador tocou com dois dedos
         if pausedGame == true {
             tocador?.stop()
@@ -185,13 +234,16 @@ public class PongScene: SKScene {
             moveTransformNuvem.ty = 0
             moveTransformNuvem2.ty = 0
             moveTransformNuvem3.ty = 0
-//            let auxBallPosition = ballNode.position
-//            let auxRaquetePosition = raqueteNode.position
-//            let auxCloudPosition = nuvemNode1.position
-//            let auxCloudPosition2 = nuvemNode2.position
-//            let auxCloudPosition3 = nuvemNode3.position
-            //imagino q va precisar chamar outra instancia dessa SKscene, sendo que passando como parame
-            shouldShow = true 
+            moveTransformNuvem.tx = 0
+            moveTransformNuvem2.tx = 0
+            moveTransformNuvem3.tx = 0
+            //            let auxBallPosition = ballNode.position
+            //            let auxRaquetePosition = raqueteNode.position
+            //            let auxCloudPosition = nuvemNode1.position
+            //            let auxCloudPosition2 = nuvemNode2.position
+            //            let auxCloudPosition3 = nuvemNode3.position
+            //imagino q va precisar chamar outra instancia dessa SKscene, sendo que passando como parametro
+            shouldShow = true
         }
         
         if frameNuvem1.minY <= self.frame.minY+80{

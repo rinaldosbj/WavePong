@@ -54,6 +54,7 @@
 		D3A6C49429082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */; };
 		D3A7874E2912A6840089C656 /* Ajustes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7874D2912A6840089C656 /* Ajustes.swift */; };
 		D3A787502912A6D30089C656 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7874F2912A6D30089C656 /* ButtonStyle.swift */; };
+		D3A787522912EF320089C656 /* finalSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3A787512912EF320089C656 /* finalSoundtrack.mp3 */; };
 		D3AD2ED52911796400CA6A07 /* SpriteFiles+Vibrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD2ED42911796400CA6A07 /* SpriteFiles+Vibrations.swift */; };
 		D3AD2ED729117D1000CA6A07 /* ContentView+skScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD2ED629117D1000CA6A07 /* ContentView+skScene.swift */; };
 		D3AD2EDB29117F8100CA6A07 /* SpriteFiles+Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD2EDA29117F8100CA6A07 /* SpriteFiles+Music.swift */; };
@@ -113,6 +114,7 @@
 		D3A6C49329082C07001DC338 /* Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Relaxing Brown Noise For 10 Minutes - Noise Canceling.mp3"; sourceTree = "<group>"; };
 		D3A7874D2912A6840089C656 /* Ajustes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajustes.swift; sourceTree = "<group>"; };
 		D3A7874F2912A6D30089C656 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		D3A787512912EF320089C656 /* finalSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finalSoundtrack.mp3; sourceTree = "<group>"; };
 		D3AD2ED42911796400CA6A07 /* SpriteFiles+Vibrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpriteFiles+Vibrations.swift"; sourceTree = "<group>"; };
 		D3AD2ED629117D1000CA6A07 /* ContentView+skScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+skScene.swift"; sourceTree = "<group>"; };
 		D3AD2EDA29117F8100CA6A07 /* SpriteFiles+Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpriteFiles+Music.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		D35AAC0F290A164F00FE654C /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				D3A787512912EF320089C656 /* finalSoundtrack.mp3 */,
 				D37599612906F45E00BFEB64 /* soundtrack.mp3 */,
 				5B0630F22910B3A9002F8E65 /* ajustes.mp3 */,
 				5B06310A2910B3AA002F8E65 /* ativartela.mp3 */,
@@ -325,6 +328,7 @@
 				5B0631162910B3AA002F8E65 /* pause.mp3 in Resources */,
 				5B0631132910B3AA002F8E65 /* onboarding2.mp3 in Resources */,
 				5B06310F2910B3AA002F8E65 /* onboardingjogo3.mp3 in Resources */,
+				D3A787522912EF320089C656 /* finalSoundtrack.mp3 in Resources */,
 				5B0631182910B3AA002F8E65 /* onboardingjogo2.mp3 in Resources */,
 				5B06310E2910B3AA002F8E65 /* menu.mp3 in Resources */,
 				5B06311B2910B3AA002F8E65 /* jogar.mp3 in Resources */,
@@ -505,21 +509,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = FQJGC4G68L;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.DvdScreensaver";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -535,21 +540,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
-				DEVELOPMENT_TEAM = FQJGC4G68L;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DvdScreensaver/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.DvdScreensaver";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

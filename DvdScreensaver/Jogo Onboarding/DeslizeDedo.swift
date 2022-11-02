@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct DeslizeDedo: View {
-    
+    @State var audioPlayer: AVAudioPlayer!
     @State var deslize = 100
     
     @State private var shouldShow: Bool = false
@@ -51,9 +52,14 @@ struct DeslizeDedo: View {
                 }
             }
         }.onAppear(){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
                 shouldShow.toggle()
             }
+        }
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "onboardingjogo1", ofType: "mp3")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            self.audioPlayer.play()
         }
     }
 }
