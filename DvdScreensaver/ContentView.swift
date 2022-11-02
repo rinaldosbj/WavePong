@@ -34,7 +34,7 @@ struct ContentView: View {
             geo in
             ZStack{
                 
-                NavigationLink("",destination: Menu().navigationBarBackButtonHidden(true), isActive: $shouldNav)
+                NavigationLink("",destination: MenuView().navigationBarBackButtonHidden(true), isActive: $shouldNav)
                 
                 NavigationLink("",destination: ContentView().navigationBarBackButtonHidden(true), isActive: $shouldReload)
                 
@@ -54,20 +54,20 @@ struct ContentView: View {
                         
                         Text("\n \n \nCLIQUE DUAS VEZES NA TELA PARA PAUSAR")
                             .foregroundColor(.white)
-                            .font(.custom("strasua", size: 15))
+                            .font(.custom("DaysOne-Regular", size: 13))
                             .frame(alignment: .topLeading)
                         
                         Text("\(score)")
                             .foregroundColor(.white)
-                            .font(.custom("strasua", size: 100))
+                            .font(.custom("DaysOne-Regular", size: 100))
                             .minimumScaleFactor(0.01)
                             .scaledToFit()
                             .frame(width: 70, height: 70)
                             .padding(.top, 70)
                         
-                        Text("Pontos")
+                        Text("PONTOS")
                             .foregroundColor(.white)
-                            .font(.custom("strasua", size: 20))
+                            .font(.custom("DaysOne-Regular", size: 20))
                     }
                     
                     Spacer()
@@ -134,8 +134,7 @@ struct ContentView: View {
                                     score = 0
                                     gamePaused = false
                                     shouldReload = true
-                                    
-                                    print("passou aqui")
+
                                 }
                                 .padding(30)
                                 .foregroundColor(.white)

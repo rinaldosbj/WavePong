@@ -17,7 +17,7 @@ struct DoisDedos: View {
     var body: some View {
         ZStack{
             if contentView.record >= 1 {
-                NavigationLink("",destination: Menu().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
+                NavigationLink("",destination: MenuView().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             } else {
                 NavigationLink("",destination: DeslizeDedo().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
             }
