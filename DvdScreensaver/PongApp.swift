@@ -14,7 +14,7 @@ struct PongApp: App {
         
         WindowGroup {
             if contentView.record >= 1 {
-                ContentView()
+                MenuView()
             }
             else{
                 ColoqueFone()

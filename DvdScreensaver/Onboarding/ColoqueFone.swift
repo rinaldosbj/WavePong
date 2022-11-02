@@ -15,35 +15,39 @@ struct ColoqueFone: View {
  
     var body: some View {
         
-        NavigationView{
-            ZStack{
-                NavigationLink("",destination: ToqueUma().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
-                
-                Image("background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                
-                VStack{
-                    Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
-                        .foregroundColor(.white)
-                        .bold()
-                        .minimumScaleFactor(15)
-                        .multilineTextAlignment(.center)
-                        .padding(40)
-                        .padding()
+        if #available(iOS 16.0, *) {
+            NavigationStack{
+                ZStack{
+                    NavigationLink("",destination: ToqueUma().navigationBarBackButtonHidden(true) ,isActive: $shouldShow)
                     
-                    Image("fone")
+                    Image("background")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                    
+                    VStack{
+                        Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
+                            .foregroundColor(.white)
+                            .bold()
+                            .minimumScaleFactor(15)
+                            .multilineTextAlignment(.center)
+                            .padding(40)
+                            .padding()
+                        
+                        Image("fone")
+                    }
+                }.onTapGesture {
+                    self.audioPlayer.pause()
+                    shouldShow.toggle()
                 }
-            }.onTapGesture {
-                self.audioPlayer.pause()
-                shouldShow.toggle()
+                .onAppear {
+                    let sound = Bundle.main.path(forResource: "coloquefone", ofType: "mp3")
+                    self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                    self.audioPlayer.play()
+                }
             }
-            .onAppear {
-                let sound = Bundle.main.path(forResource: "coloquefone", ofType: "mp3")
-                self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
-                self.audioPlayer.play()
-            }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
