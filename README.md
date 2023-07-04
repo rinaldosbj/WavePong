@@ -6,7 +6,7 @@ App Desenvolvido no challenge Atenas na Apple Developers Academy | UFPE
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="https://raw.githubusercontent.com/RinaldoJr4/WavePong/develop/WavePong/Assets.xcassets/AppIcon.appiconset/1024.png" alt="Logo" width="50%">
+    <img src="https://imgur.com/a/1xRORxw" alt="Logo" width="50%">
   </a>
 
   <h3 align="center">iGuard</h3>
