@@ -210,7 +210,7 @@
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
-				D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */,
+				D3BF927C28FEF6CD00EEF09B /* WavePong */,
 				D3BF927B28FEF6CD00EEF09B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */ = {
+		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
 				864FCABD2908665A00CA0664 /* Info.plist */,
@@ -246,7 +246,7 @@
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
-			path = DvdScreensaver;
+			path = WavePong;
 			sourceTree = "<group>";
 		};
 		D3BF928328FEF6CF00EEF09B /* Preview Content */ = {
@@ -260,9 +260,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3BF927928FEF6CD00EEF09B /* DvdScreensaver */ = {
+		D3BF927928FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "DvdScreensaver" */;
+			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */;
 			buildPhases = (
 				D3BF927628FEF6CD00EEF09B /* Sources */,
 				D3BF927728FEF6CD00EEF09B /* Frameworks */,
@@ -272,7 +272,7 @@
 			);
 			dependencies = (
 			);
-			name = DvdScreensaver;
+			name = WavePong;
 			productName = DvdScreensaver;
 			productReference = D3BF927A28FEF6CD00EEF09B /* Pong.app */;
 			productType = "com.apple.product-type.application";
@@ -305,7 +305,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D3BF927928FEF6CD00EEF09B /* DvdScreensaver */,
+				D3BF927928FEF6CD00EEF09B /* WavePong */,
 			);
 		};
 /* End PBXProject section */
@@ -508,11 +508,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DvdScreensaver/Info.plist;
+				INFOPLIST_FILE = WavePong/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wave Pong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,11 +541,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DvdScreensaver/Info.plist;
+				INFOPLIST_FILE = WavePong/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wave Pong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -575,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "DvdScreensaver" */ = {
+		D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3BF928928FEF6CF00EEF09B /* Debug */,
