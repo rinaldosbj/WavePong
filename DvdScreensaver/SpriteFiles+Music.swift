@@ -21,7 +21,7 @@ extension PongScene{
         }
         
         else if moveTransformBall.tx != 0{
-            let urlString = Bundle.main.path(forResource: "soundtrack", ofType: "mp3")// defining the song
+            let urlString = Bundle.main.path(forResource: "finalSoundtrack", ofType: "mp3")// defining the song
             do{
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true,options: .notifyOthersOnDeactivation)

@@ -31,7 +31,7 @@ extension ContentView {
         let nuvemNode3 = SKSpriteNode(imageNamed: "wave3")
         nuvemNode.size = CGSize(width: UIScreen.main.bounds.width*2, height: UIScreen.main.bounds.height)
         
-        let scene = PongScene(ballNode: ballNode, ballNodeShadow: ballNodeShadow, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score, deveMostrar: $shouldShowPopUp, pausou: $gamePaused)
+        let scene = PongScene(ballNode: ballNode, ballNodeShadow: ballNodeShadow, size: viewFrame.size, raquete: raqueteNode, nuvem: nuvemNode, nuvem2: nuvemNode2, nuvem3: nuvemNode3, score: $score, deveMostrar: $shouldShowPopUp, pausou: $gamePaused, perdeu: $shouldShowGameOver)
         scene.backgroundColor = .darkGray
         
         return scene
