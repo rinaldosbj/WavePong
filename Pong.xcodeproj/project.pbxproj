@@ -137,9 +137,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CE9A2872A70150400127A11 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
+				D3AD2ED42911796400CA6A07 /* SpriteFiles+Vibrations.swift */,
+				D3AD2EDA29117F8100CA6A07 /* SpriteFiles+Music.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0CE9A2882A70150D00127A11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8616105E290A0BF100DCD37B /* Onboarding */,
+				30FAB6532911B34500D54F43 /* MenuView.swift */,
+				D3A7874D2912A6840089C656 /* Ajustes.swift */,
+				D3A7874F2912A6D30089C656 /* ButtonStyle.swift */,
+				BCBBEDD329103A7D009600E9 /* Popup.swift */,
+				BCC2A8162912F03B00251422 /* GameOverView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8616105E290A0BF100DCD37B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				86F78740290C78F500CD5306 /* Jogo Onboarding */,
 				864FCABE2908674300CA0664 /* ColoqueFone.swift */,
 				8616105B290A080F00DCD37B /* ToqueUma.swift */,
 				8616105F290A4B2400DCD37B /* ToqueDuas.swift */,
@@ -210,7 +234,7 @@
 		D3BF927128FEF6CD00EEF09B = {
 			isa = PBXGroup;
 			children = (
-				D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */,
+				D3BF927C28FEF6CD00EEF09B /* WavePong */,
 				D3BF927B28FEF6CD00EEF09B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -223,7 +247,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D3BF927C28FEF6CD00EEF09B /* DvdScreensaver */ = {
+		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
 				864FCABD2908665A00CA0664 /* Info.plist */,
@@ -231,22 +255,14 @@
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				D3BF927F28FEF6CD00EEF09B /* ContentView.swift */,
 				D3AD2ED629117D1000CA6A07 /* ContentView+skScene.swift */,
-				D3BF928B28FF26E300EEF09B /* SpriteFiles.swift */,
-				D3AD2ED42911796400CA6A07 /* SpriteFiles+Vibrations.swift */,
-				D3AD2EDA29117F8100CA6A07 /* SpriteFiles+Music.swift */,
-				30FAB6532911B34500D54F43 /* MenuView.swift */,
-				D3A7874D2912A6840089C656 /* Ajustes.swift */,
-				D3A7874F2912A6D30089C656 /* ButtonStyle.swift */,
-				BCBBEDD329103A7D009600E9 /* Popup.swift */,
-				BCC2A8162912F03B00251422 /* GameOverView.swift */,
-				86F78740290C78F500CD5306 /* Jogo Onboarding */,
-				8616105E290A0BF100DCD37B /* Onboarding */,
+				0CE9A2872A70150400127A11 /* Game */,
+				0CE9A2882A70150D00127A11 /* View */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				5B582F38291040EC00CD5A79 /* TappableView.swift */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
-			path = DvdScreensaver;
+			path = WavePong;
 			sourceTree = "<group>";
 		};
 		D3BF928328FEF6CF00EEF09B /* Preview Content */ = {
@@ -260,9 +276,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3BF927928FEF6CD00EEF09B /* DvdScreensaver */ = {
+		D3BF927928FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "DvdScreensaver" */;
+			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */;
 			buildPhases = (
 				D3BF927628FEF6CD00EEF09B /* Sources */,
 				D3BF927728FEF6CD00EEF09B /* Frameworks */,
@@ -272,7 +288,7 @@
 			);
 			dependencies = (
 			);
-			name = DvdScreensaver;
+			name = WavePong;
 			productName = DvdScreensaver;
 			productReference = D3BF927A28FEF6CD00EEF09B /* Pong.app */;
 			productType = "com.apple.product-type.application";
@@ -305,7 +321,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D3BF927928FEF6CD00EEF09B /* DvdScreensaver */,
+				D3BF927928FEF6CD00EEF09B /* WavePong */,
 			);
 		};
 /* End PBXProject section */
@@ -508,11 +524,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DvdScreensaver/Info.plist;
+				INFOPLIST_FILE = WavePong/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wave Pong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,11 +557,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DvdScreensaver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
 				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DvdScreensaver/Info.plist;
+				INFOPLIST_FILE = WavePong/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wave Pong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -575,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "DvdScreensaver" */ = {
+		D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3BF928928FEF6CF00EEF09B /* Debug */,
