@@ -9,16 +9,12 @@ import SwiftUI
 
 @main
 struct PongApp: App {
+    
     var body: some Scene {
-        var contentView = ContentView()
         
         WindowGroup {
-            if contentView.record >= 1 {
-                MenuView()
-            }
-            else{
-                ColoqueFone()
-            }
+            ContentView()
+        
         }
     }
 }
