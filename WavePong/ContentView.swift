@@ -11,18 +11,27 @@ import SpriteKit
 
 struct ContentView: View {
     
+    @State var size = CGSize()
+    
     var gameScene: SKScene {
         let scene = GameScene()
-        scene.size = CGSize(width: 390, height: 844)
-        scene.scaleMode = .aspectFill
+        scene.size = size
+        scene.scaleMode = .aspectFit
         return scene
     }
-    
+
     var body: some View {
-        SpriteView(scene: self.gameScene)
-            .ignoresSafeArea()
-        
+        GeometryReader{ geo in
+            SpriteView(scene: self.gameScene)
+                .ignoresSafeArea()
+                .onAppear(){
+                    size = geo.size
+                }
+        }
+
     }
+
+
 }
 
 struct ContentView_Previews: PreviewProvider {
