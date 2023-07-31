@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 
-/// class of game Ball
+// class of game Ball
 class Ball: SKShapeNode {
     init(radius: CGFloat = 20, color: UIColor = .cyan) {
         super.init()
@@ -20,12 +20,12 @@ class Ball: SKShapeNode {
         self.path = path
         self.fillColor = color
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius )
-        self.physicsBody?.mass = 1
+//        self.physicsBody?.mass = 1
         self.physicsBody?.friction = 0
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.angularDamping = 0
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = true
     }
 
     required init?(coder aDecoder: NSCoder) {
