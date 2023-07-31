@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     let newBall = Ball()
     var paddle: SKSpriteNode!
+    var physicsDelegate = PhysicsDetection()
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -66,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.physicsBody?.categoryBitMask = 2 // BitMask para a raquete
         paddle.physicsBody?.restitution = 1
         addChild(paddle)
+        
+        self.physicsWorld.contactDelegate = physicsDelegate
     }
     
     // MARK: Touches
@@ -75,31 +78,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.position.x = location.x
     }
     
-    // MARK: Colisions
-    func didBegin(_ contact: SKPhysicsContact) {
-        let ballCategory: UInt32 = 1 // BitMask da bola
-        let paddleCategory: UInt32 = 2 // BitMask da raquete
-        
-        if (contact.bodyA.categoryBitMask & ballCategory) == ballCategory {
-            // Colisão entre a bola e a raquete
-            if (contact.bodyB.categoryBitMask & paddleCategory) == paddleCategory {
-                // Bola colidiu com a raquete
-                score += 1
-                scoreLabel.text = "Score: \(score)"
-                
-                impactFeedbackGenerator.impactOccurred()
-            }
-        } else if (contact.bodyB.categoryBitMask & ballCategory) == ballCategory {
-            // Colisão entre a bola e a raquete
-            if (contact.bodyA.categoryBitMask & paddleCategory) == paddleCategory {
-                // Bola colidiu com a raquete
-                score += 1
-                scoreLabel.text = "Score: \(score)"
-                
-                impactFeedbackGenerator.impactOccurred()
-            }
+    func ballColided () {
+        if (physicsDelegate.isCollidingWithPaddle){
+            score += 1
+            scoreLabel.text = "Score: \(score)"
+            impactFeedbackGenerator.impactOccurred()
         }
     }
+    
+    override func update(_ currentTime: TimeInterval) {
+        ballColided()
+    }
+    
+    // MARK: Colisions
+//    func didBegin(_ contact: SKPhysicsContact) {
+//        let ballCategory: UInt32 = 1 // BitMask da bola
+//        let paddleCategory: UInt32 = 2 // BitMask da raquete
+//
+//        if (contact.bodyA.categoryBitMask & ballCategory) == ballCategory {
+//            // Colisão entre a bola e a raquete
+//            if (contact.bodyB.categoryBitMask & paddleCategory) == paddleCategory {
+//                // Bola colidiu com a raquete
+//                score += 1
+//                scoreLabel.text = "Score: \(score)"
+//
+//                impactFeedbackGenerator.impactOccurred()
+//            }
+//        } else if (contact.bodyB.categoryBitMask & ballCategory) == ballCategory {
+//            // Colisão entre a bola e a raquete
+//            if (contact.bodyA.categoryBitMask & paddleCategory) == paddleCategory {
+//                // Bola colidiu com a raquete
+//                score += 1
+//                scoreLabel.text = "Score: \(score)"
+//
+//                impactFeedbackGenerator.impactOccurred()
+//            }
+//        }
+//    }
     
     
     

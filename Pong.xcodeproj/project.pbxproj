@@ -10,6 +10,7 @@
 		0C2BBDC52A7440730031480F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC42A7440730031480F /* ContentView.swift */; };
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0CD122122A744D3000E486B0 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD122112A744D3000E486B0 /* Ball.swift */; };
+		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
@@ -21,6 +22,7 @@
 		0C2BBDC42A7440730031480F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0CD122112A744D3000E486B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		0DF638202A78496100CCC34B /* PhysicsDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsDetection.swift; sourceTree = "<group>"; };
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 				0CD122112A744D3000E486B0 /* Ball.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		0DF6381F2A78494200CCC34B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		864FCABC2908663900CA0664 /* Fonts */ = {
@@ -81,6 +91,7 @@
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				0C2BBDC42A7440730031480F /* ContentView.swift */,
+				0DF6381F2A78494200CCC34B /* Utils */,
 				0CD122132A744DD400E486B0 /* Game */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				864FCABC2908663900CA0664 /* Fonts */,
@@ -169,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
