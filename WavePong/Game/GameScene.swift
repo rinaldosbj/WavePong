@@ -12,8 +12,9 @@ import UIKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    var soundManager = SoundManager.shared
     
+    private let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var scoreLabel: SKLabelNode!
     var score = 0
@@ -21,6 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var paddle: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        soundManager.playGameTheme()
+        
         self.physicsWorld.contactDelegate = self
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -101,7 +104,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
+    override func update(_ currentTime: TimeInterval) {
+        let position = newBall.position
+        let size = frame.size
+        soundManager.updateAudioOrientation(ballPosition: position, frameSize: size)
+    }
     
 }
 
