@@ -13,15 +13,20 @@ import UIKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    var gameManager: GameManager?
     
     var ball: Ball!
     var paddle: Paddle!
+    var cloud: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         setupWorld()
         setupComponents()
-        ball.run(SKAction.applyImpulse(CGVector(dx: 15, dy: 15), duration: 1)) // <--
+        
+        gameManager = GameManager(scene: self)
+        
+        gameManager?.startPongGame(ball: ball, cloud: cloud!)
     }
     
     // MARK: Colisions
@@ -33,14 +38,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Colisão entre a bola e a raquete
             if (contact.bodyB.categoryBitMask & paddleCategory) == paddleCategory {
                 // Bola colidiu com a raquete
-                
                 impactFeedbackGenerator.impactOccurred()
             }
         } else if (contact.bodyB.categoryBitMask & ballCategory) == ballCategory {
             // Colisão entre a bola e a raquete
             if (contact.bodyA.categoryBitMask & paddleCategory) == paddleCategory {
                 // Bola colidiu com a raquete
-                
+                gameManager!.incrementScore()
                 impactFeedbackGenerator.impactOccurred()
             }
         }

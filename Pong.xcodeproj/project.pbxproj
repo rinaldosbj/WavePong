@@ -12,6 +12,7 @@
 		0CD122122A744D3000E486B0 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD122112A744D3000E486B0 /* Ball.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
+		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
 		D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33405392A784626006CA42B /* GameScene+Touches.swift */; };
 		D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053B2A7846DA006CA42B /* GameScene+Setup.swift */; };
 		D334053E2A784842006CA42B /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053D2A784842006CA42B /* Paddle.swift */; };
@@ -27,6 +28,7 @@
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
+		D30EF6DB2A79CC5800125DB0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		D33405392A784626006CA42B /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
 		D334053B2A7846DA006CA42B /* GameScene+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Setup.swift"; sourceTree = "<group>"; };
 		D334053D2A784842006CA42B /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
 				D334053B2A7846DA006CA42B /* GameScene+Setup.swift */,
+				D30EF6DB2A79CC5800125DB0 /* GameManager.swift */,
 				0CD122112A744D3000E486B0 /* Ball.swift */,
 				D334053D2A784842006CA42B /* Paddle.swift */,
 			);
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
+				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,

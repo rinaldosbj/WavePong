@@ -15,6 +15,7 @@ extension GameScene {
         border.restitution = 1
         let borderNode = SKNode()
         borderNode.physicsBody = border
+        borderNode.zPosition = 1
         addChild(borderNode)
         
         // MARK: World
@@ -35,7 +36,15 @@ extension GameScene {
         ball = Ball(radius: 20,
                        color: .yellow)
         ball.position = CGPoint(x:self.frame.midX,
-                                   y:self.frame.midY)
+                                y:self.frame.midY)
         addChild(ball)
+        
+        // MARK: Cloud
+        cloud = SKSpriteNode(color: .systemPink,
+                             size: self.size)
+        cloud.zPosition = 2
+        cloud.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud)
     }
 }

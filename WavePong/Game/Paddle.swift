@@ -12,6 +12,7 @@ class Paddle: SKSpriteNode{
         // MARK: construct
         super.init(texture: texture, color: color, size: size)
         self.name = "paddleNode"
+        self.zPosition = 1
         
         // MARK: physicsBody
         self.physicsBody = SKPhysicsBody(rectangleOf: size)

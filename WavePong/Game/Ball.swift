@@ -20,6 +20,7 @@ class Ball: SKShapeNode {
         self.path = path
         self.fillColor = color
         self.name = "ballNode"
+        self.zPosition = 1
         
         // MARK: physicsBody
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius )
