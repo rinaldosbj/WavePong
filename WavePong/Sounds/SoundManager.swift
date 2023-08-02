@@ -20,7 +20,7 @@ public class SoundManager {
     /// Responsable for holding the instance of player for  FX Sounds
     var audioPLayer: AVAudioPlayer?
     
-    private var isPlayingTheme: Bool = false
+    var isPlayingTheme: Bool = false
     
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
@@ -58,6 +58,20 @@ public class SoundManager {
         }
     }
     
+    public func pauseGameTheme() {
+        musicPlayer?.pause()
+        isPlayingTheme = false
+    }
+    
+    public func resumeGameTheme() {
+        musicPlayer?.play()
+        isPlayingTheme = true
+    }
+    
+    public func stopGameTheme() {
+        musicPlayer = nil
+        isPlayingTheme = false
+    }
     
     private func getURLSoundFX(for name: FXSounds) -> URL? {
         var url: URL?
@@ -84,9 +98,9 @@ public class SoundManager {
         return url
     }
     
-    
+    /// Play a FX Sound for a given type
     public func playFXSound(for name: FXSounds) {
-
+        
         guard let url = getURLSoundFX(for: name) else {
             print("arquivo fx não encontrado")
             return

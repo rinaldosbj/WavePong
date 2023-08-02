@@ -10,42 +10,56 @@ import SwiftUI
 struct SoundBoardView: View {
     
     var audioPlayer = SoundManager.shared
-
+    
+    
     var body: some View {
-        VStack {
-            Button("Alerta") {
-                audioPlayer.playFXSound(for: .alert)
+        
+        List {
+            Section("Game Theme") {
+                Button {
+                    audioPlayer.playGameTheme()
+                }
+            label: {
+                Image(systemName: audioPlayer.isPlayingTheme ? "pause.fill" : "play.fill")
             }
-            
-            Button("Bounce") {
-                audioPlayer.playFXSound(for: .bounce)
-            }
-            
-            Button("Cute Click") {
-                audioPlayer.playFXSound(for: .cuteClick)
-            }
-            
-            Button("Failed") {
-                audioPlayer.playFXSound(for: .hehe)
-            }
-            
-            Button("Mouse") {
-                audioPlayer.playFXSound(for: .mouse)
-            }
-            
-            Button("Surprise") {
-                audioPlayer.playFXSound(for: .surprise)
-            }
-            
-            Button("Win") {
-                audioPlayer.playFXSound(for: .winzinho)
+                
+                
+                Button {
+                    audioPlayer.stopGameTheme()
+                } label: {
+                    Image(systemName: "stop.fill")
+                }
+                
             }
             
             
+            Section("FX Sounds") {
+                ForEach(FXSounds.allCases, id: \.self) {
+                    sound in
+                    
+                    Button {
+                        audioPlayer.playFXSound(for: sound)
+                    } label: {
+                        HStack {
+                            Text(sound.rawValue)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "speaker.wave.3")
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
         }
-        .buttonStyle(.bordered)
+        
     }
+    
+    
 }
+
 
 struct SoundBoardView_Previews: PreviewProvider {
     static var previews: some View {
