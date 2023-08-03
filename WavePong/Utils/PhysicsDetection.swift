@@ -6,11 +6,10 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 struct ColliderType{
-    static let BALL: UInt32 = 0x1 << 0
-    static let PADDLE: UInt32 = 0x1 << 1
+    static let BALL: UInt32 = 1
+    static let PADDLE: UInt32 = 2
 }
 
 class PhysicsDetection: NSObject, SKPhysicsContactDelegate{
@@ -21,18 +20,8 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate{
         let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         if collision == ColliderType.BALL | ColliderType.PADDLE{
             isCollidingWithPaddle = true
-            print("colidiu")
+            print("Colidiu com raquete")
         }
         
     }
-    
-    func didEnd(_ contact: SKPhysicsContact) {
-        let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        
-        if collision == ColliderType.BALL | ColliderType.PADDLE{
-            isCollidingWithPaddle = false
-        }
-
-    }
-    
 }

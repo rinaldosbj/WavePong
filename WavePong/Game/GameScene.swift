@@ -10,7 +10,7 @@ import SpriteKit
 import UIKit
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene {
     
     private let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var physicsDelegate = PhysicsDetection()
     
     override func didMove(to view: SKView) {
-        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.contactDelegate = physicsDelegate
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         border.friction = 0
@@ -77,47 +77,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         paddle.position.x = location.x
     }
-    
-    func ballColided () {
-        if (physicsDelegate.isCollidingWithPaddle){
-            score += 1
-            scoreLabel.text = "Score: \(score)"
-            impactFeedbackGenerator.impactOccurred()
-        }
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        ballColided()
-    }
-    
-    // MARK: Colisions
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        let ballCategory: UInt32 = 1 // BitMask da bola
-//        let paddleCategory: UInt32 = 2 // BitMask da raquete
-//
-//        if (contact.bodyA.categoryBitMask & ballCategory) == ballCategory {
-//            // Colisão entre a bola e a raquete
-//            if (contact.bodyB.categoryBitMask & paddleCategory) == paddleCategory {
-//                // Bola colidiu com a raquete
-//                score += 1
-//                scoreLabel.text = "Score: \(score)"
-//
-//                impactFeedbackGenerator.impactOccurred()
-//            }
-//        } else if (contact.bodyB.categoryBitMask & ballCategory) == ballCategory {
-//            // Colisão entre a bola e a raquete
-//            if (contact.bodyA.categoryBitMask & paddleCategory) == paddleCategory {
-//                // Bola colidiu com a raquete
-//                score += 1
-//                scoreLabel.text = "Score: \(score)"
-//
-//                impactFeedbackGenerator.impactOccurred()
-//            }
-//        }
-//    }
-    
-    
-    
 }
 
 
