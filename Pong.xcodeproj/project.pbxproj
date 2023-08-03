@@ -11,6 +11,18 @@
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0CD122122A744D3000E486B0 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD122112A744D3000E486B0 /* Ball.swift */; };
 		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
+		0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF648562A7846AD00282A52 /* SoundManager.swift */; };
+		0CF648592A7847CF00282A52 /* WavePong_soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */; };
+		0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485B2A7944AA00282A52 /* surprise.mp3 */; };
+		0CF648642A7944AA00282A52 /* winzinho.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485C2A7944AA00282A52 /* winzinho.mp3 */; };
+		0CF648652A7944AA00282A52 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485D2A7944AA00282A52 /* alert.mp3 */; };
+		0CF648662A7944AA00282A52 /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485E2A7944AA00282A52 /* bounce.mp3 */; };
+		0CF648672A7944AA00282A52 /* hehe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485F2A7944AA00282A52 /* hehe.mp3 */; };
+		0CF648682A7944AA00282A52 /* mouse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648602A7944AA00282A52 /* mouse.mp3 */; };
+		0CF648692A7944AA00282A52 /* failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648612A7944AA00282A52 /* failed.mp3 */; };
+		0CF6486A2A7944AA00282A52 /* cuteClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648622A7944AA00282A52 /* cuteClick.mp3 */; };
+		0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6486C2A7946E100282A52 /* SoundBoardView.swift */; };
+		0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
 		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
@@ -27,6 +39,18 @@
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0CD122112A744D3000E486B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0DF638202A78496100CCC34B /* PhysicsDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsDetection.swift; sourceTree = "<group>"; };
+		0CF648562A7846AD00282A52 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WavePong_soundtrack.mp3; sourceTree = "<group>"; };
+		0CF6485B2A7944AA00282A52 /* surprise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = surprise.mp3; sourceTree = "<group>"; };
+		0CF6485C2A7944AA00282A52 /* winzinho.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winzinho.mp3; sourceTree = "<group>"; };
+		0CF6485D2A7944AA00282A52 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
+		0CF6485E2A7944AA00282A52 /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
+		0CF6485F2A7944AA00282A52 /* hehe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hehe.mp3; sourceTree = "<group>"; };
+		0CF648602A7944AA00282A52 /* mouse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouse.mp3; sourceTree = "<group>"; };
+		0CF648612A7944AA00282A52 /* failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = failed.mp3; sourceTree = "<group>"; };
+		0CF648622A7944AA00282A52 /* cuteClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cuteClick.mp3; sourceTree = "<group>"; };
+		0CF6486C2A7946E100282A52 /* SoundBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBoardView.swift; sourceTree = "<group>"; };
+		0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXSoundsEnuns.swift; sourceTree = "<group>"; };
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
@@ -70,6 +94,38 @@
 				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
 			);
 			path = Utils;
+		0CF6485A2A7847D700282A52 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */,
+				0CF648562A7846AD00282A52 /* SoundManager.swift */,
+				0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */,
+				0CF6486B2A7944B000282A52 /* FX */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		0CF6486B2A7944B000282A52 /* FX */ = {
+			isa = PBXGroup;
+			children = (
+				0CF6485D2A7944AA00282A52 /* alert.mp3 */,
+				0CF6485E2A7944AA00282A52 /* bounce.mp3 */,
+				0CF648622A7944AA00282A52 /* cuteClick.mp3 */,
+				0CF648612A7944AA00282A52 /* failed.mp3 */,
+				0CF6485F2A7944AA00282A52 /* hehe.mp3 */,
+				0CF648602A7944AA00282A52 /* mouse.mp3 */,
+				0CF6485B2A7944AA00282A52 /* surprise.mp3 */,
+				0CF6485C2A7944AA00282A52 /* winzinho.mp3 */,
+			);
+			path = FX;
+			sourceTree = "<group>";
+		};
+		0CF6486E2A7946F100282A52 /* TestingViews */ = {
+			isa = PBXGroup;
+			children = (
+				0CF6486C2A7946E100282A52 /* SoundBoardView.swift */,
+			);
+			path = TestingViews;
 			sourceTree = "<group>";
 		};
 		864FCABC2908663900CA0664 /* Fonts */ = {
@@ -104,6 +160,8 @@
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				0C2BBDC42A7440730031480F /* ContentView.swift */,
 				0DF6381F2A78494200CCC34B /* Utils */,
+				0CF6486E2A7946F100282A52 /* TestingViews */,
+				0CF6485A2A7847D700282A52 /* Sounds */,
 				0CD122132A744DD400E486B0 /* Game */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				864FCABC2908663900CA0664 /* Fonts */,
@@ -179,9 +237,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */,
+				0CF648592A7847CF00282A52 /* WavePong_soundtrack.mp3 in Resources */,
 				D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */,
+				0CF648682A7944AA00282A52 /* mouse.mp3 in Resources */,
+				0CF648642A7944AA00282A52 /* winzinho.mp3 in Resources */,
+				0CF648692A7944AA00282A52 /* failed.mp3 in Resources */,
 				864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */,
+				0CF6486A2A7944AA00282A52 /* cuteClick.mp3 in Resources */,
 				D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */,
+				0CF648672A7944AA00282A52 /* hehe.mp3 in Resources */,
+				0CF648662A7944AA00282A52 /* bounce.mp3 in Resources */,
+				0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */,
+				0CF648652A7944AA00282A52 /* alert.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +267,10 @@
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
+				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
+				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0C2BBDC52A7440730031480F /* ContentView.swift in Sources */,
+				0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +411,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,6 +445,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
