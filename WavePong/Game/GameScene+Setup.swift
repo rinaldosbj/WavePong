@@ -46,5 +46,7 @@ extension GameScene {
         cloud.position = CGPoint(x: self.frame.midX,
                                  y: self.frame.maxY + cloud.size.height/2)
         addChild(cloud)
+        
+        
     }
 }

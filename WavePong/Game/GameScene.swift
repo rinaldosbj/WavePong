@@ -13,18 +13,38 @@ import UIKit
 class GameScene: SKScene {
     
     private let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-    var gameManager: GameManager?
+
+    var gameManager = GameManager()
     var ball: Ball!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        self.physicsWorld.contactDelegate = physicsDelegate
+        gameManager.sceneDelegate = self
+        self.physicsWorld.contactDelegate = gameManager.physicsDetection
         setupWorld()
         setupComponents()
-        
-        gameManager = GameManager(scene: self)
-        gameManager?.startPongGame(ball: ball, cloud: cloud!)
+        startGame()
     }
+    
+    func startGame(){
+        ball.run(SKAction.applyImpulse(CGVector(dx: 15, dy: 15), duration: 1))
+        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+    }
+    
+    
 }
 
+extension GameScene: GameSceneProtocol {
+    func didUserScored(newScore score: Int) {
+        backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
+        print("Novo score: \(score)")
+    }
+    
+}
+
+protocol GameSceneProtocol {
+    func didUserScored(newScore score: Int)
+    
+    
+}

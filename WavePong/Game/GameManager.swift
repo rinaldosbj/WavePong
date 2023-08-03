@@ -7,24 +7,37 @@
 
 import SpriteKit
 
-class GameManager{
-    var didLose: Bool = false
+class GameManager {
+    var isGameRunning: Bool = true
     var score: Int = 0
-    private var scene: SKScene
     
-    private var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
+    var physicsDetection = PhysicsDetection()
+    var sceneDelegate: GameSceneProtocol?
     
-    init(scene: SKScene) {
-        self.scene = scene
+    public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
+    
+    init() {
+        self.physicsDetection.gameActionDelegate = self
+        
     }
     
+}
+
+extension GameManager: GameActionDelegate {
     func incrementScore(){
         score += 1
-        scene.backgroundColor = colors[Int.random(in: 0..<3)]
+        print("incrementou score")
+        sceneDelegate?.didUserScored(newScore: score)
+    
     }
     
-    func startPongGame(ball: Ball, cloud: SKSpriteNode){
-        ball.run(SKAction.applyImpulse(CGVector(dx: 15, dy: 15), duration: 1))
-        cloud.run(SKAction.move(to: CGPoint(x: scene.frame.midX, y: scene.frame.midY + 100), duration: 20))
+    func didLose() {
+        isGameRunning = false
+        // implementa a lógica quando o jogador perde
+        // pause ou renincia
+        // apresenta tela "GAME OVER"
+        // ...
     }
 }
+
+
