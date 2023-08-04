@@ -42,8 +42,7 @@ public class SoundManager {
             let proportion = Float(position.x / size.width)
             let curvedProportion = sigmoidCurve(proportion)
             
-            let adjustedVolume = 1 - ( abs(curvedProportion) / 3)
-            musicPlayer?.volume = adjustedVolume
+            musicPlayer?.pan = curvedProportion
             
         case .linear:
             let proportion = Float((position.x - (size.width / 2) ) / size.width)

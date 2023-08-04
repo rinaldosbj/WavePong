@@ -44,7 +44,6 @@ class GameScene: SKScene {
 extension GameScene: GameSceneProtocol {
     func didUserScored(newScore score: Int) {
         backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
-        print("Novo score: \(score)")
     }
     
 }
