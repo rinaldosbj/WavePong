@@ -22,6 +22,7 @@ public class SoundManager {
     
     /// Responsable for holding the instance of player for background Music
     var musicPlayer: AVAudioPlayer?
+    
     /// Responsable for holding the instance of player for  FX Sounds
     var audioPLayer: AVAudioPlayer?
     
@@ -33,24 +34,21 @@ public class SoundManager {
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
         
+        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
+        musicPlayer?.volume = volumeAdjusted
+
         switch panStyle {
         case .curved:
             let proportion = Float(position.x / size.width)
             let curvedProportion = sigmoidCurve(proportion)
-            musicPlayer?.pan = curvedProportion
-            audioPLayer?.pan = curvedProportion
             
             let adjustedVolume = 1 - ( abs(curvedProportion) / 3)
-//
-//            print(curvedProportion)
-//            print(adjustedVolume)
-//            musicPlayer?.volume = adjustedVolume
+            musicPlayer?.volume = adjustedVolume
             
         case .linear:
             let proportion = Float((position.x - (size.width / 2) ) / size.width)
             musicPlayer?.pan = proportion
-            
-            print(proportion)
+            audioPLayer?.pan = proportion
             
         }
         
@@ -84,21 +82,29 @@ public class SoundManager {
         }
     }
     
+    // MARK: Game Music
+    
+    /// Pauses game theme music
     public func pauseGameTheme() {
         musicPlayer?.pause()
         isPlayingTheme = false
     }
     
+    
+    /// Resumes game theme music
     public func resumeGameTheme() {
         musicPlayer?.play()
         isPlayingTheme = true
     }
     
+    /// Stops game Theme Music
     public func stopGameTheme() {
         musicPlayer = nil
         isPlayingTheme = false
     }
     
+    
+    // MARK: FX Sounds
     private func getURLSoundFX(for name: FXSounds) -> URL? {
         return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
         
