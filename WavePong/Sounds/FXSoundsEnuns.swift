@@ -7,7 +7,10 @@
 
 import Foundation
 
-/// Type for each FX Sound file on project
+/// Type for representing a FX Sound file on project
+///
+/// Each case name must match a audio file name
 public enum FXSounds: String, CaseIterable {
-    case alert, bounce, cuteClick, falied, hehe, mouse, surprise, winzinho
+    
+    case bonus, horse, shooting, slimejump, success, transition, winter, alert, bounce, cuteClick, falied, hehe, mouse, surprise, winzinho
 }

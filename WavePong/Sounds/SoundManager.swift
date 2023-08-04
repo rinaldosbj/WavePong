@@ -74,28 +74,8 @@ public class SoundManager {
     }
     
     private func getURLSoundFX(for name: FXSounds) -> URL? {
-        var url: URL?
+        return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
         
-        switch name {
-        case .alert:
-            url = Bundle.main.url(forResource: "alert", withExtension: "mp3")
-        case .bounce:
-            url = Bundle.main.url(forResource: "bounce", withExtension: "mp3")
-        case .cuteClick:
-            url = Bundle.main.url(forResource: "cuteClick", withExtension: "mp3")
-        case .falied:
-            url = Bundle.main.url(forResource: "failed", withExtension: "mp3")
-        case .hehe:
-            url = Bundle.main.url(forResource: "hehe", withExtension: "mp3")
-        case .mouse:
-            url = Bundle.main.url(forResource: "mouse", withExtension: "mp3")
-        case .surprise:
-            url = Bundle.main.url(forResource: "surprise", withExtension: "mp3")
-        case .winzinho:
-            url = Bundle.main.url(forResource: "winzinho", withExtension: "mp3")
-        }
-        
-        return url
     }
     
     /// Play a FX Sound for a given type
@@ -109,6 +89,7 @@ public class SoundManager {
         do {
             audioPLayer = try AVAudioPlayer(contentsOf: url)
             audioPLayer?.play()
+            print("funcionou")
         } catch let error {
             print("Erro ao reproduzir fx: \(error.localizedDescription)")
         }
