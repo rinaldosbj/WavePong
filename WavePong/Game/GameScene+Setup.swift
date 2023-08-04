@@ -19,7 +19,7 @@ extension GameScene {
         addChild(borderNode)
         
         // MARK: World
-        self.physicsWorld.speed = 1
+        self.physicsWorld.speed = 0.5
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     

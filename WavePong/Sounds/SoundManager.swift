@@ -12,22 +12,45 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager {
     
+    /// Linear or curved gives diferent experience when estimating ball position. Curved is recomended
+    enum PanStyle {
+        case linear, curved
+    }
+    
     /// shared instance for global acess to Object
     static var shared = SoundManager()
     
     /// Responsable for holding the instance of player for background Music
     var musicPlayer: AVAudioPlayer?
+    
     /// Responsable for holding the instance of player for  FX Sounds
     var audioPLayer: AVAudioPlayer?
     
     var isPlayingTheme: Bool = false
     
+    /// Allows adjust method for audio pan
+    var panStyle: PanStyle = .curved
+    
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        let proportion = Float(position.x / size.width)
-        let curvedProportion = sigmoidCurve(proportion)
-        musicPlayer?.pan = curvedProportion
-        audioPLayer?.pan = curvedProportion
+        
+        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
+        musicPlayer?.volume = volumeAdjusted
+
+        switch panStyle {
+        case .curved:
+            let proportion = Float(position.x / size.width)
+            let curvedProportion = sigmoidCurve(proportion)
+            
+            musicPlayer?.pan = curvedProportion
+            
+        case .linear:
+            let proportion = Float((position.x - (size.width / 2) ) / size.width)
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
+            
+        }
+        
     }
     
     private func sigmoidCurve(_ x: Float) -> Float {
@@ -58,44 +81,32 @@ public class SoundManager {
         }
     }
     
+    // MARK: Game Music
+    
+    /// Pauses game theme music
     public func pauseGameTheme() {
         musicPlayer?.pause()
         isPlayingTheme = false
     }
     
+    
+    /// Resumes game theme music
     public func resumeGameTheme() {
         musicPlayer?.play()
         isPlayingTheme = true
     }
     
+    /// Stops game Theme Music
     public func stopGameTheme() {
         musicPlayer = nil
         isPlayingTheme = false
     }
     
+    
+    // MARK: FX Sounds
     private func getURLSoundFX(for name: FXSounds) -> URL? {
-        var url: URL?
+        return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
         
-        switch name {
-        case .alert:
-            url = Bundle.main.url(forResource: "alert", withExtension: "mp3")
-        case .bounce:
-            url = Bundle.main.url(forResource: "bounce", withExtension: "mp3")
-        case .cuteClick:
-            url = Bundle.main.url(forResource: "cuteClick", withExtension: "mp3")
-        case .falied:
-            url = Bundle.main.url(forResource: "failed", withExtension: "mp3")
-        case .hehe:
-            url = Bundle.main.url(forResource: "hehe", withExtension: "mp3")
-        case .mouse:
-            url = Bundle.main.url(forResource: "mouse", withExtension: "mp3")
-        case .surprise:
-            url = Bundle.main.url(forResource: "surprise", withExtension: "mp3")
-        case .winzinho:
-            url = Bundle.main.url(forResource: "winzinho", withExtension: "mp3")
-        }
-        
-        return url
     }
     
     /// Play a FX Sound for a given type
@@ -109,6 +120,7 @@ public class SoundManager {
         do {
             audioPLayer = try AVAudioPlayer(contentsOf: url)
             audioPLayer?.play()
+            print("funcionou")
         } catch let error {
             print("Erro ao reproduzir fx: \(error.localizedDescription)")
         }

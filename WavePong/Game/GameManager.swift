@@ -11,6 +11,8 @@ class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
     
+    var soundManager: SoundManager = SoundManager.shared
+    
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneProtocol?
     
@@ -26,8 +28,8 @@ class GameManager {
 extension GameManager: GameActionDelegate {
     func incrementScore(){
         score += 1
-        print("incrementou score")
         sceneDelegate?.didUserScored(newScore: score)
+        soundManager.playFXSound(for: .shooting)
     
     }
     
