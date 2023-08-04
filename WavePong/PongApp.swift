@@ -13,8 +13,8 @@ struct PongApp: App {
     var body: some Scene {
         
         WindowGroup {
-//            ContentView()
-            SoundBoardView()
+            ContentView()
+//            SoundBoardView()
         }
     }
 }

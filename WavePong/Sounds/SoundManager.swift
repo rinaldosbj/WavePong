@@ -12,6 +12,11 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager {
     
+    /// Linear or curved gives diferent experience when estimating ball position. Curved is recomended
+    enum PanStyle {
+        case linear, curved
+    }
+    
     /// shared instance for global acess to Object
     static var shared = SoundManager()
     
@@ -22,12 +27,33 @@ public class SoundManager {
     
     var isPlayingTheme: Bool = false
     
+    /// Allows adjust method for audio pan
+    var panStyle: PanStyle = .curved
+    
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        let proportion = Float(position.x / size.width)
-        let curvedProportion = sigmoidCurve(proportion)
-        musicPlayer?.pan = curvedProportion
-        audioPLayer?.pan = curvedProportion
+        
+        switch panStyle {
+        case .curved:
+            let proportion = Float(position.x / size.width)
+            let curvedProportion = sigmoidCurve(proportion)
+            musicPlayer?.pan = curvedProportion
+            audioPLayer?.pan = curvedProportion
+            
+            let adjustedVolume = 1 - ( abs(curvedProportion) / 3)
+//
+//            print(curvedProportion)
+//            print(adjustedVolume)
+//            musicPlayer?.volume = adjustedVolume
+            
+        case .linear:
+            let proportion = Float((position.x - (size.width / 2) ) / size.width)
+            musicPlayer?.pan = proportion
+            
+            print(proportion)
+            
+        }
+        
     }
     
     private func sigmoidCurve(_ x: Float) -> Float {

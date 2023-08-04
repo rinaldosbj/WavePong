@@ -30,7 +30,13 @@ class GameScene: SKScene {
     
     func startGame(){
         ball.run(SKAction.applyImpulse(CGVector(dx: 15, dy: 15), duration: 1))
-        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+//        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        
+        soundManager.playGameTheme()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
     }
         
 }
