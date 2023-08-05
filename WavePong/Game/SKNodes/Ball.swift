@@ -30,7 +30,7 @@ class Ball: SKShapeNode {
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.categoryBitMask = 1 // BitMask para a bola
-        self.physicsBody?.contactTestBitMask = 2 // BitMask para colisões com a raquete
+        self.physicsBody?.contactTestBitMask = 2 | 4 // BitMask para colisões com a raquete
     }
 
     required init?(coder aDecoder: NSCoder) {

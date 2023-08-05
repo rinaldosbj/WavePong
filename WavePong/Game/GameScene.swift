@@ -30,9 +30,8 @@ class GameScene: SKScene {
     
     func startGame(){
         ball.run(SKAction.applyImpulse(CGVector(dx: 15, dy: 15), duration: 1))
-//        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
         
-        soundManager.playGameTheme()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -46,10 +45,10 @@ extension GameScene: GameSceneProtocol {
         backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
     }
     
+    func gameOver() {
+        self.isPaused = true
+    }
+    
 }
 
-protocol GameSceneProtocol {
-    func didUserScored(newScore score: Int)
-    
-    
-}
+

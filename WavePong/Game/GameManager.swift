@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+/// Object responsable for dealing if game logic
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
@@ -20,6 +21,7 @@ class GameManager {
     
     init() {
         self.physicsDetection.gameActionDelegate = self
+        soundManager.playGameTheme()
         
     }
     
@@ -35,10 +37,9 @@ extension GameManager: GameActionDelegate {
     
     func didLose() {
         isGameRunning = false
-        // implementa a lógica quando o jogador perde
-        // pause ou renincia
-        // apresenta tela "GAME OVER"
-        // ...
+        soundManager.stopGameTheme()
+        soundManager.playFXSound(for: .failed)
+        sceneDelegate?.gameOver()
     }
 }
 
