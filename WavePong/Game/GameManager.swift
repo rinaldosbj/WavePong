@@ -20,6 +20,7 @@ class GameManager {
     
     init() {
         self.physicsDetection.gameActionDelegate = self
+        soundManager.playGameTheme()
         
     }
     
@@ -35,10 +36,9 @@ extension GameManager: GameActionDelegate {
     
     func didLose() {
         isGameRunning = false
-        // implementa a lógica quando o jogador perde
-        // pause ou renincia
-        // apresenta tela "GAME OVER"
-        // ...
+        soundManager.stopGameTheme()
+        soundManager.playFXSound(for: .failed)
+        sceneDelegate?.gameOver()
     }
 }
 

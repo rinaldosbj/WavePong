@@ -18,6 +18,16 @@ extension GameScene {
         borderNode.zPosition = 1
         addChild(borderNode)
         
+        // MARK: inferiorWall
+        let inferiorWall = SKSpriteNode(color: .green, size: .init(width: self.frame.width, height: 1))
+        inferiorWall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: self.frame.width, height: 1))
+        inferiorWall.physicsBody?.categoryBitMask = 4
+        inferiorWall.physicsBody?.isDynamic = false
+        inferiorWall.position = CGPoint(x: self.frame.midX, y: 5)
+        
+        
+        addChild(inferiorWall)
+        
         // MARK: World
         self.physicsWorld.speed = 0.5
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -47,6 +57,7 @@ extension GameScene {
                                  y: self.frame.maxY + cloud.size.height/2)
         addChild(cloud)
         
+
         
     }
 }
