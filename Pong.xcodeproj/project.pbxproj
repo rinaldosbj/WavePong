@@ -33,6 +33,8 @@
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
 		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
+		D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842C92A7E9FA0007FF85B /* MenuView.swift */; };
+		D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */; };
 		D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33405392A784626006CA42B /* GameScene+Touches.swift */; };
 		D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053B2A7846DA006CA42B /* GameScene+Setup.swift */; };
 		D334053E2A784842006CA42B /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053D2A784842006CA42B /* Paddle.swift */; };
@@ -69,6 +71,8 @@
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
 		D30EF6DB2A79CC5800125DB0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		D32842C92A7E9FA0007FF85B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		D33405392A784626006CA42B /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
 		D334053B2A7846DA006CA42B /* GameScene+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Setup.swift"; sourceTree = "<group>"; };
 		D334053D2A784842006CA42B /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				0C2BBDC42A7440730031480F /* ContentView.swift */,
+				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
+				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
 				0DF6381F2A78494200CCC34B /* Utils */,
 				0CF6486E2A7946F100282A52 /* TestingViews */,
 				0CF6485A2A7847D700282A52 /* Sounds */,
@@ -290,12 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */,
+				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
+				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
