@@ -103,6 +103,7 @@
 		0CD122132A744DD400E486B0 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				0DF6381F2A78494200CCC34B /* Utils */,
 				0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */,
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
@@ -193,7 +194,6 @@
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				0C2BBDC42A7440730031480F /* ContentView.swift */,
-				0DF6381F2A78494200CCC34B /* Utils */,
 				0CF6486E2A7946F100282A52 /* TestingViews */,
 				0CF6485A2A7847D700282A52 /* Sounds */,
 				0CD122132A744DD400E486B0 /* Game */,

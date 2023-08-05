@@ -7,12 +7,6 @@
 
 import SpriteKit
 
-struct ColliderType{
-    static let BALL: UInt32 = 1
-    static let PADDLE: UInt32 = 2
-    static let INFERIORBORDER: UInt32 = 4
-}
-
 
 protocol GameActionDelegate {
     func incrementScore()
@@ -23,6 +17,11 @@ protocol GameActionDelegate {
 
 class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
     
+    struct ColliderType{
+        static let BALL: UInt32 = 1
+        static let PADDLE: UInt32 = 2
+        static let INFERIORBORDER: UInt32 = 4
+    }
 
     var gameActionDelegate: GameActionDelegate?
     

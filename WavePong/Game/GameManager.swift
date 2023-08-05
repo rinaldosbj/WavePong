@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+/// Object responsable for dealing if game logic
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
