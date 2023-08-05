@@ -53,6 +53,20 @@ struct SoundBoardView: View {
                 }
                 
             }
+            
+            Section("Haptics") {
+                Button("success") {
+                    HapticsManager.shared.vibrate(for: .success)
+                }
+                
+                Button("Error") {
+                    HapticsManager.shared.vibrate(for: .error)
+                }
+                
+                Button("Warning") {
+                    HapticsManager.shared.vibrate(for: .warning)
+                }
+            }
         }
         
     }
