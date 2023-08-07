@@ -13,17 +13,28 @@ struct SoundBoardView: View {
     @State var sliderValue: CGFloat = 0.5
 
     var body: some View {
-        
-        List {
+        ZStack {
+            Image("backgroundGame")
+                .resizable()
+                .ignoresSafeArea()
+                .accessibilityHidden(true)
+            
+            List {
 
-            gameThemeView
-            
-            fxSoundsView
-            
-            hapticsNotificationView
-            
-            hapticsNotificationImpactView
+                gameThemeView
+                
+                fxSoundsView
+                
+                hapticsNotificationView
+                
+                hapticsNotificationImpactView
+  
+            }
+
         }
+        
+        .listRowBackground(Color(.clear))
+        .listItemTint(.clear)
         
     }
     
