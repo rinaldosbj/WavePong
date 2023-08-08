@@ -30,6 +30,9 @@
 		0CF6488A2A7D23AB00282A52 /* transition.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648832A7D23AB00282A52 /* transition.mp3 */; };
 		0CF6488B2A7D23AB00282A52 /* winter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648842A7D23AB00282A52 /* winter.mp3 */; };
 		0CF6488C2A7D23AB00282A52 /* slimejump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648852A7D23AB00282A52 /* slimejump.mp3 */; };
+		0D05A2DC2A82E8A400992387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05A2DB2A82E8A400992387 /* AppDelegate.swift */; };
+		0DE28DB62A81924C00F3C0FF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE28DB52A81924C00F3C0FF /* OnboardingView.swift */; };
+		0DE28DB92A81929A00F3C0FF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */; };
 		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
@@ -68,6 +71,9 @@
 		0CF648832A7D23AB00282A52 /* transition.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = transition.mp3; sourceTree = "<group>"; };
 		0CF648842A7D23AB00282A52 /* winter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winter.mp3; sourceTree = "<group>"; };
 		0CF648852A7D23AB00282A52 /* slimejump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slimejump.mp3; sourceTree = "<group>"; };
+		0D05A2DB2A82E8A400992387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0DE28DB52A81924C00F3C0FF /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DF638202A78496100CCC34B /* PhysicsDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsDetection.swift; sourceTree = "<group>"; };
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,7 +113,6 @@
 		0CD122132A744DD400E486B0 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				0DF6381F2A78494200CCC34B /* Utils */,
 				0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */,
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
@@ -159,6 +164,33 @@
 			path = TestingViews;
 			sourceTree = "<group>";
 		};
+		0D05A2DD2A82E8FD00992387 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0D05A2DB2A82E8A400992387 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		0DE28DB42A81921300F3C0FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C2BBDC42A7440730031480F /* ContentView.swift */,
+				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
+				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
+				0DE28DB52A81924C00F3C0FF /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0DE28DB72A81927A00F3C0FF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		0DF6381F2A78494200CCC34B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,17 +227,18 @@
 		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
+				0D05A2DD2A82E8FD00992387 /* Delegates */,
+				864FCABC2908663900CA0664 /* Fonts */,
+				0CD122132A744DD400E486B0 /* Game */,
+				0DE28DB72A81927A00F3C0FF /* Manager */,
+				D3BF928328FEF6CF00EEF09B /* Preview Content */,
+				0CF6485A2A7847D700282A52 /* Sounds */,
+				0CF6486E2A7946F100282A52 /* TestingViews */,
+				0DF6381F2A78494200CCC34B /* Utils */,
+				0DE28DB42A81921300F3C0FF /* View */,
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
-				0C2BBDC42A7440730031480F /* ContentView.swift */,
-				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
-				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
-				0CF6486E2A7946F100282A52 /* TestingViews */,
-				0CF6485A2A7847D700282A52 /* Sounds */,
-				0CD122132A744DD400E486B0 /* Game */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
-				864FCABC2908663900CA0664 /* Fonts */,
-				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
 			path = WavePong;
 			sourceTree = "<group>";
@@ -307,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */,
+				0DE28DB92A81929A00F3C0FF /* NotificationManager.swift in Sources */,
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
@@ -317,8 +351,10 @@
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
+				0D05A2DC2A82E8A400992387 /* AppDelegate.swift in Sources */,
 				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
+				0DE28DB62A81924C00F3C0FF /* OnboardingView.swift in Sources */,
 				0C2BBDC52A7440730031480F /* ContentView.swift in Sources */,
 				0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */,
 			);
