@@ -66,6 +66,7 @@ extension GameScene: GameSceneProtocol {
     }
     
     func gameOver() {
+        isPaused = true
     }
     
 }

@@ -91,7 +91,6 @@ public class SoundManager {
     /// Pauses game theme music
     public func pauseGameTheme() {
         musicPlayer?.pause()
-        shouldPlay = false
     }
     
     

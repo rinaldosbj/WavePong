@@ -39,7 +39,7 @@ extension GameManager: GameActionDelegate {
     
     func didLose() {
         isGameRunning = false
-        soundManager.stopGameTheme()
+        soundManager.pauseGameTheme()
         soundManager.playFXSound(for: .slimejump)
         sceneDelegate?.gameOver()
         hapticsManager.vibrateNotification(for: .error)
