@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
 		0C2BBDC52A7440730031480F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC42A7440730031480F /* ContentView.swift */; };
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0C6B93AB2A7EE46200023DC8 /* GameSceneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		0C2BBDC42A7440730031480F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneProtocol.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
+				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneProtocol.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
+				0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
