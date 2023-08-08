@@ -17,7 +17,7 @@ struct MenuView: View {
                     .accessibilityHidden(true)
                 VStack(spacing:geo.size.height/8) {
                     Image("Wave-pong", label: Text("Logo, Wave Pong"))
-                    NavigationLink("Jogar", destination: ContentView().navigationBarBackButtonHidden())
+                    NavigationLink("Jogar", destination: GameSceneView())
                         .foregroundColor(.yellow)
                         .accessibilityLabel("jogar")
                     NavigationLink("Configurações", destination: ConfigurationView())

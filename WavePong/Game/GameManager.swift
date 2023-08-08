@@ -13,6 +13,7 @@ class GameManager {
     var score: Int = 0
     
     var soundManager: SoundManager = SoundManager.shared
+    var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneProtocol?
@@ -32,14 +33,16 @@ extension GameManager: GameActionDelegate {
         score += 1
         sceneDelegate?.didUserScored(newScore: score)
         soundManager.playFXSound(for: .shooting)
-    
+        hapticsManager.vibrateNotification(for: .success)
+        
     }
     
     func didLose() {
         isGameRunning = false
         soundManager.stopGameTheme()
-        soundManager.playFXSound(for: .failed)
+        soundManager.playFXSound(for: .slimejump)
         sceneDelegate?.gameOver()
+        hapticsManager.vibrateNotification(for: .error)
     }
 }
 

@@ -26,7 +26,7 @@ public class SoundManager {
     /// Responsable for holding the instance of player for  FX Sounds
     var audioPLayer: AVAudioPlayer?
     
-    var isPlayingTheme: Bool = false
+    var shouldPlay: Bool = false
     
     /// Allows adjust method for audio pan
     var panStyle: PanStyle = .curved
@@ -67,8 +67,6 @@ public class SoundManager {
     
     /// Plays background music
     public func playGameTheme() {
-        if !isPlayingTheme {
-            
             guard let url = Bundle.main.url(forResource: "WavePong_soundtrack", withExtension: "mp3") else {
                 print("arquivo não encontrado")
                 return
@@ -79,13 +77,13 @@ public class SoundManager {
                 musicPlayer?.numberOfLoops = -1
                 musicPlayer?.prepareToPlay()
                 musicPlayer?.play()
-                isPlayingTheme = true
+                shouldPlay = true
                 
             } catch let error {
                 print("Erro ao tentar reproduzir a música: \(error.localizedDescription)")
             }
             
-        }
+        
     }
     
     // MARK: Game Music
@@ -93,20 +91,21 @@ public class SoundManager {
     /// Pauses game theme music
     public func pauseGameTheme() {
         musicPlayer?.pause()
-        isPlayingTheme = false
+        shouldPlay = false
     }
     
     
     /// Resumes game theme music
     public func resumeGameTheme() {
         musicPlayer?.play()
-        isPlayingTheme = true
+        shouldPlay = true
     }
     
     /// Stops game Theme Music
     public func stopGameTheme() {
         musicPlayer = nil
-        isPlayingTheme = false
+        audioPLayer = nil
+        shouldPlay = false
     }
     
     
@@ -118,21 +117,21 @@ public class SoundManager {
     
     /// Play a FX Sound for a given type
     public func playFXSound(for name: FXSounds) {
-        
-        guard let url = getURLSoundFX(for: name) else {
-            print("arquivo fx não encontrado")
-            return
+        if shouldPlay {
+            guard let url = getURLSoundFX(for: name) else {
+                print("arquivo fx não encontrado")
+                return
+            }
+            
+            do {
+                audioPLayer = try AVAudioPlayer(contentsOf: url)
+                audioPLayer?.play()
+                print("funcionou")
+            } catch let error {
+                print("Erro ao reproduzir fx: \(error.localizedDescription)")
+            }
         }
-        
-        do {
-            audioPLayer = try AVAudioPlayer(contentsOf: url)
-            audioPLayer?.play()
-            print("funcionou")
-        } catch let error {
-            print("Erro ao reproduzir fx: \(error.localizedDescription)")
-        }
-        
-        
+     
     }
     
 }

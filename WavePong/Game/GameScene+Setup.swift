@@ -8,6 +8,12 @@
 import SpriteKit
 
 extension GameScene {
+    
+    func setupGameManager() {
+        gameManager.sceneDelegate = self
+        self.physicsWorld.contactDelegate = gameManager.physicsDetection
+    }
+    
     func setupWorld(){
         // MARK: Border
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)

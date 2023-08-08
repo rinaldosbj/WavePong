@@ -46,7 +46,7 @@ struct SoundBoardView: View {
                 audioPlayer.playGameTheme()
             }
         label: {
-            Image(systemName: audioPlayer.isPlayingTheme ? "pause.fill" : "play.fill")
+            Image(systemName: audioPlayer.shouldPlay ? "pause.fill" : "play.fill")
         }
             
             
