@@ -31,13 +31,18 @@ class GameScene: SKScene {
         isPaused = true
         soundManager.stopGameTheme()
     }
-    
-    override func willMove(from view: SKView) {
-       
+
+    func startGame(){
+        ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
+        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        
     }
     
-    func startGame(){
-        
+    override func update(_ currentTime: TimeInterval) {
+        soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
+    }
+    
+    private func createRandomVector() -> CGVector {
         let startAtRightOrientation = Bool.random()
         let randomX = Double.random(in: 4...10)
         
@@ -48,14 +53,8 @@ class GameScene: SKScene {
         } else {
             vectorX = randomX * -1
         }
-    
-        ball.run(SKAction.applyImpulse(CGVector(dx: vectorX, dy: 15), duration: 1))
-        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
         
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
+        return CGVector(dx: vectorX, dy: 15)
     }
         
 }
