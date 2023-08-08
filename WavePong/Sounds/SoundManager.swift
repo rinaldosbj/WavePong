@@ -34,8 +34,15 @@ public class SoundManager {
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
         
-        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
+//        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
+//        musicPlayer?.volume = volumeAdjusted
+        
+        let volumeAdjusted = Float(
+            1 - (position.y / (size.height - 60))
+        )
+        
         musicPlayer?.volume = volumeAdjusted
+        
 
         switch panStyle {
         case .curved:
