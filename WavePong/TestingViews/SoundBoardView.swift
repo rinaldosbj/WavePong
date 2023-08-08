@@ -65,6 +65,7 @@ struct SoundBoardView: View {
                 sound in
                 
                 Button {
+                    audioPlayer.shouldPlay = true
                     audioPlayer.playFXSound(for: sound)
                 } label: {
                     HStack {
