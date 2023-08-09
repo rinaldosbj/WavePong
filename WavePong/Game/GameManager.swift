@@ -18,6 +18,8 @@ class GameManager {
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneProtocol?
     
+    var player: PlayerProtocol = Player()
+    
     public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
     
     init() {
@@ -26,23 +28,39 @@ class GameManager {
         
     }
     
+    
 }
 
 extension GameManager: GameActionDelegate {
+    
     func incrementScore(){
         score += 1
+        notifyUserOfEvent(.scored)
         sceneDelegate?.didUserScored(newScore: score)
-        soundManager.playFXSound(for: .shooting)
-        hapticsManager.vibrateNotification(for: .success)
-        
+
     }
     
     func didLose() {
         isGameRunning = false
         soundManager.pauseGameTheme()
-        soundManager.playFXSound(for: .slimejump)
+        notifyUserOfEvent(.gameOver)
         sceneDelegate?.gameOver()
-        hapticsManager.vibrateNotification(for: .error)
+
+    }
+    
+    private enum UserNotificationGameEventType {
+        case scored, gameOver
+    }
+    
+    private func notifyUserOfEvent(_ event: UserNotificationGameEventType) {
+        switch event {
+        case .scored:
+            soundManager.playFXSound(for: .shooting)
+            hapticsManager.vibrateNotification(for: .success)
+        case .gameOver:
+            soundManager.playFXSound(for: .slimejump)
+            hapticsManager.vibrateNotification(for: .error)
+        }
     }
 }
 

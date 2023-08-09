@@ -20,13 +20,8 @@ class GameScene: SKScene {
     var cloud: SKSpriteNode!
     var scoreLabel: SKLabelNode!
     
-    init(size: CGSize,
-         soundManager: SoundManager = SoundManager.shared,
-         gameManager: GameManager = GameManager()
-    ) {
+    override init(size: CGSize) {
         super.init(size: size)
-        self.soundManager = soundManager
-        self.gameManager = gameManager
         self.ball = createBall()
         self.paddle = createPaddle()
         self.cloud = createCloud()
