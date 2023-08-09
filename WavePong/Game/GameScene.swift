@@ -18,7 +18,25 @@ class GameScene: SKScene {
     var ball: Ball!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
-   
+    var scoreLabel: SKLabelNode!
+    
+    init(size: CGSize,
+         soundManager: SoundManager = SoundManager.shared,
+         gameManager: GameManager = GameManager()
+    ) {
+        super.init(size: size)
+        self.soundManager = soundManager
+        self.gameManager = gameManager
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.scoreLabel = createScoreLabel()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func didMove(to view: SKView) {
         setupGameManager()
@@ -32,7 +50,7 @@ class GameScene: SKScene {
         soundManager.stopGameTheme()
     }
 
-    func startGame(){
+    func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
         

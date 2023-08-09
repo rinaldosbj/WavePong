@@ -14,7 +14,7 @@ struct GameSceneView: View {
     @State var trigger: Bool = false
     
     var gameScene: GameScene {
-        let scene = GameScene()
+        let scene = GameScene(size: size)
         scene.size = size
         scene.scaleMode = .aspectFit
         return scene

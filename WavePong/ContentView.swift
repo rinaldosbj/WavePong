@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var size = CGSize()
     
     var gameScene: SKScene {
-        let scene = GameScene()
+        let scene = GameScene(size: size)
         scene.size = size
         scene.scaleMode = .aspectFit
         return scene
