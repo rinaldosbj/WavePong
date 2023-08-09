@@ -9,7 +9,7 @@ import SwiftUI
 import UserNotifications
 import NotificationCenter
 
-class NotificationManager: ObservableObject {
+class NotificationManager {
     let notificationCenter = UNUserNotificationCenter.current()
     
     func requestAuthorization (){
@@ -20,5 +20,9 @@ class NotificationManager: ObservableObject {
                 print("Notification permission denied")
             }
         }
+    }
+    
+    func scheduleNotifications (){
+        let timeInterval = 172800 //2 dias
     }
 }
