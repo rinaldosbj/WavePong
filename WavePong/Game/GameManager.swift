@@ -13,9 +13,12 @@ class GameManager {
     var score: Int = 0
     
     var soundManager: SoundManager = SoundManager.shared
+    var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneProtocol?
+    
+    var player: PlayerProtocol = Player()
     
     public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
     
@@ -25,22 +28,60 @@ class GameManager {
         
     }
     
+    
 }
 
 extension GameManager: GameActionDelegate {
-    func incrementScore(){
+    
+    private var isNewRecord: Bool {
+        score > player.userTopScore
+    }
+    
+    
+    private enum UserNotificationGameEventType {
+        case scored, newTopScore, gameOver
+    }
+    
+    private func notifyUserOfEvent(_ event: UserNotificationGameEventType) {
+        switch event {
+        case .scored:
+            soundManager.playFXSound(for: .shooting)
+            hapticsManager.vibrateNotification(for: .success)
+        case .gameOver:
+            soundManager.playFXSound(for: .slimejump)
+            hapticsManager.vibrateNotification(for: .error)
+        case .newTopScore:
+            soundManager.playFXSound(for: .winzinho)
+            hapticsManager.vibrateNotification(for: .success)
+        }
+    }
+    
+    
+    public func incrementScore(){
         score += 1
+        notifyUserOfEvent(.scored)
         sceneDelegate?.didUserScored(newScore: score)
-        soundManager.playFXSound(for: .shooting)
-    
+        
     }
     
-    func didLose() {
+    
+    public func didLose() {
         isGameRunning = false
-        soundManager.stopGameTheme()
-        soundManager.playFXSound(for: .failed)
+        soundManager.pauseGameTheme()
+        
+        if isNewRecord {
+            notifyUserOfEvent(.newTopScore)
+            player.updateTopScore(NewTopScore: score)
+        } else {
+            notifyUserOfEvent(.gameOver)
+        }
+        
         sceneDelegate?.gameOver()
+        
     }
+    
+    
+    
 }
 
 

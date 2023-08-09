@@ -8,6 +8,12 @@
 import SpriteKit
 
 extension GameScene {
+    
+    func setupGameManager() {
+        gameManager.sceneDelegate = self
+        self.physicsWorld.contactDelegate = gameManager.physicsDetection
+    }
+    
     func setupWorld(){
         // MARK: Border
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -33,31 +39,56 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
+    func createPaddle() -> Paddle {
+        return Paddle(texture: nil,
+                      color: .purple,
+                      size: CGSize(width: 100, height: 20))
+        
+    }
+    
+    func createBall() -> Ball {
+        return Ball(radius: 20,
+                    color: .yellow)
+    }
+    
+    func createCloud() -> SKSpriteNode {
+       return  SKSpriteNode(color: .systemPink,
+                             size: self.size)
+    }
+    
+    func createScoreLabel() -> SKLabelNode {
+        let label = SKLabelNode(text: "0")
+        label.fontSize = 84
+        return label
+    }
+    
     func setupComponents(){
         // MARK: Paddle
-        paddle = Paddle(texture: nil,
-                        color: .purple,
-                        size: CGSize(width: 100, height: 20))
         paddle.position = CGPoint(x: self.frame.midX,
                                   y: 50)
         addChild(paddle)
         
         // MARK: Ball
-        ball = Ball(radius: 20,
-                       color: .yellow)
         ball.position = CGPoint(x:self.frame.midX,
                                 y:self.frame.midY)
         addChild(ball)
         
         // MARK: Cloud
-        cloud = SKSpriteNode(color: .systemPink,
-                             size: self.size)
         cloud.zPosition = 2
         cloud.position = CGPoint(x: self.frame.midX,
                                  y: self.frame.maxY + cloud.size.height/2)
         addChild(cloud)
         
-
+        
+        scoreLabel.zPosition = 3
+        scoreLabel.position = CGPoint(x: frame.midX,
+                                      y: frame.maxY - 150)
+        
+        addChild(scoreLabel)
+        
+        
+        
+        
         
     }
 }

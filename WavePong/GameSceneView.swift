@@ -1,19 +1,19 @@
 //
-//  ContentView.swift
+//  GameSceneView.swift
 //  WavePong
 //
-//  Created by Lucas Migge on 28/07/23.
+//  Created by Lucas Migge on 08/08/23.
 //
 
 import SwiftUI
 import SpriteKit
 
 
-struct ContentView: View {
-    
+struct GameSceneView: View {
     @State var size = CGSize()
+    @State var trigger: Bool = false
     
-    var gameScene: SKScene {
+    var gameScene: GameScene {
         let scene = GameScene(size: size)
         scene.size = size
         scene.scaleMode = .aspectFit
@@ -27,15 +27,18 @@ struct ContentView: View {
                 .onAppear(){
                     size = geo.size
                 }
+                .onDisappear {
+                    gameScene.viewWillDisappear()
+                }
+                
         }
 
     }
 
-
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct GameSceneView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        GameSceneView()
     }
 }
