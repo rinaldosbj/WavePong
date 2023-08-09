@@ -33,27 +33,10 @@ class GameManager {
 
 extension GameManager: GameActionDelegate {
     
-    func incrementScore(){
-        score += 1
-        notifyUserOfEvent(.scored)
-        sceneDelegate?.didUserScored(newScore: score)
-
+    private var isNewRecord: Bool {
+        score > player.userTopScore
     }
     
-    func didLose() {
-        isGameRunning = false
-        soundManager.pauseGameTheme()
-        
-        if score > player.userTopScore {
-            notifyUserOfEvent(.newTopScore)
-            player.updateTopScore(NewTopScore: score)
-        } else {
-            notifyUserOfEvent(.gameOver)
-        }
-       
-        sceneDelegate?.gameOver()
-
-    }
     
     private enum UserNotificationGameEventType {
         case scored, newTopScore, gameOver
@@ -72,6 +55,33 @@ extension GameManager: GameActionDelegate {
             hapticsManager.vibrateNotification(for: .success)
         }
     }
+    
+    
+    public func incrementScore(){
+        score += 1
+        notifyUserOfEvent(.scored)
+        sceneDelegate?.didUserScored(newScore: score)
+        
+    }
+    
+    
+    public func didLose() {
+        isGameRunning = false
+        soundManager.pauseGameTheme()
+        
+        if isNewRecord {
+            notifyUserOfEvent(.newTopScore)
+            player.updateTopScore(NewTopScore: score)
+        } else {
+            notifyUserOfEvent(.gameOver)
+        }
+        
+        sceneDelegate?.gameOver()
+        
+    }
+    
+    
+    
 }
 
 
