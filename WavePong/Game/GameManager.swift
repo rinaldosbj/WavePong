@@ -43,13 +43,20 @@ extension GameManager: GameActionDelegate {
     func didLose() {
         isGameRunning = false
         soundManager.pauseGameTheme()
-        notifyUserOfEvent(.gameOver)
+        
+        if score > player.userTopScore {
+            notifyUserOfEvent(.newTopScore)
+            player.updateTopScore(NewTopScore: score)
+        } else {
+            notifyUserOfEvent(.gameOver)
+        }
+       
         sceneDelegate?.gameOver()
 
     }
     
     private enum UserNotificationGameEventType {
-        case scored, gameOver
+        case scored, newTopScore, gameOver
     }
     
     private func notifyUserOfEvent(_ event: UserNotificationGameEventType) {
@@ -60,6 +67,9 @@ extension GameManager: GameActionDelegate {
         case .gameOver:
             soundManager.playFXSound(for: .slimejump)
             hapticsManager.vibrateNotification(for: .error)
+        case .newTopScore:
+            soundManager.playFXSound(for: .winzinho)
+            hapticsManager.vibrateNotification(for: .success)
         }
     }
 }
