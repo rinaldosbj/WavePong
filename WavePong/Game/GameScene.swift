@@ -19,6 +19,7 @@ class GameScene: SKScene {
     var paddle: Paddle!
     var cloud: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    var borderNode: Border!
     
     override init(size: CGSize) {
         super.init(size: size)

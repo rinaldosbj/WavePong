@@ -16,12 +16,7 @@ extension GameScene {
     
     func setupWorld(){
         // MARK: Border
-        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
-        border.friction = 0
-        border.restitution = 1
-        let borderNode = SKNode()
-        borderNode.physicsBody = border
-        borderNode.zPosition = 1
+        borderNode = Border(reactFrame: self.frame)
         addChild(borderNode)
         
         // MARK: inferiorWall
