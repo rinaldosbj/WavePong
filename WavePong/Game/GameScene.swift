@@ -12,13 +12,16 @@ import SwiftUI
 
 
 class GameScene: SKScene {
-   
+    
     var soundManager = SoundManager.shared
     var gameManager = GameManager()
     var ball: Ball!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    
+    var ballSpeed: CGFloat = 500
+    let balSpeedMax: CGFloat = 1500
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -44,7 +47,7 @@ class GameScene: SKScene {
         isPaused = true
         soundManager.stopGameTheme()
     }
-
+    
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
@@ -53,6 +56,32 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
+        
+        updateBallSpeed()
+    }
+    
+    
+    private func updateBallSpeed(increment: CGFloat = 0.5) {
+        if ballSpeed < balSpeedMax {
+            ballSpeed += increment
+        }
+        
+        // corrects vertical speed
+        if (ball.physicsBody?.velocity.dy)! < 0 && (ball.physicsBody?.velocity.dy)! > -ballSpeed {
+            ball.physicsBody?.velocity.dy = -ballSpeed
+        }
+        if (ball.physicsBody?.velocity.dy)! > 0 && (ball.physicsBody?.velocity.dy)! < ballSpeed {
+            ball.physicsBody?.velocity.dy = ballSpeed
+        }
+        
+        // corrects horizontal speed
+        if (ball.physicsBody?.velocity.dx)! < 0 && (ball.physicsBody?.velocity.dx)! > -ballSpeed {
+            ball.physicsBody?.velocity.dx = -ballSpeed
+        }
+        if (ball.physicsBody?.velocity.dx)! > 0 && (ball.physicsBody?.velocity.dx)! < ballSpeed {
+            ball.physicsBody?.velocity.dx = ballSpeed
+        }
+        
     }
     
     private func createRandomVector() -> CGVector {
@@ -69,7 +98,7 @@ class GameScene: SKScene {
         
         return CGVector(dx: vectorX, dy: 15)
     }
-        
+    
 }
 
 extension GameScene: GameSceneProtocol {
