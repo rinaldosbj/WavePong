@@ -13,6 +13,10 @@ extension GameScene{
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         
+        if pauseNode.contains(location) {
+            gameManager.pauseButtonPressed()
+        }
+        
         var horizontalLocation: Double {
             location.x
         }

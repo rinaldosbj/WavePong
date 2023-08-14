@@ -7,6 +7,14 @@
 
 import SpriteKit
 
+protocol PauseNodeDelegate {
+    func pauseButtonPressed()
+    
+    
+}
+
+
+
 /// Object responsable for dealing if game logic
 class GameManager {
     var isGameRunning: Bool = true
@@ -17,6 +25,7 @@ class GameManager {
     
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneProtocol?
+    var pauseButtonDelegate: PauseNodeDelegate?
     
     var player: PlayerProtocol = Player()
     
@@ -26,6 +35,12 @@ class GameManager {
         self.physicsDetection.gameActionDelegate = self
         soundManager.playGameTheme()
         
+    }
+    
+    func pauseButtonPressed() {
+        soundManager.pauseGameTheme()
+        sceneDelegate?.pausePressed()
+        pauseButtonDelegate?.pauseButtonPressed()
     }
     
     

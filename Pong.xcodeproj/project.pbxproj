@@ -10,7 +10,6 @@
 		0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA892A82E53A00844FB2 /* GameSceneView.swift */; };
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
-		0C2BBDC52A7440730031480F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC42A7440730031480F /* ContentView.swift */; };
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0C6B93AB2A7EE46200023DC8 /* GameSceneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */; };
 		0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */; };
@@ -53,7 +52,6 @@
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
-		0C2BBDC42A7440730031480F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneProtocol.swift; sourceTree = "<group>"; };
 		0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts Extension.swift"; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 			children = (
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
-				0C2BBDC42A7440730031480F /* ContentView.swift */,
 				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
@@ -338,7 +335,6 @@
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
-				0C2BBDC52A7440730031480F /* ContentView.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
 				0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */,
 			);

@@ -9,32 +9,65 @@ import SwiftUI
 import SpriteKit
 
 
-struct GameSceneView: View {
-    @State var size = CGSize()
-    @State var trigger: Bool = false
+class GameSceneViewModel: ObservableObject, PauseNodeDelegate {
     
-    var gameScene: GameScene {
-        let scene = GameScene(size: size)
-        scene.size = size
+    @Published var size: CGSize = CGSize()
+    @Published var state: ViewMode = .game
+    
+    var gameManager: GameManager
+    
+    var pauseButtonDelegate: PauseNodeDelegate?
+    
+    init(gameManager: GameManager = GameManager()) {
+        
+        self.gameManager = gameManager
+        self.gameManager.pauseButtonDelegate = self
+    }
+    
+    enum ViewMode {
+        case game, pause
+    }
+    
+    
+    func pauseButtonPressed() {
+        state = .pause
+        print("oioio")
+        
+    }
+    
+    
+}
+
+struct GameSceneView: View {
+    
+    @ObservedObject var viewModel = GameSceneViewModel()
+    
+    
+    private var gameScene: GameScene {
+        let scene = GameScene(size: viewModel.size, gameManager: viewModel.gameManager)
+        scene.size = viewModel.size
         scene.scaleMode = .aspectFit
         return scene
     }
-
+    
     var body: some View {
         GeometryReader{ geo in
             SpriteView(scene: self.gameScene)
                 .ignoresSafeArea()
                 .onAppear(){
-                    size = geo.size
+                    viewModel.size = geo.size
+                    
                 }
                 .onDisappear {
                     gameScene.viewWillDisappear()
                 }
-                
+            
         }
-
+        
     }
-
+    
+    
+    
 }
 
 struct GameSceneView_Previews: PreviewProvider {

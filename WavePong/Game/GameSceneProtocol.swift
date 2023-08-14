@@ -12,5 +12,6 @@ protocol GameSceneProtocol {
     
     func gameOver()
     
+    func pausePressed()
     
 }
