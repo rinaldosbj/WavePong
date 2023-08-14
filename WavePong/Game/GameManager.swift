@@ -7,15 +7,8 @@
 
 import SpriteKit
 
-protocol PauseNodeDelegate {
-    func pauseButtonPressed()
-    
-    
-}
 
-
-
-/// Object responsable for dealing if game logic
+/// Object responsable for dealing with game logic
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
@@ -24,8 +17,8 @@ class GameManager {
     var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
-    var sceneDelegate: GameSceneProtocol?
-    var pauseButtonDelegate: PauseNodeDelegate?
+    var sceneDelegate: GameSceneDelegate?
+    var pauseButtonDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = Player()
     
@@ -46,7 +39,7 @@ class GameManager {
     
 }
 
-extension GameManager: GameActionDelegate {
+extension GameManager: GameColisionDelegate {
     
     private var isNewRecord: Bool {
         score > player.userTopScore
@@ -75,7 +68,7 @@ extension GameManager: GameActionDelegate {
     public func incrementScore(){
         score += 1
         notifyUserOfEvent(.scored)
-        sceneDelegate?.didUserScored(newScore: score)
+        sceneDelegate?.UserScored(newScore: score)
         
     }
     

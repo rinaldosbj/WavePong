@@ -8,12 +8,6 @@
 import SpriteKit
 
 
-protocol GameActionDelegate {
-    func incrementScore()
-    
-    func didLose()
-    
-}
 
 class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
     
@@ -24,7 +18,7 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
         static let AROUNDBORDER: UInt32 = 8
     }
 
-    var gameActionDelegate: GameActionDelegate?
+    var gameActionDelegate: GameColisionDelegate?
     
     
     func didBegin(_ contact: SKPhysicsContact) {

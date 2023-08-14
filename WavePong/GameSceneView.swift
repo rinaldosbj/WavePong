@@ -9,14 +9,14 @@ import SwiftUI
 import SpriteKit
 
 
-class GameSceneViewModel: ObservableObject, PauseNodeDelegate {
+class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     @Published var size: CGSize = CGSize()
     @Published var state: ViewMode = .game
     
     var gameManager: GameManager
     
-    var pauseButtonDelegate: PauseNodeDelegate?
+    var pauseButtonDelegate: GameManagerDelegate?
     
     init(gameManager: GameManager = GameManager()) {
         

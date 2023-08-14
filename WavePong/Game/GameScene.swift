@@ -113,8 +113,8 @@ class GameScene: SKScene {
     
 }
 
-extension GameScene: GameSceneProtocol {
-    func didUserScored(newScore score: Int) {
+extension GameScene: GameSceneDelegate {
+    func UserScored(newScore score: Int) {
         scoreLabel.text = "\(score)"
         backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
         
