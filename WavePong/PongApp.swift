@@ -13,9 +13,18 @@ struct PongApp: App {
     var body: some Scene {
         
         WindowGroup {
-            NavigationView {
-                MenuView()
+            if #available(iOS 16.0, *) {
+                NavigationStack{
+                    OnboardingView()
+                }
+            }
+            else {
+                NavigationView {
+                    OnboardingView()
+                }
+                .navigationViewStyle(.stack)
             }
         }
     }
 }
+
