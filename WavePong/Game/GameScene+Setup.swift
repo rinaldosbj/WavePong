@@ -51,10 +51,8 @@ extension GameScene {
                              size: self.size)
     }
     
-    func createScoreLabel() -> SKLabelNode {
-        let label = SKLabelNode(text: "0")
-        label.fontSize = 84
-        return label
+    func createScoreLabel() -> ScoreLabel {
+        return ScoreLabel()
     }
     
     func createPauseNode() -> PauseNode {
@@ -84,9 +82,8 @@ extension GameScene {
         
         
         scoreLabel.zPosition = 3
-        scoreLabel.position = CGPoint(x: frame.midX,
-                                      y: frame.maxY - 150)
-        
+        scoreLabel.position = CGPoint(x: 50,
+                                      y: self.frame.maxY - 75)
         addChild(scoreLabel)
         
         

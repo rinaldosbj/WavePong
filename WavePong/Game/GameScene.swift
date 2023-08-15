@@ -18,7 +18,7 @@ class GameScene: SKScene {
     var ball: Ball!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
-    var scoreLabel: SKLabelNode!
+    var scoreLabel: ScoreLabel!
     var borderNode: Border!
     var pauseNode: PauseNode!
     
@@ -49,9 +49,7 @@ class GameScene: SKScene {
         setupWorld()
         setupComponentsPosition()
         startGame()
-        
-
-        
+    
     }
     
     func viewWillDisappear() {
