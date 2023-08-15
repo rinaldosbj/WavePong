@@ -47,7 +47,7 @@ extension GameScene {
     }
     
     func createCloud() -> SKSpriteNode {
-       return  SKSpriteNode(color: .systemPink,
+        return  SKSpriteNode(color: .systemPink,
                              size: self.size)
     }
     
@@ -57,7 +57,15 @@ extension GameScene {
         return label
     }
     
-    func setupComponents(){
+    func createPauseNode() -> PauseNode {
+        let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pauseIcon"),
+                                  color: .cyan,
+                                  size: CGSize(width: 42, height: 42))
+        
+        return pauseNode
+    }
+    
+    func setupComponentsPosition(){
         // MARK: Paddle
         paddle.position = CGPoint(x: self.frame.midX,
                                   y: 50)
@@ -80,6 +88,12 @@ extension GameScene {
                                       y: frame.maxY - 150)
         
         addChild(scoreLabel)
+        
+        
+        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                     y: self.frame.maxY - 50)
+        pauseNode.zPosition = 4
+        addChild(pauseNode)
         
         
         

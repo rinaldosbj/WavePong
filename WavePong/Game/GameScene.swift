@@ -20,14 +20,14 @@ class GameScene: SKScene {
     var cloud: SKSpriteNode!
     var scoreLabel: SKLabelNode!
     var borderNode: Border!
-    let pauseNode = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
+    var pauseNode: PauseNode!
     
     
     var ballSpeed: CGFloat = 500
     let balSpeedMax: CGFloat = 1500
     
     public init(size: CGSize, gameManager: GameManager) {
-
+        
         self.gameManager = gameManager
         
         super.init(size: size)
@@ -35,7 +35,8 @@ class GameScene: SKScene {
         self.paddle = createPaddle()
         self.cloud = createCloud()
         self.scoreLabel = createScoreLabel()
-
+        self.pauseNode = createPauseNode()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,12 +47,10 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupGameManager()
         setupWorld()
-        setupComponents()
+        setupComponentsPosition()
         startGame()
         
-        pauseNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        
-        addChild(pauseNode)
+
         
     }
     
