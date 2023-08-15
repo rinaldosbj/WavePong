@@ -14,6 +14,7 @@ struct FoneView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack{
                 Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
@@ -25,6 +26,7 @@ struct FoneView: View {
                     .padding()
                 
                 Image("fone")
+                    .accessibilityHidden(true)
             }
         }
     }

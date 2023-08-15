@@ -18,6 +18,7 @@ struct RebaterView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack{
                 Spacer()
@@ -40,9 +41,11 @@ struct RebaterView: View {
                         .foregroundColor(.yellow)
                         .offset(x: bola ? 100: 40, y: bola ? 0 : 100)
                         .animation(.easeOut(duration: 2).repeatForever(autoreverses: false),value: bola)
+                        .accessibilityHidden(true)
                     Image("raquete")
                         .frame(width: 145, height: 33, alignment: .center)
                         .padding(20)
+                        .accessibilityHidden(true)
                         .onAppear{
                             bola = true
                         }

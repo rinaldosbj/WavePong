@@ -18,6 +18,7 @@ struct PausarView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack(alignment: .center, spacing: 60 ){
                 Text("Dê \(Text("Dois toques").foregroundColor(.yellow)) na tela para \(Text("pausar").foregroundColor(.yellow)) o jogo")
@@ -36,6 +37,7 @@ struct PausarView: View {
                         .padding(10)
                         .blur(radius: scale, opaque: false)
                         .foregroundColor(.yellow)
+                        .accessibilityHidden(true)
                         .overlay(
                             ZStack{
                                 Circle()
@@ -54,6 +56,7 @@ struct PausarView: View {
                                     .animation(.easeOut(duration: 3).repeatForever(autoreverses: false), value: animation)
                             }
                         )
+                        .accessibilityHidden(true)
                         .onAppear{
                             scale += 1
                             animation = true

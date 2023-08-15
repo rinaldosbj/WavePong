@@ -18,6 +18,7 @@ struct PosicaoView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack{
                 Spacer()
@@ -38,10 +39,12 @@ struct PosicaoView: View {
                         Image("Ball")
                             .offset(x: bola ? 40: -60, y: bola ? 100: 0)
                             .animation(.easeOut(duration: 1.5).repeatForever(autoreverses: false),value: bola)
+                            .accessibilityHidden(true)
                         Image("raquete")
                             .scaledToFill()
                             .frame(width: 145, height: 33, alignment: .center)
                             .padding(.top, 100)
+                            .accessibilityHidden(true)
                         
                     }
                 }

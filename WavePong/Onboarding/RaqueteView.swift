@@ -19,6 +19,7 @@ struct RaqueteView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack {
                 Spacer()
@@ -45,7 +46,8 @@ struct RaqueteView: View {
                             deslize = -100
                             animation.toggle()
                         }
-                    
+                        .accessibilityHidden(true)
+
                 }
                 Spacer()
             }

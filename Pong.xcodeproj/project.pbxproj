@@ -293,11 +293,12 @@
 			};
 			buildConfigurationList = D3BF927528FEF6CD00EEF09B /* Build configuration list for PBXProject "Pong" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = D3BF927128FEF6CD00EEF09B;
 			productRefGroup = D3BF927B28FEF6CD00EEF09B /* Products */;

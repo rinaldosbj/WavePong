@@ -19,7 +19,22 @@ struct OnboardingView: View {
                     .onTapGesture { viewState -= 1 }
             case 4:
                 RaqueteView()
-                    .onTapGesture { viewState -= 1 }
+                    .accessibilityHint("Deslize os dedos para os lados para mover a raquete e rebater a bola")
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
+                        .onEnded { value in
+                            if abs(value.translation.height) < abs(value.translation.width) {
+                                if abs(value.translation.width) > 50.0 {
+                                    if value.translation.width < 0 {
+                                        self.swipe()
+                                    } else if value.translation.width > 0 {
+                                        self.swipe()
+                                    }
+                                }
+                            }
+                        }
+                    )
             case 3:
                 PosicaoView()
                     .onTapGesture { viewState -= 1 }
@@ -30,9 +45,17 @@ struct OnboardingView: View {
                 PausarView()
                     .onTapGesture { viewState -= 1 }
             default:
-                ContentView()
+                GameSceneView()
+                    .navigationBarBackButtonHidden()
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
             }
         }.id(viewState)
+    }
+    
+    func swipe() {
+        viewState -= 1
     }
 }
 
