@@ -26,6 +26,9 @@ struct GameSceneView: View {
             switch viewModel.state {
             case .game:
                 gameView
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
                         
