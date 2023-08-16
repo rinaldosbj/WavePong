@@ -10,7 +10,7 @@ import Foundation
 class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     @Published var size: CGSize = CGSize()
-    @Published var state: ViewMode = .pause
+    @Published var state: ViewMode = .game
     
     var gameManager: GameManager
     
@@ -29,9 +29,11 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func pauseButtonPressed() {
         state = .pause
-        print("oioio")
         
     }
     
+    func continueButtonPressed() {
+        state = .game
+    }
     
 }

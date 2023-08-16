@@ -59,7 +59,7 @@ struct GameSceneView: View {
                 
                 
                 LabelButton(buttonStyle: .resume) {
-                    
+                    viewModel.continueButtonPressed()
                 }
                 
                 HStack(spacing: 48)  {
@@ -73,6 +73,7 @@ struct GameSceneView: View {
                 }
             }
         }
+        .ignoresSafeArea()
     }
     
 }

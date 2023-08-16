@@ -29,17 +29,20 @@ struct LabelButton: View {
     }
     
     var body: some View {
-        ZStack {
-            Image("BackgroundButton")
-                .resizable()
-                .scaledToFill()
-            
-            Text(textLabel)
-                .font(Font.WavePongPrimary(.body))
-                .foregroundColor(Color("WHITE"))
+        Button {
+            buttonAction()
+        } label: {
+            ZStack {
+                Image("BackgroundButton")
+                    .resizable()
+                    .scaledToFill()
+                
+                Text(textLabel)
+                    .font(Font.WavePongPrimary(.body))
+                    .foregroundColor(Color("WHITE"))
+            }
+            .frame(width: 282, height: 84)
         }
-        .frame(width: 282, height: 84)
-        
     }
     
     
