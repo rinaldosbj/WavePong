@@ -58,7 +58,7 @@ extension GameScene {
     }
     
     func createPauseNode() -> PauseNode {
-        let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pauseIcon"),
+        let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
                                   color: .cyan,
                                   size: CGSize(width: 42, height: 42))
         

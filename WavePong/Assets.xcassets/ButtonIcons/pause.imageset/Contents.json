@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "BTN ícone.png",
+      "filename" : "Property 1=pause.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BTN ícone@2x.png",
+      "filename" : "Property 1=pause@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BTN ícone@3x.png",
+      "filename" : "Property 1=pause@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
