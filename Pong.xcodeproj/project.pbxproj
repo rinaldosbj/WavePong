@@ -141,24 +141,52 @@
 			path = SKNodes;
 			sourceTree = "<group>";
 		};
-		0CCCE3362A8ADB2F00BCB4E5 /* Protocols */ = {
+		0C8648E42A8D676000017F29 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				0C6363F32A8D268F002DAB8C /* LabelButton.swift */,
+				0C6363F12A8D266A002DAB8C /* IconButton.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		0C8648E52A8D678E00017F29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
+				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
+				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
+				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
+				0C8648E42A8D676000017F29 /* UI Components */,
+				D35EF5462A8AA7E300BD946E /* Onboarding */,
+				0CF6486E2A7946F100282A52 /* TestingViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C8648E62A8D68D300017F29 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0CF648562A7846AD00282A52 /* SoundManager.swift */,
+				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0CCCE3362A8ADB2F00BCB4E5 /* Game Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */,
 				0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */,
 				0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */,
 			);
-			path = Protocols;
+			path = "Game Protocols";
 			sourceTree = "<group>";
 		};
 		0CD122132A744DD400E486B0 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				0C6363F12A8D266A002DAB8C /* IconButton.swift */,
-				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
-				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
-				0C6363F32A8D268F002DAB8C /* LabelButton.swift */,
-				0CCCE3362A8ADB2F00BCB4E5 /* Protocols */,
+				0CCCE3362A8ADB2F00BCB4E5 /* Game Protocols */,
 				0DF6381F2A78494200CCC34B /* Utils */,
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
@@ -173,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */,
-				0CF648562A7846AD00282A52 /* SoundManager.swift */,
 				0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */,
 				0CF6486B2A7944B000282A52 /* FX */,
 			);
@@ -215,7 +242,6 @@
 			children = (
 				0C26DA8B2A83303200844FB2 /* Player.swift */,
 				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
-				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -262,15 +288,13 @@
 		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
+				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				864FCABD2908665A00CA0664 /* Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
-				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
-				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
-				D35EF5462A8AA7E300BD946E /* Onboarding */,
-				0CF6486E2A7946F100282A52 /* TestingViews */,
+				0C8648E62A8D68D300017F29 /* Manager */,
+				0C8648E52A8D678E00017F29 /* Views */,
 				0CF6485A2A7847D700282A52 /* Sounds */,
 				0CD122132A744DD400E486B0 /* Game */,
-				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				D3BF928328FEF6CF00EEF09B /* Preview Content */,
 			);
