@@ -22,7 +22,7 @@ struct LabelButton: View {
     var textLabel: String {
         switch buttonStyle {
         case .start:
-            return "Comecar"
+            return "Começar"
         case .resume:
             return "Continuar"
         }

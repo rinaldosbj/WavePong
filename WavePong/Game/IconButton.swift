@@ -18,6 +18,11 @@ struct IconButton: View {
     
     var buttonAction: () -> Void
     
+    init(_ buttonStyle: ButtonStyle, buttonAction: @escaping () -> Void) {
+        self.buttonStyle = buttonStyle
+        self.buttonAction = buttonAction
+    }
+    
     private var buttonImageString: String {
         buttonStyle.rawValue
     }
@@ -28,7 +33,19 @@ struct IconButton: View {
             buttonAction()
         } label: {
             Image(buttonImageString)
+                .resizable()
+                .frame(width: 104, height: 104)
         }
+
         
     }
 }
+
+struct IconButton_Previews: PreviewProvider {
+    static var previews: some View {
+        IconButton(.gameCenter) {
+            print("rinaldo te amo")
+        }
+    }
+}
+

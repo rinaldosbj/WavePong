@@ -26,7 +26,7 @@ class GameManager {
     
     init() {
         self.physicsDetection.gameActionDelegate = self
-        soundManager.playGameTheme()
+//        soundManager.playGameTheme()
         
     }
     

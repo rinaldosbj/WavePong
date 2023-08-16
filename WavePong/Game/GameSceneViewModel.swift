@@ -10,7 +10,7 @@ import Foundation
 class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     @Published var size: CGSize = CGSize()
-    @Published var state: ViewMode = .game
+    @Published var state: ViewMode = .pause
     
     var gameManager: GameManager
     

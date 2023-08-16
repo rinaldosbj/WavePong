@@ -53,27 +53,34 @@ struct GameSceneView: View {
     private var pauseView: some View {
         ZStack {
             Image("backgroundGame")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
             
             VStack(spacing: 48) {
+                
                 Image("PauseLabel")
+                    .resizable()
+                    .frame(width: 253, height: 71)
                 
                 
                 LabelButton(buttonStyle: .resume) {
                     viewModel.continueButtonPressed()
                 }
+
                 
                 HStack(spacing: 48)  {
-                    IconButton(buttonStyle: .home) {
+                    IconButton(.pause) {
                         
                     }
                     
-                    IconButton(buttonStyle: .refresh) {
+                    IconButton(.refresh) {
                         
                     }
                 }
             }
         }
-        .ignoresSafeArea()
+       
     }
     
 }
