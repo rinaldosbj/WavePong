@@ -35,9 +35,11 @@ extension GameScene {
     }
     
     func createPaddle() -> Paddle {
+        let proportionalWidth: Double = Double(frame.width / 3)
+        
         return Paddle(texture: nil,
                       color: .purple,
-                      size: CGSize(width: 100, height: 20))
+                      size: CGSize(width: proportionalWidth, height: 20))
         
     }
     
