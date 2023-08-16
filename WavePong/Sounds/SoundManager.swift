@@ -34,8 +34,8 @@ public class SoundManager {
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
         
-//        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
-//        musicPlayer?.volume = volumeAdjusted
+        //        let volumeAdjusted = 1.075 - (0.8 *  Float(position.y / size.height))
+        //        musicPlayer?.volume = volumeAdjusted
         
         let volumeAdjusted = Float(
             1 - (position.y / (size.height - 60))
@@ -43,7 +43,7 @@ public class SoundManager {
         
         musicPlayer?.volume = volumeAdjusted
         
-
+        
         switch panStyle {
         case .curved:
             let proportion = Float(position.x / size.width)
@@ -67,22 +67,23 @@ public class SoundManager {
     
     /// Plays background music
     public func playGameTheme() {
-            guard let url = Bundle.main.url(forResource: "WavePong_soundtrack", withExtension: "mp3") else {
-                print("arquivo não encontrado")
-                return
-            }
+        
+        guard let url = Bundle.main.url(forResource: "WavePong_soundtrack", withExtension: "mp3") else {
+            print("arquivo não encontrado")
+            return
+        }
+        
+        do {
+            musicPlayer = try AVAudioPlayer(contentsOf: url)
+            musicPlayer?.numberOfLoops = -1
+            musicPlayer?.prepareToPlay()
+            musicPlayer?.play()
+            shouldPlay = true
             
-            do {
-                musicPlayer = try AVAudioPlayer(contentsOf: url)
-                musicPlayer?.numberOfLoops = -1
-                musicPlayer?.prepareToPlay()
-                musicPlayer?.play()
-                shouldPlay = true
-                
-            } catch let error {
-                print("Erro ao tentar reproduzir a música: \(error.localizedDescription)")
-            }
-            
+        } catch let error {
+            print("Erro ao tentar reproduzir a música: \(error.localizedDescription)")
+        }
+        
         
     }
     
@@ -130,7 +131,7 @@ public class SoundManager {
                 print("Erro ao reproduzir fx: \(error.localizedDescription)")
             }
         }
-     
+        
     }
     
 }

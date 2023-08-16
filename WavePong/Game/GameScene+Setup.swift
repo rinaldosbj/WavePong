@@ -35,9 +35,11 @@ extension GameScene {
     }
     
     func createPaddle() -> Paddle {
+        let proportionalWidth: Double = Double(frame.width / 3)
+        
         return Paddle(texture: nil,
                       color: .purple,
-                      size: CGSize(width: 100, height: 20))
+                      size: CGSize(width: proportionalWidth, height: 20))
         
     }
     
@@ -47,17 +49,23 @@ extension GameScene {
     }
     
     func createCloud() -> SKSpriteNode {
-       return  SKSpriteNode(color: .systemPink,
+        return  SKSpriteNode(color: .systemPink,
                              size: self.size)
     }
     
-    func createScoreLabel() -> SKLabelNode {
-        let label = SKLabelNode(text: "0")
-        label.fontSize = 84
-        return label
+    func createScoreLabel() -> ScoreLabel {
+        return ScoreLabel()
     }
     
-    func setupComponents(){
+    func createPauseNode() -> PauseNode {
+        let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
+                                  color: .cyan,
+                                  size: CGSize(width: 42, height: 42))
+        
+        return pauseNode
+    }
+    
+    func setupComponentsPosition(){
         // MARK: Paddle
         paddle.position = CGPoint(x: self.frame.midX,
                                   y: 50)
@@ -76,10 +84,15 @@ extension GameScene {
         
         
         scoreLabel.zPosition = 3
-        scoreLabel.position = CGPoint(x: frame.midX,
-                                      y: frame.maxY - 150)
-        
+        scoreLabel.position = CGPoint(x: 50,
+                                      y: self.frame.maxY - 75)
         addChild(scoreLabel)
+        
+        
+        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                     y: self.frame.maxY - 50)
+        pauseNode.zPosition = 4
+        addChild(pauseNode)
         
         
         

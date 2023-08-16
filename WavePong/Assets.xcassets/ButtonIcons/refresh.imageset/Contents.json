@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo nova.png",
+      "filename" : "refresh.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logo nova@2x.png",
+      "filename" : "refresh@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logo nova@3x.png",
+      "filename" : "refresh@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

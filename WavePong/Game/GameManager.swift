@@ -7,7 +7,8 @@
 
 import SpriteKit
 
-/// Object responsable for dealing if game logic
+
+/// Object responsable for dealing with game logic
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
@@ -16,7 +17,8 @@ class GameManager {
     var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
-    var sceneDelegate: GameSceneProtocol?
+    var sceneDelegate: GameSceneDelegate?
+    var pauseButtonDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = Player()
     
@@ -24,14 +26,20 @@ class GameManager {
     
     init() {
         self.physicsDetection.gameActionDelegate = self
-        soundManager.playGameTheme()
+//        soundManager.playGameTheme()
         
+    }
+    
+    func pauseButtonPressed() {
+        soundManager.pauseGameTheme()
+        sceneDelegate?.pausePressed()
+        pauseButtonDelegate?.pauseButtonPressed()
     }
     
     
 }
 
-extension GameManager: GameActionDelegate {
+extension GameManager: GameColisionDelegate {
     
     private var isNewRecord: Bool {
         score > player.userTopScore
@@ -60,7 +68,7 @@ extension GameManager: GameActionDelegate {
     public func incrementScore(){
         score += 1
         notifyUserOfEvent(.scored)
-        sceneDelegate?.didUserScored(newScore: score)
+        sceneDelegate?.UserScored(newScore: score)
         
     }
     

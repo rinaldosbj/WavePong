@@ -14,22 +14,29 @@ import SwiftUI
 class GameScene: SKScene {
     
     var soundManager = SoundManager.shared
-    var gameManager = GameManager()
+    var gameManager: GameManager
     var ball: Ball!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
-    var scoreLabel: SKLabelNode!
+    var scoreLabel: ScoreLabel!
     var borderNode: Border!
+    var pauseNode: PauseNode!
+    
     
     var ballSpeed: CGFloat = 500
     let balSpeedMax: CGFloat = 1500
     
-    override init(size: CGSize) {
+    public init(size: CGSize, gameManager: GameManager) {
+        
+        self.gameManager = gameManager
+        
         super.init(size: size)
         self.ball = createBall()
         self.paddle = createPaddle()
         self.cloud = createCloud()
         self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,8 +47,9 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupGameManager()
         setupWorld()
-        setupComponents()
+        setupComponentsPosition()
         startGame()
+    
     }
     
     func viewWillDisappear() {
@@ -102,8 +110,8 @@ class GameScene: SKScene {
     
 }
 
-extension GameScene: GameSceneProtocol {
-    func didUserScored(newScore score: Int) {
+extension GameScene: GameSceneDelegate {
+    func UserScored(newScore score: Int) {
         scoreLabel.text = "\(score)"
         backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
         
@@ -111,6 +119,11 @@ extension GameScene: GameSceneProtocol {
     
     func gameOver() {
         isPaused = true
+    }
+    
+    func pausePressed() {
+        isPaused = true
+        
     }
     
 }
