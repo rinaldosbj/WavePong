@@ -9,54 +9,47 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    var player: Player = Player.shared
+    var hapticsManager: HapticsManager = HapticsManager.shared
+    var soundManager: SoundManager = SoundManager.shared
+    
     @State var viewState = 5
+    
+    private func nextView() {
+        viewState -= 1
+        hapticsManager.vibrateNotification(for: .success)
+    }
     
     var body: some View {
         Group{
             switch viewState {
             case 5:
                 FoneView()
-                    .onTapGesture { viewState -= 1 }
+                    .onTapGesture {
+                        nextView()
+                    }
+                
             case 4:
                 RaqueteView()
-                    .accessibilityHint("Deslize os dedos para os lados para mover a raquete e rebater a bola")
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
-                        .onEnded { value in
-                            if abs(value.translation.height) < abs(value.translation.width) {
-                                if abs(value.translation.width) > 50.0 {
-                                    if value.translation.width < 0 {
-                                        self.swipe()
-                                    } else if value.translation.width > 0 {
-                                        self.swipe()
-                                    }
-                                }
-                            }
-                        }
-                    )
+                    .onTapGesture { nextView() }
             case 3:
                 PosicaoView()
-                    .onTapGesture { viewState -= 1 }
+                    .onTapGesture { nextView() }
             case 2:
                 RebaterView()
-                    .onTapGesture { viewState -= 1 }
+                    .onTapGesture { nextView() }
             case 1:
                 PausarView()
-                    .onTapGesture { viewState -= 1 }
+                    .onTapGesture { nextView() }
             default:
-                GameSceneView()
-                    .navigationBarBackButtonHidden()
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
+                MenuView()
+                    .onAppear {
+                        player.userFinishedOnboarding()
+                    }
             }
         }.id(viewState)
     }
     
-    func swipe() {
-        viewState -= 1
-    }
 }
 
 struct OnboardingView_Previews: PreviewProvider {
