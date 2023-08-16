@@ -10,6 +10,8 @@ import Foundation
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
     
+    static var shared: Player = Player()
+    
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
     }
@@ -22,7 +24,7 @@ class Player: PlayerProtocol {
     private let defaults: UserDefaultable
     
     ///  Informs if the user already seen onboarding
-    var shouldShowOnborading: Bool {
+    var onboradingHappend: Bool {
         return defaults.bool(forKey: Constants.hasSeenOnboarding)
     }
     
@@ -61,7 +63,7 @@ protocol UserDefaultable {
 protocol PlayerProtocol {
     
     /// Should return true if the user didn't seen onboarding yet
-    var shouldShowOnborading: Bool { get }
+    var onboradingHappend: Bool { get }
     
     /// Should return the highest Score achives by user
     var userTopScore: Int { get }
