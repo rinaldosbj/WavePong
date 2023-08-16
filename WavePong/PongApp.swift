@@ -9,13 +9,20 @@ import SwiftUI
 
 @main
 struct PongApp: App {
-    
+    var player = Player.shared
     var body: some Scene {
         
         WindowGroup {
-            NavigationView {
-                MenuView()
-            }
+                NavigationView {
+                    if !(player.onboradingHappend) {
+                        OnboardingView()
+                    }
+                    else {
+                        MenuView()
+                    }
+                }
+                .navigationViewStyle(.stack)
         }
     }
 }
+
