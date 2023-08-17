@@ -21,4 +21,6 @@ protocol GameSceneDelegate {
     /// Once game is paused, this methods should be used by the game scene change it's state
     func pausePressed()
     
+    func resumeGame()
+    
 }

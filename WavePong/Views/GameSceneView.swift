@@ -10,38 +10,42 @@ import SpriteKit
 
 
 struct GameSceneView: View {
+    @Environment(\.presentationMode) var presentation
     
-    @ObservedObject var viewModel = GameSceneViewModel()
+    @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel()
     
+    @State var refreshCountPressed: Int = 0
     
-    private var gameScene: GameScene {
+    var gameScene: GameScene {
         let scene = GameScene(size: viewModel.size, gameManager: viewModel.gameManager)
-        scene.size = viewModel.size
         scene.scaleMode = .aspectFit
+        
         return scene
     }
+        
     
     var body: some View {
         GeometryReader{ geo in
-            switch viewModel.state {
-            case .game:
+            ZStack {
                 gameView
                     .accessibilityRespondsToUserInteraction()
                     .accessibilityElement()
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
+                        viewModel.didGameViewApper()
                         
                     }
                     .onDisappear {
                         gameScene.viewWillDisappear()
                     }
-                
-                
-                
-            case .pause:
-                pauseView
-                
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
+
+                        }
+                    }
+
             }
             
         }
@@ -73,12 +77,13 @@ struct GameSceneView: View {
 
                 
                 HStack(spacing: 48)  {
-                    IconButton(.pause) {
-                        
+                    IconButton(.home) {
+                        presentation.wrappedValue.dismiss()
                     }
                     
                     IconButton(.refresh) {
-                        
+                        viewModel.refreshPressed()
+                        refreshCountPressed += 1
                     }
                 }
             }

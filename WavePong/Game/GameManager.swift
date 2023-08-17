@@ -26,8 +26,16 @@ class GameManager {
     
     init() {
         self.physicsDetection.gameActionDelegate = self
-//        soundManager.playGameTheme()
         
+    }
+    
+    func startGame() {
+        soundManager.shouldPlay = true
+        soundManager.playGameTheme()
+    }
+    
+    func resumeGame() {
+        sceneDelegate?.resumeGame()
     }
     
     func pauseButtonPressed() {

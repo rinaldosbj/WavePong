@@ -11,7 +11,7 @@ import SwiftUI
 struct IconButton: View {
     
     enum ButtonStyle: String {
-        case settings, pause, start, gameCenter, home, refresh
+        case settings, pause, start, gamecenter, home, refresh
     }
     
     var buttonStyle: ButtonStyle
@@ -41,11 +41,4 @@ struct IconButton: View {
     }
 }
 
-struct IconButton_Previews: PreviewProvider {
-    static var previews: some View {
-        IconButton(.gameCenter) {
-            print("rinaldo te amo")
-        }
-    }
-}
 

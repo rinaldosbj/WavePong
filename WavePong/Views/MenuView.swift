@@ -26,7 +26,8 @@ struct MenuView: View {
                         GameSceneView()
                             .navigationBarBackButtonHidden()
                     }) {
-                        LabelButton(buttonStyle: .start, buttonAction:{})
+//                        LabelButton(buttonStyle: .start, buttonAction:{})
+                        Text("game")
                     }
                     .foregroundColor(.yellow)
                     .accessibilityLabel("começar")
@@ -43,7 +44,7 @@ struct MenuView: View {
                         NavigationLink(destination: {
                             SoundBoardView()
                         }) {
-                            IconButton(.gameCenter, buttonAction: {})
+                            IconButton(.gamecenter, buttonAction: {})
                         }
                             .foregroundColor(.yellow)
                             .accessibilityLabel("game center")
