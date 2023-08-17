@@ -33,6 +33,7 @@
 		0D05A2DC2A82E8A400992387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05A2DB2A82E8A400992387 /* AppDelegate.swift */; };
 		0DE28DB62A81924C00F3C0FF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE28DB52A81924C00F3C0FF /* OnboardingView.swift */; };
 		0DE28DB92A81929A00F3C0FF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */; };
+		0DF195492A8E949A00208BE7 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF195482A8E949A00208BE7 /* NotificationType.swift */; };
 		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
@@ -74,6 +75,7 @@
 		0D05A2DB2A82E8A400992387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DE28DB52A81924C00F3C0FF /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0DF195482A8E949A00208BE7 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		0DF638202A78496100CCC34B /* PhysicsDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsDetection.swift; sourceTree = "<group>"; };
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,12 +166,12 @@
 			path = TestingViews;
 			sourceTree = "<group>";
 		};
-		0D05A2DD2A82E8FD00992387 /* Delegates */ = {
+		0D05A2DD2A82E8FD00992387 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
 				0D05A2DB2A82E8A400992387 /* AppDelegate.swift */,
 			);
-			path = Delegates;
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		0DE28DB42A81921300F3C0FF /* View */ = {
@@ -186,6 +188,7 @@
 		0DE28DB72A81927A00F3C0FF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0DF195482A8E949A00208BE7 /* NotificationType.swift */,
 				0DE28DB82A81929A00F3C0FF /* NotificationManager.swift */,
 			);
 			path = Manager;
@@ -227,7 +230,7 @@
 		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
-				0D05A2DD2A82E8FD00992387 /* Delegates */,
+				0D05A2DD2A82E8FD00992387 /* Delegate */,
 				864FCABC2908663900CA0664 /* Fonts */,
 				0CD122132A744DD400E486B0 /* Game */,
 				0DE28DB72A81927A00F3C0FF /* Manager */,
@@ -353,6 +356,7 @@
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0D05A2DC2A82E8A400992387 /* AppDelegate.swift in Sources */,
 				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
+				0DF195492A8E949A00208BE7 /* NotificationType.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0DE28DB62A81924C00F3C0FF /* OnboardingView.swift in Sources */,
 				0C2BBDC52A7440730031480F /* ContentView.swift in Sources */,
@@ -485,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = 749Q737TF5;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -519,7 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = 749Q737TF5;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
