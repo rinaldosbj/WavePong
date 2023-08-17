@@ -15,7 +15,7 @@ struct LabelButton: View {
     }
     
     var buttonStyle: ButtonStyle
-    var buttonAction: () -> Void
+    var buttonAction: () -> Void = {}
     
     
     // no futuro, a string deverá corresponder ao idioma
@@ -29,9 +29,23 @@ struct LabelButton: View {
     }
     
     var body: some View {
-        Button {
-            buttonAction()
-        } label: {
+        switch buttonStyle {
+        case .resume:
+            Button {
+                buttonAction()
+            } label: {
+                ZStack {
+                    Image("BackgroundButton")
+                        .resizable()
+                        .scaledToFill()
+                    
+                    Text(textLabel)
+                        .font(Font.WavePongPrimary(.body))
+                        .foregroundColor(Color("WHITE"))
+                }
+                .frame(width: 282, height: 84)
+            }
+        case .start:
             ZStack {
                 Image("BackgroundButton")
                     .resizable()

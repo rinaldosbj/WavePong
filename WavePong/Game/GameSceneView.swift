@@ -73,11 +73,11 @@ struct GameSceneView: View {
 
                 
                 HStack(spacing: 48)  {
-                    IconButton(.pause) {
+                    IconButton(.pause, buttonType: .action) {
                         
                     }
                     
-                    IconButton(.refresh) {
+                    IconButton(.refresh, buttonType: .action) {
                         
                     }
                 }

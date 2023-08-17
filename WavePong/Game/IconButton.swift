@@ -13,13 +13,18 @@ struct IconButton: View {
     enum ButtonStyle: String {
         case settings, pause, start, gameCenter, home, refresh
     }
+    enum ButtonType: String {
+        case link, action
+    }
     
     var buttonStyle: ButtonStyle
+    var buttonType: ButtonType
     
-    var buttonAction: () -> Void
+    var buttonAction: () -> Void = {}
     
-    init(_ buttonStyle: ButtonStyle, buttonAction: @escaping () -> Void) {
+    init(_ buttonStyle: ButtonStyle, buttonType: ButtonType, buttonAction: @escaping () -> Void) {
         self.buttonStyle = buttonStyle
+        self.buttonType = buttonType
         self.buttonAction = buttonAction
     }
     
@@ -29,23 +34,22 @@ struct IconButton: View {
     
     
     var body: some View {
-        Button {
-            buttonAction()
-        } label: {
+        switch buttonType {
+        case .link:
             Image(buttonImageString)
                 .resizable()
                 .frame(width: 104, height: 104)
+        case .action:
+            Button {
+                buttonAction()
+            } label: {
+                Image(buttonImageString)
+                    .resizable()
+                    .frame(width: 104, height: 104)
+            }
         }
-
         
     }
 }
 
-struct IconButton_Previews: PreviewProvider {
-    static var previews: some View {
-        IconButton(.gameCenter) {
-            print("rinaldo te amo")
-        }
-    }
-}
 

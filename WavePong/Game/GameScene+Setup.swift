@@ -38,7 +38,7 @@ extension GameScene {
         let proportionalWidth: Double = Double(frame.width / 3)
         
         return Paddle(texture: nil,
-                      color: .purple,
+                      color: UIColor(named: "roxo claro")!,
                       size: CGSize(width: proportionalWidth, height: 20))
         
     }
