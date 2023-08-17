@@ -14,11 +14,11 @@ struct PongApp: App {
         
         WindowGroup {
                 NavigationView {
-                    if !(player.onboradingHappend) {
-                        OnboardingView()
+                    if player.onboradingHappend {
+                        MenuView()
                     }
                     else {
-                        MenuView()
+                        OnboardingView()
                     }
                 }
                 .navigationViewStyle(.stack)

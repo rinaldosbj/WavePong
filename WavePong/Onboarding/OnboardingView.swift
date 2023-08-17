@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @Environment(\.presentationMode) var presentation
+    
     var player: Player = Player.shared
     var hapticsManager: HapticsManager = HapticsManager.shared
     var soundManager: SoundManager = SoundManager.shared
@@ -40,7 +42,14 @@ struct OnboardingView: View {
                     .onTapGesture { nextView() }
             case 1:
                 PausarView()
-                    .onTapGesture { nextView() }
+                    .onTapGesture {
+                        if player.onboradingHappend {
+                            presentation.wrappedValue.dismiss()
+                        }
+                        else {
+                            nextView()
+                        }
+                    }
             default:
                 MenuView()
                     .onAppear {
