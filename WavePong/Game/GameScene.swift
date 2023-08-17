@@ -13,9 +13,10 @@ import SwiftUI
 
 class GameScene: SKScene {
     
+    var background = SKSpriteNode(imageNamed: "backgroundGame")
     var soundManager = SoundManager.shared
     var gameManager: GameManager
-    var ball: Ball!
+    var ball: BallSprite!
     var paddle: Paddle!
     var cloud: SKSpriteNode!
     var scoreLabel: ScoreLabel!
@@ -49,7 +50,7 @@ class GameScene: SKScene {
         setupWorld()
         setupComponentsPosition()
         startGame()
-    
+        
     }
     
     func viewWillDisappear() {

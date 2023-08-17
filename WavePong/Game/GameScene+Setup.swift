@@ -15,12 +15,15 @@ extension GameScene {
     }
     
     func setupWorld(){
+        background.size = size
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(background)
         // MARK: Border
         borderNode = Border(reactFrame: self.frame)
         addChild(borderNode)
         
         // MARK: inferiorWall
-        let inferiorWall = SKSpriteNode(color: .green, size: .init(width: self.frame.width, height: 1))
+        let inferiorWall = SKSpriteNode(color: .clear, size: .init(width: self.frame.width, height: 1))
         inferiorWall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: self.frame.width, height: 1))
         inferiorWall.physicsBody?.categoryBitMask = 4
         inferiorWall.physicsBody?.isDynamic = false
@@ -43,9 +46,8 @@ extension GameScene {
         
     }
     
-    func createBall() -> Ball {
-        return Ball(radius: 20,
-                    color: .yellow)
+    func createBall() -> BallSprite {
+        return BallSprite(texture: SKTexture(image: UIImage(named: "ball")!), color: .clear, size: CGSize(width: 60, height: 60))
     }
     
     func createCloud() -> SKSpriteNode {
