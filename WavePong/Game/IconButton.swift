@@ -36,19 +36,21 @@ struct IconButton: View {
     var body: some View {
         switch buttonType {
         case .link:
-            Image(buttonImageString)
-                .resizable()
-                .frame(width: 104, height: 104)
+            buttonView
         case .action:
             Button {
                 buttonAction()
             } label: {
-                Image(buttonImageString)
-                    .resizable()
-                    .frame(width: 104, height: 104)
+                buttonView
             }
         }
         
+    }
+    
+    private var buttonView: some View {
+        Image(buttonImageString)
+            .resizable()
+            .frame(width: 104, height: 104)
     }
 }
 

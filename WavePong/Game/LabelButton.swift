@@ -34,29 +34,24 @@ struct LabelButton: View {
             Button {
                 buttonAction()
             } label: {
-                ZStack {
-                    Image("BackgroundButton")
-                        .resizable()
-                        .scaledToFill()
-                    
-                    Text(textLabel)
-                        .font(Font.WavePongPrimary(.body))
-                        .foregroundColor(Color("WHITE"))
-                }
-                .frame(width: 282, height: 84)
+                buttonView
             }
         case .start:
-            ZStack {
-                Image("BackgroundButton")
-                    .resizable()
-                    .scaledToFill()
-                
-                Text(textLabel)
-                    .font(Font.WavePongPrimary(.body))
-                    .foregroundColor(Color("WHITE"))
-            }
-            .frame(width: 282, height: 84)
+            buttonView
         }
+    }
+    
+    private var buttonView: some View {
+        ZStack {
+            Image("BackgroundButton")
+                .resizable()
+                .scaledToFill()
+            
+            Text(textLabel)
+                .font(Font.WavePongPrimary(.body))
+                .foregroundColor(Color("WHITE"))
+        }
+        .frame(width: 282, height: 84)
     }
     
     
