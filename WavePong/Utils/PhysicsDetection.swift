@@ -8,12 +8,6 @@
 import SpriteKit
 
 
-protocol GameActionDelegate {
-    func incrementScore()
-    
-    func didLose()
-    
-}
 
 class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
     
@@ -21,9 +15,10 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
         static let BALL: UInt32 = 1
         static let PADDLE: UInt32 = 2
         static let INFERIORBORDER: UInt32 = 4
+        static let AROUNDBORDER: UInt32 = 8
     }
 
-    var gameActionDelegate: GameActionDelegate?
+    var gameActionDelegate: GameColisionDelegate?
     
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -32,6 +27,9 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
             gameActionDelegate?.incrementScore()
         } else if collision == ColliderType.BALL | ColliderType.INFERIORBORDER {
             gameActionDelegate?.didLose()
+        }
+        else if collision == ColliderType.BALL | ColliderType.AROUNDBORDER {
+            print("Bateu na borda ao redor")
         }
         
         

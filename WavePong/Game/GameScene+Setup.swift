@@ -8,14 +8,15 @@
 import SpriteKit
 
 extension GameScene {
+    
+    func setupGameManager() {
+        gameManager.sceneDelegate = self
+        self.physicsWorld.contactDelegate = gameManager.physicsDetection
+    }
+    
     func setupWorld(){
         // MARK: Border
-        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
-        border.friction = 0
-        border.restitution = 1
-        let borderNode = SKNode()
-        borderNode.physicsBody = border
-        borderNode.zPosition = 1
+        borderNode = Border(reactFrame: self.frame)
         addChild(borderNode)
         
         // MARK: inferiorWall
@@ -33,31 +34,69 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
-    func setupComponents(){
+    func createPaddle() -> Paddle {
+        let proportionalWidth: Double = Double(frame.width / 3)
+        
+        return Paddle(texture: nil,
+                      color: .purple,
+                      size: CGSize(width: proportionalWidth, height: 20))
+        
+    }
+    
+    func createBall() -> Ball {
+        return Ball(radius: 20,
+                    color: .yellow)
+    }
+    
+    func createCloud() -> SKSpriteNode {
+        return  SKSpriteNode(color: .systemPink,
+                             size: self.size)
+    }
+    
+    func createScoreLabel() -> ScoreLabel {
+        return ScoreLabel()
+    }
+    
+    func createPauseNode() -> PauseNode {
+        let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
+                                  color: .cyan,
+                                  size: CGSize(width: 42, height: 42))
+        
+        return pauseNode
+    }
+    
+    func setupComponentsPosition(){
         // MARK: Paddle
-        paddle = Paddle(texture: nil,
-                        color: .purple,
-                        size: CGSize(width: 100, height: 20))
         paddle.position = CGPoint(x: self.frame.midX,
                                   y: 50)
         addChild(paddle)
         
         // MARK: Ball
-        ball = Ball(radius: 20,
-                       color: .yellow)
         ball.position = CGPoint(x:self.frame.midX,
                                 y:self.frame.midY)
         addChild(ball)
         
         // MARK: Cloud
-        cloud = SKSpriteNode(color: .systemPink,
-                             size: self.size)
         cloud.zPosition = 2
         cloud.position = CGPoint(x: self.frame.midX,
                                  y: self.frame.maxY + cloud.size.height/2)
         addChild(cloud)
         
-
+        
+        scoreLabel.zPosition = 3
+        scoreLabel.position = CGPoint(x: 50,
+                                      y: self.frame.maxY - 75)
+        addChild(scoreLabel)
+        
+        
+        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                     y: self.frame.maxY - 50)
+        pauseNode.zPosition = 4
+        addChild(pauseNode)
+        
+        
+        
+        
         
     }
 }

@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+
 struct MenuView: View {
+    
+    
     var body: some View {
         GeometryReader{ geo in
             ZStack {
@@ -15,17 +18,36 @@ struct MenuView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .accessibilityHidden(true)
-                VStack(spacing:geo.size.height/8) {
-                    Image("Wave-pong", label: Text("Logo, Wave Pong"))
-                    NavigationLink("Jogar", destination: ContentView().navigationBarBackButtonHidden())
-                        .foregroundColor(.yellow)
-                        .accessibilityLabel("jogar")
-                    NavigationLink("Configurações", destination: ConfigurationView())
-                        .foregroundColor(.yellow)
-                        .accessibilityLabel("Configurações")
-                    NavigationLink("Sound Board", destination: SoundBoardView())
-                        .foregroundColor(.yellow)
-                        .accessibilityLabel("Sound Board")
+                VStack() {
+                    Image("Wave-pong")
+                        .accessibilityHidden(true)
+                    Spacer().frame(height: 192)
+                    NavigationLink(destination: {
+                        GameSceneView()
+                            .navigationBarBackButtonHidden()
+                    }) {
+                        LabelButton(buttonStyle: .start, buttonAction:{})
+                    }
+                    .foregroundColor(.yellow)
+                    .accessibilityLabel("começar")
+                    Spacer().frame(height: 48)
+                    HStack {
+                        NavigationLink(destination: {
+                            ConfigurationView()
+                        }) {
+                            IconButton(.settings, buttonAction: {})
+                        }
+                            .foregroundColor(.yellow)
+                            .accessibilityLabel("Configurações")
+                            .padding(.trailing,48)
+                        NavigationLink(destination: {
+                            SoundBoardView()
+                        }) {
+                            IconButton(.gameCenter, buttonAction: {})
+                        }
+                            .foregroundColor(.yellow)
+                            .accessibilityLabel("game center")
+                    }
                 }
             }
         }

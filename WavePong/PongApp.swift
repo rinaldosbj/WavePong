@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct PongApp: App {
+<<<<<<< HEAD
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
@@ -33,6 +34,22 @@ struct PongApp: App {
             @unknown default:
                 print("Oh - interesting: I received an unexpected new value.")
             }
+=======
+    var player = Player.shared
+    var body: some Scene {
+        
+        WindowGroup {
+                NavigationView {
+                    if !(player.onboradingHappend) {
+                        OnboardingView()
+                    }
+                    else {
+                        MenuView()
+                    }
+                }
+                .navigationViewStyle(.stack)
+>>>>>>> develop
         }
     }
 }
+

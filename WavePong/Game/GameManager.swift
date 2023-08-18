@@ -7,40 +7,89 @@
 
 import SpriteKit
 
-/// Object responsable for dealing if game logic
+
+/// Object responsable for dealing with game logic
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
     
     var soundManager: SoundManager = SoundManager.shared
+    var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
-    var sceneDelegate: GameSceneProtocol?
+    var sceneDelegate: GameSceneDelegate?
+    var pauseButtonDelegate: GameManagerDelegate?
+    
+    var player: PlayerProtocol = Player()
     
     public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
     
     init() {
         self.physicsDetection.gameActionDelegate = self
-        soundManager.playGameTheme()
+//        soundManager.playGameTheme()
         
     }
     
+    func pauseButtonPressed() {
+        soundManager.pauseGameTheme()
+        sceneDelegate?.pausePressed()
+        pauseButtonDelegate?.pauseButtonPressed()
+    }
+    
+    
 }
 
-extension GameManager: GameActionDelegate {
-    func incrementScore(){
+extension GameManager: GameColisionDelegate {
+    
+    private var isNewRecord: Bool {
+        score > player.userTopScore
+    }
+    
+    
+    private enum UserNotificationGameEventType {
+        case scored, newTopScore, gameOver
+    }
+    
+    private func notifyUserOfEvent(_ event: UserNotificationGameEventType) {
+        switch event {
+        case .scored:
+            soundManager.playFXSound(for: .shooting)
+            hapticsManager.vibrateNotification(for: .success)
+        case .gameOver:
+            soundManager.playFXSound(for: .slimejump)
+            hapticsManager.vibrateNotification(for: .error)
+        case .newTopScore:
+            soundManager.playFXSound(for: .winzinho)
+            hapticsManager.vibrateNotification(for: .success)
+        }
+    }
+    
+    
+    public func incrementScore(){
         score += 1
-        sceneDelegate?.didUserScored(newScore: score)
-        soundManager.playFXSound(for: .shooting)
-    
+        notifyUserOfEvent(.scored)
+        sceneDelegate?.UserScored(newScore: score)
+        
     }
     
-    func didLose() {
+    
+    public func didLose() {
         isGameRunning = false
-        soundManager.stopGameTheme()
-        soundManager.playFXSound(for: .failed)
+        soundManager.pauseGameTheme()
+        
+        if isNewRecord {
+            notifyUserOfEvent(.newTopScore)
+            player.updateTopScore(NewTopScore: score)
+        } else {
+            notifyUserOfEvent(.gameOver)
+        }
+        
         sceneDelegate?.gameOver()
+        
     }
+    
+    
+    
 }
 
 
