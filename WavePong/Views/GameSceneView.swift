@@ -26,8 +26,9 @@ struct GameSceneView: View {
     
     var body: some View {
         GeometryReader{ geo in
-            ZStack {
+            if refreshCountPressed % 2 == 0 {
                 gameView
+                    .ignoresSafeArea()
                     .accessibilityRespondsToUserInteraction()
                     .accessibilityElement()
                     .accessibilityAddTraits(.allowsDirectInteraction)
@@ -45,7 +46,27 @@ struct GameSceneView: View {
 
                         }
                     }
+            }
+            else {
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .onAppear(){
+                        viewModel.size = geo.size
+                        viewModel.didGameViewApper()
+                        
+                    }
+                    .onDisappear {
+                        gameScene.viewWillDisappear()
+                    }
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
 
+                        }
+                    }
             }
             
         }
