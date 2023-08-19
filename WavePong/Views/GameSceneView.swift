@@ -18,7 +18,7 @@ struct GameSceneView: View {
     
     var gameScene: GameScene {
         let scene = GameScene(size: viewModel.size, gameManager: viewModel.gameManager)
-        scene.scaleMode = .aspectFit
+        scene.scaleMode = .fill
         
         return scene
     }
@@ -34,7 +34,6 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        viewModel.didGameViewApper()
                         
                     }
                     .onDisappear {
@@ -55,7 +54,6 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        viewModel.didGameViewApper()
                         
                     }
                     .onDisappear {
@@ -99,6 +97,7 @@ struct GameSceneView: View {
                 
                 HStack(spacing: 48)  {
                     IconButton(.home) {
+                        viewModel.homeButtonPressed()
                         presentation.wrappedValue.dismiss()
                     }
                     

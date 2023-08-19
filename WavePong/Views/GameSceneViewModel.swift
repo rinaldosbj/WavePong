@@ -9,6 +9,8 @@ import Foundation
 
 class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
+    var soundManager: SoundManager
+    
     @Published var size: CGSize = CGSize()
     @Published var state: ViewMode = .game
     
@@ -16,16 +18,13 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     var pauseButtonDelegate: GameManagerDelegate?
     
-    init(gameManager: GameManager = GameManager()) {
+    init(gameManager: GameManager = GameManager(), soundManager: SoundManager = SoundManager.shared) {
         self.gameManager = gameManager
+        self.soundManager = soundManager
         self.gameManager.pauseButtonDelegate = self
         
     }
     
-    func didGameViewApper() {
-        self.gameManager.startGame()
-        
-    }
     enum ViewMode {
         case game, pause
     }
@@ -43,6 +42,13 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func refreshPressed() {
         state = .game
+        soundManager.stopGameTheme()
+        gameManager.startGame()
     }
     
+    
+    func homeButtonPressed() {
+        soundManager.stopGameTheme()
+        state = .game
+    }
 }

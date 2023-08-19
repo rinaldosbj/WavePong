@@ -30,8 +30,8 @@ class GameManager {
     }
     
     func startGame() {
-        soundManager.shouldPlay = true
         soundManager.playGameTheme()
+        score = 0
     }
     
     func resumeGame() {
