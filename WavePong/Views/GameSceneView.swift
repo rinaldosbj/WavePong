@@ -36,9 +36,7 @@ struct GameSceneView: View {
                         viewModel.size = geo.size
                         
                     }
-                    .onDisappear {
-                        gameScene.viewWillDisappear()
-                    }
+ 
                     .overlay {
                         if viewModel.state == .pause {
                             pauseView
@@ -56,9 +54,7 @@ struct GameSceneView: View {
                         viewModel.size = geo.size
                         
                     }
-                    .onDisappear {
-                        gameScene.viewWillDisappear()
-                    }
+
                     .overlay {
                         if viewModel.state == .pause {
                             pauseView
@@ -102,6 +98,7 @@ struct GameSceneView: View {
                     }
                     
                     IconButton(.refresh) {
+                        SoundManager.shared.playGameTheme()
                         viewModel.refreshPressed()
                         refreshCountPressed += 1
                     }

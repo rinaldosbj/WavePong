@@ -42,8 +42,8 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func refreshPressed() {
         state = .game
-        soundManager.stopGameTheme()
-        gameManager.startGame()
+//        soundManager.stopGameTheme()
+//        gameManager.startGame()
     }
     
     
