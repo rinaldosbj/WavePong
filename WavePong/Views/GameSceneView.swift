@@ -128,7 +128,6 @@ struct GameSceneView: View {
                         }
                         
                         IconButton(.refresh) {
-                            SoundManager.shared.playGameTheme()
                             viewModel.refreshPressed()
                             refreshCountPressed += 1
                         }
