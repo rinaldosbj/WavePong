@@ -52,8 +52,6 @@ class GameScene: SKScene {
         setupGameManager()
         setupWorld()
         setupComponentsPosition()
-        startGame()
-    
     }
     
     func viewWillDisappear() {
@@ -65,7 +63,6 @@ class GameScene: SKScene {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         moveClouds()
 
-        gameManager.startGame()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -80,8 +77,8 @@ class GameScene: SKScene {
     }
     
     func moveCloudsVertical() {
-        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
-        cloud2.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 90), duration: 20))
+        cloud2.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 95), duration: 20))
         cloud3.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
     }
     
@@ -103,8 +100,8 @@ class GameScene: SKScene {
     }
     
     func moveCloudNode2Horizontal() {
-        let moveLeft = SKAction.moveTo(x: self.frame.midX + 15, duration: 3)
-        let moveRight = SKAction.moveTo(x: self.frame.midX - 15, duration: 3)
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 15, duration: 1.33)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 15, duration: 1.33)
         
         let sequence = SKAction.sequence([moveRight, moveLeft])
         let repeatForever = SKAction.repeatForever(sequence)
@@ -114,8 +111,8 @@ class GameScene: SKScene {
     }
     
     func moveCloudNode3Horizontal() {
-        let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 0.5)
-        let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 0.5)
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 0.25)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 0.25)
         
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)

@@ -58,7 +58,7 @@ extension GameScene {
     }
     
     func creatCloud2() -> Cloud {
-        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 50,
+        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 65,
                                                 height: self.size.height)
         
         return  Cloud(texture: SKTexture(imageNamed: "wave2"),
@@ -68,7 +68,7 @@ extension GameScene {
     }
     
     func createCloud3() -> Cloud {
-        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 50,
+        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 75,
                                                 height: self.size.height)
         
         return  Cloud(texture: SKTexture(imageNamed: "wave"),

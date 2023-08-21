@@ -23,4 +23,6 @@ protocol GameSceneDelegate {
     
     func resumeGame()
     
+    func startGame()
+    
 }
