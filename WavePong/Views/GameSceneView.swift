@@ -35,7 +35,7 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        viewModel.isInGame.toggle()
+                        viewModel.isInGame = true
                     }
                 
                     .overlay {
@@ -56,7 +56,7 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        
+                        viewModel.isInGame = true
                     }
                 
                     .overlay {
