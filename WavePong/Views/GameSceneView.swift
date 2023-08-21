@@ -161,7 +161,6 @@ struct GameSceneView: View {
         }
         
     }
-    
 }
 
 

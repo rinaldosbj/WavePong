@@ -23,7 +23,8 @@ struct MenuView: View {
                         .accessibilityHidden(true)
                     Spacer().frame(height: 192)
                     NavigationLink(destination: {
-                        GameSceneView()
+//                        GameSceneView()
+                        CountDownView()
                             .navigationBarBackButtonHidden()
                     }) {
 //                        LabelButton(buttonStyle: .start, buttonAction:{})
