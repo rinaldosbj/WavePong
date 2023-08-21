@@ -15,7 +15,7 @@ class GameScene: SKScene {
     
     var soundManager = SoundManager.shared
     var gameManager: GameManager
-    var ball: Ball!
+    var ball: BallSprite!
     var paddle: Paddle!
     var cloud: Cloud!
     var cloud2: Cloud!
@@ -27,6 +27,8 @@ class GameScene: SKScene {
     
     var ballSpeed: CGFloat = 500
     let balSpeedMax: CGFloat = 1500
+    
+    var background = SKSpriteNode(imageNamed: "backgroundGame")
     
     public init(size: CGSize, gameManager: GameManager) {
         

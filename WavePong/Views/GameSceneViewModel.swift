@@ -17,6 +17,8 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     @Published var recordLabel: String = ""
     @Published var count: String = "3"
     
+    var isInGame = false
+    
     var gameManager: GameManager
     
     var pauseButtonDelegate: GameManagerDelegate?
@@ -60,24 +62,24 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func homeButtonPressed() {
         soundManager.stopGameTheme()
-        state = .countDown
-        count = "3"
+        refreshPressed()
     }
     
     func countDown() {
         hapticManager.vibrate()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-            if count == "GO!" {
-                state = .game
-                gameManager.startGame()
-                
-            }
-            else if count == "1" {
-                count = "GO!"
-            }
-            else {
-                count = String(Int(count)! - 1)
+        if isInGame {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                if count == "GO!" {
+                    state = .game
+                    gameManager.startGame()
+                    
+                }
+                else if count == "1" {
+                    count = "GO!"
+                }
+                else {
+                    count = String(Int(count)! - 1)
+                }
             }
         }
     }
