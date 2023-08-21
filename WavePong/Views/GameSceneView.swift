@@ -17,53 +17,55 @@ struct GameSceneView: View {
     @State var refreshCountPressed: Int = 0
     
     var gameScene: GameScene {
-        let scene = GameScene(size: viewModel.size, gameManager: viewModel.gameManager)
+        let scene = GameScene(size: viewModel.size,
+                              gameManager: viewModel.gameManager)
         scene.scaleMode = .fill
         
         return scene
     }
-        
+    
     
     var body: some View {
-        GeometryReader{ geo in
-            if refreshCountPressed % 2 == 0 {
-                gameView
-                    .ignoresSafeArea()
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                        
+                GeometryReader{ geo in
+                    if refreshCountPressed % 2 == 0 {
+                        gameView
+                            .ignoresSafeArea()
+                            .accessibilityRespondsToUserInteraction()
+                            .accessibilityElement()
+                            .accessibilityAddTraits(.allowsDirectInteraction)
+                            .onAppear(){
+                                viewModel.size = geo.size
+        
+                            }
+        
+                            .overlay {
+                                if viewModel.state == .pause {
+                                    pauseView
+        
+                                }
+                            }
                     }
- 
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-
-                        }
+                    else {
+                        gameView
+                            .ignoresSafeArea()
+                            .accessibilityRespondsToUserInteraction()
+                            .accessibilityElement()
+                            .accessibilityAddTraits(.allowsDirectInteraction)
+                            .onAppear(){
+                                viewModel.size = geo.size
+        
+                            }
+        
+                            .overlay {
+                                if viewModel.state == .pause {
+                                    pauseView
+                                } else if viewModel.state == .gameOver {
+                                    gameOverView
+                                }
+                            }
                     }
-            }
-            else {
-                gameView
-                    .ignoresSafeArea()
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                        
-                    }
-
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-
-                        }
-                    }
-            }
-            
-        }
+        
+                }
     }
     
     private var gameView: some View {
@@ -72,12 +74,64 @@ struct GameSceneView: View {
         
     }
     
+    private var backgroundImageView: some View {
+        Image("backgroundGame")
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
+    }
+    
+    private var gameOverView: some View {
+        ZStack {
+            backgroundImageView
+            
+            VStack(spacing: 48) {
+                VStack(spacing: 16) {
+                    Image("Game-over")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 208, height: 133)
+                    
+                    Text("Novo Recorde")
+                        .font(Font.wavePongPrimary(.body))
+                        .foregroundColor(Color(ColorConstants.AMARELO))
+                    
+                
+                }
+                
+                VStack(spacing: -16) {
+                    Text("15")
+                        .font(Font.wavePongSecundary(.scoreNumber))
+
+                    Text("Pontos")
+                        .font(Font.wavePongPrimary(.body))
+     
+                }
+
+                .foregroundColor(Color(ColorConstants.WHITE))
+                
+                HStack {
+                    HStack(spacing: 48)  {
+                        IconButton(.home) {
+                            viewModel.homeButtonPressed()
+                            presentation.wrappedValue.dismiss()
+                        }
+                        
+                        IconButton(.refresh) {
+                            SoundManager.shared.playGameTheme()
+                            viewModel.refreshPressed()
+                            refreshCountPressed += 1
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    
     private var pauseView: some View {
         ZStack {
-            Image("backgroundGame")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+            backgroundImageView
             
             VStack(spacing: 48) {
                 
@@ -89,7 +143,7 @@ struct GameSceneView: View {
                 LabelButton(buttonStyle: .resume) {
                     viewModel.continueButtonPressed()
                 }
-
+                
                 
                 HStack(spacing: 48)  {
                     IconButton(.home) {
@@ -105,7 +159,7 @@ struct GameSceneView: View {
                 }
             }
         }
-       
+        
     }
     
 }

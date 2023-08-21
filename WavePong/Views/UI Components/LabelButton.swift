@@ -38,7 +38,7 @@ struct LabelButton: View {
                     .scaledToFill()
                 
                 Text(textLabel)
-                    .font(Font.WavePongPrimary(.body))
+                    .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color("WHITE"))
             }
             .frame(width: 282, height: 84)

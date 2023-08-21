@@ -26,7 +26,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     }
     
     enum ViewMode {
-        case game, pause
+        case game, pause, gameOver
     }
     
     
@@ -42,8 +42,12 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func refreshPressed() {
         state = .game
-//        soundManager.stopGameTheme()
-//        gameManager.startGame()
+
+    }
+    
+    func gameOver() {
+        state = .gameOver
+        
     }
     
     
