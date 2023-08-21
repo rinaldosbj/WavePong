@@ -18,7 +18,7 @@ class GameManager {
     
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneDelegate?
-    var pauseButtonDelegate: GameManagerDelegate?
+    var gameManagerDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = Player()
     
@@ -41,7 +41,7 @@ class GameManager {
     func pauseButtonPressed() {
         soundManager.pauseGameTheme()
         sceneDelegate?.pausePressed()
-        pauseButtonDelegate?.pauseButtonPressed()
+        gameManagerDelegate?.pauseButtonPressed()
     }
     
     
@@ -88,8 +88,15 @@ extension GameManager: GameColisionDelegate {
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
             player.updateTopScore(NewTopScore: score)
+            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
+                                          recordLabel: "Novo recorde")
         } else {
             notifyUserOfEvent(.gameOver)
+            var topScore: Int {
+                Player.shared.userTopScore
+            }
+            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
+                                          recordLabel: "Recorde \(topScore)")
         }
         
         sceneDelegate?.gameOver()

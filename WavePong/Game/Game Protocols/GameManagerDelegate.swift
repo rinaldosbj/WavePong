@@ -15,6 +15,7 @@ protocol GameManagerDelegate {
     /// Once game should be paused, the methods sould be used for implementing view changes
     func pauseButtonPressed()
     
+    func gameOver(scoreLabel: String, recordLabel: String)
     
 }
 
