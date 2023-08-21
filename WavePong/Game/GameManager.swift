@@ -30,6 +30,7 @@ class GameManager {
     }
     
     func startGame() {
+        sceneDelegate?.startGame()
         soundManager.playGameTheme()
         score = 0
     }

@@ -44,7 +44,10 @@ struct GameSceneView: View {
                         } else if viewModel.state == .gameOver {
                             gameOverView
                         }
-                    }                    }
+                        else if viewModel.state == .countDown {
+                            countDownView
+                        }
+                            }                    }
             else {
                 gameView
                     .ignoresSafeArea()
@@ -61,6 +64,9 @@ struct GameSceneView: View {
                             pauseView
                         } else if viewModel.state == .gameOver {
                             gameOverView
+                        }
+                        else if viewModel.state == .countDown {
+                            countDownView
                         }
                     }
             }
@@ -79,6 +85,10 @@ struct GameSceneView: View {
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()
+    }
+    
+    private func startGame() {
+        gameScene.startGame()
     }
     
     private var gameOverView: some View {
@@ -152,7 +162,6 @@ struct GameSceneView: View {
                     }
                     
                     IconButton(.refresh) {
-                        SoundManager.shared.playGameTheme()
                         viewModel.refreshPressed()
                         refreshCountPressed += 1
                     }
@@ -160,6 +169,23 @@ struct GameSceneView: View {
             }
         }
         
+    }
+    
+    var countDownView: some View {
+        ZStack {
+            backgroundImageView
+            
+            Text(viewModel.count)
+            
+                .foregroundColor(.white)
+                .font(.custom("Strasua-Regular", size: 150))
+                .onAppear{
+                    viewModel.countDown()
+                }
+                .onChange(of: viewModel.count) { newValue in
+                    viewModel.countDown()
+                }
+        }
     }
 }
 
