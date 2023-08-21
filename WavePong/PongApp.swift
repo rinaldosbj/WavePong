@@ -13,15 +13,15 @@ struct PongApp: App {
     var body: some Scene {
         
         WindowGroup {
-                NavigationView {
-                    if !(player.onboradingHappend) {
-                        OnboardingView()
-                    }
-                    else {
-                        MenuView()
-                    }
+            NavigationView {
+                if player.onboradingHappend {
+                    MenuView()
                 }
-                .navigationViewStyle(.stack)
+                else {
+                    OnboardingView()
+                }
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }
