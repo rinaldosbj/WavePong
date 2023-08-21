@@ -35,7 +35,7 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        
+                        viewModel.isInGame.toggle()
                     }
                 
                     .overlay {
@@ -124,6 +124,8 @@ struct GameSceneView: View {
                     HStack(spacing: 48)  {
                         IconButton(.home) {
                             viewModel.homeButtonPressed()
+                            refreshCountPressed += 1
+                            viewModel.isInGame.toggle()
                             presentation.wrappedValue.dismiss()
                         }
                         
@@ -147,7 +149,7 @@ struct GameSceneView: View {
                 Image("PauseLabel")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 253, height: 71)
+                    .frame(width: 253, height: 140)
                 
                 
                 LabelButton(buttonStyle: .resume) {
@@ -157,8 +159,10 @@ struct GameSceneView: View {
                 
                 HStack(spacing: 48)  {
                     IconButton(.home) {
-                        viewModel.homeButtonPressed()
                         presentation.wrappedValue.dismiss()
+                        viewModel.homeButtonPressed()
+                        refreshCountPressed += 1
+                        viewModel.isInGame.toggle()
                     }
                     
                     IconButton(.refresh) {
