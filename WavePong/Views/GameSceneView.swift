@@ -147,7 +147,7 @@ struct GameSceneView: View {
                 Image("PauseLabel")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 253, height: 71)
+                    .frame(width: 253, height: 140)
                 
                 
                 LabelButton(buttonStyle: .resume) {
