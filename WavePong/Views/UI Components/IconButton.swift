@@ -11,7 +11,7 @@ import SwiftUI
 struct IconButton: View {
     
     enum ButtonStyle: String {
-        case settings, pause, start, gamecenter, home, refresh
+        case settings, pause, start, gameCenter, home, refresh
     }
     enum ButtonType: String {
         case action, link

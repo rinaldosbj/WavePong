@@ -60,7 +60,8 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func homeButtonPressed() {
         soundManager.stopGameTheme()
-        state = .game
+        state = .countDown
+        count = "3"
     }
     
     func countDown() {
