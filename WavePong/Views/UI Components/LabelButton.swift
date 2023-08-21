@@ -29,21 +29,28 @@ struct LabelButton: View {
     }
     
     var body: some View {
-        Button {
-            buttonAction()
-        } label: {
-            ZStack {
-                Image("BackgroundButton")
-                    .resizable()
-                    .scaledToFill()
-                
-                Text(textLabel)
-                    .font(Font.wavePongPrimary(.body))
-                    .foregroundColor(Color(ColorConstants.WHITE))
+        switch buttonStyle{
+        case .resume:
+            Button {
+                buttonAction()
+            } label: {
+                button
             }
-            .frame(width: 282, height: 84)
+        case .start:
+            button
         }
     }
     
-    
+    var button: some View {
+        ZStack {
+            Image("BackgroundButton")
+                .resizable()
+                .scaledToFill()
+            
+            Text(textLabel)
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.WHITE))
+        }
+        .frame(width: 282, height: 84)
+    }
 }
