@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Property 1=configurações.png",
+      "filename" : "Property 1=settings.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Property 1=configurações@2x.png",
+      "filename" : "Property 1=settings@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Property 1=configurações@3x.png",
+      "filename" : "Property 1=settings@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

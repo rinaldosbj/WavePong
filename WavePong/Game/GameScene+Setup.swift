@@ -51,9 +51,33 @@ extension GameScene {
         return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: CGSize(width: 60, height: 60))
     }
     
-    func createCloud() -> SKSpriteNode {
-        return  SKSpriteNode(color: .systemPink,
-                             size: self.size)
+    func createCloud() -> Cloud {
+        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 50,
+                                                height: self.size.height)
+        
+        return  Cloud(texture: SKTexture(imageNamed: "wave3"),
+                             color: .systemPink,
+                             size: sizeWithIncremente)
+    }
+    
+    func creatCloud2() -> Cloud {
+        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 65,
+                                                height: self.size.height)
+        
+        return  Cloud(texture: SKTexture(imageNamed: "wave2"),
+                             color: .systemPink,
+                             size: sizeWithIncremente)
+        
+    }
+    
+    func createCloud3() -> Cloud {
+        let sizeWithIncremente: CGSize = CGSize(width: self.size.width + 75,
+                                                height: self.size.height)
+        
+        return  Cloud(texture: SKTexture(imageNamed: "wave"),
+                             color: .systemPink,
+                             size: sizeWithIncremente)
+        
     }
     
     func createScoreLabel() -> ScoreLabel {
@@ -85,8 +109,18 @@ extension GameScene {
                                  y: self.frame.maxY + cloud.size.height/2)
         addChild(cloud)
         
+        cloud2.zPosition = 3
+        cloud2.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud2)
         
-        scoreLabel.zPosition = 3
+        cloud3.zPosition = 3
+        cloud3.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud3)
+        
+        
+        scoreLabel.zPosition = 4
         scoreLabel.position = CGPoint(x: 50,
                                       y: self.frame.maxY - 75)
         addChild(scoreLabel)
@@ -94,7 +128,7 @@ extension GameScene {
         
         pauseNode.position = CGPoint(x: self.frame.maxX - 50,
                                      y: self.frame.maxY - 50)
-        pauseNode.zPosition = 4
+        pauseNode.zPosition = 5
         addChild(pauseNode)
         
         

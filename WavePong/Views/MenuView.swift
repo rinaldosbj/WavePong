@@ -43,7 +43,7 @@ struct MenuView: View {
                         NavigationLink(destination: {
                             SoundBoardView()
                         }) {
-                            IconButton(.gamecenter, buttonType: .link, buttonAction: {})
+                            IconButton(.gameCenter, buttonType: .link, buttonAction: {})
                         }
                             .foregroundColor(.yellow)
                             .accessibilityLabel("game center")
