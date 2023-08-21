@@ -10,22 +10,25 @@ import SpriteKit
 
 
 struct GameSceneView: View {
+    @Environment(\.presentationMode) var presentation
     
-    @ObservedObject var viewModel = GameSceneViewModel()
+    @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel()
     
+    @State var refreshCountPressed: Int = 0
     
-    private var gameScene: GameScene {
+    var gameScene: GameScene {
         let scene = GameScene(size: viewModel.size, gameManager: viewModel.gameManager)
-        scene.size = viewModel.size
-        scene.scaleMode = .aspectFit
+        scene.scaleMode = .fill
+        
         return scene
     }
+        
     
     var body: some View {
         GeometryReader{ geo in
-            switch viewModel.state {
-            case .game:
+            if refreshCountPressed % 2 == 0 {
                 gameView
+                    .ignoresSafeArea()
                     .accessibilityRespondsToUserInteraction()
                     .accessibilityElement()
                     .accessibilityAddTraits(.allowsDirectInteraction)
@@ -33,15 +36,31 @@ struct GameSceneView: View {
                         viewModel.size = geo.size
                         
                     }
-                    .onDisappear {
-                        gameScene.viewWillDisappear()
+ 
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
+
+                        }
                     }
-                
-                
-                
-            case .pause:
-                pauseView
-                
+            }
+            else {
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .onAppear(){
+                        viewModel.size = geo.size
+                        
+                    }
+
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
+
+                        }
+                    }
             }
             
         }
@@ -73,12 +92,15 @@ struct GameSceneView: View {
 
                 
                 HStack(spacing: 48)  {
-                    IconButton(.pause) {
-                        
+                    IconButton(.home) {
+                        viewModel.homeButtonPressed()
+                        presentation.wrappedValue.dismiss()
                     }
                     
                     IconButton(.refresh) {
-                        
+                        SoundManager.shared.playGameTheme()
+                        viewModel.refreshPressed()
+                        refreshCountPressed += 1
                     }
                 }
             }

@@ -60,7 +60,7 @@ class GameScene: SKScene {
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
-        
+        gameManager.startGame()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -111,6 +111,10 @@ class GameScene: SKScene {
 }
 
 extension GameScene: GameSceneDelegate {
+    func resumeGame() {
+        self.isPaused = false
+    }
+    
     func UserScored(newScore score: Int) {
         scoreLabel.text = "\(score)"
         backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
@@ -118,11 +122,11 @@ extension GameScene: GameSceneDelegate {
     }
     
     func gameOver() {
-        isPaused = true
+        self.isPaused = true
     }
     
     func pausePressed() {
-        isPaused = true
+        self.scene?.isPaused = true
         
     }
     

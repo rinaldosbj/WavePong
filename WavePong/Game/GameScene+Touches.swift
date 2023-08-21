@@ -15,6 +15,7 @@ extension GameScene{
         
         if pauseNode.contains(location) {
             gameManager.pauseButtonPressed()
+         
         }
         
         var horizontalLocation: Double {
