@@ -77,9 +77,10 @@ class GameScene: SKScene {
     }
     
     func moveCloudsVertical() {
-        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 90), duration: 20))
-        cloud2.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 95), duration: 20))
-        cloud3.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
+        cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
+        cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
+
     }
     
     func moveCloudsHorizontal() {
@@ -111,8 +112,8 @@ class GameScene: SKScene {
     }
     
     func moveCloudNode3Horizontal() {
-        let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 0.25)
-        let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 0.25)
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 1)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 1)
         
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)
