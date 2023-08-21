@@ -15,6 +15,8 @@ struct OnboardingView: View {
     
     @State var viewState = 5
     
+    @Environment(\.presentationMode) var presentation
+    
     private func nextView() {
         viewState -= 1
         hapticsManager.vibrateNotification(for: .success)
@@ -40,7 +42,14 @@ struct OnboardingView: View {
                     .onTapGesture { nextView() }
             case 1:
                 PausarView()
-                    .onTapGesture { nextView() }
+                    .onTapGesture {
+                        if player.onboradingHappend {
+                            presentation.wrappedValue.dismiss()
+                        }
+                        else {
+                            nextView()
+                        }
+                    }
             default:
                 MenuView()
                     .onAppear {

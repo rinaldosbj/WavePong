@@ -13,13 +13,19 @@ struct IconButton: View {
     enum ButtonStyle: String {
         case settings, pause, start, gamecenter, home, refresh
     }
+    enum ButtonType: String {
+        case action, link
+    }
     
     var buttonStyle: ButtonStyle
     
+    var buttonType: ButtonType
+    
     var buttonAction: () -> Void
     
-    init(_ buttonStyle: ButtonStyle, buttonAction: @escaping () -> Void) {
+    init(_ buttonStyle: ButtonStyle, buttonType: ButtonType = .action, buttonAction: @escaping () -> Void) {
         self.buttonStyle = buttonStyle
+        self.buttonType = buttonType
         self.buttonAction = buttonAction
     }
     
@@ -29,15 +35,23 @@ struct IconButton: View {
     
     
     var body: some View {
-        Button {
-            buttonAction()
-        } label: {
-            Image(buttonImageString)
-                .resizable()
-                .frame(width: 104, height: 104)
+        switch buttonType{
+        case .action:
+            Button {
+                buttonAction()
+            } label: {
+                button
+            }
+        case .link:
+                button
         }
-
         
+    }
+    
+    var button: some View {
+        Image(buttonImageString)
+            .resizable()
+            .frame(width: 104, height: 104)
     }
 }
 
