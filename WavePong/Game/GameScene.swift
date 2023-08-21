@@ -48,8 +48,6 @@ class GameScene: SKScene {
         setupGameManager()
         setupWorld()
         setupComponentsPosition()
-        startGame()
-    
     }
     
     func viewWillDisappear() {
@@ -60,7 +58,6 @@ class GameScene: SKScene {
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
-        gameManager.startGame()
     }
     
     override func update(_ currentTime: TimeInterval) {
