@@ -26,46 +26,46 @@ struct GameSceneView: View {
     
     
     var body: some View {
-                GeometryReader{ geo in
-                    if refreshCountPressed % 2 == 0 {
-                        gameView
-                            .ignoresSafeArea()
-                            .accessibilityRespondsToUserInteraction()
-                            .accessibilityElement()
-                            .accessibilityAddTraits(.allowsDirectInteraction)
-                            .onAppear(){
-                                viewModel.size = geo.size
-        
-                            }
-        
-                            .overlay {
-                                if viewModel.state == .pause {
-                                    pauseView
-        
-                                }
-                            }
+        GeometryReader{ geo in
+            if refreshCountPressed % 2 == 0 {
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .onAppear(){
+                        viewModel.size = geo.size
+                        
                     }
-                    else {
-                        gameView
-                            .ignoresSafeArea()
-                            .accessibilityRespondsToUserInteraction()
-                            .accessibilityElement()
-                            .accessibilityAddTraits(.allowsDirectInteraction)
-                            .onAppear(){
-                                viewModel.size = geo.size
-        
-                            }
-        
-                            .overlay {
-                                if viewModel.state == .pause {
-                                    pauseView
-                                } else if viewModel.state == .gameOver {
-                                    gameOverView
-                                }
-                            }
+                
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
+                        } else if viewModel.state == .gameOver {
+                            gameOverView
+                        }
+                    }                    }
+            else {
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityRespondsToUserInteraction()
+                    .accessibilityElement()
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .onAppear(){
+                        viewModel.size = geo.size
+                        
                     }
-        
-                }
+                
+                    .overlay {
+                        if viewModel.state == .pause {
+                            pauseView
+                        } else if viewModel.state == .gameOver {
+                            gameOverView
+                        }
+                    }
+            }
+            
+        }
     }
     
     private var gameView: some View {
@@ -92,22 +92,22 @@ struct GameSceneView: View {
                         .scaledToFill()
                         .frame(width: 208, height: 133)
                     
-                    Text("Novo Recorde")
+                    Text(viewModel.recordLabel)
                         .font(Font.wavePongPrimary(.body))
                         .foregroundColor(Color(ColorConstants.AMARELO))
                     
-                
+                    
                 }
                 
                 VStack(spacing: -16) {
-                    Text("15")
+                    Text(viewModel.userScore)
                         .font(Font.wavePongSecundary(.scoreNumber))
-
+                    
                     Text("Pontos")
                         .font(Font.wavePongPrimary(.body))
-     
+                    
                 }
-
+                
                 .foregroundColor(Color(ColorConstants.WHITE))
                 
                 HStack {
