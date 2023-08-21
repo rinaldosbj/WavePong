@@ -17,7 +17,9 @@ class GameScene: SKScene {
     var gameManager: GameManager
     var ball: Ball!
     var paddle: Paddle!
-    var cloud: SKSpriteNode!
+    var cloud: Cloud!
+    var cloud2: Cloud!
+    var cloud3: Cloud!
     var scoreLabel: ScoreLabel!
     var borderNode: Border!
     var pauseNode: PauseNode!
@@ -34,6 +36,8 @@ class GameScene: SKScene {
         self.ball = createBall()
         self.paddle = createPaddle()
         self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
         self.scoreLabel = createScoreLabel()
         self.pauseNode = createPauseNode()
         
@@ -57,7 +61,8 @@ class GameScene: SKScene {
     
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
-        cloud.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.midY + 100), duration: 20))
+        moveClouds()
+
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -66,6 +71,56 @@ class GameScene: SKScene {
         updateBallSpeed()
     }
     
+    func moveClouds() {
+        moveCloudsVertical()
+        moveCloudsHorizontal()
+    }
+    
+    func moveCloudsVertical() {
+        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
+        cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
+        cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
+
+    }
+    
+    func moveCloudsHorizontal() {
+        moveCloudNodeHorizontal()
+        moveCloudNode2Horizontal()
+        moveCloudNode3Horizontal()
+    }
+      
+    func moveCloudNodeHorizontal() {
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 25, duration: 0.75)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 25, duration: 0.75)
+        
+        let sequence = SKAction.sequence([moveLeft, moveRight])
+        let repeatForever = SKAction.repeatForever(sequence)
+        
+        cloud.run(repeatForever)
+
+    }
+    
+    func moveCloudNode2Horizontal() {
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 15, duration: 1.33)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 15, duration: 1.33)
+        
+        let sequence = SKAction.sequence([moveRight, moveLeft])
+        let repeatForever = SKAction.repeatForever(sequence)
+        
+        cloud2.run(repeatForever)
+
+    }
+    
+    func moveCloudNode3Horizontal() {
+        let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 1)
+        let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 1)
+        
+        let sequence = SKAction.sequence([moveLeft, moveRight])
+        let repeatForever = SKAction.repeatForever(sequence)
+        
+        cloud3.run(repeatForever)
+        
+    }
     
     private func updateBallSpeed(increment: CGFloat = 0.5) {
         if ballSpeed < balSpeedMax {
