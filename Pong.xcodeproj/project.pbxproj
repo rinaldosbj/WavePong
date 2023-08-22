@@ -125,6 +125,7 @@
 		D3BF927D28FEF6CD00EEF09B /* PongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongApp.swift; sourceTree = "<group>"; };
 		D3BF928128FEF6CF00EEF09B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3BF928428FEF6CF00EEF09B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3C24F172A953BA40083F842 /* WavePong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WavePong.entitlements; sourceTree = "<group>"; };
 		D3E10B6B2A86BE5800E30649 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -317,6 +318,7 @@
 		D3BF927C28FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXGroup;
 			children = (
+				D3C24F172A953BA40083F842 /* WavePong.entitlements */,
 				0DF0390F2A93E1120005551B /* Utils */,
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				0DF0390A2A93E0670005551B /* Delegate */,
@@ -591,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WavePong/WavePong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
@@ -611,7 +614,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -625,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WavePong/WavePong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
@@ -645,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SWIFT_EMIT_LOC_STRINGS = YES;
