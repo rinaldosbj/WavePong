@@ -81,6 +81,24 @@ extension GameManager: GameColisionDelegate {
         
     }
     
+    public func didExit() {
+        isGameRunning = false
+        soundManager.pauseGameTheme()
+        
+        if isNewRecord {
+            player.updateTopScore(NewTopScore: score)
+            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
+                                          recordLabel: "Novo recorde")
+        } else {
+            var topScore: Int {
+                Player.shared.userTopScore
+            }
+            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
+                                          recordLabel: "Recorde \(topScore)")
+        }
+        
+        sceneDelegate?.gameOver()
+    }
     
     public func didLose() {
         isGameRunning = false

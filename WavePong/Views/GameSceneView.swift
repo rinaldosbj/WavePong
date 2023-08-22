@@ -12,7 +12,7 @@ import SpriteKit
 struct GameSceneView: View {
     @Environment(\.presentationMode) var presentation
     
-    @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel()
+    @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel.shared
     
     @State var refreshCountPressed: Int = 0
     
@@ -35,7 +35,6 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        viewModel.isInGame = true
                     }
                 
                     .overlay {
@@ -44,10 +43,9 @@ struct GameSceneView: View {
                         } else if viewModel.state == .gameOver {
                             gameOverView
                         }
-                        else if viewModel.state == .countDown {
-                            countDownView
-                        }
-                            }                    }
+                            }
+                
+            }
             else {
                 gameView
                     .ignoresSafeArea()
@@ -56,17 +54,12 @@ struct GameSceneView: View {
                     .accessibilityAddTraits(.allowsDirectInteraction)
                     .onAppear(){
                         viewModel.size = geo.size
-                        viewModel.isInGame = true
                     }
-                
                     .overlay {
                         if viewModel.state == .pause {
                             pauseView
                         } else if viewModel.state == .gameOver {
                             gameOverView
-                        }
-                        else if viewModel.state == .countDown {
-                            countDownView
                         }
                     }
             }
@@ -125,7 +118,6 @@ struct GameSceneView: View {
                         IconButton(.home) {
                             viewModel.homeButtonPressed()
                             refreshCountPressed += 1
-                            viewModel.isInGame.toggle()
                             presentation.wrappedValue.dismiss()
                         }
                         
@@ -162,7 +154,6 @@ struct GameSceneView: View {
                         presentation.wrappedValue.dismiss()
                         viewModel.homeButtonPressed()
                         refreshCountPressed += 1
-                        viewModel.isInGame.toggle()
                     }
                     
                     IconButton(.refresh) {
@@ -175,6 +166,7 @@ struct GameSceneView: View {
         
     }
     
+    /*
     var countDownView: some View {
         ZStack {
             backgroundImageView
@@ -191,6 +183,7 @@ struct GameSceneView: View {
                 }
         }
     }
+     */
 }
 
 

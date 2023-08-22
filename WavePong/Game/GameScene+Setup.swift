@@ -38,6 +38,45 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
+    func createCountDown() {
+        let countTexture = [
+            SKTexture(imageNamed: "count1"),
+            SKTexture(imageNamed: "count2"),
+            SKTexture(imageNamed: "count3")
+        ]
+        
+        countDownBackground = SKSpriteNode(color: .black, size: self.size)
+        countDownBackground.alpha = 0.7
+        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownBackground.zPosition = 1000
+        addChild(countDownBackground)
+        
+        countDown = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
+        countDown.size = CGSize(width: 54, height: 87)
+        countDown.zPosition = 1000
+        countDown.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(countDown)
+        
+        let animation1 = SKAction.animate(with: countTexture, timePerFrame: 1)
+        let perform1 = SKAction.run { [weak self] in
+           self?.countDown.size = CGSize(width: 160, height: 87)
+        }
+        let animation2 = SKAction.animate(with: [SKTexture(imageNamed: "count4")], timePerFrame: 1)
+        let perform2 = SKAction.run { [weak self] in
+            if self?.isInGame() == true {
+                self?.countDownBackground.isHidden = true
+                self?.countDown.isHidden = true
+                self?.gameManager.startGame()
+                self?.canPause = true
+            }
+        }
+        
+        let countDownSequence = SKAction.sequence([animation1,perform1,animation2,perform2])
+        
+        countDown.run(countDownSequence)
+        
+    }
+    
     func createPaddle() -> Paddle {
         let proportionalWidth: Double = Double(frame.width / 3)
         

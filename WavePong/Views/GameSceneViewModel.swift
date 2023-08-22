@@ -12,12 +12,11 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     var hapticManager: HapticsManager
     
     @Published var size: CGSize = CGSize()
-    @Published var state: ViewMode = .countDown
+    @Published var state: ViewMode = .game
     @Published var userScore: String = ""
     @Published var recordLabel: String = ""
-    @Published var count: String = "3"
-    
-    var isInGame = false
+        
+    static let shared = GameSceneViewModel()
     
     var gameManager: GameManager
     
@@ -33,7 +32,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     }
     
     enum ViewMode {
-        case game, pause, gameOver, countDown
+        case game, pause, gameOver
     }
     
     
@@ -48,8 +47,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     }
     
     func refreshPressed() {
-        count = "3"
-        state = .countDown
+        state = .game
     } 
     
     
@@ -63,24 +61,5 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     func homeButtonPressed() {
         soundManager.stopGameTheme()
         refreshPressed()
-    }
-    
-    func countDown() {
-        hapticManager.vibrate()
-        if isInGame {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-                if count == "GO!" {
-                    state = .game
-                    gameManager.startGame()
-                    
-                }
-                else if count == "1" {
-                    count = "GO!"
-                }
-                else {
-                    count = String(Int(count)! - 1)
-                }
-            }
-        }
     }
 }
