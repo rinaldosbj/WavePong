@@ -14,8 +14,9 @@ extension GameScene{
         let location = touch.location(in: self)
         
         if pauseNode.contains(location) {
-            gameManager.pauseButtonPressed()
-         
+            if canPause {
+                gameManager.pauseButtonPressed()
+            }
         }
         
         var horizontalLocation: Double {

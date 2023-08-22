@@ -23,10 +23,14 @@ class GameScene: SKScene {
     var scoreLabel: ScoreLabel!
     var borderNode: Border!
     var pauseNode: PauseNode!
+    var countDown: SKSpriteNode!
+    var countDownBackground : SKSpriteNode!
     
     
     var ballSpeed: CGFloat = 500
     let balSpeedMax: CGFloat = 1500
+    
+    var canPause = false
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
@@ -42,7 +46,6 @@ class GameScene: SKScene {
         self.cloud3 = createCloud3()
         self.scoreLabel = createScoreLabel()
         self.pauseNode = createPauseNode()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,14 +54,18 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
-        setupGameManager()
-        setupWorld()
-        setupComponentsPosition()
+        if isInGame() {
+            setupGameManager()
+            setupWorld()
+            setupComponentsPosition()
+            createCountDown()
+        }
     }
     
-    func viewWillDisappear() {
-        isPaused = true
-        soundManager.stopGameTheme()
+    override func willMove(from view: SKView) {
+        if isInGame() {
+            gameManager.didLose()
+        }
     }
     
     func startGame() {
@@ -167,6 +174,7 @@ class GameScene: SKScene {
 extension GameScene: GameSceneDelegate {
     func resumeGame() {
         self.isPaused = false
+        soundManager.resumeGameTheme()
     }
     
     func UserScored(newScore score: Int) {
@@ -182,6 +190,15 @@ extension GameScene: GameSceneDelegate {
     func pausePressed() {
         self.scene?.isPaused = true
         
+    }
+    
+    func isInGame() -> Bool {
+        if GameSceneViewModel.shared.state == .game {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
 }
