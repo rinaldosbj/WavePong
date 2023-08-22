@@ -19,6 +19,9 @@
 		0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363F12A8D266A002DAB8C /* IconButton.swift */; };
 		0C6363F42A8D268F002DAB8C /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363F32A8D268F002DAB8C /* LabelButton.swift */; };
 		0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */; };
+		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
+		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
+		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */; };
 		0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */; };
 		0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */; };
@@ -79,6 +82,7 @@
 		0C6363F12A8D266A002DAB8C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
+		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts Extension.swift"; sourceTree = "<group>"; };
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */,
+				0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +327,7 @@
 				D3BF928128FEF6CF00EEF09B /* Assets.xcassets */,
 				0DF0390A2A93E0670005551B /* Delegate */,
 				864FCABD2908665A00CA0664 /* Info.plist */,
+				0C956B562A953D2400277D99 /* GoogleService-Info.plist */,
 				D3BF927D28FEF6CD00EEF09B /* PongApp.swift */,
 				0C8648E62A8D68D300017F29 /* Manager */,
 				0C8648E52A8D678E00017F29 /* Views */,
@@ -356,6 +363,10 @@
 			dependencies = (
 			);
 			name = WavePong;
+			packageProductDependencies = (
+				0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */,
+				0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */,
+			);
 			productName = DvdScreensaver;
 			productReference = D3BF927A28FEF6CD00EEF09B /* Pong.app */;
 			productType = "com.apple.product-type.application";
@@ -385,6 +396,9 @@
 				"pt-BR",
 			);
 			mainGroup = D3BF927128FEF6CD00EEF09B;
+			packageReferences = (
+				0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D3BF927B28FEF6CD00EEF09B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -419,6 +433,7 @@
 				0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */,
 				0CF648652A7944AA00282A52 /* alert.mp3 in Resources */,
 				0CF648892A7D23AB00282A52 /* horse.mp3 in Resources */,
+				0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +609,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -628,7 +643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -676,6 +691,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D3BF927228FEF6CD00EEF09B /* Project object */;
 }
