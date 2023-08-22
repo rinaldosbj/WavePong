@@ -62,11 +62,12 @@ class GameScene: SKScene {
         }
     }
     
-    override func willMove(from view: SKView) {
-        if isInGame() {
-            gameManager.didLose()
-        }
-    }
+//    override func willMove(from view: SKView) {
+//        print("entrou no willMove")
+//        if isInGame() {
+//            gameManager.didExit()
+//        }
+//    }
     
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))

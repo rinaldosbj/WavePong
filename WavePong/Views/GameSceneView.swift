@@ -43,7 +43,9 @@ struct GameSceneView: View {
                         } else if viewModel.state == .gameOver {
                             gameOverView
                         }
-                            }                    }
+                            }
+                
+            }
             else {
                 gameView
                     .ignoresSafeArea()
