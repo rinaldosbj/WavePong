@@ -35,14 +35,25 @@ struct ConfigurationView: View {
                         .foregroundColor(.white)
                         .underline(color:Color("amarelo"))
                 }
+                .accessibilityLabel(Text("Rever tutorial"))
                 
                 HStack {
                     Text("Notificações")
                         .font(.custom("DaysOne-Regular", size: 24))
                         .layoutPriority(.greatestFiniteMagnitude)
                         .foregroundColor(.white)
-                    Toggle("", isOn: $togle)
-                        .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
+                        .accessibilityHidden(true)
+                    if togle {
+                        Toggle("", isOn: $togle)
+                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
+                            .accessibilityLabel(Text("Desativar notificações"))
+                        
+                    }
+                    else {
+                        Toggle("", isOn: $togle)
+                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
+                            .accessibilityLabel(Text("Ativar notificações"))
+                    }
                 }
                 
                 
