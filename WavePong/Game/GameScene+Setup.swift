@@ -46,7 +46,7 @@ extension GameScene {
         ]
         
         countDownBackground = SKSpriteNode(color: .black, size: self.size)
-        countDownBackground.alpha = 0.5
+        countDownBackground.alpha = 0.7
         countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
         countDownBackground.zPosition = 1000
         addChild(countDownBackground)
