@@ -11,6 +11,7 @@ import SwiftUI
 struct PongApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var notificationManager = NotificationManager.shared
     var player = Player.shared
