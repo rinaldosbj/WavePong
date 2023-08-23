@@ -10,7 +10,7 @@ import Foundation
 /// Protocol for updating game scene from triggers of game logic
 ///
 /// This interface allows the game logic to inform scene for needed updates of it's state
-protocol GameSceneDelegate {
+protocol GameSceneDelegate: AnyObject {
     
     /// Once player scored, the methods should be used by the game scene to inform user
     func UserScored(newScore score: Int)
@@ -25,4 +25,5 @@ protocol GameSceneDelegate {
     
     func startGame()
     
+    func resetGame()
 }

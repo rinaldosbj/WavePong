@@ -59,15 +59,10 @@ class GameScene: SKScene {
             setupWorld()
             setupComponentsPosition()
             createCountDown()
+
         }
     }
-    
-//    override func willMove(from view: SKView) {
-//        print("entrou no willMove")
-//        if isInGame() {
-//            gameManager.didExit()
-//        }
-//    }
+
     
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
@@ -173,9 +168,33 @@ class GameScene: SKScene {
 }
 
 extension GameScene: GameSceneDelegate {
-    func resumeGame() {
+    func resetGame() {
+        
+        removeAllChildren()
+        
+        
         self.isPaused = false
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
+        self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
+        
+        setupGameManager()
+        setupWorld()
+        setupComponentsPosition()
+        createCountDown()
+
+
+        ballSpeed = 500
+        
+    }
+    
+    func resumeGame() {
         soundManager.resumeGameTheme()
+        isPaused = false
     }
     
     func UserScored(newScore score: Int) {

@@ -17,8 +17,8 @@ class GameManager {
     var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
-    var sceneDelegate: GameSceneDelegate?
-    var gameManagerDelegate: GameManagerDelegate?
+    weak var sceneDelegate: GameSceneDelegate?
+    weak var gameManagerDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = Player()
     
@@ -37,6 +37,11 @@ class GameManager {
     
     func resumeGame() {
         sceneDelegate?.resumeGame()
+    }
+    
+    func resetGame() {
+        score = 0
+        sceneDelegate?.resetGame()
     }
     
     func pauseButtonPressed() {
