@@ -44,6 +44,9 @@ struct GameSceneView: View {
                     .onAppear(){
                         viewModel.size = geo.size
                     }
+                    .onTapGesture(count: 2) {
+                        viewModel.pauseTap()
+                    }
                     .overlay {
                         if viewModel.state == .gameOver {
                             gameOverView

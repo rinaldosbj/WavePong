@@ -29,9 +29,7 @@ class GameScene: SKScene {
     
     var ballSpeed: CGFloat = 500
     let balSpeedMax: CGFloat = 1500
-    
-    var canPause = false
-    
+        
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
     public init(size: CGSize, gameManager: GameManager) {

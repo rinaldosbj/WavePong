@@ -36,8 +36,15 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     }
     
     
-    func pauseButtonPressed() {
+    func pauseNodePressed() {
         state = .pause
+    }
+    
+    func pauseTap() {
+        if gameManager.canPause {
+            gameManager.pauseButtonPressed()
+            state = .pause
+        }
         
     }
     
@@ -62,6 +69,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     func homeButtonPressed() {
         soundManager.stopGameTheme()
+        gameManager.restoreGameManager()
         state = .game
 //        refreshPressed()
     }

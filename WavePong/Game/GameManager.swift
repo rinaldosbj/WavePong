@@ -12,6 +12,7 @@ import SpriteKit
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
+    var canPause = false
     
     var soundManager: SoundManager = SoundManager.shared
     var hapticsManager: HapticsManager = HapticsManager.shared
@@ -27,6 +28,10 @@ class GameManager {
         
     }
     
+    func canPauseNow() {
+        canPause = true
+    }
+    
     func startGame() {
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
@@ -38,14 +43,29 @@ class GameManager {
     }
     
     func resetGame() {
-        score = 0
+        restoreGameManager()
         sceneDelegate?.resetGame()
     }
     
+    func restoreGameManager() {
+        canPause = false
+        score = 0
+    }
+    
     func pauseButtonPressed() {
-        soundManager.pauseGameTheme()
-        sceneDelegate?.pausePressed()
-        gameManagerDelegate?.pauseButtonPressed()
+        if canPause{
+            soundManager.pauseGameTheme()
+            sceneDelegate?.pausePressed()
+        }
+    }
+    
+    func pauseNodePressed() {
+        if canPause{
+            soundManager.pauseGameTheme()
+            sceneDelegate?.pausePressed()
+            gameManagerDelegate?.pauseNodePressed()
+        }
+        
     }
     
     
