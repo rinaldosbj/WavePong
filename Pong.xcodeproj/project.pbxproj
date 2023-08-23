@@ -65,6 +65,7 @@
 		D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54F2A8AAA3000BD946E /* PausarView.swift */; };
 		D391191D2A958A4200CA3C9E /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191C2A958A4200CA3C9E /* explosion.wav */; };
 		D391191F2A958BC000CA3C9E /* pickupCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191E2A958BC000CA3C9E /* pickupCoin.wav */; };
+		D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */; };
 		D3AEE22F2A96607200ED2382 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
 		D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928128FEF6CF00EEF09B /* Assets.xcassets */; };
@@ -132,6 +133,7 @@
 		D35EF54F2A8AAA3000BD946E /* PausarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarView.swift; sourceTree = "<group>"; };
 		D391191C2A958A4200CA3C9E /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		D391191E2A958BC000CA3C9E /* pickupCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickupCoin.wav; sourceTree = "<group>"; };
+		D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessibilityDirectInteractionTrait.swift; sourceTree = "<group>"; };
 		D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3BF927D28FEF6CD00EEF09B /* PongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongApp.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
+				D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */,
 				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
@@ -491,6 +494,7 @@
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
+				D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */,
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0DF039112A93E11E0005551B /* NotificationType.swift in Sources */,
@@ -632,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = 749Q737TF5;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -667,7 +671,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = 749Q737TF5;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;

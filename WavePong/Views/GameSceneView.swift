@@ -26,22 +26,9 @@ struct GameSceneView: View {
     
     var acessbility: Bool {
         if viewModel.state == .game {
-            return false
-        } else {
             return true
-        }
-    }
-    struct CustomModifier: ViewModifier {
-        var condition: Bool
-        
-        func body(content: Content) -> some View {
-            if condition { // assuming you have a condition here
-                return content
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-            } else {
-                return content
-                    .accessibilityRemoveTraits(.allowsDirectInteraction)
-            }
+        } else {
+            return false
         }
     }
     
@@ -53,7 +40,7 @@ struct GameSceneView: View {
                 gameView
                     .ignoresSafeArea()
                     .accessibilityElement()
-                    .modifier(CustomModifier(condition: acessbility))
+                    .modifier(AddAccessibilityDirectInteractionTrait(condition: acessbility))
                     .onAppear(){
                         viewModel.size = geo.size
                     }
