@@ -22,8 +22,6 @@ class GameManager {
     
     var player: PlayerProtocol = Player()
     
-    public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
-    
     init() {
         self.physicsDetection.gameActionDelegate = self
         

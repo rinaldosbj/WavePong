@@ -66,7 +66,7 @@ class GameScene: SKScene {
     
     func startGame() {
         ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
-        moveClouds()
+        animateClouds()
 
     }
     
@@ -76,25 +76,25 @@ class GameScene: SKScene {
         updateBallSpeed()
     }
     
-    func moveClouds() {
-        moveCloudsVertical()
-        moveCloudsHorizontal()
+    func animateClouds() {
+        CloudsVerticalAnimation()
+        CloudsHorizontalAnimation()
     }
     
-    func moveCloudsVertical() {
+    private func CloudsVerticalAnimation() {
         cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
         cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
         cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
 
     }
     
-    func moveCloudsHorizontal() {
+    private func CloudsHorizontalAnimation() {
         moveCloudNodeHorizontal()
         moveCloudNode2Horizontal()
         moveCloudNode3Horizontal()
     }
       
-    func moveCloudNodeHorizontal() {
+    private func moveCloudNodeHorizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 25, duration: 0.75)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 25, duration: 0.75)
         
@@ -105,7 +105,7 @@ class GameScene: SKScene {
 
     }
     
-    func moveCloudNode2Horizontal() {
+    private func moveCloudNode2Horizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 15, duration: 1.33)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 15, duration: 1.33)
         
@@ -116,7 +116,7 @@ class GameScene: SKScene {
 
     }
     
-    func moveCloudNode3Horizontal() {
+    private func moveCloudNode3Horizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 1)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 1)
         
@@ -169,25 +169,16 @@ class GameScene: SKScene {
 
 extension GameScene: GameSceneDelegate {
     func resetGame() {
-        
-        removeAllChildren()
-        
-        
+
         self.isPaused = false
-        self.ball = createBall()
-        self.paddle = createPaddle()
-        self.cloud = createCloud()
-        self.cloud2 = creatCloud2()
-        self.cloud3 = createCloud3()
-        self.scoreLabel = createScoreLabel()
-        self.pauseNode = createPauseNode()
+        
+        resetSpriteNodes()
         
         setupGameManager()
         setupWorld()
         setupComponentsPosition()
         createCountDown()
-
-
+        
         ballSpeed = 500
         
     }
@@ -199,7 +190,6 @@ extension GameScene: GameSceneDelegate {
     
     func UserScored(newScore score: Int) {
         scoreLabel.text = "\(score)"
-        backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
         
     }
     
@@ -210,6 +200,18 @@ extension GameScene: GameSceneDelegate {
     func pausePressed() {
         self.scene?.isPaused = true
         
+    }
+    
+    private func resetSpriteNodes() {
+        removeAllChildren()
+        
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
+        self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
     }
     
     func isInGame() -> Bool {
