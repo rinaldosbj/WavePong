@@ -33,6 +33,7 @@ struct PosicaoView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .padding(.bottom, -32)
+                    .accessibilityHint("Toque duas vezes na tela para continuar")
                 
                 ZStack {
                     VStack {

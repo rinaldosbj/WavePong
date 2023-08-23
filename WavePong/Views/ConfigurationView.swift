@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConfigurationView: View {
     
+    @Environment(\.presentationMode) var presentation
     @State var togle : Bool = false
     
     var body: some View {
@@ -37,27 +38,42 @@ struct ConfigurationView: View {
                 }
                 .accessibilityLabel(Text("Rever tutorial"))
                 
-                HStack {
-                    Text("Notificações")
-                        .font(.custom("DaysOne-Regular", size: 24))
-                        .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(.white)
-                        .accessibilityHidden(true)
-                    if togle {
-                        Toggle("", isOn: $togle)
-                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
-                            .accessibilityLabel(Text("Desativar notificações"))
-                        
-                    }
-                    else {
-                        Toggle("", isOn: $togle)
-                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
-                            .accessibilityLabel(Text("Ativar notificações"))
-                    }
-                }
-                
-                
+//                HStack {
+//                    Text("Notificações")
+//                        .font(.custom("DaysOne-Regular", size: 24))
+//                        .layoutPriority(.greatestFiniteMagnitude)
+//                        .foregroundColor(.white)
+//                        .accessibilityHidden(true)
+//                    if togle {
+//                        Toggle("", isOn: $togle)
+//                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
+//                            .accessibilityLabel(Text("Desativar notificações"))
+//
+//                    }
+//                    else {
+//                        Toggle("", isOn: $togle)
+//                            .toggleStyle(ImageToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
+//                            .accessibilityLabel(Text("Ativar notificações"))
+//                    }
+//                }
             }.padding(.horizontal, 60)
+         
+            HStack {
+                VStack {
+                    Button {
+                        presentation.wrappedValue.dismiss()
+                    } label: {
+                        Text("  < Voltar")
+                            .font(.custom("DaysOne-Regular", size: 24))
+                            .layoutPriority(.greatestFiniteMagnitude)
+                            .foregroundColor(.white)
+                    }
+                    .accessibilityLabel("Voltar")
+                    Spacer()
+                }
+                Spacer()
+            }
+            
         }
     }
 }
