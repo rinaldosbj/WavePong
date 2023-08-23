@@ -27,23 +27,42 @@ struct GameSceneView: View {
     
     var body: some View {
         GeometryReader{ geo in
-            gameView
-                .ignoresSafeArea()
-                .accessibilityElement()
-                .accessibilityAddTraits(.allowsDirectInteraction)
-                .onAppear(){
-                    viewModel.size = geo.size
-                }
             
-                .overlay {
-                    if viewModel.state == .pause {
-                        pauseView
-                        
-                    } else if viewModel.state == .gameOver {
-                        gameOverView
-
-                    }
+            ZStack {
+                switch viewModel.state  {
+                case .game:
+                    gameView
+                        .ignoresSafeArea()
+                        .accessibilityElement()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onAppear(){
+                            viewModel.size = geo.size
+                        }
+                    
+                case .gameOver:
+                    gameOverView
+                    
+                case .pause:
+                    pauseView
                 }
+            }
+//            gameView
+//                .ignoresSafeArea()
+//                .accessibilityElement()
+//                .accessibilityAddTraits(.allowsDirectInteraction)
+//                .onAppear(){
+//                    viewModel.size = geo.size
+//                }
+//            
+//                .overlay {
+//                    if viewModel.state == .pause {
+//                        pauseView
+//                        
+//                    } else if viewModel.state == .gameOver {
+//                        gameOverView
+//
+//                    }
+//                }
             
         }
         
