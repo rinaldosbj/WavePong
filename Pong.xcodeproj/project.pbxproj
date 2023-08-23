@@ -42,6 +42,8 @@
 		0CF6488A2A7D23AB00282A52 /* transition.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648832A7D23AB00282A52 /* transition.mp3 */; };
 		0CF6488B2A7D23AB00282A52 /* winter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648842A7D23AB00282A52 /* winter.mp3 */; };
 		0CF6488C2A7D23AB00282A52 /* slimejump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648852A7D23AB00282A52 /* slimejump.mp3 */; };
+		0DB4EFE52A954BF1002E441A /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */; };
+		0DB4EFE72A954C8E002E441A /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE62A954C8E002E441A /* LeaderboardView.swift */; };
 		0DF0390C2A93E07C0005551B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0390B2A93E07C0005551B /* AppDelegate.swift */; };
 		0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0390D2A93E0D60005551B /* NotificationManager.swift */; };
 		0DF039112A93E11E0005551B /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF039102A93E11E0005551B /* NotificationType.swift */; };
@@ -102,6 +104,8 @@
 		0CF648832A7D23AB00282A52 /* transition.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = transition.mp3; sourceTree = "<group>"; };
 		0CF648842A7D23AB00282A52 /* winter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winter.mp3; sourceTree = "<group>"; };
 		0CF648852A7D23AB00282A52 /* slimejump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slimejump.mp3; sourceTree = "<group>"; };
+		0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
+		0DB4EFE62A954C8E002E441A /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		0DF0390B2A93E07C0005551B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DF0390D2A93E0D60005551B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DF039102A93E11E0005551B /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,
+				0DB4EFE62A954C8E002E441A /* LeaderboardView.swift */,
 				0C8648E42A8D676000017F29 /* UI Components */,
 				D35EF5462A8AA7E300BD946E /* Onboarding */,
 				0CF6486E2A7946F100282A52 /* TestingViews */,
@@ -182,6 +187,7 @@
 				0CF648562A7846AD00282A52 /* SoundManager.swift */,
 				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
+				0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
 				0C6363F02A8D0A28002DAB8C /* GameSceneViewModel.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
+				0DB4EFE52A954BF1002E441A /* GameCenterManager.swift in Sources */,
 				0C6363EE2A8BF830002DAB8C /* ScoreLabel.swift in Sources */,
 				0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */,
 				0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */,
@@ -455,6 +462,7 @@
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
+				0DB4EFE72A954C8E002E441A /* LeaderboardView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,

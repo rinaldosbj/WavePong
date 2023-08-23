@@ -41,7 +41,7 @@ struct MenuView: View {
                             .accessibilityLabel("Configurações")
                             .padding(.trailing,48)
                         NavigationLink(destination: {
-                            SoundBoardView()
+                            LeaderboardView()
                         }) {
                             IconButton(.gameCenter, buttonType: .link, buttonAction: {})
                         }
