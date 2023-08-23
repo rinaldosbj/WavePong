@@ -29,24 +29,29 @@ struct MenuView: View {
                         LabelButton(buttonStyle: .start, buttonAction:{})
                     }
                     .foregroundColor(.yellow)
-                    .accessibilityLabel("começar")
+                    .accessibilityLabel("jogar")
+                    .accessibilityHint("Toque duas vezes na tela para começar um novo jogo")
                     Spacer().frame(height: 48)
                     HStack {
                         NavigationLink(destination: {
                             ConfigurationView()
+                                .navigationBarBackButtonHidden()
                         }) {
                             IconButton(.settings, buttonType: .link, buttonAction: {})
                         }
                             .foregroundColor(.yellow)
                             .accessibilityLabel("Configurações")
+                            .accessibilityHint("Toque duas vezes na tela para ir para a tela de configurações")
                             .padding(.trailing,48)
                         NavigationLink(destination: {
-                            SoundBoardView()
+                            ComingSoonView()
+                                .navigationBarBackButtonHidden()
                         }) {
                             IconButton(.gameCenter, buttonType: .link, buttonAction: {})
                         }
                             .foregroundColor(.yellow)
                             .accessibilityLabel("game center")
+                            .accessibilityHint("Toque duas vezes na tela para ir para a tela do game Center")
                     }
                 }
             }

@@ -32,6 +32,7 @@ struct RebaterView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
+                    .accessibilityHint("Toque duas vezes na tela para continuar")
                 Spacer()
                 
                 VStack {

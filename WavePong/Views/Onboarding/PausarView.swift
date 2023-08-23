@@ -28,6 +28,7 @@ struct PausarView: View {
                     .minimumScaleFactor(15)
                     .multilineTextAlignment(.center)
                     .padding(40)
+                    .accessibilityHint("Toque duas vezes na tela para continuar")
                 
                 HStack{
                     Image(systemName: "circle.fill")
