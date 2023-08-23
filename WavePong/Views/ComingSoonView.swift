@@ -18,10 +18,7 @@ struct ComingSoonView: View {
                 .accessibilityHidden(true)
             
             VStack{
-                Image("disponivel")
-                    .accessibilityHidden(true)
-                
-                Text("em breve")
+                Text("Em breve")
                     .font(.custom("DaysOne-Regular", size: 36))
                     .layoutPriority(.greatestFiniteMagnitude)
                     .foregroundColor(.white)
