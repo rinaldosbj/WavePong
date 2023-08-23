@@ -107,8 +107,18 @@ public class SoundManager {
     
     // MARK: FX Sounds
     private func getURLSoundFX(for name: FXSounds) -> URL? {
-        return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
-        
+        switch name{
+        case .countDownBip:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        case .countDownEnd:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        case .explosion:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        case .pickupCoin:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        default:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
+        }
     }
     
     /// Play a FX Sound for a given type

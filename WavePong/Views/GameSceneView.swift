@@ -16,6 +16,8 @@ struct GameSceneView: View {
     
     @State var refreshCountPressed: Int = 0
     
+    @State var allowInteraction = true
+    
     var gameScene: GameScene {
         let scene = GameScene(size: viewModel.size,
                               gameManager: viewModel.gameManager)
@@ -27,43 +29,43 @@ struct GameSceneView: View {
     
     var body: some View {
         GeometryReader{ geo in
-            if refreshCountPressed % 2 == 0 {
-                gameView
-                    .ignoresSafeArea()
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                    }
-                
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-                        } else if viewModel.state == .gameOver {
-                            gameOverView
-                        }
-                            }
-                
+            if viewModel.state == .gameOver {
+                gameOverView
             }
             else {
-                gameView
-                    .ignoresSafeArea()
-                    .accessibilityRespondsToUserInteraction()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                    }
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-                        } else if viewModel.state == .gameOver {
-                            gameOverView
+                if refreshCountPressed % 2 == 0 {
+                    gameView
+                        .ignoresSafeArea()
+                        .accessibilityElement()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onAppear(){
+                            viewModel.size = geo.size
                         }
-                    }
+                    
+                        .overlay {
+                            if viewModel.state == .pause {
+                                pauseView
+                                    .accessibilityElement()
+                                    .accessibilityRemoveTraits(.allowsDirectInteraction)
+                            }
+                        }
+                    
+                }
+                else {
+                    gameView
+                        .ignoresSafeArea()
+                        .accessibilityElement()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onAppear(){
+                            viewModel.size = geo.size
+                        }
+                        .overlay {
+                            if viewModel.state == .pause {
+                                pauseView
+                            }
+                        }
+                }
             }
-            
         }
     }
     
@@ -78,6 +80,7 @@ struct GameSceneView: View {
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()
+            .accessibilityHidden(true)
     }
     
     private func startGame() {
@@ -94,6 +97,7 @@ struct GameSceneView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 208, height: 133)
+                        .accessibilityHidden(true)
                     
                     Text(viewModel.recordLabel)
                         .font(Font.wavePongPrimary(.body))
@@ -105,12 +109,14 @@ struct GameSceneView: View {
                 VStack(spacing: -16) {
                     Text(viewModel.userScore)
                         .font(Font.wavePongSecundary(.scoreNumber))
+                        .accessibilityLabel("A sua pontuação foi \(viewModel.userScore)")
+                    
                     
                     Text("Pontos")
                         .font(Font.wavePongPrimary(.body))
+                        .accessibilityHidden(true)
                     
                 }
-                
                 .foregroundColor(Color(ColorConstants.WHITE))
                 
                 HStack {
@@ -120,11 +126,13 @@ struct GameSceneView: View {
                             refreshCountPressed += 1
                             presentation.wrappedValue.dismiss()
                         }
+                        .accessibilityLabel(Text("Voltar para menu"))
                         
                         IconButton(.refresh) {
                             viewModel.refreshPressed()
                             refreshCountPressed += 1
                         }
+                        .accessibilityLabel(Text("Reiniciar"))
                     }
                     
                 }
@@ -142,11 +150,13 @@ struct GameSceneView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 253, height: 140)
+                    .accessibilityHidden(true)
                 
                 
                 LabelButton(buttonStyle: .resume) {
                     viewModel.continueButtonPressed()
                 }
+                .accessibilityLabel(Text("Continuar"))
                 
                 
                 HStack(spacing: 48)  {
@@ -155,11 +165,13 @@ struct GameSceneView: View {
                         viewModel.homeButtonPressed()
                         refreshCountPressed += 1
                     }
+                    .accessibilityLabel(Text("Voltar para menu"))
                     
                     IconButton(.refresh) {
                         viewModel.refreshPressed()
                         refreshCountPressed += 1
                     }
+                    .accessibilityLabel(Text("Reiniciar"))
                 }
             }
         }
@@ -167,22 +179,22 @@ struct GameSceneView: View {
     }
     
     /*
-    var countDownView: some View {
-        ZStack {
-            backgroundImageView
-            
-            Text(viewModel.count)
-            
-                .foregroundColor(.white)
-                .font(.custom("Strasua-Regular", size: 150))
-                .onAppear{
-                    viewModel.countDown()
-                }
-                .onChange(of: viewModel.count) { newValue in
-                    viewModel.countDown()
-                }
-        }
-    }
+     var countDownView: some View {
+     ZStack {
+     backgroundImageView
+     
+     Text(viewModel.count)
+     
+     .foregroundColor(.white)
+     .font(.custom("Strasua-Regular", size: 150))
+     .onAppear{
+     viewModel.countDown()
+     }
+     .onChange(of: viewModel.count) { newValue in
+     viewModel.countDown()
+     }
+     }
+     }
      */
 }
 
