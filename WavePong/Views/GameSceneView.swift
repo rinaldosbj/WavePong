@@ -102,6 +102,7 @@ struct GameSceneView: View {
                     Text(viewModel.recordLabel)
                         .font(Font.wavePongPrimary(.body))
                         .foregroundColor(Color(ColorConstants.AMARELO))
+                        .accessibilityLabel("\(viewModel.recordLabel) pontos")
                     
                     
                 }
@@ -109,7 +110,7 @@ struct GameSceneView: View {
                 VStack(spacing: -16) {
                     Text(viewModel.userScore)
                         .font(Font.wavePongSecundary(.scoreNumber))
-                        .accessibilityLabel("A sua pontuação foi \(viewModel.userScore)")
+                        .accessibilityLabel("Você fez \(viewModel.userScore) pontos")
                     
                     
                     Text("Pontos")
