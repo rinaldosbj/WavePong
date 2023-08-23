@@ -18,14 +18,13 @@ struct ComingSoonView: View {
                 .accessibilityHidden(true)
             
             VStack{
-                Image("disponivel")
-                    .accessibilityHidden(true)
-                
-                Text("em breve")
+                Spacer()
+                Text("Em breve")
                     .font(.custom("DaysOne-Regular", size: 36))
                     .layoutPriority(.greatestFiniteMagnitude)
                     .foregroundColor(.white)
-                    .accessibilityLabel("Disponível em breve")
+                    .accessibilityLabel("game center estará disponível em breve")
+                Spacer()
             }
             
             HStack {
