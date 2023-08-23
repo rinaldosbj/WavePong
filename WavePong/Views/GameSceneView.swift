@@ -29,45 +29,43 @@ struct GameSceneView: View {
     
     var body: some View {
         GeometryReader{ geo in
-            if refreshCountPressed % 2 == 0 {
-                gameView
-                    .ignoresSafeArea()
-                    .accessibilityElement()
-                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                    }
-                
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-                                .accessibilityElement()
-                                .accessibilityRemoveTraits(.allowsDirectInteraction)
-                        } else if viewModel.state == .gameOver {
-                            gameOverView
-                                .accessibilityElement()
-                                .accessibilityRemoveTraits(.allowsDirectInteraction)
-                        }
-                    }
-                
+            if viewModel.state == .gameOver {
+                gameOverView
             }
             else {
-                gameView
-                    .ignoresSafeArea()
-//                    .accessibilityElement()
-//                    .accessibilityAddTraits(.allowsDirectInteraction)
-                    .onAppear(){
-                        viewModel.size = geo.size
-                    }
-                    .overlay {
-                        if viewModel.state == .pause {
-                            pauseView
-                        } else if viewModel.state == .gameOver {
-                            gameOverView
+                if refreshCountPressed % 2 == 0 {
+                    gameView
+                        .ignoresSafeArea()
+                        .accessibilityElement()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onAppear(){
+                            viewModel.size = geo.size
                         }
-                    }
+                    
+                        .overlay {
+                            if viewModel.state == .pause {
+                                pauseView
+                                    .accessibilityElement()
+                                    .accessibilityRemoveTraits(.allowsDirectInteraction)
+                            }
+                        }
+                    
+                }
+                else {
+                    gameView
+                        .ignoresSafeArea()
+                        .accessibilityElement()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onAppear(){
+                            viewModel.size = geo.size
+                        }
+                        .overlay {
+                            if viewModel.state == .pause {
+                                pauseView
+                            }
+                        }
+                }
             }
-            
         }
     }
     
@@ -112,7 +110,7 @@ struct GameSceneView: View {
                     Text(viewModel.userScore)
                         .font(Font.wavePongSecundary(.scoreNumber))
                         .accessibilityLabel("A sua pontuação foi \(viewModel.userScore)")
-                        
+                    
                     
                     Text("Pontos")
                         .font(Font.wavePongPrimary(.body))

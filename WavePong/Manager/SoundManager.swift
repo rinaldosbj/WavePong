@@ -112,6 +112,10 @@ public class SoundManager {
             return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
         case .countDownEnd:
             return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        case .explosion:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
+        case .pickupCoin:
+            return Bundle.main.url(forResource: name.rawValue, withExtension: "wav")
         default:
             return Bundle.main.url(forResource: name.rawValue, withExtension: "mp3")
         }

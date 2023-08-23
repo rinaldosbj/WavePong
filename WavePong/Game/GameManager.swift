@@ -65,7 +65,7 @@ extension GameManager: GameColisionDelegate {
             soundManager.playFXSound(for: .shooting)
             hapticsManager.vibrateNotification(for: .success)
         case .gameOver:
-            soundManager.playFXSound(for: .slimejump)
+            soundManager.playFXSound(for: .explosion)
             hapticsManager.vibrateNotification(for: .error)
         case .newTopScore:
             soundManager.playFXSound(for: .winzinho)
