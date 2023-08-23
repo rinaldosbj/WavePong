@@ -14,8 +14,6 @@ struct GameSceneView: View {
     
     @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel.shared
     
-    @State var refreshCountPressed: Int = 0
-    
     @State var allowInteraction = true
     
     var gameScene: GameScene {
@@ -26,47 +24,42 @@ struct GameSceneView: View {
         return scene
     }
     
+    var acessbility: Bool {
+        if viewModel.state == .game {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     
     var body: some View {
         GeometryReader{ geo in
-            if viewModel.state == .gameOver {
-                gameOverView
+            
+            ZStack {
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityElement()
+                    .modifier(AddAccessibilityDirectInteractionTrait(condition: acessbility))
+                    .onAppear(){
+                        viewModel.size = geo.size
+                    }
+                    .onTapGesture(count: 2) {
+                        viewModel.pauseTap()
+                    }
+                    .overlay {
+                        if viewModel.state == .gameOver {
+                            gameOverView
+                        } else if viewModel.state == .pause {
+                            pauseView
+                        }
+                        
+                    }
             }
-            else {
-                if refreshCountPressed % 2 == 0 {
-                    gameView
-                        .ignoresSafeArea()
-                        .accessibilityElement()
-                        .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onAppear(){
-                            viewModel.size = geo.size
-                        }
-                    
-                        .overlay {
-                            if viewModel.state == .pause {
-                                pauseView
-                                    .accessibilityElement()
-                                    .accessibilityRemoveTraits(.allowsDirectInteraction)
-                            }
-                        }
-                    
-                }
-                else {
-                    gameView
-                        .ignoresSafeArea()
-                        .accessibilityElement()
-                        .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onAppear(){
-                            viewModel.size = geo.size
-                        }
-                        .overlay {
-                            if viewModel.state == .pause {
-                                pauseView
-                            }
-                        }
-                }
-            }
+            
         }
+        
+        
     }
     
     private var gameView: some View {
@@ -124,14 +117,12 @@ struct GameSceneView: View {
                     HStack(spacing: 48)  {
                         IconButton(.home) {
                             viewModel.homeButtonPressed()
-                            refreshCountPressed += 1
                             presentation.wrappedValue.dismiss()
                         }
                         .accessibilityLabel(Text("Voltar para menu"))
                         
                         IconButton(.refresh) {
                             viewModel.refreshPressed()
-                            refreshCountPressed += 1
                         }
                         .accessibilityLabel(Text("Reiniciar"))
                     }
@@ -164,13 +155,11 @@ struct GameSceneView: View {
                     IconButton(.home) {
                         presentation.wrappedValue.dismiss()
                         viewModel.homeButtonPressed()
-                        refreshCountPressed += 1
                     }
                     .accessibilityLabel(Text("Voltar para menu"))
                     
                     IconButton(.refresh) {
                         viewModel.refreshPressed()
-                        refreshCountPressed += 1
                     }
                     .accessibilityLabel(Text("Reiniciar"))
                 }
@@ -179,24 +168,7 @@ struct GameSceneView: View {
         
     }
     
-    /*
-     var countDownView: some View {
-     ZStack {
-     backgroundImageView
-     
-     Text(viewModel.count)
-     
-     .foregroundColor(.white)
-     .font(.custom("Strasua-Regular", size: 150))
-     .onAppear{
-     viewModel.countDown()
-     }
-     .onChange(of: viewModel.count) { newValue in
-     viewModel.countDown()
-     }
-     }
-     }
-     */
+    
 }
 
 

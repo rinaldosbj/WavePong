@@ -12,21 +12,24 @@ import SpriteKit
 class GameManager {
     var isGameRunning: Bool = true
     var score: Int = 0
+    var canPause = false
     
     var soundManager: SoundManager = SoundManager.shared
     var hapticsManager: HapticsManager = HapticsManager.shared
     
     var physicsDetection = PhysicsDetection()
-    var sceneDelegate: GameSceneDelegate?
-    var gameManagerDelegate: GameManagerDelegate?
+    weak var sceneDelegate: GameSceneDelegate?
+    weak var gameManagerDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = Player()
-    
-    public var colors: [UIColor] = [UIColor.blue,UIColor.cyan,UIColor.green]
     
     init() {
         self.physicsDetection.gameActionDelegate = self
         
+    }
+    
+    func canPauseNow() {
+        canPause = true
     }
     
     func startGame() {
@@ -39,10 +42,30 @@ class GameManager {
         sceneDelegate?.resumeGame()
     }
     
+    func resetGame() {
+        restoreGameManager()
+        sceneDelegate?.resetGame()
+    }
+    
+    func restoreGameManager() {
+        canPause = false
+        score = 0
+    }
+    
     func pauseButtonPressed() {
-        soundManager.pauseGameTheme()
-        sceneDelegate?.pausePressed()
-        gameManagerDelegate?.pauseButtonPressed()
+        if canPause{
+            soundManager.pauseGameTheme()
+            sceneDelegate?.pausePressed()
+        }
+    }
+    
+    func pauseNodePressed() {
+        if canPause{
+            soundManager.pauseGameTheme()
+            sceneDelegate?.pausePressed()
+            gameManagerDelegate?.pauseNodePressed()
+        }
+        
     }
     
     

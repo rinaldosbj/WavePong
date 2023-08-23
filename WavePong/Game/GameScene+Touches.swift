@@ -14,9 +14,7 @@ extension GameScene{
         let location = touch.location(in: self)
         
         if pauseNode.contains(location) {
-            if canPause {
-                gameManager.pauseButtonPressed()
-            }
+            gameManager.pauseNodePressed()
         }
         
         var horizontalLocation: Double {
@@ -54,7 +52,7 @@ extension GameScene{
     }
     
     private func isPaddlePositionTranspassingRight(_ location: Double) -> Bool {
-         location > frame.maxX - (paddle.size.width / 2)
+        location > frame.maxX - (paddle.size.width / 2)
     }
     
     private func isPaddlePositionTranspassingLeft(_ location: Double) -> Bool {

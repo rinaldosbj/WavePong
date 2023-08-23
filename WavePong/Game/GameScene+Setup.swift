@@ -68,8 +68,10 @@ extension GameScene {
                 self?.countDownBackground.isHidden = true
                 self?.countDown.isHidden = true
                 self?.gameManager.startGame()
-                self?.canPause = true
             }
+        }
+        let canPauseChange = SKAction.run { [weak self] in
+            self?.gameManager.canPauseNow()
         }
         let changeSizeGoLabel = SKAction.run { [weak self] in
             self?.countDown.size = CGSize(width: 160, height: 87)
@@ -78,7 +80,7 @@ extension GameScene {
         let countDownSequence = SKAction.sequence([animation1,bipSound,
                                                    animation2, bipSound,
                                                    animation3,changeSizeGoLabel,endSound,
-                                                   animation4,performStartGame])
+                                                   animation4,performStartGame,canPauseChange])
         
         countDown.run(countDownSequence)
         
