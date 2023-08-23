@@ -46,23 +46,6 @@ struct GameSceneView: View {
                     pauseView
                 }
             }
-//            gameView
-//                .ignoresSafeArea()
-//                .accessibilityElement()
-//                .accessibilityAddTraits(.allowsDirectInteraction)
-//                .onAppear(){
-//                    viewModel.size = geo.size
-//                }
-//            
-//                .overlay {
-//                    if viewModel.state == .pause {
-//                        pauseView
-//                        
-//                    } else if viewModel.state == .gameOver {
-//                        gameOverView
-//
-//                    }
-//                }
             
         }
         
