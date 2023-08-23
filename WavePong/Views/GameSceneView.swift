@@ -24,27 +24,47 @@ struct GameSceneView: View {
         return scene
     }
     
+    var acessbility: Bool {
+        if viewModel.state == .game {
+            return false
+        } else {
+            return true
+        }
+    }
+    struct CustomModifier: ViewModifier {
+        var condition: Bool
+        
+        func body(content: Content) -> some View {
+            if condition { // assuming you have a condition here
+                return content
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+            } else {
+                return content
+                    .accessibilityRemoveTraits(.allowsDirectInteraction)
+            }
+        }
+    }
+    
     
     var body: some View {
         GeometryReader{ geo in
             
             ZStack {
-                switch viewModel.state  {
-                case .game:
-                    gameView
-                        .ignoresSafeArea()
-                        .accessibilityElement()
-                        .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onAppear(){
-                            viewModel.size = geo.size
+                gameView
+                    .ignoresSafeArea()
+                    .accessibilityElement()
+                    .modifier(CustomModifier(condition: acessbility))
+                    .onAppear(){
+                        viewModel.size = geo.size
+                    }
+                    .overlay {
+                        if viewModel.state == .gameOver {
+                            gameOverView
+                        } else if viewModel.state == .pause {
+                            pauseView
                         }
-                    
-                case .gameOver:
-                    gameOverView
-                    
-                case .pause:
-                    pauseView
-                }
+                        
+                    }
             }
             
         }
