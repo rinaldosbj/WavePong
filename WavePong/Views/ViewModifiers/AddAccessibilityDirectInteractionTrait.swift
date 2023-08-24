@@ -11,7 +11,7 @@ struct AddAccessibilityDirectInteractionTrait: ViewModifier {
     var condition: Bool
     
     func body(content: Content) -> some View {
-        if condition { // assuming you have a condition here
+        if condition {
             return content
                 .accessibilityAddTraits(.allowsDirectInteraction)
         } else {

@@ -68,9 +68,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     
     func homeButtonPressed() {
-        soundManager.stopGameTheme()
         gameManager.restoreGameManager()
         state = .game
-//        refreshPressed()
     }
 }

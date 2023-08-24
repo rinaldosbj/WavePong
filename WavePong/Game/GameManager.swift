@@ -10,28 +10,50 @@ import SpriteKit
 
 /// Object responsable for dealing with game logic
 class GameManager {
-    var isGameRunning: Bool = true
-    var score: Int = 0
-    var canPause = false
+    /// User Current Score
+    var score: Int
+    /// Gate for controling if user can pause the game. While in count down it should be false
+    var canPause: Bool
     
-    var soundManager: SoundManager = SoundManager.shared
-    var hapticsManager: HapticsManager = HapticsManager.shared
+    /// Instance for calling sounds
+    var soundManager: SoundManager
+    /// Instance for calling vibrations
+    var hapticsManager: HapticsManager
     
-    var physicsDetection = PhysicsDetection()
+    /// Instance of object responsable for dealing with game colision logic
+    var physicsDetection: PhysicsDetection
+    
+    /// Instance for interaction with the gameScene
     weak var sceneDelegate: GameSceneDelegate?
+    /// Instantece for interaction with Game Scene View Model
     weak var gameManagerDelegate: GameManagerDelegate?
     
-    var player: PlayerProtocol = Player()
+    /// Instance for acessing player preferences and topScore
+    var player: PlayerProtocol
     
-    init() {
-        self.physicsDetection.gameActionDelegate = self
-        
+    init(score: Int = 0,
+         canPause: Bool = false,
+         soundManager: SoundManager = SoundManager.shared,
+         hapticsManager: HapticsManager = HapticsManager.shared,
+         physicsDetection: PhysicsDetection = PhysicsDetection(),
+         player: PlayerProtocol = Player()
+    ) {
+        self.score = score
+        self.canPause = canPause
+        self.soundManager = soundManager
+        self.hapticsManager = hapticsManager
+        self.physicsDetection = physicsDetection
+        self.player = player
     }
     
+    /// Changes the state of manager for been able to pause
+    ///
+    /// Should be Called when Count down of game scene is over
     func canPauseNow() {
         canPause = true
     }
     
+    /// Informs Game Scene to start game and implements necesseray logic
     func startGame() {
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
@@ -39,6 +61,7 @@ class GameManager {
     }
     
     func resumeGame() {
+        soundManager.resumeGameTheme()
         sceneDelegate?.resumeGame()
     }
     
@@ -48,6 +71,7 @@ class GameManager {
     }
     
     func restoreGameManager() {
+        soundManager.stopGameTheme()
         canPause = false
         score = 0
     }
@@ -68,6 +92,9 @@ class GameManager {
         
     }
     
+    public func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize) {
+        soundManager.updateAudioOrientation(ballPosition: ballPosition, frameSize: frameSize)
+    }
     
 }
 
@@ -103,28 +130,9 @@ extension GameManager: GameColisionDelegate {
         sceneDelegate?.UserScored(newScore: score)
         
     }
-    
-    public func didExit() {
-        isGameRunning = false
-        soundManager.pauseGameTheme()
-        
-        if isNewRecord {
-            player.updateTopScore(NewTopScore: score)
-            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Novo recorde")
-        } else {
-            var topScore: Int {
-                Player.shared.userTopScore
-            }
-            gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Recorde \(topScore)")
-        }
-        
-        sceneDelegate?.gameOver()
-    }
+
     
     public func didLose() {
-        isGameRunning = false
         soundManager.pauseGameTheme()
         
         if isNewRecord {

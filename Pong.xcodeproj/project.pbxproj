@@ -158,6 +158,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0EDBFC2A97C5BB0070339E /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		0C6B93A92A7EE43500023DC8 /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,8 +191,8 @@
 		0C8648E52A8D678E00017F29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C0EDBFC2A97C5BB0070339E /* ViewModifiers */,
 				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
-				D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */,
 				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */,

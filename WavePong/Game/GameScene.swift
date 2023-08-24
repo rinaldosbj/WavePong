@@ -12,8 +12,7 @@ import SwiftUI
 
 
 class GameScene: SKScene {
-    
-    var soundManager = SoundManager.shared
+
     var gameManager: GameManager
     var ball: BallSprite!
     var paddle: Paddle!
@@ -69,9 +68,9 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
-        
+        gameManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
         updateBallSpeed()
+        
     }
     
     func animateClouds() {
@@ -182,7 +181,6 @@ extension GameScene: GameSceneDelegate {
     }
     
     func resumeGame() {
-        soundManager.resumeGameTheme()
         isPaused = false
     }
     
