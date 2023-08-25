@@ -38,7 +38,7 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
-    func createCountDown() {
+    func countDownAnimation() {
         addChild(countDownBackground)
         addChild(countDownNode)
         
@@ -48,10 +48,10 @@ extension GameScene {
         let animation4 = SKAction.animate(with: [SKTexture(imageNamed: "count4")], timePerFrame: 1)
         
         let bipSound = SKAction.run {
-            SoundManager.shared.playFXSound(for: .countDownBip)
+            self.gameManager.countDownStep()
         }
         let endSound = SKAction.run {
-            SoundManager.shared.playFXSound(for: .countDownEnd)
+            self.gameManager.countDownEnded()
         }
         
         let performStartGame = SKAction.run { [weak self] in
@@ -64,6 +64,7 @@ extension GameScene {
         let canPauseChange = SKAction.run { [weak self] in
             self?.gameManager.canPauseNow()
         }
+        
         let changeSizeGoLabel = SKAction.run { [weak self] in
             self?.countDownNode.size = CGSize(width: 160, height: 87)
         }

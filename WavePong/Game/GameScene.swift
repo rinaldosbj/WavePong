@@ -57,7 +57,7 @@ class GameScene: SKScene {
             setupGameManager()
             setupWorld()
             setupComponentsPosition()
-            createCountDown()
+            countDownAnimation()
 
         }
     }
@@ -176,7 +176,7 @@ extension GameScene: GameSceneDelegate {
         setupGameManager()
         setupWorld()
         setupComponentsPosition()
-        createCountDown()
+        countDownAnimation()
         
         ballSpeed = 500
         

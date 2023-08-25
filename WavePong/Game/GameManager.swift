@@ -96,6 +96,14 @@ class GameManager {
         soundManager.updateAudioOrientation(ballPosition: ballPosition, frameSize: frameSize)
     }
     
+    func countDownStep() {
+        soundManager.playFXSound(for: .countDownBip)
+    }
+    
+    func countDownEnded() {
+        soundManager.playFXSound(for: .countDownEnd)
+    }
+    
 }
 
 extension GameManager: GameColisionDelegate {
