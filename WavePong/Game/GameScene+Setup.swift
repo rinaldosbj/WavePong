@@ -39,17 +39,8 @@ extension GameScene {
     }
     
     func createCountDown() {
-        countDownBackground = SKSpriteNode(color: .black, size: self.size)
-        countDownBackground.alpha = 0.7
-        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownBackground.zPosition = 1000
         addChild(countDownBackground)
-        
-        countDown = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
-        countDown.size = CGSize(width: 54, height: 87)
-        countDown.zPosition = 1000
-        countDown.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(countDown)
+        addChild(countDownNode)
         
         let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 1)
         let animation2 = SKAction.animate(with: [SKTexture(imageNamed: "count2")], timePerFrame: 1)
@@ -66,7 +57,7 @@ extension GameScene {
         let performStartGame = SKAction.run { [weak self] in
             if self?.isInGame() == true {
                 self?.countDownBackground.isHidden = true
-                self?.countDown.isHidden = true
+                self?.countDownNode.isHidden = true
                 self?.gameManager.startGame()
             }
         }
@@ -74,7 +65,7 @@ extension GameScene {
             self?.gameManager.canPauseNow()
         }
         let changeSizeGoLabel = SKAction.run { [weak self] in
-            self?.countDown.size = CGSize(width: 160, height: 87)
+            self?.countDownNode.size = CGSize(width: 160, height: 87)
         }
         
         let countDownSequence = SKAction.sequence([animation1,bipSound,
@@ -82,8 +73,24 @@ extension GameScene {
                                                    animation3,changeSizeGoLabel,endSound,
                                                    animation4,performStartGame,canPauseChange])
         
-        countDown.run(countDownSequence)
+        countDownNode.run(countDownSequence)
         
+    }
+    
+    func createCountDownBackground() -> SKSpriteNode {
+        let coundDownBackground = SKSpriteNode(color: .black, size: self.size)
+        coundDownBackground.alpha = 0.7
+        coundDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+        coundDownBackground.zPosition = 1000
+        return coundDownBackground
+    }
+    
+    func createCountDownLabel() -> SKSpriteNode {
+        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
+        countDownNode.size = CGSize(width: 54, height: 87)
+        countDownNode.zPosition = 1000
+        countDownNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        return countDownNode
     }
     
     func createPaddle() -> Paddle {

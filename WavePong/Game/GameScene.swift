@@ -22,7 +22,7 @@ class GameScene: SKScene {
     var scoreLabel: ScoreLabel!
     var borderNode: Border!
     var pauseNode: PauseNode!
-    var countDown: SKSpriteNode!
+    var countDownNode: SKSpriteNode!
     var countDownBackground : SKSpriteNode!
     
     
@@ -43,6 +43,8 @@ class GameScene: SKScene {
         self.cloud3 = createCloud3()
         self.scoreLabel = createScoreLabel()
         self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -208,6 +210,8 @@ extension GameScene: GameSceneDelegate {
         self.cloud3 = createCloud3()
         self.scoreLabel = createScoreLabel()
         self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
     }
     
     func isInGame() -> Bool {
