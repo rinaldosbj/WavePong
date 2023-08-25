@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameSceneViewModel: ObservableObject, GameManagerDelegate {
+class GameSceneViewModel: ObservableObject {
     var soundManager: SoundManager
     var hapticManager: HapticsManager
     
@@ -20,7 +20,7 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     
     var gameManager: GameManager
     
-    var pauseButtonDelegate: GameManagerDelegate?
+//    var pauseButtonDelegate: GameManagerDelegate?
     
     init(gameManager: GameManager = GameManager(), soundManager: SoundManager = SoundManager.shared,
          hapticsManager: HapticsManager = HapticsManager.shared) {
@@ -36,39 +36,44 @@ class GameSceneViewModel: ObservableObject, GameManagerDelegate {
     }
     
     
-    func pauseNodePressed() {
-        state = .pause
-    }
-    
     func pauseTap() {
         if gameManager.canPause {
             gameManager.pauseButtonPressed()
             state = .pause
         }
-        
+
     }
-    
+
     func continueButtonPressed() {
         gameManager.resumeGame()
         state = .game
     }
-    
-    func refreshPressed() {
 
+    func refreshPressed() {
         gameManager.resetGame()
         state = .game
-    } 
-    
+        
+    }
+
+    func homeButtonPressed() {
+        gameManager.restoreGameManager()
+        state = .game
+        
+    }
+}
+
+extension GameSceneViewModel: GameManagerDelegate {
+        func pauseNodePressed() {
+            state = .pause
+            
+        }
     
     func gameOver(scoreLabel: String, recordLabel: String) {
         self.userScore = scoreLabel
         self.recordLabel = recordLabel
         state = .gameOver
+        
     }
     
     
-    func homeButtonPressed() {
-        gameManager.restoreGameManager()
-        state = .game
-    }
 }

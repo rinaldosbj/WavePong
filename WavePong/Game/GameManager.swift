@@ -44,6 +44,8 @@ class GameManager {
         self.hapticsManager = hapticsManager
         self.physicsDetection = physicsDetection
         self.player = player
+        
+        self.physicsDetection.gameActionDelegate = self
     }
     
     /// Changes the state of manager for been able to pause
