@@ -8,8 +8,9 @@
 import Foundation
 
 class GameSceneViewModel: ObservableObject {
-    var soundManager: SoundManager
-    var hapticManager: HapticsManager
+    enum ViewMode {
+        case game, pause, gameOver
+    }
     
     @Published var size: CGSize = CGSize()
     @Published var state: ViewMode = .game
@@ -18,22 +19,22 @@ class GameSceneViewModel: ObservableObject {
         
     static let shared = GameSceneViewModel()
     
+    /// Instance for accessing the logic layer of the gameScene
     var gameManager: GameManager
+    
+    /// Instance for accessing and trigger device vibrations
+    var hapticManager: HapticsManager
 
-    init(gameManager: GameManager = GameManager(), soundManager: SoundManager = SoundManager.shared,
+    init(gameManager: GameManager = GameManager(),
          hapticsManager: HapticsManager = HapticsManager.shared) {
         self.gameManager = gameManager
-        self.soundManager = soundManager
         self.hapticManager = hapticsManager
+        
         self.gameManager.gameManagerDelegate = self
         
     }
     
-    enum ViewMode {
-        case game, pause, gameOver
-    }
-    
-    
+    /// Once that user double tapped the game Screen, it should pause game and music
     func pauseTap() {
         if gameManager.canPause {
             gameManager.pauseButtonPressed()
@@ -42,11 +43,13 @@ class GameSceneViewModel: ObservableObject {
 
     }
 
+    /// When game is paused, user can resume the game when continue button is pressed
     func continueButtonPressed() {
         gameManager.resumeGame()
         state = .game
     }
 
+    
     func refreshPressed() {
         gameManager.resetGame()
         state = .game
@@ -59,6 +62,8 @@ class GameSceneViewModel: ObservableObject {
         
     }
 }
+
+
 
 extension GameSceneViewModel: GameManagerDelegate {
         func pauseNodePressed() {
