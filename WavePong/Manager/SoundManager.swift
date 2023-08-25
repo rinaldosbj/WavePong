@@ -132,7 +132,7 @@ public class SoundManager {
         do {
             audioPLayer = try AVAudioPlayer(contentsOf: url)
             audioPLayer?.play()
-            print("funcionou")
+
         } catch let error {
             print("Erro ao reproduzir fx: \(error.localizedDescription)")
         }

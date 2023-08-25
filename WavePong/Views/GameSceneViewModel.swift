@@ -19,9 +19,7 @@ class GameSceneViewModel: ObservableObject {
     static let shared = GameSceneViewModel()
     
     var gameManager: GameManager
-    
-//    var pauseButtonDelegate: GameManagerDelegate?
-    
+
     init(gameManager: GameManager = GameManager(), soundManager: SoundManager = SoundManager.shared,
          hapticsManager: HapticsManager = HapticsManager.shared) {
         self.gameManager = gameManager
