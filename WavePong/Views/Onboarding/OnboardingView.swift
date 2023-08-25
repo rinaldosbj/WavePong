@@ -40,6 +40,9 @@ struct OnboardingView: View {
                     .onTapGesture { nextView() }
             case 2:
                 RebaterView()
+                    .onTapGesture { nextView() }
+            case 1:
+                PausarView()
                     .onTapGesture {
                         if player.onboradingHappend {
                             presentation.wrappedValue.dismiss()
@@ -48,16 +51,6 @@ struct OnboardingView: View {
                             nextView()
                         }
                     }
-//            case 1:
-//                PausarView()
-//                    .onTapGesture {
-//                        if player.onboradingHappend {
-//                            presentation.wrappedValue.dismiss()
-//                        }
-//                        else {
-//                            nextView()
-//                        }
-//                    }
             default:
                 MenuView()
                     .onAppear {
