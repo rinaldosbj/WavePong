@@ -81,9 +81,10 @@ extension GameScene {
                                   y: 50)
         addChild(paddle)
         
-        ball.position = CGPoint(x:self.frame.midX,
+        ball?.position = CGPoint(x:self.frame.midX,
                                 y:self.frame.midY)
         addChild(ball)
+      
         
         cloud.zPosition = 2
         cloud.position = CGPoint(x: self.frame.midX,

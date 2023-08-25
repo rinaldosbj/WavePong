@@ -64,30 +64,31 @@ class GameScene: SKScene {
 
     
     func startGame() {
-        ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
+        ball?.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         animateClouds()
 
     }
     
     override func update(_ currentTime: TimeInterval) {
-        gameManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
+        gameManager.updateAudioOrientation(ballPosition: ball?.position ?? CGPoint(),
+                                           frameSize: frame.size)
         updateBallSpeed()
         
     }
     
     func animateClouds() {
-        CloudsVerticalAnimation()
-        CloudsHorizontalAnimation()
+        cloudsVerticalAnimation()
+        cloudsHorizontalAnimation()
     }
     
-    private func CloudsVerticalAnimation() {
+    private func cloudsVerticalAnimation() {
         cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
         cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
         cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
 
     }
     
-    private func CloudsHorizontalAnimation() {
+    private func cloudsHorizontalAnimation() {
         moveCloudNodeHorizontal()
         moveCloudNode2Horizontal()
         moveCloudNode3Horizontal()
@@ -132,19 +133,19 @@ class GameScene: SKScene {
         }
         
         // corrects vertical speed
-        if (ball.physicsBody?.velocity.dy)! < 0 && (ball.physicsBody?.velocity.dy)! > -ballSpeed {
-            ball.physicsBody?.velocity.dy = -ballSpeed
+        if (ball?.physicsBody?.velocity.dy)! < 0 && (ball?.physicsBody?.velocity.dy)! > -ballSpeed {
+            ball?.physicsBody?.velocity.dy = -ballSpeed
         }
-        if (ball.physicsBody?.velocity.dy)! > 0 && (ball.physicsBody?.velocity.dy)! < ballSpeed {
-            ball.physicsBody?.velocity.dy = ballSpeed
+        if (ball?.physicsBody?.velocity.dy)! > 0 && (ball?.physicsBody?.velocity.dy)! < ballSpeed {
+            ball?.physicsBody?.velocity.dy = ballSpeed
         }
         
         // corrects horizontal speed
-        if (ball.physicsBody?.velocity.dx)! < 0 && (ball.physicsBody?.velocity.dx)! > -ballSpeed {
-            ball.physicsBody?.velocity.dx = -ballSpeed
+        if (ball?.physicsBody?.velocity.dx)! < 0 && (ball?.physicsBody?.velocity.dx)! > -ballSpeed {
+            ball?.physicsBody?.velocity.dx = -ballSpeed
         }
-        if (ball.physicsBody?.velocity.dx)! > 0 && (ball.physicsBody?.velocity.dx)! < ballSpeed {
-            ball.physicsBody?.velocity.dx = ballSpeed
+        if (ball?.physicsBody?.velocity.dx)! > 0 && (ball?.physicsBody?.velocity.dx)! < ballSpeed {
+            ball?.physicsBody?.velocity.dx = ballSpeed
         }
         
     }
@@ -193,6 +194,7 @@ extension GameScene: GameSceneDelegate {
     
     func gameOver() {
         self.isPaused = true
+        removeAllChildren()
     }
     
     func pausePressed() {
