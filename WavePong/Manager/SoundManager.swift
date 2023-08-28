@@ -13,12 +13,12 @@ import AVFoundation
 public class SoundManager {
     
     /// Linear or curved gives diferent experience when estimating ball position. Curved is recomended
-    enum PanStyle {
-        case linear, curved
-    }
+
     
     /// shared instance for global acess to Object
     static var shared = SoundManager()
+    
+    var player: PlayerProtocol = Player()
     
     /// Responsable for holding the instance of player for background Music
     var musicPlayer: AVAudioPlayer?
@@ -27,7 +27,9 @@ public class SoundManager {
     var audioPLayer: AVAudioPlayer?
     
     /// Allows adjust method for audio pan
-    var panStyle: PanStyle = .curved
+    var panStyle: SoundMode {
+        player.soundMode
+    }
     
     /// Allows player to estimate ball position by diferance in stereo output
     public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
@@ -41,6 +43,7 @@ public class SoundManager {
         
         musicPlayer?.volume = volumeAdjusted
         
+        print(panStyle)
         
         switch panStyle {
         case .curved:

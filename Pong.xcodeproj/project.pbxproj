@@ -67,6 +67,8 @@
 		D391191F2A958BC000CA3C9E /* pickupCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191E2A958BC000CA3C9E /* pickupCoin.wav */; };
 		D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */; };
 		D3AEE22F2A96607200ED2382 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */; };
+		D3AEF2ED2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEF2EC2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift */; };
+		D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEF2EE2A9D3C2100EE10A7 /* CustomToggleStyles.swift */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
 		D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928128FEF6CF00EEF09B /* Assets.xcassets */; };
 		D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928428FEF6CF00EEF09B /* Preview Assets.xcassets */; };
@@ -135,6 +137,8 @@
 		D391191E2A958BC000CA3C9E /* pickupCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickupCoin.wav; sourceTree = "<group>"; };
 		D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessibilityDirectInteractionTrait.swift; sourceTree = "<group>"; };
 		D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
+		D3AEF2EC2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewComponents.swift; sourceTree = "<group>"; };
+		D3AEF2EE2A9D3C2100EE10A7 /* CustomToggleStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyles.swift; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3BF927D28FEF6CD00EEF09B /* PongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongApp.swift; sourceTree = "<group>"; };
 		D3BF928128FEF6CF00EEF09B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		0C8648E42A8D676000017F29 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				D3AEF2EC2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift */,
+				D3AEF2EE2A9D3C2100EE10A7 /* CustomToggleStyles.swift */,
 				0C6363F32A8D268F002DAB8C /* LabelButton.swift */,
 				0C6363F12A8D266A002DAB8C /* IconButton.swift */,
 			);
@@ -475,6 +481,7 @@
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
 				D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */,
+				D3AEF2ED2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift in Sources */,
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,
@@ -504,6 +511,7 @@
 				0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */,
+				D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
 				0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */,
 				0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */,

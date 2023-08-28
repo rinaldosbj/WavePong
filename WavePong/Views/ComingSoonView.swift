@@ -23,7 +23,7 @@ struct ComingSoonView: View {
                     .font(.custom("DaysOne-Regular", size: 36))
                     .layoutPriority(.greatestFiniteMagnitude)
                     .foregroundColor(.white)
-                    .accessibilityLabel("game center estará disponível em breve")
+                    .accessibilityLabel("disponível em breve")
                 Spacer()
             }
             
