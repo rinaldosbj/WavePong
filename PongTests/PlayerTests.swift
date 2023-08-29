@@ -24,8 +24,6 @@ final class PlayerTests: XCTestCase {
     }
     
     
-    
-    
     func testShouldshowOnboardingOnFirstLaunch() {
         XCTAssertFalse(player.onboradingHappend)
     }

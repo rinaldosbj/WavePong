@@ -13,7 +13,7 @@ import SwiftUI
 
 class GameScene: SKScene {
 
-    var gameManager: GameManager
+    var gameManager: GameManagerProtocol
     var ball: BallSprite!
     var paddle: Paddle!
     var cloud: Cloud!
@@ -31,7 +31,7 @@ class GameScene: SKScene {
         
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
-    public init(size: CGSize, gameManager: GameManager) {
+    public init(size: CGSize, gameManager: GameManagerProtocol) {
         
         self.gameManager = gameManager
         

@@ -9,19 +9,20 @@ import SpriteKit
 
 
 /// Object responsable for dealing with game logic
-class GameManager {
+class GameManager: GameManagerProtocol {
+    
     /// User Current Score
-    var score: Int
+    public var score: Int
     /// Gate for controling if user can pause the game. While in count down it should be false
-    var canPause: Bool
+    public var canPause: Bool
     
     /// Instance for calling sounds
-    var soundManager: SoundManager
+    internal var soundManager: SoundManager
     /// Instance for calling vibrations
-    var hapticsManager: HapticsManager
+    internal var hapticsManager: HapticsManager
     
     /// Instance of object responsable for dealing with game colision logic
-    var physicsDetection: PhysicsDetection
+    internal var physicsDetection: PhysicsDetection
     
     /// Instance for interaction with the gameScene
     weak var sceneDelegate: GameSceneDelegate?
@@ -29,7 +30,7 @@ class GameManager {
     weak var gameManagerDelegate: GameManagerDelegate?
     
     /// Instance for acessing player preferences and topScore
-    var player: PlayerProtocol
+    internal var player: PlayerProtocol
     
     init(score: Int = 0,
          canPause: Bool = false,
@@ -51,41 +52,41 @@ class GameManager {
     /// Changes the state of manager for been able to pause
     ///
     /// Should be Called when Count down of game scene is over
-    func canPauseNow() {
+    public func countDownDone() {
         canPause = true
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
-    func startGame() {
+    public func startGame() {
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
         score = 0
     }
     
-    func resumeGame() {
+    public func resumeGame() {
         soundManager.resumeGameTheme()
         sceneDelegate?.resumeGame()
     }
     
-    func resetGame() {
+    public func resetGame() {
         restoreGameManager()
         sceneDelegate?.resetGame()
     }
     
-    func restoreGameManager() {
+    public func restoreGameManager() {
         soundManager.stopGameTheme()
         canPause = false
         score = 0
     }
     
-    func pauseButtonPressed() {
+    public func pauseButtonPressed() {
         if canPause{
             soundManager.pauseGameTheme()
             sceneDelegate?.pausePressed()
         }
     }
     
-    func pauseNodePressed() {
+    public func pauseNodePressed() {
         if canPause{
             soundManager.pauseGameTheme()
             sceneDelegate?.pausePressed()
@@ -98,11 +99,11 @@ class GameManager {
         soundManager.updateAudioOrientation(ballPosition: ballPosition, frameSize: frameSize)
     }
     
-    func countDownStep() {
+    public func countDownStep() {
         soundManager.playFXSound(for: .countDownBip)
     }
     
-    func countDownEnded() {
+    public func countDownEnded() {
         soundManager.playFXSound(for: .countDownEnd)
     }
     

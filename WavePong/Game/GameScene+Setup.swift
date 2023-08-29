@@ -60,7 +60,7 @@ extension GameScene {
             }
         }
         let canPauseChange = SKAction.run { [weak self] in
-            self?.gameManager.canPauseNow()
+            self?.gameManager.countDownDone()
         }
         
         let changeSizeGoLabel = SKAction.run { [weak self] in
