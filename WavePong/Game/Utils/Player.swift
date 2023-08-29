@@ -17,7 +17,7 @@ class Player: PlayerProtocol {
         self.defaults = defaults
     }
     
-
+    
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
@@ -44,8 +44,11 @@ class Player: PlayerProtocol {
     
     /// Must be called if score of game was higher than the previous top score. Updates
     func updateTopScore(NewTopScore score: Int) {
-        defaults.set(score, forKey: Constants.userTopScore)
+        if score > userTopScore {
+            defaults.set(score, forKey: Constants.userTopScore)
+        }
     }
+    
     
     var soundMode: SoundMode {
         let intResult = defaults.integer(forKey: Constants.soundMod)
@@ -61,24 +64,25 @@ class Player: PlayerProtocol {
             return .linear
         }
         
-    
+        
     }
     
     func changeSoundMode(_ mode: SoundMode) {
         defaults.set(mode.rawValue, forKey: Constants.soundMod)
+        
     }
-
+    
 }
 
 extension UserDefaults: UserDefaultable {
-
+    
 }
 
 
 protocol UserDefaultable {
     func bool(forKey: String) -> Bool
     
-    func integer(forKey: String) -> Int // String?
+    func integer(forKey: String) -> Int
     
     func string(forKey defaultName: String) -> String?
     

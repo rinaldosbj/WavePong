@@ -22,6 +22,9 @@
 		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
+		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
+		0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */; };
 		0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */; };
 		0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */; };
 		0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */; };
@@ -77,6 +80,16 @@
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0CAA59C22A9E725300BEA7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3BF927228FEF6CD00EEF09B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3BF927928FEF6CD00EEF09B;
+			remoteInfo = WavePong;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -91,6 +104,9 @@
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CAA59C02A9E725300BEA7EA /* PongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongTests.swift; sourceTree = "<group>"; };
 		0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts Extension.swift"; sourceTree = "<group>"; };
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +166,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0CAA59BB2A9E725300BEA7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927728FEF6CD00EEF09B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +242,15 @@
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		0CAA59BF2A9E725300BEA7EA /* PongTests */ = {
+			isa = PBXGroup;
+			children = (
+				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
+				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
+			);
+			path = PongTests;
 			sourceTree = "<group>";
 		};
 		0CCCE3362A8ADB2F00BCB4E5 /* Game Protocols */ = {
@@ -341,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BF927C28FEF6CD00EEF09B /* WavePong */,
+				0CAA59BF2A9E725300BEA7EA /* PongTests */,
 				D3BF927B28FEF6CD00EEF09B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -349,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BF927A28FEF6CD00EEF09B /* Pong.app */,
+				0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,6 +419,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0CAA59BD2A9E725300BEA7EA /* PongTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CAA59C42A9E725300BEA7EA /* Build configuration list for PBXNativeTarget "PongTests" */;
+			buildPhases = (
+				0CAA59BA2A9E725300BEA7EA /* Sources */,
+				0CAA59BB2A9E725300BEA7EA /* Frameworks */,
+				0CAA59BC2A9E725300BEA7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CAA59C32A9E725300BEA7EA /* PBXTargetDependency */,
+			);
+			name = PongTests;
+			packageProductDependencies = (
+				0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */,
+			);
+			productName = PongTests;
+			productReference = 0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3BF927928FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */;
@@ -412,9 +468,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					0CAA59BD2A9E725300BEA7EA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = D3BF927928FEF6CD00EEF09B;
+					};
 					D3BF927928FEF6CD00EEF09B = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -438,11 +498,19 @@
 			projectRoot = "";
 			targets = (
 				D3BF927928FEF6CD00EEF09B /* WavePong */,
+				0CAA59BD2A9E725300BEA7EA /* PongTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0CAA59BC2A9E725300BEA7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927828FEF6CD00EEF09B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -478,6 +546,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0CAA59BA2A9E725300BEA7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
+				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927628FEF6CD00EEF09B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,7 +605,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0CAA59C32A9E725300BEA7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3BF927928FEF6CD00EEF09B /* WavePong */;
+			targetProxy = 0CAA59C22A9E725300BEA7EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0CAA59C52A9E725300BEA7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 749Q737TF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.lmb4.PongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pong";
+			};
+			name = Debug;
+		};
+		0CAA59C62A9E725300BEA7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 749Q737TF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.lmb4.PongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pong";
+			};
+			name = Release;
+		};
 		D3BF928628FEF6CF00EEF09B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -652,7 +777,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -722,6 +847,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0CAA59C42A9E725300BEA7EA /* Build configuration list for PBXNativeTarget "PongTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CAA59C52A9E725300BEA7EA /* Debug */,
+				0CAA59C62A9E725300BEA7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3BF927528FEF6CD00EEF09B /* Build configuration list for PBXProject "Pong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -763,6 +897,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
