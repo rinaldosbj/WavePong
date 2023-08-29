@@ -76,9 +76,6 @@ struct GameSceneView: View {
             .accessibilityHidden(true)
     }
     
-    private func startGame() {
-        gameScene.startGame()
-    }
     
     private var gameOverView: some View {
         ZStack {

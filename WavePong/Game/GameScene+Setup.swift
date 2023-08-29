@@ -38,18 +38,7 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
-    func createCountDown() {
-        countDownBackground = SKSpriteNode(color: .black, size: self.size)
-        countDownBackground.alpha = 0.7
-        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownBackground.zPosition = 1000
-        addChild(countDownBackground)
-        
-        countDown = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
-        countDown.size = CGSize(width: 54, height: 87)
-        countDown.zPosition = 1000
-        countDown.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(countDown)
+    func countDownAnimation() {
         
         let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 1)
         let animation2 = SKAction.animate(with: [SKTexture(imageNamed: "count2")], timePerFrame: 1)
@@ -57,24 +46,25 @@ extension GameScene {
         let animation4 = SKAction.animate(with: [SKTexture(imageNamed: "count4")], timePerFrame: 1)
         
         let bipSound = SKAction.run {
-            SoundManager.shared.playFXSound(for: .countDownBip)
+            self.gameManager.countDownStep()
         }
         let endSound = SKAction.run {
-            SoundManager.shared.playFXSound(for: .countDownEnd)
+            self.gameManager.countDownEnded()
         }
         
         let performStartGame = SKAction.run { [weak self] in
             if self?.isInGame() == true {
                 self?.countDownBackground.isHidden = true
-                self?.countDown.isHidden = true
+                self?.countDownNode.isHidden = true
                 self?.gameManager.startGame()
             }
         }
         let canPauseChange = SKAction.run { [weak self] in
             self?.gameManager.canPauseNow()
         }
+        
         let changeSizeGoLabel = SKAction.run { [weak self] in
-            self?.countDown.size = CGSize(width: 160, height: 87)
+            self?.countDownNode.size = CGSize(width: 160, height: 87)
         }
         
         let countDownSequence = SKAction.sequence([animation1,bipSound,
@@ -82,8 +72,71 @@ extension GameScene {
                                                    animation3,changeSizeGoLabel,endSound,
                                                    animation4,performStartGame,canPauseChange])
         
-        countDown.run(countDownSequence)
+        countDownNode.run(countDownSequence)
         
+    }
+    
+    func setupComponentsPosition(){
+        paddle.position = CGPoint(x: self.frame.midX,
+                                  y: 50)
+        addChild(paddle)
+        
+        ball?.position = CGPoint(x:self.frame.midX,
+                                y:self.frame.midY)
+        addChild(ball)
+      
+        
+        cloud.zPosition = 2
+        cloud.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud)
+        
+        cloud2.zPosition = 3
+        cloud2.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud2)
+        
+        cloud3.zPosition = 3
+        cloud3.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud.size.height/2)
+        addChild(cloud3)
+        
+        
+        scoreLabel.zPosition = 4
+        scoreLabel.position = CGPoint(x: 50,
+                                      y: self.frame.maxY - 100)
+        addChild(scoreLabel)
+        
+        
+        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                     y: self.frame.maxY - 75)
+        pauseNode.zPosition = 5
+        addChild(pauseNode)
+        
+        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownBackground.zPosition = 1000
+        addChild(countDownBackground)
+        
+        countDownNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownNode.zPosition = 1000
+        addChild(countDownNode)
+
+        
+    }
+    
+    // MARK: Create Nodes
+    func createCountDownBackground() -> SKSpriteNode {
+        let coundDownBackground = SKSpriteNode(color: .black, size: self.size)
+        coundDownBackground.alpha = 0.7
+
+        return coundDownBackground
+    }
+    
+    func createCountDownLabel() -> SKSpriteNode {
+        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
+        countDownNode.size = CGSize(width: 54, height: 87)
+
+        return countDownNode
     }
     
     func createPaddle() -> Paddle {
@@ -140,48 +193,5 @@ extension GameScene {
         return pauseNode
     }
     
-    func setupComponentsPosition(){
-        // MARK: Paddle
-        paddle.position = CGPoint(x: self.frame.midX,
-                                  y: 50)
-        addChild(paddle)
-        
-        // MARK: Ball
-        ball.position = CGPoint(x:self.frame.midX,
-                                y:self.frame.midY)
-        addChild(ball)
-        
-        // MARK: Cloud
-        cloud.zPosition = 2
-        cloud.position = CGPoint(x: self.frame.midX,
-                                 y: self.frame.maxY + cloud.size.height/2)
-        addChild(cloud)
-        
-        cloud2.zPosition = 3
-        cloud2.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2)
-        addChild(cloud2)
-        
-        cloud3.zPosition = 3
-        cloud3.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2)
-        addChild(cloud3)
-        
-        
-        scoreLabel.zPosition = 4
-        scoreLabel.position = CGPoint(x: 50,
-                                      y: self.frame.maxY - 100)
-        addChild(scoreLabel)
-        
-        
-        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
-                                     y: self.frame.maxY - 75)
-        pauseNode.zPosition = 5
-        addChild(pauseNode)
-        
-        
-        
-        
-        
-    }
+    
 }
