@@ -53,10 +53,10 @@ class Player: PlayerProtocol {
         switch intResult {
         case 0:
             return .linear
-            
         case 1:
             return .curved
-            
+        case 2:
+            return .highContrast
         default:
             return .linear
         }
