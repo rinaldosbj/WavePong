@@ -74,24 +74,6 @@ class Player: PlayerProtocol {
     
 }
 
-extension UserDefaults: UserDefaultable {
-    
-}
-
-
-protocol UserDefaultable {
-    func bool(forKey: String) -> Bool
-    
-    func integer(forKey: String) -> Int
-    
-    func string(forKey defaultName: String) -> String?
-    
-    func set(_ value: Bool, forKey defaultName: String)
-    
-    func set(_ value: Int, forKey defaultName: String)
-    
-}
-
 /// Defines a standard interface for Player Class
 protocol PlayerProtocol {
     
