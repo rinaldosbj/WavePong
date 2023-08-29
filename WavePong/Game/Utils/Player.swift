@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
     
@@ -16,9 +17,12 @@ class Player: PlayerProtocol {
         self.defaults = defaults
     }
     
+
+    
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
         static var userTopScore = "userTopScore"
+        static var soundMod = "soundMod"
     }
     
     private let defaults: UserDefaultable
@@ -42,16 +46,41 @@ class Player: PlayerProtocol {
     func updateTopScore(NewTopScore score: Int) {
         defaults.set(score, forKey: Constants.userTopScore)
     }
+    
+    var soundMode: SoundMode {
+        let intResult = defaults.integer(forKey: Constants.soundMod)
+        
+        switch intResult {
+        case 0:
+            return .linear
+            
+        case 1:
+            return .curved
+            
+        default:
+            return .linear
+        }
+        
+    
+    }
+    
+    func changeSoundMode(_ mode: SoundMode) {
+        defaults.set(mode.rawValue, forKey: Constants.soundMod)
+    }
 
 }
 
-extension UserDefaults: UserDefaultable { }
+extension UserDefaults: UserDefaultable {
+
+}
 
 
 protocol UserDefaultable {
     func bool(forKey: String) -> Bool
     
-    func integer(forKey: String) -> Int
+    func integer(forKey: String) -> Int // String?
+    
+    func string(forKey defaultName: String) -> String?
     
     func set(_ value: Bool, forKey defaultName: String)
     
@@ -73,5 +102,9 @@ protocol PlayerProtocol {
     
     /// Must be called for persisting the highest score of user
     func updateTopScore(NewTopScore score: Int)
+    
+    var soundMode: SoundMode { get }
+    
+    func changeSoundMode(_ mode: SoundMode)
     
 }
