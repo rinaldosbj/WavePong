@@ -149,6 +149,7 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
+//        let adjustedSize = CGSize(width: self.frame.width * 0.1, height: <#T##Double#>)
         return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: CGSize(width: 60, height: 60))
     }
     

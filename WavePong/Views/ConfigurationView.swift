@@ -11,8 +11,9 @@ struct ConfigurationView: View {
     
     @Environment(\.presentationMode) var presentation
     @State var togleNotifications : Bool = false
-    @State var togleIsLinear : Bool = false
-    @State var togleIsCurved : Bool = true
+    @State var togleIsLinear : Bool = true
+    @State var togleIsCurved : Bool = false
+    @State var togleIsHighContrast: Bool = false
     var player: PlayerProtocol = Player()
     
     var body: some View {
@@ -52,11 +53,13 @@ struct ConfigurationView: View {
 extension ConfigurationView {
     // MARK: RelationShip Functions
     func checksCurrentSoundMode(){
-        if player.soundMode  == .linear {
+        switch player.soundMode {
+        case .linear:
             togleIsLinear = true
-        }
-        else {
-            togleIsLinear = false
+        case .curved:
+            togleIsCurved = true
+        case .highContrast:
+            togleIsHighContrast = true
         }
     }
     
@@ -67,19 +70,30 @@ extension ConfigurationView {
         case .linear:
             if togleIsLinear {
                 togleIsCurved = false
+                togleIsHighContrast = false
                 player.changeSoundMode(.linear)
             }
-            else if !togleIsCurved {
+            else if !togleIsCurved && !togleIsHighContrast {
                 togleIsLinear = true
             }
             
         case .curved:
             if togleIsCurved{
                 togleIsLinear = false
+                togleIsHighContrast = false
                 player.changeSoundMode(.curved)
             }
-            else if !togleIsLinear {
+            else if !togleIsLinear && !togleIsHighContrast {
                 togleIsCurved = true
+            }
+        case .highContrast:
+            if togleIsHighContrast{
+                togleIsCurved = false
+                togleIsLinear = false
+                player.changeSoundMode(.highContrast)
+            }
+            else if !togleIsLinear && !togleIsCurved {
+                togleIsHighContrast = true
             }
         }
         
