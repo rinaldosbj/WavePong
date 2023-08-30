@@ -10,7 +10,7 @@ import Foundation
 protocol GameManagerProtocol: GameColisionDelegate {
     var score: Int { get set }
     
-    var canPause: Bool { get set }
+    var state: GameManager.GameManagerState { get set }
     
     var soundManager: SoundManagerProtocol { get set }
     
@@ -23,8 +23,6 @@ protocol GameManagerProtocol: GameColisionDelegate {
     var gameManagerDelegate: GameManagerDelegate? { get set }
     
     var player: PlayerProtocol { get }
-    
-    func countDownDone()
     
     func startGame()
     

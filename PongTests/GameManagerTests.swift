@@ -10,8 +10,9 @@ import XCTest
 
 final class GameManagerTests: XCTestCase {
     
-    var playerMock: PlayerProtocol!
-    var soundManagerMock: SoundManagerProtocol!
+    var playerMock: Player!
+    var soundManagerMock: SoundManagerMock!
+    var hapticsManagerMock: HapticsManagerMock!
     var gameManager: GameManagerProtocol!
     
     override func setUpWithError() throws {
@@ -19,10 +20,11 @@ final class GameManagerTests: XCTestCase {
         
         playerMock = Player(defaults: UserDefaultsMock())
         soundManagerMock = SoundManagerMock(player: playerMock)
+        hapticsManagerMock = HapticsManagerMock()
         
         gameManager = GameManager(
             soundManager: soundManagerMock,
-//            hapticsManager: ,
+            hapticsManager: hapticsManagerMock,
             player: playerMock)
     }
     
@@ -30,19 +32,56 @@ final class GameManagerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+
+    func testIfContDownStepCallsSound() {
+        gameManager.countDownStep()
+        
+        XCTAssertTrue(soundManagerMock.didPlayedFXSound)
+        XCTAssertEqual(FXSounds.countDownBip, soundManagerMock.lastFXSoundPlayed)
     }
     
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testContDownEnded() {
+        gameManager.state = .InContDown
+        soundManagerMock.lastFXSoundPlayed = nil
+        
+        gameManager.countDownEnded()
+        
+        let expectedManagerState = GameManager.GameManagerState.playing
+        let expectedSoundPlayed = FXSounds.countDownEnd
+        
+        XCTAssertEqual(expectedManagerState, gameManager.state)
+        XCTAssertEqual(expectedSoundPlayed, soundManagerMock.lastFXSoundPlayed)
+    }
+    
+    func testIfPadlleContactIncreasesScore() {
+        gameManager.score = 0
+        
+        gameManager.incrementScore()
+        
+        let expectedScore = 1
+        
+        XCTAssertEqual(expectedScore, gameManager.score)
+        
+    }
+    
+    func testIfPaddleContactCallsFeedback() {
+        // given
+        soundManagerMock.lastFXSoundPlayed = nil
+        hapticsManagerMock.didVibrate = false
+        
+        // when
+        gameManager.incrementScore()
+        
+        // then
+        
+        let expectedFXSound = FXSounds.shooting
+        
+        XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
+        XCTAssertTrue(hapticsManagerMock.didVibrate)
+        
+        
+        
+        
     }
     
 }

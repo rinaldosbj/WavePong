@@ -13,7 +13,6 @@
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A02A93015D00118E77 /* ColorConstants.swift */; };
 		0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A22A93A01700118E77 /* Cloud.swift */; };
-		0C50F7772A9EBCC4004CC635 /* SoundManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */; };
 		0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
 		0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */; };
 		0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */; };
@@ -102,7 +101,6 @@
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0C49E0A22A93A01700118E77 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
-		0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTest.swift; sourceTree = "<group>"; };
 		0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksModels.swift; sourceTree = "<group>"; };
 		0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
 		0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerProtocol.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			children = (
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
-				0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
 			);
 			path = PongTests;
@@ -566,7 +563,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
-				0C50F7772A9EBCC4004CC635 /* SoundManagerTest.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
 			);
