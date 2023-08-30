@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "5E2127E2-0B2C-4EA6-85C4-CBF18BE0A6F1",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Pong.xcodeproj",
+      "identifier" : "D3BF927928FEF6CD00EEF09B",
+      "name" : "WavePong"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Pong.xcodeproj",
+        "identifier" : "0CAA59BD2A9E725300BEA7EA",
+        "name" : "PongTests"
+      }
+    }
+  ],
+  "version" : 1
+}
