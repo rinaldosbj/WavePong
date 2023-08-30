@@ -10,7 +10,7 @@ import XCTest
 
 final class GameManagerTests: XCTestCase {
     
-    var playerMock: Player!
+    var playerMock: PlayerMock!
     var soundManagerMock: SoundManagerMock!
     var hapticsManagerMock: HapticsManagerMock!
     var gameManager: GameManagerProtocol!
@@ -18,7 +18,7 @@ final class GameManagerTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        playerMock = Player(defaults: UserDefaultsMock())
+        playerMock = PlayerMock()
         soundManagerMock = SoundManagerMock(player: playerMock)
         hapticsManagerMock = HapticsManagerMock()
         
@@ -32,7 +32,7 @@ final class GameManagerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-
+    
     func testIfContDownStepCallsSound() {
         gameManager.countDownStep()
         
@@ -56,7 +56,7 @@ final class GameManagerTests: XCTestCase {
     func testIfPadlleContactIncreasesScore() {
         gameManager.score = 0
         
-        gameManager.incrementScore()
+        gameManager.physicsDetection.gameActionDelegate?.incrementScore()
         
         let expectedScore = 1
         
@@ -70,7 +70,7 @@ final class GameManagerTests: XCTestCase {
         hapticsManagerMock.didVibrate = false
         
         // when
-        gameManager.incrementScore()
+        gameManager.physicsDetection.gameActionDelegate?.incrementScore()
         
         // then
         
@@ -80,8 +80,58 @@ final class GameManagerTests: XCTestCase {
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         
         
+    }
+    
+    
+    func testContactGameOver() {
+        soundManagerMock.lastFXSoundPlayed = nil
+        hapticsManagerMock.didVibrate = false
+        
+        gameManager.physicsDetection.gameActionDelegate?.didLose()
+        
+        let expectedFXSound = FXSounds.explosion
+        
+        XCTAssertTrue(hapticsManagerMock.didVibrate)
+        XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
+        
+        
         
         
     }
     
+    func testDidLoseNewRecord() {
+        let userTopScore = 1
+        soundManagerMock.lastFXSoundPlayed = nil
+        hapticsManagerMock.didVibrate = false
+        playerMock.userTopScore = userTopScore
+        
+        
+        let newScore = 60
+        gameManager.score = newScore
+        gameManager.didLose()
+        
+        let expectedFXSound = FXSounds.winzinho
+        
+        XCTAssertTrue(hapticsManagerMock.didVibrate)
+        XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
+        XCTAssertEqual(newScore, playerMock.userTopScore)
+    }
+    
+    func testDidLoseGameOver() {
+        let userTopScore = 100
+        soundManagerMock.lastFXSoundPlayed = nil
+        hapticsManagerMock.didVibrate = false
+        playerMock.userTopScore = userTopScore
+        
+        
+        
+        gameManager.score = 15
+        gameManager.didLose()
+        
+        let expectedFXSound = FXSounds.explosion
+        
+        XCTAssertTrue(hapticsManagerMock.didVibrate)
+        XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
+        XCTAssertEqual(userTopScore, playerMock.userTopScore)
+    }
 }

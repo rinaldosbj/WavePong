@@ -19,6 +19,7 @@ class PlayerMock: PlayerProtocol {
     }
     
     func updateTopScore(NewTopScore score: Int) {
+        userTopScore = score
     }
     
     func changeSoundMode(_ mode: Pong.SoundMode) {
