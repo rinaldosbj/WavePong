@@ -33,7 +33,7 @@ final class GameManagerTests: XCTestCase {
     }
     
     
-    func testIfContDownStepCallsSound() {
+    func testCallsFeedbackWhenContDownStepOver() {
         gameManager.countDownStep()
         
         XCTAssertTrue(soundManagerMock.didPlayedFXSound)

@@ -29,21 +29,28 @@ final class PlayerTests: XCTestCase {
     }
     
     func testShouldNotShowOnboardingAfterFirstLaunch() {
+        // given
         player.userFinishedOnboarding()
         
+        // when
         player = Player(defaults: userDefaultsMock)
         
+        
+        // then
         XCTAssertTrue(player.onboradingHappend)
         
     }
     
     func testUpdateTopScore() {
+        // given
         let newTopScore = 10
-        
         player.updateTopScore(NewTopScore: newTopScore)
         
+        
+        // when
         player = Player(defaults: userDefaultsMock)
         
+        // then
         XCTAssertEqual(newTopScore, player.userTopScore)
     }
     
