@@ -79,7 +79,7 @@ extension GameScene {
         addChild(paddle)
         
         ball?.position = CGPoint(x:self.frame.midX,
-                                y:self.frame.midY)
+                                y: 100)
         addChild(ball)
       
         
@@ -146,6 +146,7 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
+//        let adjustedSize = CGSize(width: self.frame.width * 0.1, height: <#T##Double#>)
         return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: CGSize(width: 60, height: 60))
     }
     
