@@ -13,6 +13,9 @@
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A02A93015D00118E77 /* ColorConstants.swift */; };
 		0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A22A93A01700118E77 /* Cloud.swift */; };
+		0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
+		0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */; };
+		0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */; };
 		0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */; };
 		0C6363EE2A8BF830002DAB8C /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363ED2A8BF830002DAB8C /* ScoreLabel.swift */; };
 		0C6363F02A8D0A28002DAB8C /* GameSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */; };
@@ -22,6 +25,10 @@
 		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */; };
+		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
+		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
+		0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */; };
 		0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */; };
 		0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */; };
 		0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */; };
@@ -77,6 +84,16 @@
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0CAA59C22A9E725300BEA7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3BF927228FEF6CD00EEF09B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3BF927928FEF6CD00EEF09B;
+			remoteInfo = WavePong;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -84,6 +101,9 @@
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0C49E0A22A93A01700118E77 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksModels.swift; sourceTree = "<group>"; };
+		0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
+		0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerProtocol.swift; sourceTree = "<group>"; };
 		0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseNode.swift; sourceTree = "<group>"; };
 		0C6363ED2A8BF830002DAB8C /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLabel.swift; sourceTree = "<group>"; };
 		0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +111,10 @@
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
+		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CAA59C02A9E725300BEA7EA /* PongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongTests.swift; sourceTree = "<group>"; };
 		0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts Extension.swift"; sourceTree = "<group>"; };
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +174,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0CAA59BB2A9E725300BEA7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927728FEF6CD00EEF09B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,6 +252,16 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		0CAA59BF2A9E725300BEA7EA /* PongTests */ = {
+			isa = PBXGroup;
+			children = (
+				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
+				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
+				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
+			);
+			path = PongTests;
+			sourceTree = "<group>";
+		};
 		0CCCE3362A8ADB2F00BCB4E5 /* Game Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +281,7 @@
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
 				D334053B2A7846DA006CA42B /* GameScene+Setup.swift */,
 				D30EF6DB2A79CC5800125DB0 /* GameManager.swift */,
+				0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */,
 				0C6B93A92A7EE43500023DC8 /* SKNodes */,
 			);
 			path = Game;
@@ -300,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
+				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
+				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BF927C28FEF6CD00EEF09B /* WavePong */,
+				0CAA59BF2A9E725300BEA7EA /* PongTests */,
 				D3BF927B28FEF6CD00EEF09B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -349,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BF927A28FEF6CD00EEF09B /* Pong.app */,
+				0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,6 +431,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0CAA59BD2A9E725300BEA7EA /* PongTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CAA59C42A9E725300BEA7EA /* Build configuration list for PBXNativeTarget "PongTests" */;
+			buildPhases = (
+				0CAA59BA2A9E725300BEA7EA /* Sources */,
+				0CAA59BB2A9E725300BEA7EA /* Frameworks */,
+				0CAA59BC2A9E725300BEA7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CAA59C32A9E725300BEA7EA /* PBXTargetDependency */,
+			);
+			name = PongTests;
+			packageProductDependencies = (
+				0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */,
+			);
+			productName = PongTests;
+			productReference = 0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3BF927928FEF6CD00EEF09B /* WavePong */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3BF928828FEF6CF00EEF09B /* Build configuration list for PBXNativeTarget "WavePong" */;
@@ -412,9 +480,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					0CAA59BD2A9E725300BEA7EA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = D3BF927928FEF6CD00EEF09B;
+					};
 					D3BF927928FEF6CD00EEF09B = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -438,11 +510,19 @@
 			projectRoot = "";
 			targets = (
 				D3BF927928FEF6CD00EEF09B /* WavePong */,
+				0CAA59BD2A9E725300BEA7EA /* PongTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0CAA59BC2A9E725300BEA7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927828FEF6CD00EEF09B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -478,6 +558,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0CAA59BA2A9E725300BEA7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
+				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
+				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3BF927628FEF6CD00EEF09B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,9 +583,11 @@
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,
+				0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
+				0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */,
 				0C6363F02A8D0A28002DAB8C /* GameSceneViewModel.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
 				0C6363EE2A8BF830002DAB8C /* ScoreLabel.swift in Sources */,
@@ -519,6 +611,7 @@
 				0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */,
+				0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */,
 				D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
 				0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */,
@@ -528,7 +621,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0CAA59C32A9E725300BEA7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3BF927928FEF6CD00EEF09B /* WavePong */;
+			targetProxy = 0CAA59C22A9E725300BEA7EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0CAA59C52A9E725300BEA7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 749Q737TF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.lmb4.PongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pong";
+			};
+			name = Debug;
+		};
+		0CAA59C62A9E725300BEA7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 749Q737TF5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.lmb4.PongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pong.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pong";
+			};
+			name = Release;
+		};
 		D3BF928628FEF6CF00EEF09B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -652,7 +793,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = 749Q737TF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -722,6 +863,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0CAA59C42A9E725300BEA7EA /* Build configuration list for PBXNativeTarget "PongTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CAA59C52A9E725300BEA7EA /* Debug */,
+				0CAA59C62A9E725300BEA7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3BF927528FEF6CD00EEF09B /* Build configuration list for PBXProject "Pong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -763,6 +913,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

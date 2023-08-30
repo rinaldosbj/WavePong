@@ -9,19 +9,24 @@ import SpriteKit
 
 
 /// Object responsable for dealing with game logic
-class GameManager {
+class GameManager: GameManagerProtocol {
+    
+    enum GameManagerState {
+        case InContDown, playing
+    }
+    
+    public var state: GameManagerState
+    
     /// User Current Score
-    var score: Int
-    /// Gate for controling if user can pause the game. While in count down it should be false
-    var canPause: Bool
+    public var score: Int
     
     /// Instance for calling sounds
-    var soundManager: SoundManager
+    internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
-    var hapticsManager: HapticsManager
+    internal var hapticsManager: HapticsManagerProtocol
     
     /// Instance of object responsable for dealing with game colision logic
-    var physicsDetection: PhysicsDetection
+    internal var physicsDetection: PhysicsDetection
     
     /// Instance for interaction with the gameScene
     weak var sceneDelegate: GameSceneDelegate?
@@ -29,17 +34,26 @@ class GameManager {
     weak var gameManagerDelegate: GameManagerDelegate?
     
     /// Instance for acessing player preferences and topScore
-    var player: PlayerProtocol
+    internal var player: PlayerProtocol
+    
+    /// Gate for controling if user can pause the game. While in count down it should be false
+    internal var canPause: Bool {
+        if state == .playing {
+            return true
+        } else {
+            return false
+        }
+    }
     
     init(score: Int = 0,
-         canPause: Bool = false,
-         soundManager: SoundManager = SoundManager.shared,
-         hapticsManager: HapticsManager = HapticsManager.shared,
+         state: GameManagerState = .InContDown,
+         soundManager: SoundManagerProtocol = SoundManager.shared,
+         hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
          player: PlayerProtocol = Player()
     ) {
         self.score = score
-        self.canPause = canPause
+        self.state = state
         self.soundManager = soundManager
         self.hapticsManager = hapticsManager
         self.physicsDetection = physicsDetection
@@ -48,45 +62,38 @@ class GameManager {
         self.physicsDetection.gameActionDelegate = self
     }
     
-    /// Changes the state of manager for been able to pause
-    ///
-    /// Should be Called when Count down of game scene is over
-    func canPauseNow() {
-        canPause = true
-    }
-    
     /// Informs Game Scene to start game and implements necesseray logic
-    func startGame() {
+    public func startGame() {
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
         score = 0
     }
     
-    func resumeGame() {
+    public func resumeGame() {
         soundManager.resumeGameTheme()
         sceneDelegate?.resumeGame()
     }
     
-    func resetGame() {
+    public func resetGame() {
         restoreGameManager()
         sceneDelegate?.resetGame()
     }
     
-    func restoreGameManager() {
+    public func restoreGameManager() {
         soundManager.stopGameTheme()
-        canPause = false
+        state = .InContDown
         score = 0
     }
     
-    func pauseButtonPressed() {
-        if canPause{
+    public func pauseButtonPressed() {
+        if canPause {
             soundManager.pauseGameTheme()
             sceneDelegate?.pausePressed()
         }
     }
     
-    func pauseNodePressed() {
-        if canPause{
+    public func pauseNodePressed() {
+        if canPause {
             soundManager.pauseGameTheme()
             sceneDelegate?.pausePressed()
             gameManagerDelegate?.pauseNodePressed()
@@ -98,11 +105,12 @@ class GameManager {
         soundManager.updateAudioOrientation(ballPosition: ballPosition, frameSize: frameSize)
     }
     
-    func countDownStep() {
+    public func countDownStep() {
         soundManager.playFXSound(for: .countDownBip)
     }
     
-    func countDownEnded() {
+    public func countDownEnded() {
+        state = .playing
         soundManager.playFXSound(for: .countDownEnd)
     }
     

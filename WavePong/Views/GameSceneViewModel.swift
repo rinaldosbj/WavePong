@@ -21,15 +21,9 @@ class GameSceneViewModel: ObservableObject {
     
     /// Instance for accessing the logic layer of the gameScene
     var gameManager: GameManager
-    
-    /// Instance for accessing and trigger device vibrations
-    var hapticManager: HapticsManager
 
-    init(gameManager: GameManager = GameManager(),
-         hapticsManager: HapticsManager = HapticsManager.shared) {
+    init(gameManager: GameManager = GameManager()) {
         self.gameManager = gameManager
-        self.hapticManager = hapticsManager
-        
         self.gameManager.gameManagerDelegate = self
         
     }

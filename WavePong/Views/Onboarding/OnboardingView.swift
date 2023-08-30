@@ -10,8 +10,8 @@ import SwiftUI
 struct OnboardingView: View {
     
     var player: Player = Player.shared
-    var hapticsManager: HapticsManager = HapticsManager.shared
-    var soundManager: SoundManager = SoundManager.shared
+    var hapticsManager: HapticsManagerProtocol = HapticsManager.shared
+    var soundManager: SoundManagerProtocol = SoundManager.shared
     
     @State var viewState = 5
     
