@@ -12,7 +12,7 @@ import SpriteKit
 struct GameSceneView: View {
     @Environment(\.presentationMode) var presentation
     
-    @ObservedObject var viewModel: GameSceneViewModel = GameSceneViewModel.shared
+    @ObservedObject var viewModel = GameSceneViewModel()
     
     @State var allowInteraction = true
     

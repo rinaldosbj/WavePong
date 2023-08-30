@@ -47,8 +47,6 @@ public class SoundManager: SoundManagerProtocol {
         
         musicPlayer?.volume = volumeAdjusted
         
-        print(panStyle)
-        
         switch panStyle {
         case .curved:
             let proportion = Float(position.x / size.width)

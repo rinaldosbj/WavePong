@@ -45,7 +45,7 @@ class BallSprite: SKSpriteNode {
          self.zPosition = 1
 
          // MARK: physicsBody
-         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2 - size.width/3.8)
+         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2 - size.width/4)
          self.physicsBody?.mass = 20
          self.physicsBody?.friction = 0
          self.physicsBody?.linearDamping = 0

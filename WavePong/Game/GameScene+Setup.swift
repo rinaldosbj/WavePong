@@ -90,12 +90,12 @@ extension GameScene {
         
         cloud2.zPosition = 3
         cloud2.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2)
+                                  y: self.frame.maxY + cloud.size.height/2 + 15)
         addChild(cloud2)
         
         cloud3.zPosition = 3
         cloud3.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2)
+                                  y: self.frame.maxY + cloud.size.height/2 + 30)
         addChild(cloud3)
         
         
@@ -137,7 +137,7 @@ extension GameScene {
     }
     
     func createPaddle() -> Paddle {
-        let proportionalWidth: Double = Double(frame.width / 3)
+        let proportionalWidth = Double(frame.width * gameManager.gameManagerSetting.paddleProportion)
         
         return Paddle(texture: nil,
                       color: UIColor(named: "Light-purple")!,
@@ -146,7 +146,7 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
-        return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: CGSize(width: 60, height: 60))
+        return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
     }
     
     func createCloud() -> Cloud {
