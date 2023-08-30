@@ -10,6 +10,8 @@ import Foundation
 protocol GameManagerProtocol: GameColisionDelegate {
     var score: Int { get set }
     
+    var gameManagerSetting: gameManagerSettings { get }
+        
     var state: GameManager.GameManagerState { get set }
     
     var soundManager: SoundManagerProtocol { get set }
@@ -25,6 +27,10 @@ protocol GameManagerProtocol: GameColisionDelegate {
     var player: PlayerProtocol { get }
     
     func startGame()
+    
+    func incrementBallSpeed()
+    
+    func correctedBallSpeed(for velocity: CGFloat) -> CGFloat
     
     func resumeGame()
     

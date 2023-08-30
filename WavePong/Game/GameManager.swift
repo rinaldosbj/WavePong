@@ -7,18 +7,55 @@
 
 import SpriteKit
 
+enum GameDifficulty: Int {
+    case easy, medium, hard
+}
+
+struct gameManagerSettings {
+    var ballSpeed: CGFloat
+    var maxBallSpeed: CGFloat
+    var cloudVelocity: Double
+    var ballSize: CGSize
+    var paddleProportion: Double
+    
+    init(difficulty: GameDifficulty = .easy) {
+        switch difficulty{
+        case .easy:
+            self.ballSpeed = 200
+            self.maxBallSpeed = 400
+            self.cloudVelocity = 40
+            self.ballSize = CGSize(width: 80, height: 80)
+            self.paddleProportion = 1/2.5
+        case .medium:
+            self.ballSpeed = 300
+            self.maxBallSpeed = 600
+            self.cloudVelocity = 20
+            self.ballSize = CGSize(width: 70, height: 70)
+            self.paddleProportion = 1/2.75
+        case .hard:
+            self.ballSpeed = 500
+            self.maxBallSpeed = 1000
+            self.cloudVelocity = 5
+            self.ballSize = CGSize(width: 60, height: 60)
+            self.paddleProportion = 1/3
+        }
+    }
+}
+
 
 /// Object responsable for dealing with game logic
 class GameManager: GameManagerProtocol {
     
     enum GameManagerState {
-        case InContDown, playing
+        case InContDown, playing, gameOver
     }
     
     public var state: GameManagerState
     
     /// User Current Score
     public var score: Int
+    
+    var gameManagerSetting: gameManagerSettings
     
     /// Instance for calling sounds
     internal var soundManager: SoundManagerProtocol
@@ -50,23 +87,46 @@ class GameManager: GameManagerProtocol {
          soundManager: SoundManagerProtocol = SoundManager.shared,
          hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
-         player: PlayerProtocol = Player()
+         player: PlayerProtocol = Player(),
+         gameDifficulty: GameDifficulty
     ) {
+        self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
         self.soundManager = soundManager
         self.hapticsManager = hapticsManager
         self.physicsDetection = physicsDetection
         self.player = player
-        
         self.physicsDetection.gameActionDelegate = self
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
     public func startGame() {
+        state = .playing
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
         score = 0
+    }
+    
+    public func incrementBallSpeed() {
+        let ballSpeed = gameManagerSetting.ballSpeed
+        let maxBallSpeed = gameManagerSetting.maxBallSpeed
+        
+        if ballSpeed < maxBallSpeed {
+            gameManagerSetting.ballSpeed += 0.5
+        }
+    }
+    
+    public func correctedBallSpeed(for velocity: CGFloat) -> CGFloat {
+        let ballSpeed = gameManagerSetting.ballSpeed
+        
+        if velocity < 0 && velocity > -ballSpeed {
+            return -ballSpeed
+        }
+        if velocity > 0 && velocity < ballSpeed {
+            return ballSpeed
+        }
+        return velocity
     }
     
     public func resumeGame() {
@@ -110,7 +170,6 @@ class GameManager: GameManagerProtocol {
     }
     
     public func countDownEnded() {
-        state = .playing
         soundManager.playFXSound(for: .countDownEnd)
     }
     
@@ -152,6 +211,7 @@ extension GameManager: GameColisionDelegate {
     
     public func didLose() {
         soundManager.pauseGameTheme()
+        state = .gameOver
         
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)

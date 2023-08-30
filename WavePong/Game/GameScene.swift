@@ -12,7 +12,7 @@ import SwiftUI
 
 
 class GameScene: SKScene {
-
+    
     var gameManager: GameManagerProtocol
     var ball: BallSprite!
     var paddle: Paddle!
@@ -25,10 +25,6 @@ class GameScene: SKScene {
     var countDownNode: SKSpriteNode!
     var countDownBackground : SKSpriteNode!
     
-    
-    var ballSpeed: CGFloat = 500
-    let balSpeedMax: CGFloat = 1500
-        
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
     public init(size: CGSize, gameManager: GameManagerProtocol) {
@@ -58,15 +54,14 @@ class GameScene: SKScene {
             setupWorld()
             setupComponentsPosition()
             countDownAnimation()
-
         }
     }
-
+    
     
     func startGame() {
         ball?.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
         animateClouds()
-
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -82,10 +77,10 @@ class GameScene: SKScene {
     }
     
     private func cloudsVerticalAnimation() {
-        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
-        cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
-        cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
-
+        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2.run(SKAction.moveTo(y: self.frame.midY + 105, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3.run(SKAction.moveTo(y: self.frame.midY + 120, duration: gameManager.gameManagerSetting.cloudVelocity))
+        
     }
     
     private func cloudsHorizontalAnimation() {
@@ -93,7 +88,7 @@ class GameScene: SKScene {
         moveCloudNode2Horizontal()
         moveCloudNode3Horizontal()
     }
-      
+    
     private func moveCloudNodeHorizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 25, duration: 0.75)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 25, duration: 0.75)
@@ -102,7 +97,7 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         cloud.run(repeatForever)
-
+        
     }
     
     private func moveCloudNode2Horizontal() {
@@ -113,7 +108,7 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         cloud2.run(repeatForever)
-
+        
     }
     
     private func moveCloudNode3Horizontal() {
@@ -127,26 +122,13 @@ class GameScene: SKScene {
         
     }
     
-    private func updateBallSpeed(increment: CGFloat = 0.5) {
-        if ballSpeed < balSpeedMax {
-            ballSpeed += increment
-        }
+    private func updateBallSpeed() {
         
-        // corrects vertical speed
-        if (ball?.physicsBody?.velocity.dy)! < 0 && (ball?.physicsBody?.velocity.dy)! > -ballSpeed {
-            ball?.physicsBody?.velocity.dy = -ballSpeed
-        }
-        if (ball?.physicsBody?.velocity.dy)! > 0 && (ball?.physicsBody?.velocity.dy)! < ballSpeed {
-            ball?.physicsBody?.velocity.dy = ballSpeed
-        }
+        gameManager.incrementBallSpeed()
         
-        // corrects horizontal speed
-        if (ball?.physicsBody?.velocity.dx)! < 0 && (ball?.physicsBody?.velocity.dx)! > -ballSpeed {
-            ball?.physicsBody?.velocity.dx = -ballSpeed
-        }
-        if (ball?.physicsBody?.velocity.dx)! > 0 && (ball?.physicsBody?.velocity.dx)! < ballSpeed {
-            ball?.physicsBody?.velocity.dx = ballSpeed
-        }
+        ball?.physicsBody?.velocity.dy = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dy)!)
+        
+        ball?.physicsBody?.velocity.dx = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dx)!)
         
     }
     
@@ -169,7 +151,7 @@ class GameScene: SKScene {
 
 extension GameScene: GameSceneDelegate {
     func resetGame() {
-
+        
         self.isPaused = false
         
         resetSpriteNodes()
@@ -179,7 +161,7 @@ extension GameScene: GameSceneDelegate {
         setupComponentsPosition()
         countDownAnimation()
         
-        ballSpeed = 500
+        //        ballSpeed = 500
         
     }
     
@@ -217,12 +199,7 @@ extension GameScene: GameSceneDelegate {
     }
     
     func isInGame() -> Bool {
-        if GameSceneViewModel.shared.state == .game {
-            return true
-        }
-        else {
-            return false
-        }
+        gameManager.state != .gameOver ? true : false
     }
     
 }

@@ -16,13 +16,11 @@ class GameSceneViewModel: ObservableObject {
     @Published var state: ViewMode = .game
     @Published var userScore: String = ""
     @Published var recordLabel: String = ""
-        
-    static let shared = GameSceneViewModel()
     
     /// Instance for accessing the logic layer of the gameScene
     var gameManager: GameManager
 
-    init(gameManager: GameManager = GameManager()) {
+    init(gameManager: GameManager = GameManager(gameDifficulty: .hard)) {
         self.gameManager = gameManager
         self.gameManager.gameManagerDelegate = self
         
