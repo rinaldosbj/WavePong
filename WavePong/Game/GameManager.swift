@@ -17,7 +17,7 @@ class GameManager: GameManagerProtocol {
     public var canPause: Bool
     
     /// Instance for calling sounds
-    internal var soundManager: SoundManager
+    internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
     internal var hapticsManager: HapticsManager
     
@@ -34,7 +34,7 @@ class GameManager: GameManagerProtocol {
     
     init(score: Int = 0,
          canPause: Bool = false,
-         soundManager: SoundManager = SoundManager.shared,
+         soundManager: SoundManagerProtocol = SoundManager.shared,
          hapticsManager: HapticsManager = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
          player: PlayerProtocol = Player()

@@ -13,6 +13,8 @@
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
 		0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A02A93015D00118E77 /* ColorConstants.swift */; };
 		0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A22A93A01700118E77 /* Cloud.swift */; };
+		0C50F7772A9EBCC4004CC635 /* SoundManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */; };
+		0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
 		0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */; };
 		0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */; };
 		0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */; };
@@ -25,7 +27,6 @@
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */; };
-		0C98A6582A9E8FA4001CFF2B /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98A6572A9E8FA4001CFF2B /* UserDefaultsMock.swift */; };
 		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
 		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
 		0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */; };
@@ -101,6 +102,8 @@
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0C49E0A22A93A01700118E77 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTest.swift; sourceTree = "<group>"; };
+		0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksModels.swift; sourceTree = "<group>"; };
 		0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
 		0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerProtocol.swift; sourceTree = "<group>"; };
 		0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseNode.swift; sourceTree = "<group>"; };
@@ -111,7 +114,6 @@
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
-		0C98A6572A9E8FA4001CFF2B /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
 		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA59C02A9E725300BEA7EA /* PongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongTests.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
+				0C50F7762A9EBCC4004CC635 /* SoundManagerTest.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
 			);
 			path = PongTests;
@@ -344,7 +347,7 @@
 			children = (
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
-				0C98A6572A9E8FA4001CFF2B /* UserDefaultsMock.swift */,
+				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
+				0C50F7772A9EBCC4004CC635 /* SoundManagerTest.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
 			);
@@ -583,6 +587,7 @@
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,
+				0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
@@ -603,7 +608,6 @@
 				D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */,
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
-				0C98A6582A9E8FA4001CFF2B /* UserDefaultsMock.swift in Sources */,
 				0DF039112A93E11E0005551B /* NotificationType.swift in Sources */,
 				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
 				0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */,

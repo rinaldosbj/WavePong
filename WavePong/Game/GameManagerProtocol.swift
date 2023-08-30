@@ -12,7 +12,7 @@ protocol GameManagerProtocol {
     
     var canPause: Bool { get set }
     
-    var soundManager: SoundManager { get set }
+    var soundManager: SoundManagerProtocol { get set }
     
     var hapticsManager: HapticsManager { get set }
     
