@@ -52,6 +52,17 @@ extension ConfigurationView {
                     }
                 Spacer()
             }
+            
+            HStack {
+                Toggle("",isOn: $togleIsHighContrast)
+                    .toggleStyle(SelectCustomToggleStyle(mode: .highContrast))
+                    .foregroundColor(.white)
+                    .accessibilityLabel("Modo alto contraste")
+                    .onChange(of: togleIsHighContrast) { _ in
+                        updateToggle(from: .highContrast)
+                    }
+                Spacer()
+            }
         }
     }
     

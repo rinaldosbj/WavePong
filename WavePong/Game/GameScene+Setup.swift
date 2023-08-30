@@ -79,7 +79,7 @@ extension GameScene {
         addChild(paddle)
         
         ball?.position = CGPoint(x:self.frame.midX,
-                                y:self.frame.midY)
+                                y: 100)
         addChild(ball)
       
         

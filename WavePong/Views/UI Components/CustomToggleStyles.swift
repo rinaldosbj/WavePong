@@ -61,6 +61,10 @@ struct SelectCustomToggleStyle: ToggleStyle {
                 Text("Exponencial")
                     .font(.custom("DaysOne-Regular", size: 24))
                     .foregroundColor(.white)
+            case .highContrast:
+                Text("Alto contraste")
+                    .font(.custom("DaysOne-Regular", size: 24))
+                    .foregroundColor(.white)
             }
         }
         .onTapGesture { configuration.isOn.toggle() }

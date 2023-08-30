@@ -55,10 +55,26 @@ public class SoundManager: SoundManagerProtocol {
             musicPlayer?.pan = curvedProportion
             
         case .linear:
-            let proportion = Float((position.x - (size.width / 2) ) / size.width)
+            let proportion = Float((position.x - (size.width / 2) ) / (size.width/2))
             musicPlayer?.pan = proportion
             audioPLayer?.pan = proportion
             
+        case .highContrast:
+            // need some work
+            var proportion = Float((position.x - (size.width / 2) ) / (size.width/2))
+            
+            if proportion >= 0.33 {
+                proportion = 1
+            }
+            else if proportion <= -0.33 {
+                proportion = -1
+            }
+            else {
+                proportion = 0
+            }
+            
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
         }
         
     }
