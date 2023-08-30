@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol GameManagerProtocol {
+protocol GameManagerProtocol: GameColisionDelegate {
     var score: Int { get set }
     
     var canPause: Bool { get set }
     
     var soundManager: SoundManagerProtocol { get set }
     
-    var hapticsManager: HapticsManager { get set }
+    var hapticsManager: HapticsManagerProtocol { get set }
     
     var physicsDetection: PhysicsDetection { get }
     

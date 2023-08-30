@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 /// Object responsable for feedback vibrations
-public final class HapticsManager {
+public final class HapticsManager: HapticsManagerProtocol {
     
     /// instance for accessing features
-    static let shared = HapticsManager()
+    static let shared: HapticsManagerProtocol = HapticsManager()
     
     private init() {}
     
@@ -47,5 +47,17 @@ public final class HapticsManager {
     }
     
     
+    
+}
+
+protocol HapticsManagerProtocol {
+    
+    static var shared: HapticsManagerProtocol { get }
+    
+    func vibrate()
+    
+    func vibrateNotification(for type: UINotificationFeedbackGenerator.FeedbackType)
+    
+    func vibrateImpact(for type: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat)
     
 }

@@ -19,7 +19,7 @@ class GameManager: GameManagerProtocol {
     /// Instance for calling sounds
     internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
-    internal var hapticsManager: HapticsManager
+    internal var hapticsManager: HapticsManagerProtocol
     
     /// Instance of object responsable for dealing with game colision logic
     internal var physicsDetection: PhysicsDetection
@@ -35,7 +35,7 @@ class GameManager: GameManagerProtocol {
     init(score: Int = 0,
          canPause: Bool = false,
          soundManager: SoundManagerProtocol = SoundManager.shared,
-         hapticsManager: HapticsManager = HapticsManager.shared,
+         hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
          player: PlayerProtocol = Player()
     ) {

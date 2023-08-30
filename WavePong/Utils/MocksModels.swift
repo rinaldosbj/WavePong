@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PlayerMock: PlayerProtocol {
     var onboradingHappend: Bool = false
@@ -87,6 +88,7 @@ class SoundManagerMock: SoundManagerProtocol {
     var isGameThemePaused: Bool = false
     var wasGamethemeResumed: Bool = false
     var didPlayedFXSound: Bool = false
+    var lastFXSoundPlayed: FXSounds?
     
     
     static var shared: SoundManagerProtocol = SoundManagerMock()
@@ -126,6 +128,7 @@ class SoundManagerMock: SoundManagerProtocol {
     
     func playFXSound(for name: FXSounds) {
         didPlayedFXSound = true
+        lastFXSoundPlayed = name
             
     }
     
@@ -133,4 +136,29 @@ class SoundManagerMock: SoundManagerProtocol {
 }
 
 
+class HapticsManagerMock: HapticsManagerProtocol {
+    
+    static var shared: HapticsManagerProtocol = HapticsManagerMock()
+    
+    var didVibrate: Bool = false
+    var lastNotificationFeedbackType: UINotificationFeedbackGenerator.FeedbackType?
+    var lastImpactFeedbackType: UIImpactFeedbackGenerator.FeedbackStyle?
+    
 
+    func vibrate() {
+        didVibrate = true
+    }
+    
+    func vibrateNotification(for type: UINotificationFeedbackGenerator.FeedbackType) {
+        didVibrate = true
+        lastNotificationFeedbackType = type
+    }
+    
+    func vibrateImpact(for type: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat) {
+        didVibrate = true
+        lastImpactFeedbackType = type
+        
+    }
+    
+    
+}
