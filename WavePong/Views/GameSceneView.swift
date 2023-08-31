@@ -12,7 +12,7 @@ import SpriteKit
 struct GameSceneView: View {
     @Environment(\.presentationMode) var presentation
     
-    @ObservedObject var viewModel = GameSceneViewModel()
+    @ObservedObject var viewModel: GameSceneViewModel
     
     @State var allowInteraction = true
     
@@ -166,13 +166,4 @@ struct GameSceneView: View {
     }
     
     
-}
-
-
-
-
-struct GameSceneView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameSceneView()
-    }
 }

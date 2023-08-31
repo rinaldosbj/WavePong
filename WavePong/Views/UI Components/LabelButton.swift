@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LabelButton: View {
     enum ButtonStyle: String {
-        case start, resume
+        case start, resume, easy, medium, hard
         
     }
     
@@ -25,20 +25,27 @@ struct LabelButton: View {
             return "Começar"
         case .resume:
             return "Continuar"
+        case .easy:
+            return "Fácil"
+        case .medium:
+            return "Médio"
+        case .hard:
+            return "Difícil"
         }
     }
     
     var body: some View {
-        switch buttonStyle{
+        switch buttonStyle {
         case .resume:
             Button {
                 buttonAction()
             } label: {
                 button
             }
-        case .start:
+        default:
             button
         }
+        
     }
     
     var button: some View {
