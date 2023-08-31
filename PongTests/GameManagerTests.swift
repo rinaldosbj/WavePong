@@ -25,7 +25,9 @@ final class GameManagerTests: XCTestCase {
         gameManager = GameManager(
             soundManager: soundManagerMock,
             hapticsManager: hapticsManagerMock,
-            player: playerMock)
+            player: playerMock,
+            gameDifficulty: .easy
+        )
     }
     
     override func tearDownWithError() throws {
@@ -103,7 +105,7 @@ final class GameManagerTests: XCTestCase {
         let userTopScore = 1
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.userTopScore = userTopScore
+        playerMock.topScore = userTopScore
         
         
         let newScore = 60
@@ -114,14 +116,14 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(newScore, playerMock.userTopScore)
+        XCTAssertEqual(newScore, playerMock.topScore)
     }
     
     func testDidLoseGameOver() {
         let userTopScore = 100
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.userTopScore = userTopScore
+        playerMock.topScore = userTopScore
         
         
         
@@ -132,6 +134,6 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(userTopScore, playerMock.userTopScore)
+        XCTAssertEqual(userTopScore, playerMock.topScore)
     }
 }

@@ -44,25 +44,25 @@ final class PlayerTests: XCTestCase {
     func testUpdateTopScore() {
         // given
         let newTopScore = 10
-        player.updateTopScore(NewTopScore: newTopScore)
+        player.updateTopScore(NewTopScore: newTopScore, forDificulty: .easy)
         
         
         // when
         player = Player(defaults: userDefaultsMock)
         
         // then
-        XCTAssertEqual(newTopScore, player.userTopScore)
+        XCTAssertEqual(newTopScore, player.userTopScore(forDificulty: .easy))
     }
     
     func testShouldNotUpdateScopeIfIsntHigher() {
         let highstScore = 50
         userDefaultsMock.topScpre = highstScore
         
-        player.updateTopScore(NewTopScore: 10)
+        player.updateTopScore(NewTopScore: 10, forDificulty: .easy)
         
         player = Player(defaults: userDefaultsMock)
         
-        XCTAssertEqual(highstScore, player.userTopScore)
+        XCTAssertEqual(highstScore, player.userTopScore(forDificulty: .easy))
         
     }
     

@@ -111,7 +111,6 @@
 		0C6363F12A8D266A002DAB8C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
-		0C8A473A2A9FC09A00796C1F /* WavePong.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WavePong.xctestplan; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
 		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
 		0CD122112A744D3000E486B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WavePongTestPlan.xctestplan; sourceTree = "<group>"; };
 		0CF648562A7846AD00282A52 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WavePong_soundtrack.mp3; sourceTree = "<group>"; };
 		0CF6485B2A7944AA00282A52 /* surprise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = surprise.mp3; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		0CAA59BF2A9E725300BEA7EA /* PongTests */ = {
 			isa = PBXGroup;
 			children = (
-				0C8A473A2A9FC09A00796C1F /* WavePong.xctestplan */,
+				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,

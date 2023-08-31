@@ -73,6 +73,8 @@ class GameManager: GameManagerProtocol {
     /// Instance for acessing player preferences and topScore
     internal var player: PlayerProtocol
     
+    internal var gameDificulty: GameDifficulty
+    
     /// Gate for controling if user can pause the game. While in count down it should be false
     internal var canPause: Bool {
         if state == .playing {
@@ -90,6 +92,7 @@ class GameManager: GameManagerProtocol {
          player: PlayerProtocol = Player(),
          gameDifficulty: GameDifficulty
     ) {
+        self.gameDificulty = gameDifficulty
         self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
@@ -178,7 +181,7 @@ class GameManager: GameManagerProtocol {
 extension GameManager: GameColisionDelegate {
     
     private var isNewRecord: Bool {
-        score > player.userTopScore
+        score > player.userTopScore(forDificulty: self.gameDificulty)
     }
     
     
@@ -215,13 +218,13 @@ extension GameManager: GameColisionDelegate {
         
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
-            player.updateTopScore(NewTopScore: score)
+            player.updateTopScore(NewTopScore: score, forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
         } else {
             notifyUserOfEvent(.gameOver)
             var topScore: Int {
-                Player.shared.userTopScore
+                Player.shared.userTopScore(forDificulty: self.gameDificulty)
             }
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Recorde \(topScore)")

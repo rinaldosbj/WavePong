@@ -9,9 +9,17 @@ import Foundation
 import UIKit
 
 class PlayerMock: PlayerProtocol {
+    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
+        return 0
+    }
+    
+    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty) {
+        
+    }
+    
     var onboradingHappend: Bool = false
     
-    var userTopScore: Int = 0
+    var topScore = 0
     
     var soundMode: Pong.SoundMode = .linear
     
@@ -19,7 +27,7 @@ class PlayerMock: PlayerProtocol {
     }
     
     func updateTopScore(NewTopScore score: Int) {
-        userTopScore = score
+        topScore = score
     }
     
     func changeSoundMode(_ mode: Pong.SoundMode) {

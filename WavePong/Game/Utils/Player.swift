@@ -10,6 +10,9 @@ import Foundation
 
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
+
+
+    
     
     static var shared: Player = Player()
     
@@ -21,7 +24,9 @@ class Player: PlayerProtocol {
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
-        static var userTopScore = "userTopScore"
+        static var userTopScoreEasy = "userTopScoreEasy"
+        static var userTopScoreMedium = "userTopScoreMedium"
+        static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
     }
     
@@ -32,23 +37,39 @@ class Player: PlayerProtocol {
         return defaults.bool(forKey: Constants.hasSeenOnboarding)
     }
     
-    ///  Informs the highest score achieved by the player
-    var userTopScore: Int {
-        return defaults.integer(forKey: Constants.userTopScore)
-    }
     
     /// Once player finishes onboarding, this methods must be called so the app won't show onboading every launch
     func userFinishedOnboarding() {
         defaults.set(true, forKey: Constants.hasSeenOnboarding)
     }
     
-    /// Must be called if score of game was higher than the previous top score. Updates
-    func updateTopScore(NewTopScore score: Int) {
-        if score > userTopScore {
-            defaults.set(score, forKey: Constants.userTopScore)
+    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
+        switch dificulty {
+        case .easy:
+            return defaults.integer(forKey: Constants.userTopScoreEasy)
+        case .medium:
+            return defaults.integer(forKey: Constants.userTopScoreMedium)
+        case .hard:
+            return defaults.integer(forKey: Constants.userTopScpreHard)
         }
     }
     
+    
+    /// Must be called if score of game was higher than the previous top score. Updates
+    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty) {
+        if score > userTopScore(forDificulty: dificulty) {
+            switch dificulty {
+            case .easy:
+                defaults.set(score, forKey: Constants.userTopScoreEasy)
+            case .medium:
+                defaults.set(score, forKey: Constants.userTopScoreMedium)
+            case .hard:
+                defaults.set(score, forKey: Constants.userTopScpreHard)
+                
+            }
+  
+        }
+    }
     
     var soundMode: SoundMode {
         let intResult = defaults.integer(forKey: Constants.soundMod)
@@ -80,14 +101,14 @@ protocol PlayerProtocol {
     /// Should return true if the user didn't seen onboarding yet
     var onboradingHappend: Bool { get }
     
-    /// Should return the highest Score achives by user
-    var userTopScore: Int { get }
     
     /// Must be used for updating the info that user has seen onboarding and shouldn't show it anymore on launch
     func userFinishedOnboarding()
     
+    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int
+    
     /// Must be called for persisting the highest score of user
-    func updateTopScore(NewTopScore score: Int)
+    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty)
     
     var soundMode: SoundMode { get }
     
