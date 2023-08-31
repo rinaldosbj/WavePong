@@ -9,34 +9,68 @@ import Foundation
 import UIKit
 
 class PlayerMock: PlayerProtocol {
-    var onboradingHappend: Bool = false
     
-    var userTopScore: Int = 0
+    var onboradingHappend: Bool = false
     
     var soundMode: Pong.SoundMode = .linear
     
-    func userFinishedOnboarding() {
+    var userTopScoreEasy = 0
+    var userTopScoreMedium = 0
+    var userTopScoreHard = 0
+    
+    
+    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
+        switch dificulty {
+        case .easy:
+            return userTopScoreEasy
+        case .medium:
+            return userTopScoreMedium
+        case .hard:
+            return userTopScoreHard
+        }
     }
     
-    func updateTopScore(NewTopScore score: Int) {
-        userTopScore = score
+    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty) {
+        switch dificulty {
+        case .easy:
+            userTopScoreEasy = score
+        case .medium:
+            userTopScoreMedium = score
+        case .hard:
+            userTopScoreHard = score
+        }
+        
     }
+    
+    
+    func userFinishedOnboarding() {
+//        onboradingHappend = true
+    }
+    
     
     func changeSoundMode(_ mode: Pong.SoundMode) {
+//        soundMode = mode
         
     }
     
 }
 
 class UserDefaultsMock: UserDefaultable {
+
+    
     
     var didSeeOnboarding: Bool = false
-    var topScpre: Int = 0
+    var userTopScoreEasy = 0
+    var userTopScoreMedium = 0
+    var userTopScoreHard = 0
+    
     var soundMod: Int = 0
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
-        static var userTopScore = "userTopScore"
+        static var userTopScoreEasy = "userTopScoreEasy"
+        static var userTopScoreMedium = "userTopScoreMedium"
+        static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
     }
     
@@ -50,20 +84,24 @@ class UserDefaultsMock: UserDefaultable {
     }
     
     func integer(forKey: String) -> Int {
-        if forKey == Constants.userTopScore {
-            return self.topScpre
-        } else if forKey == Constants.soundMod {
-            return self.soundMod
-        } else  {
+        switch forKey {
+        case Constants.soundMod:
+            return soundMod
+        case Constants.userTopScoreEasy:
+            return userTopScoreEasy
+        case Constants.userTopScoreMedium:
+            return userTopScoreMedium
+        case Constants.userTopScpreHard:
+            return userTopScoreHard
+        case Constants.soundMod:
+            return soundMod
+            
+        default:
             return 0
         }
-
-    }
-    
-    func string(forKey defaultName: String) -> String? {
-        return nil
         
     }
+    
     
     func set(_ value: Bool, forKey defaultName: String) {
         if defaultName == Constants.hasSeenOnboarding {
@@ -72,13 +110,25 @@ class UserDefaultsMock: UserDefaultable {
     }
     
     func set(_ value: Int, forKey defaultName: String) {
-        if defaultName == Constants.userTopScore {
-            topScpre = value
-        } else if defaultName == Constants.soundMod {
+        switch defaultName {
+        case Constants.soundMod:
             soundMod = value
+        case Constants.userTopScoreEasy:
+            userTopScoreEasy = value
+        case Constants.userTopScoreMedium:
+            userTopScoreMedium = value
+        case Constants.userTopScpreHard:
+            userTopScoreHard = value
+        case Constants.soundMod:
+            soundMod = value
+
+        default:
+            return
+   
         }
         
     }
+        
     
     
 }
@@ -112,11 +162,11 @@ class SoundManagerMock: SoundManagerProtocol {
     func pauseGameTheme() {
         isPlayingGameTheme = false
         isGameThemePaused = true
-            
+        
     }
     
     func resumeGameTheme() {
-            isGameThemePaused = false
+        isGameThemePaused = false
         isPlayingGameTheme = true
         
     }
@@ -124,13 +174,13 @@ class SoundManagerMock: SoundManagerProtocol {
     func stopGameTheme() {
         isGameThemePaused = false
         isPlayingGameTheme = false
-            
+        
     }
     
     func playFXSound(for name: FXSounds) {
         didPlayedFXSound = true
         lastFXSoundPlayed = name
-            
+        
     }
     
     
@@ -145,7 +195,7 @@ class HapticsManagerMock: HapticsManagerProtocol {
     var lastNotificationFeedbackType: UINotificationFeedbackGenerator.FeedbackType?
     var lastImpactFeedbackType: UIImpactFeedbackGenerator.FeedbackStyle?
     
-
+    
     func vibrate() {
         didVibrate = true
     }

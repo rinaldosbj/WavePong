@@ -12,13 +12,17 @@ enum GameDifficulty: Int {
 }
 
 struct gameManagerSettings {
+    var difficulty: GameDifficulty
+    
     var ballSpeed: CGFloat
     var maxBallSpeed: CGFloat
     var cloudVelocity: Double
     var ballSize: CGSize
     var paddleProportion: Double
     
-    init(difficulty: GameDifficulty = .easy) {
+    init(difficulty: GameDifficulty) {
+        self.difficulty = difficulty
+        
         switch difficulty{
         case .easy:
             self.ballSpeed = 200
@@ -55,6 +59,10 @@ class GameManager: GameManagerProtocol {
     /// User Current Score
     public var score: Int
     
+    public var gameDificulty: GameDifficulty {
+        gameManagerSetting.difficulty
+    }
+    
     var gameManagerSetting: gameManagerSettings
     
     /// Instance for calling sounds
@@ -73,6 +81,8 @@ class GameManager: GameManagerProtocol {
     /// Instance for acessing player preferences and topScore
     internal var player: PlayerProtocol
     
+
+    
     /// Gate for controling if user can pause the game. While in count down it should be false
     internal var canPause: Bool {
         if state == .playing {
@@ -90,6 +100,7 @@ class GameManager: GameManagerProtocol {
          player: PlayerProtocol = Player(),
          gameDifficulty: GameDifficulty
     ) {
+
         self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
@@ -178,7 +189,7 @@ class GameManager: GameManagerProtocol {
 extension GameManager: GameColisionDelegate {
     
     private var isNewRecord: Bool {
-        score > player.userTopScore
+        score > player.userTopScore(forDificulty: self.gameDificulty)
     }
     
     
@@ -215,13 +226,13 @@ extension GameManager: GameColisionDelegate {
         
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
-            player.updateTopScore(NewTopScore: score)
+            player.updateTopScore(NewTopScore: score, forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
         } else {
             notifyUserOfEvent(.gameOver)
             var topScore: Int {
-                Player.shared.userTopScore
+                Player.shared.userTopScore(forDificulty: self.gameDificulty)
             }
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Recorde \(topScore)")

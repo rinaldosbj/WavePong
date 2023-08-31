@@ -7,16 +7,15 @@
 
 import Foundation
 
-protocol GameManagerProtocol: GameColisionDelegate {
+protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
+    
+    var gameDificulty: GameDifficulty { get }
+    
     var score: Int { get set }
     
     var gameManagerSetting: gameManagerSettings { get }
         
     var state: GameManager.GameManagerState { get set }
-    
-    var soundManager: SoundManagerProtocol { get set }
-    
-    var hapticsManager: HapticsManagerProtocol { get set }
     
     var physicsDetection: PhysicsDetection { get }
     
@@ -45,4 +44,11 @@ protocol GameManagerProtocol: GameColisionDelegate {
     func countDownStep()
     
     func countDownEnded()
+}
+
+protocol GameUserFeedbackProtocol {
+    var soundManager: SoundManagerProtocol { get set }
+    
+    var hapticsManager: HapticsManagerProtocol { get set }
+    
 }

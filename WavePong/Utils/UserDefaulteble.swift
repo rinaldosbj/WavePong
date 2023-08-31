@@ -13,8 +13,6 @@ protocol UserDefaultable {
     
     func integer(forKey: String) -> Int
     
-    func string(forKey defaultName: String) -> String?
-    
     func set(_ value: Bool, forKey defaultName: String)
     
     func set(_ value: Int, forKey defaultName: String)
