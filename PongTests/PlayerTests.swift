@@ -56,7 +56,7 @@ final class PlayerTests: XCTestCase {
     
     func testShouldNotUpdateScopeIfIsntHigher() {
         let highstScore = 50
-        userDefaultsMock.topScpre = highstScore
+        userDefaultsMock.userTopScoreEasy = highstScore
         
         player.updateTopScore(NewTopScore: 10, forDificulty: .easy)
         

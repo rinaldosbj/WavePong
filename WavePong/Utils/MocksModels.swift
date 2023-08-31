@@ -12,9 +12,12 @@ class PlayerMock: PlayerProtocol {
     
     var onboradingHappend: Bool = false
     
+    var soundMode: Pong.SoundMode = .linear
+    
     var userTopScoreEasy = 0
     var userTopScoreMedium = 0
     var userTopScoreHard = 0
+    
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
@@ -39,27 +42,35 @@ class PlayerMock: PlayerProtocol {
         
     }
     
-    var soundMode: Pong.SoundMode = .linear
     
     func userFinishedOnboarding() {
+//        onboradingHappend = true
     }
     
     
     func changeSoundMode(_ mode: Pong.SoundMode) {
+//        soundMode = mode
         
     }
     
 }
 
 class UserDefaultsMock: UserDefaultable {
+
+    
     
     var didSeeOnboarding: Bool = false
-    var topScpre: Int = 0
+    var userTopScoreEasy = 0
+    var userTopScoreMedium = 0
+    var userTopScoreHard = 0
+    
     var soundMod: Int = 0
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
-        static var userTopScore = "userTopScore"
+        static var userTopScoreEasy = "userTopScoreEasy"
+        static var userTopScoreMedium = "userTopScoreMedium"
+        static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
     }
     
@@ -73,11 +84,19 @@ class UserDefaultsMock: UserDefaultable {
     }
     
     func integer(forKey: String) -> Int {
-        if forKey == Constants.userTopScore {
-            return self.topScpre
-        } else if forKey == Constants.soundMod {
-            return self.soundMod
-        } else  {
+        switch forKey {
+        case Constants.soundMod:
+            return soundMod
+        case Constants.userTopScoreEasy:
+            return userTopScoreEasy
+        case Constants.userTopScoreMedium:
+            return userTopScoreMedium
+        case Constants.userTopScpreHard:
+            return userTopScoreHard
+        case Constants.soundMod:
+            return soundMod
+            
+        default:
             return 0
         }
         
@@ -95,13 +114,25 @@ class UserDefaultsMock: UserDefaultable {
     }
     
     func set(_ value: Int, forKey defaultName: String) {
-        if defaultName == Constants.userTopScore {
-            topScpre = value
-        } else if defaultName == Constants.soundMod {
+        switch defaultName {
+        case Constants.soundMod:
             soundMod = value
+        case Constants.userTopScoreEasy:
+            userTopScoreEasy = value
+        case Constants.userTopScoreMedium:
+            userTopScoreMedium = value
+        case Constants.userTopScpreHard:
+            userTopScoreHard = value
+        case Constants.soundMod:
+            soundMod = value
+
+        default:
+            return
+   
         }
         
     }
+        
     
     
 }
