@@ -10,7 +10,6 @@ import SwiftUI
 
 struct MenuView: View {
     
-    
     var body: some View {
         GeometryReader{ geo in
             ZStack {
@@ -22,10 +21,10 @@ struct MenuView: View {
                     Image("Wave-pong")
                         .accessibilityHidden(true)
                     Spacer().frame(height: 192)
-                    NavigationLink(destination: {
-                        GameSceneView()
+                    NavigationLink {
+                        SelectDifficultyView()
                             .navigationBarBackButtonHidden()
-                    }) {
+                    } label: {
                         LabelButton(buttonStyle: .start, buttonAction:{})
                     }
                     .foregroundColor(.yellow)

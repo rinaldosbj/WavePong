@@ -25,7 +25,7 @@ final class GameManagerTests: XCTestCase {
         gameManager = GameManager(
             soundManager: soundManagerMock,
             hapticsManager: hapticsManagerMock,
-            player: playerMock)
+            player: playerMock,gameDifficulty: .easy)
     }
     
     override func tearDownWithError() throws {
