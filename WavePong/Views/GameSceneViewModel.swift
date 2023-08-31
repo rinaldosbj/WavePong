@@ -20,7 +20,7 @@ class GameSceneViewModel: ObservableObject {
     /// Instance for accessing the logic layer of the gameScene
     var gameManager: GameManager
 
-    init(gameManager: GameManager = GameManager(gameDifficulty: .hard)) {
+    init(gameManager: GameManager) {
         self.gameManager = gameManager
         self.gameManager.gameManagerDelegate = self
         
