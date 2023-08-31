@@ -113,8 +113,8 @@ struct GameSceneView: View {
                 HStack {
                     HStack(spacing: 48)  {
                         IconButton(.home) {
+                            NavigationUtil.popToRootView()
                             viewModel.homeButtonPressed()
-                            presentation.wrappedValue.dismiss()
                         }
                         .accessibilityLabel(Text("Voltar para menu"))
                         
@@ -150,7 +150,7 @@ struct GameSceneView: View {
                 
                 HStack(spacing: 48)  {
                     IconButton(.home) {
-                        presentation.wrappedValue.dismiss()
+                        NavigationUtil.popToRootView()
                         viewModel.homeButtonPressed()
                     }
                     .accessibilityLabel(Text("Voltar para menu"))

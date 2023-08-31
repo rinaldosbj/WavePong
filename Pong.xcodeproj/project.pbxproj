@@ -59,6 +59,7 @@
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
 		D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */; };
+		D306E2282AA11C96004F0D9C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2272AA11C96004F0D9C /* NavigationHelper.swift */; };
 		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
 		D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842C92A7E9FA0007FF85B /* MenuView.swift */; };
 		D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */; };
@@ -148,6 +149,7 @@
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
 		D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDifficultyView.swift; sourceTree = "<group>"; };
+		D306E2272AA11C96004F0D9C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		D30EF6DB2A79CC5800125DB0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		D32842C92A7E9FA0007FF85B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		0DF6381F2A78494200CCC34B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D306E2272AA11C96004F0D9C /* NavigationHelper.swift */,
 				0C26DA8B2A83303200844FB2 /* Player.swift */,
 				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
 			);
@@ -604,6 +607,7 @@
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */,
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
+				D306E2282AA11C96004F0D9C /* NavigationHelper.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
