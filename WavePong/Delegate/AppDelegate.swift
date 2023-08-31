@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import FirebaseCore
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationManager.requestNotificationAuthorization()
         gameCenter.authenticatePlayer()
         
+        FirebaseApp.configure()
         return true
     }
 }

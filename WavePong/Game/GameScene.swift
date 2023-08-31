@@ -13,8 +13,7 @@ import SwiftUI
 
 class GameScene: SKScene {
     
-    var soundManager = SoundManager.shared
-    var gameManager: GameManager
+    var gameManager: GameManagerProtocol
     var ball: BallSprite!
     var paddle: Paddle!
     var cloud: Cloud!
@@ -23,18 +22,12 @@ class GameScene: SKScene {
     var scoreLabel: ScoreLabel!
     var borderNode: Border!
     var pauseNode: PauseNode!
-    var countDown: SKSpriteNode!
+    var countDownNode: SKSpriteNode!
     var countDownBackground : SKSpriteNode!
-    
-    
-    var ballSpeed: CGFloat = 500
-    let balSpeedMax: CGFloat = 1500
-    
-    var canPause = false
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
-    public init(size: CGSize, gameManager: GameManager) {
+    public init(size: CGSize, gameManager: GameManagerProtocol) {
         
         self.gameManager = gameManager
         
@@ -46,6 +39,8 @@ class GameScene: SKScene {
         self.cloud3 = createCloud3()
         self.scoreLabel = createScoreLabel()
         self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,48 +53,43 @@ class GameScene: SKScene {
             setupGameManager()
             setupWorld()
             setupComponentsPosition()
-            createCountDown()
+            countDownAnimation()
         }
     }
     
-//    override func willMove(from view: SKView) {
-//        print("entrou no willMove")
-//        if isInGame() {
-//            gameManager.didExit()
-//        }
-//    }
     
     func startGame() {
-        ball.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
-        moveClouds()
-
+        ball?.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
+        animateClouds()
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
-        soundManager.updateAudioOrientation(ballPosition: ball.position, frameSize: frame.size)
-        
+        gameManager.updateAudioOrientation(ballPosition: ball?.position ?? CGPoint(),
+                                           frameSize: frame.size)
         updateBallSpeed()
+        
     }
     
-    func moveClouds() {
-        moveCloudsVertical()
-        moveCloudsHorizontal()
+    func animateClouds() {
+        cloudsVerticalAnimation()
+        cloudsHorizontalAnimation()
     }
     
-    func moveCloudsVertical() {
-        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: 18))
-        cloud2.run(SKAction.moveTo(y: self.frame.midY + 95, duration: 19))
-        cloud3.run(SKAction.moveTo(y: self.frame.midY + 100, duration: 20))
-
+    private func cloudsVerticalAnimation() {
+        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2.run(SKAction.moveTo(y: self.frame.midY + 105, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3.run(SKAction.moveTo(y: self.frame.midY + 120, duration: gameManager.gameManagerSetting.cloudVelocity))
+        
     }
     
-    func moveCloudsHorizontal() {
+    private func cloudsHorizontalAnimation() {
         moveCloudNodeHorizontal()
         moveCloudNode2Horizontal()
         moveCloudNode3Horizontal()
     }
-      
-    func moveCloudNodeHorizontal() {
+    
+    private func moveCloudNodeHorizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 25, duration: 0.75)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 25, duration: 0.75)
         
@@ -107,10 +97,10 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         cloud.run(repeatForever)
-
+        
     }
     
-    func moveCloudNode2Horizontal() {
+    private func moveCloudNode2Horizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 15, duration: 1.33)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 15, duration: 1.33)
         
@@ -118,10 +108,10 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         cloud2.run(repeatForever)
-
+        
     }
     
-    func moveCloudNode3Horizontal() {
+    private func moveCloudNode3Horizontal() {
         let moveLeft = SKAction.moveTo(x: self.frame.midX + 17, duration: 1)
         let moveRight = SKAction.moveTo(x: self.frame.midX - 17, duration: 1)
         
@@ -132,26 +122,13 @@ class GameScene: SKScene {
         
     }
     
-    private func updateBallSpeed(increment: CGFloat = 0.5) {
-        if ballSpeed < balSpeedMax {
-            ballSpeed += increment
-        }
+    private func updateBallSpeed() {
         
-        // corrects vertical speed
-        if (ball.physicsBody?.velocity.dy)! < 0 && (ball.physicsBody?.velocity.dy)! > -ballSpeed {
-            ball.physicsBody?.velocity.dy = -ballSpeed
-        }
-        if (ball.physicsBody?.velocity.dy)! > 0 && (ball.physicsBody?.velocity.dy)! < ballSpeed {
-            ball.physicsBody?.velocity.dy = ballSpeed
-        }
+        gameManager.incrementBallSpeed()
         
-        // corrects horizontal speed
-        if (ball.physicsBody?.velocity.dx)! < 0 && (ball.physicsBody?.velocity.dx)! > -ballSpeed {
-            ball.physicsBody?.velocity.dx = -ballSpeed
-        }
-        if (ball.physicsBody?.velocity.dx)! > 0 && (ball.physicsBody?.velocity.dx)! < ballSpeed {
-            ball.physicsBody?.velocity.dx = ballSpeed
-        }
+        ball?.physicsBody?.velocity.dy = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dy)!)
+        
+        ball?.physicsBody?.velocity.dx = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dx)!)
         
     }
     
@@ -173,19 +150,33 @@ class GameScene: SKScene {
 }
 
 extension GameScene: GameSceneDelegate {
-    func resumeGame() {
+    func resetGame() {
+        
         self.isPaused = false
-        soundManager.resumeGameTheme()
+        
+        resetSpriteNodes()
+        
+        setupGameManager()
+        setupWorld()
+        setupComponentsPosition()
+        countDownAnimation()
+        
+        //        ballSpeed = 500
+        
+    }
+    
+    func resumeGame() {
+        isPaused = false
     }
     
     func UserScored(newScore score: Int) {
         scoreLabel.text = "\(score)"
-        backgroundColor = gameManager.colors[Int.random(in: 0..<3)]
         
     }
     
     func gameOver() {
         self.isPaused = true
+        removeAllChildren()
     }
     
     func pausePressed() {
@@ -193,13 +184,22 @@ extension GameScene: GameSceneDelegate {
         
     }
     
+    private func resetSpriteNodes() {
+        removeAllChildren()
+        
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
+        self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
+    }
+    
     func isInGame() -> Bool {
-        if GameSceneViewModel.shared.state == .game {
-            return true
-        }
-        else {
-            return false
-        }
+        gameManager.state != .gameOver ? true : false
     }
     
 }

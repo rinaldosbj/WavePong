@@ -24,6 +24,7 @@ struct FoneView: View {
                     .multilineTextAlignment(.center)
                     .padding(40)
                     .padding()
+                    .accessibilityHint("Toque duas vezes na tela para continuar")
                 
                 Image("fone")
                     .accessibilityHidden(true)
