@@ -8,6 +8,8 @@
 import Foundation
 
 protocol GameManagerProtocol: GameColisionDelegate {
+    var gameDificulty: GameDifficulty { get }
+    
     var score: Int { get set }
     
     var gameManagerSetting: gameManagerSettings { get }

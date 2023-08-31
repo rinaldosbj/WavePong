@@ -42,17 +42,15 @@ final class GameManagerTests: XCTestCase {
         XCTAssertEqual(FXSounds.countDownBip, soundManagerMock.lastFXSoundPlayed)
     }
     
-    func testContDownEnded() {
+    func testStartGameChangeManagerState() {
         gameManager.state = .InContDown
-        soundManagerMock.lastFXSoundPlayed = nil
-        
-        gameManager.countDownEnded()
+
+        gameManager.startGame()
         
         let expectedManagerState = GameManager.GameManagerState.playing
-        let expectedSoundPlayed = FXSounds.countDownEnd
-        
+
         XCTAssertEqual(expectedManagerState, gameManager.state)
-        XCTAssertEqual(expectedSoundPlayed, soundManagerMock.lastFXSoundPlayed)
+
     }
     
     func testIfPadlleContactIncreasesScore() {
@@ -105,7 +103,7 @@ final class GameManagerTests: XCTestCase {
         let userTopScore = 1
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.topScore = userTopScore
+        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDificulty)
         
         
         let newScore = 60
@@ -116,14 +114,14 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(newScore, playerMock.topScore)
+        XCTAssertEqual(newScore, playerMock.userTopScore(forDificulty: gameManager.gameDificulty))
     }
     
     func testDidLoseGameOver() {
         let userTopScore = 100
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.topScore = userTopScore
+        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDificulty)
         
         
         
@@ -134,6 +132,6 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(userTopScore, playerMock.topScore)
+        XCTAssertEqual(userTopScore, playerMock.userTopScore(forDificulty: gameManager.gameDificulty))
     }
 }

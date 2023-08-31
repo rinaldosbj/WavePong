@@ -9,26 +9,41 @@ import Foundation
 import UIKit
 
 class PlayerMock: PlayerProtocol {
-    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
-        return 0
-    }
-    
-    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty) {
-        
-    }
     
     var onboradingHappend: Bool = false
     
-    var topScore = 0
+    var userTopScoreEasy = 0
+    var userTopScoreMedium = 0
+    var userTopScoreHard = 0
+    
+    func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
+        switch dificulty {
+        case .easy:
+            return userTopScoreEasy
+        case .medium:
+            return userTopScoreMedium
+        case .hard:
+            return userTopScoreHard
+        }
+    }
+    
+    func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty) {
+        switch dificulty {
+        case .easy:
+            userTopScoreEasy = score
+        case .medium:
+            userTopScoreMedium = score
+        case .hard:
+            userTopScoreHard = score
+        }
+        
+    }
     
     var soundMode: Pong.SoundMode = .linear
     
     func userFinishedOnboarding() {
     }
     
-    func updateTopScore(NewTopScore score: Int) {
-        topScore = score
-    }
     
     func changeSoundMode(_ mode: Pong.SoundMode) {
         
@@ -65,7 +80,7 @@ class UserDefaultsMock: UserDefaultable {
         } else  {
             return 0
         }
-
+        
     }
     
     func string(forKey defaultName: String) -> String? {
@@ -120,11 +135,11 @@ class SoundManagerMock: SoundManagerProtocol {
     func pauseGameTheme() {
         isPlayingGameTheme = false
         isGameThemePaused = true
-            
+        
     }
     
     func resumeGameTheme() {
-            isGameThemePaused = false
+        isGameThemePaused = false
         isPlayingGameTheme = true
         
     }
@@ -132,13 +147,13 @@ class SoundManagerMock: SoundManagerProtocol {
     func stopGameTheme() {
         isGameThemePaused = false
         isPlayingGameTheme = false
-            
+        
     }
     
     func playFXSound(for name: FXSounds) {
         didPlayedFXSound = true
         lastFXSoundPlayed = name
-            
+        
     }
     
     
@@ -153,7 +168,7 @@ class HapticsManagerMock: HapticsManagerProtocol {
     var lastNotificationFeedbackType: UINotificationFeedbackGenerator.FeedbackType?
     var lastImpactFeedbackType: UIImpactFeedbackGenerator.FeedbackStyle?
     
-
+    
     func vibrate() {
         didVibrate = true
     }
