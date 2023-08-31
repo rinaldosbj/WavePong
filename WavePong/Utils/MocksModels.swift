@@ -102,10 +102,6 @@ class UserDefaultsMock: UserDefaultable {
         
     }
     
-    func string(forKey defaultName: String) -> String? {
-        return nil
-        
-    }
     
     func set(_ value: Bool, forKey defaultName: String) {
         if defaultName == Constants.hasSeenOnboarding {

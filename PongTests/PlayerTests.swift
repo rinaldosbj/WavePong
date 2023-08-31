@@ -41,7 +41,7 @@ final class PlayerTests: XCTestCase {
         
     }
     
-    func testUpdateTopScore() {
+    func testUpdateTopScoreEasy() {
         // given
         let newTopScore = 10
         player.updateTopScore(NewTopScore: newTopScore, forDificulty: .easy)
@@ -54,7 +54,7 @@ final class PlayerTests: XCTestCase {
         XCTAssertEqual(newTopScore, player.userTopScore(forDificulty: .easy))
     }
     
-    func testShouldNotUpdateScopeIfIsntHigher() {
+    func testShouldNotUpdateScopeIfIsntHigherEasy() {
         let highstScore = 50
         userDefaultsMock.userTopScoreEasy = highstScore
         
@@ -63,6 +63,57 @@ final class PlayerTests: XCTestCase {
         player = Player(defaults: userDefaultsMock)
         
         XCTAssertEqual(highstScore, player.userTopScore(forDificulty: .easy))
+        
+    }
+    
+    func testUpdateTopScoreMedium() {
+        // given
+        let newTopScore = 10
+        player.updateTopScore(NewTopScore: newTopScore, forDificulty: .medium)
+        
+        
+        // when
+        player = Player(defaults: userDefaultsMock)
+        
+        // then
+        XCTAssertEqual(newTopScore, player.userTopScore(forDificulty: .medium))
+    }
+    
+    func testShouldNotUpdateScopeIfIsntHigherMedium() {
+        let highstScore = 50
+        userDefaultsMock.userTopScoreMedium = highstScore
+        
+        player.updateTopScore(NewTopScore: 10, forDificulty: .medium)
+        
+        player = Player(defaults: userDefaultsMock)
+        
+        XCTAssertEqual(highstScore, player.userTopScore(forDificulty: .medium))
+        
+    }
+    
+    func testUpdateTopScoreHard() {
+        // given
+        let newTopScore = 10
+        player.updateTopScore(NewTopScore: newTopScore, forDificulty: .hard)
+        
+        
+        // when
+        player = Player(defaults: userDefaultsMock)
+        
+        // then
+        XCTAssertEqual(newTopScore, player.userTopScore(forDificulty: .hard))
+    }
+    
+    func testShouldNotUpdateScopeIfIsntHigherHard() {
+        let highstScore = 50
+        userDefaultsMock.userTopScoreHard = highstScore
+        
+        player.updateTopScore(NewTopScore: 10, forDificulty: .hard)
+        
+        player = Player(defaults: userDefaultsMock)
+        
+        XCTAssertEqual(highstScore, player.userTopScore(forDificulty: .hard
+                                                       ))
         
     }
     
