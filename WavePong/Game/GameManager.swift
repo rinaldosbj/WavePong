@@ -15,6 +15,7 @@ class GameManager {
     
     var soundManager: SoundManager = SoundManager.shared
     var hapticsManager: HapticsManager = HapticsManager.shared
+    var gameCenterManager: GameCenterManager = GameCenterManager.shared
     
     var physicsDetection = PhysicsDetection()
     var sceneDelegate: GameSceneDelegate?
@@ -89,6 +90,7 @@ extension GameManager: GameColisionDelegate {
             player.updateTopScore(NewTopScore: score)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
+            gameCenterManager.submitScore(with: score)
         } else {
             var topScore: Int {
                 Player.shared.userTopScore
@@ -107,6 +109,7 @@ extension GameManager: GameColisionDelegate {
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
             player.updateTopScore(NewTopScore: score)
+            gameCenterManager.submitScore(with: score)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
         } else {
