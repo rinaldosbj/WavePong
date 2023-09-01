@@ -29,7 +29,7 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
             gameActionDelegate?.didLose()
         }
         else if collision == ColliderType.BALL | ColliderType.AROUNDBORDER {
-            print("Bateu na borda ao redor")
+            
         }
         
         
