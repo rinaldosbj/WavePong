@@ -69,6 +69,9 @@ class GameManager: GameManagerProtocol {
     internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
     internal var hapticsManager: HapticsManagerProtocol
+
+    /// Instance for calling game center
+    var gameCenterManager: GameCenterManager = GameCenterManager.shared
     
     /// Instance of object responsable for dealing with game colision logic
     internal var physicsDetection: PhysicsDetection
@@ -218,7 +221,6 @@ extension GameManager: GameColisionDelegate {
         sceneDelegate?.UserScored(newScore: score)
         
     }
-
     
     public func didLose() {
         soundManager.pauseGameTheme()
@@ -226,6 +228,7 @@ extension GameManager: GameColisionDelegate {
         
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
+            gameCenterManager.submitScore(with: score)
             player.updateTopScore(NewTopScore: score, forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")

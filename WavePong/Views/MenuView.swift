@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @State private var isShowingGameCenter = false
+    
     var body: some View {
         GeometryReader{ geo in
             ZStack {
@@ -46,13 +48,16 @@ struct MenuView: View {
                             ComingSoonView()
                                 .navigationBarBackButtonHidden()
                         }) {
-                            IconButton(.gameCenter, buttonType: .link, buttonAction: {})
+                            IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
                         }
                             .foregroundColor(.yellow)
                             .accessibilityLabel("game center")
                             .accessibilityHint("Toque duas vezes na tela para ir para a tela do game Center")
                     }
                 }
+            }
+            .sheet(isPresented: $isShowingGameCenter) {
+                GameCenterView(isPresented: $isShowingGameCenter).ignoresSafeArea()
             }
         }
     }

@@ -28,11 +28,11 @@ enum notificationType {
     var title: String {
         switch self {
         case .twoDays:
-            return "Dois dias"
+            return "O Wave Pong te espera"
         case .oneWeek:
-            return "Uma semana"
+            return "A música está no controle"
         case .twoWeek:
-            return "Duas semanas"
+            return "É hora de jogar Wave Pong!"
         }
         
     }
@@ -40,11 +40,11 @@ enum notificationType {
     var body: String {
         switch self {
         case .twoDays:
-            return "Você não entra no app há dois dias"
+            return "A batida retrowave te chama."
         case .oneWeek:
-            return "Você não entra no app há uma semana"
+            return "Não perca o ritmo! Volte para o pong."
         case .twoWeek:
-            return "Você não entra no app há duas semanas"
+            return "A música está tocando, volte à diversão!"
         }
     }
     
