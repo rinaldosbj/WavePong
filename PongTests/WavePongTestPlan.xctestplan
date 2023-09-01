@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "8E2396B7-2FE3-44F1-8203-12BFFC20A47E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Pong.xcodeproj",
+        "identifier" : "0CAA59BD2A9E725300BEA7EA",
+        "name" : "PongTests"
+      }
+    }
+  ],
+  "version" : 1
+}
