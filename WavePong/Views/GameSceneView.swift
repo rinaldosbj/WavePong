@@ -12,6 +12,8 @@ import SpriteKit
 struct GameSceneView: View {
     @Environment(\.presentationMode) var presentation
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     @ObservedObject var viewModel: GameSceneViewModel
     
     @State var allowInteraction = true
@@ -54,11 +56,21 @@ struct GameSceneView: View {
                             pauseView
                         }
                         
+                        
                     }
+                
+            }
+            .onChange(of: scenePhase) { newScenePhase in
+                switch newScenePhase {
+                case .background:
+                    viewModel.appWillMoveToBackground()
+                default:
+                    print("")
+                }
             }
             
+            
         }
-        
         
     }
     

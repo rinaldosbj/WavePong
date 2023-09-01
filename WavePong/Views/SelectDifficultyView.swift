@@ -11,6 +11,10 @@ struct SelectDifficultyView: View {
     
     @Environment(\.presentationMode) var presentation
     
+    var gameSceneViewModelEasy = GameSceneViewModel(gameManager: GameManager(gameDifficulty: .easy))
+    var gameSceneViewModelMedium = GameSceneViewModel(gameManager: GameManager(gameDifficulty: .medium))
+    var gameSceneViewModelHard = GameSceneViewModel(gameManager: GameManager(gameDifficulty: .hard))
+    
     internal func createViewModel(_ dificulty: GameDifficulty) -> GameSceneViewModel {
         let gameManager = GameManager(gameDifficulty: dificulty)
         return GameSceneViewModel(gameManager: gameManager)
@@ -32,21 +36,21 @@ struct SelectDifficultyView: View {
                         .accessibilityLabel("Selecione a dificuldade de jogo para começar")
                     Spacer().frame(height: 48)
                     NavigationLink {
-                        GameSceneView(viewModel: createViewModel(.easy))
+                        GameSceneView(viewModel: gameSceneViewModelEasy)
                             .navigationBarBackButtonHidden()
                     } label: {
                         LabelButton(buttonStyle: .easy, buttonAction: {})
                     }
                     Spacer().frame(height: 48)
                     NavigationLink {
-                        GameSceneView(viewModel: createViewModel(.medium))
+                        GameSceneView(viewModel: gameSceneViewModelMedium)
                             .navigationBarBackButtonHidden()
                     } label: {
                         LabelButton(buttonStyle: .medium, buttonAction: {})
                     }
                     Spacer().frame(height: 48)
                     NavigationLink {
-                        GameSceneView(viewModel: createViewModel(.hard))
+                        GameSceneView(viewModel: gameSceneViewModelHard)
                             .navigationBarBackButtonHidden()
                     } label: {
                         LabelButton(buttonStyle: .hard, buttonAction: {})

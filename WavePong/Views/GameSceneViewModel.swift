@@ -53,6 +53,12 @@ class GameSceneViewModel: ObservableObject {
         state = .game
         
     }
+    
+    func appWillMoveToBackground() {
+        gameManager.didLose()
+        state = .gameOver
+        
+    }
 }
 
 
