@@ -811,7 +811,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = 749Q737TF5;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -829,7 +829,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -849,7 +849,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -867,7 +867,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
