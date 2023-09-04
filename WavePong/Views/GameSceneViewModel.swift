@@ -29,7 +29,7 @@ class GameSceneViewModel: ObservableObject {
     /// Once that user double tapped the game Screen, it should pause game and music
     func pauseTap() {
         if gameManager.canPause {
-            gameManager.pauseButtonPressed()
+            gameManager.pauseTrigger()
             state = .pause
         }
 

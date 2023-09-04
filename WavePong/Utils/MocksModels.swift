@@ -213,3 +213,59 @@ class HapticsManagerMock: HapticsManagerProtocol {
     
     
 }
+
+
+class GameSceneMock: GameSceneDelegate {
+    var isGameRunning: Bool = true
+
+    
+    func UserScored(newScore score: Int) {
+        
+    }
+    
+    func gameOver() {
+        isGameRunning = false
+        
+    }
+    
+    func pausePressed() {
+        isGameRunning = false
+        
+    }
+    
+    func resumeGame() {
+        isGameRunning = true
+        
+    }
+    
+    func startGame() {
+        isGameRunning = true
+        
+    }
+    
+    func resetGame() {
+        
+    }
+    
+    
+}
+
+class GameManagerDelegateMock: GameManagerDelegate {
+    enum State {
+        case playing, paused, gameOver
+    }
+    
+    var state: State = .playing
+    
+    func pauseNodePressed() {
+        state = .paused
+        
+    }
+    
+    func gameOver(scoreLabel: String, recordLabel: String) {
+        state = .gameOver
+        
+    }
+    
+    
+}

@@ -13,6 +13,8 @@ final class GameManagerTests: XCTestCase {
     var playerMock: PlayerMock!
     var soundManagerMock: SoundManagerMock!
     var hapticsManagerMock: HapticsManagerMock!
+    var gameSceneDelegateMock: GameSceneMock!
+    var gameManagerDelegateMock: GameManagerDelegateMock!
     var gameManager: GameManagerProtocol!
     
     override func setUpWithError() throws {
@@ -21,6 +23,8 @@ final class GameManagerTests: XCTestCase {
         playerMock = PlayerMock()
         soundManagerMock = SoundManagerMock(player: playerMock)
         hapticsManagerMock = HapticsManagerMock()
+        gameSceneDelegateMock = GameSceneMock()
+        gameManagerDelegateMock = GameManagerDelegateMock()
         
         gameManager = GameManager(
             soundManager: soundManagerMock,
@@ -28,6 +32,9 @@ final class GameManagerTests: XCTestCase {
             player: playerMock,
             gameDifficulty: .easy
         )
+        
+        gameManager.sceneDelegate = gameSceneDelegateMock
+        gameManager.gameManagerDelegate = gameManagerDelegateMock
     }
     
     override func tearDownWithError() throws {
@@ -133,5 +140,44 @@ final class GameManagerTests: XCTestCase {
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
         XCTAssertEqual(userTopScore, playerMock.userTopScore(forDificulty: gameManager.gameDificulty))
+    }
+    
+    
+    func testPauseTriggersWhenCountDown() {
+        
+        gameManager.pauseTrigger()
+        
+        XCTAssertFalse(soundManagerMock.isGameThemePaused)
+        XCTAssertTrue(gameSceneDelegateMock.isGameRunning)
+        
+    }
+    
+    func testPauseTriggerWhenGameStarted() {
+        gameManager.startGame()
+        
+        gameManager.pauseTrigger()
+        
+        XCTAssertTrue(soundManagerMock.isGameThemePaused)
+        XCTAssertFalse(gameSceneDelegateMock.isGameRunning)
+        
+    }
+    
+    func testPauseNodePressedWhenCountDown() {
+        gameManager.pauseNodePressed()
+        
+        XCTAssertFalse(soundManagerMock.isGameThemePaused)
+        XCTAssertTrue(gameSceneDelegateMock.isGameRunning)
+        
+    }
+    
+    func testPauseNodePressedWhenGameStarted() {
+        gameManager.startGame()
+        
+        gameManager.pauseNodePressed()
+        
+        XCTAssertTrue(soundManagerMock.isGameThemePaused)
+        XCTAssertFalse(gameSceneDelegateMock.isGameRunning)
+        XCTAssertEqual(gameManagerDelegateMock.state, .paused)
+        
     }
 }

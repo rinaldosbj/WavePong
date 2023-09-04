@@ -129,7 +129,7 @@ class GameManager: GameManagerProtocol {
         score = 0
     }
     
-    public func pauseButtonPressed() {
+    public func pauseTrigger() {
         if canPause {
             soundManager.pauseGameTheme()
             sceneDelegate?.pausePressed()
