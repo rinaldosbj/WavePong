@@ -77,9 +77,9 @@ class GameScene: SKScene {
     }
     
     private func cloudsVerticalAnimation() {
-        cloud.run(SKAction.moveTo(y: self.frame.midY + 90, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud2.run(SKAction.moveTo(y: self.frame.midY + 105, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud3.run(SKAction.moveTo(y: self.frame.midY + 120, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
         
     }
     
