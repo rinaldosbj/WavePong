@@ -29,6 +29,7 @@
 		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
 		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
 		0CAA59CA2A9E73DA00BEA7EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0CAA59C92A9E73DA00BEA7EA /* FirebaseAnalytics */; };
+		0CC0C16D2AA6613F00E13FE9 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC0C16C2AA6613F00E13FE9 /* AnalyticsManager.swift */; };
 		0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */; };
 		0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */; };
 		0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */; };
@@ -119,6 +120,7 @@
 		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA59C02A9E725300BEA7EA /* PongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongTests.swift; sourceTree = "<group>"; };
+		0CC0C16C2AA6613F00E13FE9 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		0CCCE3302A8AA60F00BCB4E5 /* Fonts Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts Extension.swift"; sourceTree = "<group>"; };
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
 				0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */,
+				0CC0C16C2AA6613F00E13FE9 /* AnalyticsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
 				D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */,
 				D3AEF2ED2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift in Sources */,
+				0CC0C16D2AA6613F00E13FE9 /* AnalyticsManager.swift in Sources */,
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,

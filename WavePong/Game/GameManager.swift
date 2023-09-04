@@ -6,8 +6,9 @@
 //
 
 import SpriteKit
+import Firebase
 
-enum GameDifficulty: Int {
+enum GameDifficulty: String {
     case easy, medium, hard
 }
 
