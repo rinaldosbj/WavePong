@@ -75,11 +75,11 @@ extension GameScene {
     
     func setupComponentsPosition(){
         paddle.position = CGPoint(x: self.frame.midX,
-                                  y: 50)
+                                  y: 125)
         addChild(paddle)
         
         ball?.position = CGPoint(x:self.frame.midX,
-                                y: 100)
+                                y: 175)
         addChild(ball)
       
         
