@@ -6,45 +6,7 @@
 //
 
 import SpriteKit
-
-enum GameDifficulty: Int {
-    case easy, medium, hard
-}
-
-struct gameManagerSettings {
-    var difficulty: GameDifficulty
-    
-    var ballSpeed: CGFloat
-    var maxBallSpeed: CGFloat
-    var cloudVelocity: Double
-    var ballSize: CGSize
-    var paddleProportion: Double
-    
-    init(difficulty: GameDifficulty) {
-        self.difficulty = difficulty
-        
-        switch difficulty{
-        case .easy:
-            self.ballSpeed = 200
-            self.maxBallSpeed = 400
-            self.cloudVelocity = 40
-            self.ballSize = CGSize(width: 80, height: 80)
-            self.paddleProportion = 1/2.5
-        case .medium:
-            self.ballSpeed = 300
-            self.maxBallSpeed = 600
-            self.cloudVelocity = 20
-            self.ballSize = CGSize(width: 70, height: 70)
-            self.paddleProportion = 1/2.75
-        case .hard:
-            self.ballSpeed = 500
-            self.maxBallSpeed = 1000
-            self.cloudVelocity = 5
-            self.ballSize = CGSize(width: 60, height: 60)
-            self.paddleProportion = 1/3
-        }
-    }
-}
+import Firebase
 
 
 /// Object responsable for dealing with game logic
@@ -84,6 +46,8 @@ class GameManager: GameManagerProtocol {
     /// Instance for acessing player preferences and topScore
     internal var player: PlayerProtocol
     
+    internal var analyticsManager: AnalyticsManager
+    
 
     
     /// Gate for controling if user can pause the game. While in count down it should be false
@@ -101,7 +65,8 @@ class GameManager: GameManagerProtocol {
          hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
          player: PlayerProtocol = Player(),
-         gameDifficulty: GameDifficulty
+         gameDifficulty: GameDifficulty,
+         analyticsManager: AnalyticsManager = AnalyticsManager()
     ) {
 
         self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
@@ -111,11 +76,14 @@ class GameManager: GameManagerProtocol {
         self.hapticsManager = hapticsManager
         self.physicsDetection = physicsDetection
         self.player = player
+        self.analyticsManager = analyticsManager
         self.physicsDetection.gameActionDelegate = self
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
     public func startGame() {
+        analyticsManager.logGameSession(panStyle: player.soundMode,
+                                        dificulty: self.gameDificulty)
         state = .playing
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
@@ -149,6 +117,8 @@ class GameManager: GameManagerProtocol {
     }
     
     public func resetGame() {
+        analyticsManager.logGameSession(panStyle: player.soundMode,
+                                        dificulty: self.gameDificulty)
         restoreGameManager()
         sceneDelegate?.resetGame()
     }
@@ -229,7 +199,8 @@ extension GameManager: GameColisionDelegate {
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
             gameCenterManager.submitScore(with: score)
-            player.updateTopScore(NewTopScore: score, forDificulty: self.gameDificulty)
+            player.updateTopScore(NewTopScore: score,
+                                  forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
         } else {
@@ -242,6 +213,8 @@ extension GameManager: GameColisionDelegate {
         }
         
         sceneDelegate?.gameOver()
+        analyticsManager.logGameScore(score: score,
+                                      dificulty: self.gameDificulty)
         
     }
     
