@@ -199,7 +199,8 @@ extension GameManager: GameColisionDelegate {
         if isNewRecord {
             notifyUserOfEvent(.newTopScore)
             gameCenterManager.submitScore(with: score)
-            player.updateTopScore(NewTopScore: score, forDificulty: self.gameDificulty)
+            player.updateTopScore(NewTopScore: score,
+                                  forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "Novo recorde")
         } else {
@@ -212,6 +213,8 @@ extension GameManager: GameColisionDelegate {
         }
         
         sceneDelegate?.gameOver()
+        analyticsManager.logGameScore(score: score,
+                                      dificulty: self.gameDificulty)
         
     }
     
