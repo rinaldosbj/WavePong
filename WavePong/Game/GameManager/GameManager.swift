@@ -46,6 +46,8 @@ class GameManager: GameManagerProtocol {
     /// Instance for acessing player preferences and topScore
     internal var player: PlayerProtocol
     
+    internal var analyticsManager: AnalyticsManager
+    
 
     
     /// Gate for controling if user can pause the game. While in count down it should be false
@@ -63,7 +65,8 @@ class GameManager: GameManagerProtocol {
          hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
          physicsDetection: PhysicsDetection = PhysicsDetection(),
          player: PlayerProtocol = Player(),
-         gameDifficulty: GameDifficulty
+         gameDifficulty: GameDifficulty,
+         analyticsManager: AnalyticsManager = AnalyticsManager()
     ) {
 
         self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
@@ -73,11 +76,14 @@ class GameManager: GameManagerProtocol {
         self.hapticsManager = hapticsManager
         self.physicsDetection = physicsDetection
         self.player = player
+        self.analyticsManager = analyticsManager
         self.physicsDetection.gameActionDelegate = self
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
     public func startGame() {
+        analyticsManager.logGameSession(panStyle: player.soundMode,
+                                        dificulty: self.gameDificulty)
         state = .playing
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
@@ -111,6 +117,8 @@ class GameManager: GameManagerProtocol {
     }
     
     public func resetGame() {
+        analyticsManager.logGameSession(panStyle: player.soundMode,
+                                        dificulty: self.gameDificulty)
         restoreGameManager()
         sceneDelegate?.resetGame()
     }
