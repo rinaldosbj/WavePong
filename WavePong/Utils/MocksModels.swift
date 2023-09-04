@@ -251,14 +251,11 @@ class GameSceneMock: GameSceneDelegate {
 }
 
 class GameManagerDelegateMock: GameManagerDelegate {
-    enum State {
-        case playing, paused, gameOver
-    }
     
-    var state: State = .playing
+    var state: GameSceneViewState = .game
     
     func pauseNodePressed() {
-        state = .paused
+        state = .pause
         
     }
     

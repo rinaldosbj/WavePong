@@ -7,13 +7,16 @@
 
 import Foundation
 
+
+enum GameSceneViewState {
+    case game, pause, gameOver
+}
+
 class GameSceneViewModel: ObservableObject {
-    enum ViewMode {
-        case game, pause, gameOver
-    }
-    
+
+
     @Published var size: CGSize = CGSize()
-    @Published var state: ViewMode = .game
+    @Published var state: GameSceneViewState = .game
     @Published var userScore: String = ""
     @Published var recordLabel: String = ""
     

@@ -42,11 +42,19 @@ final class GameManagerTests: XCTestCase {
     }
     
     
-    func testCallsFeedbackWhenContDownStepOver() {
+    func testCallsFeedbackWhenContDownStepCalled() {
         gameManager.countDownStep()
         
         XCTAssertTrue(soundManagerMock.didPlayedFXSound)
         XCTAssertEqual(FXSounds.countDownBip, soundManagerMock.lastFXSoundPlayed)
+    }
+    
+    func testCallsFeebackwhenContDownEndedCalled() {
+        gameManager.countDownEnded()
+        
+        XCTAssertTrue(soundManagerMock.didPlayedFXSound)
+        XCTAssertEqual(FXSounds.countDownEnd, soundManagerMock.lastFXSoundPlayed)
+        
     }
     
     func testStartGameChangeManagerState() {
@@ -102,8 +110,6 @@ final class GameManagerTests: XCTestCase {
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
         
         
-        
-        
     }
     
     func testDidLoseNewRecord() {
@@ -134,6 +140,7 @@ final class GameManagerTests: XCTestCase {
         
         gameManager.score = 15
         gameManager.didLose()
+        
         
         let expectedFXSound = FXSounds.explosion
         
@@ -177,7 +184,35 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(soundManagerMock.isGameThemePaused)
         XCTAssertFalse(gameSceneDelegateMock.isGameRunning)
-        XCTAssertEqual(gameManagerDelegateMock.state, .paused)
+        XCTAssertEqual(gameManagerDelegateMock.state, .pause)
+        
+    }
+    
+    func testResumeGame() {
+        soundManagerMock.isPlayingGameTheme = false
+        gameSceneDelegateMock.isGameRunning = false
+        
+        gameManager.resumeGame()
+        
+        XCTAssertTrue(soundManagerMock.isPlayingGameTheme)
+        XCTAssertTrue(gameSceneDelegateMock.isGameRunning)
+        
+        
+    }
+    
+    func testResetGame() {
+        gameManager.score = 10
+        gameManager.state = .playing
+        soundManagerMock.isPlayingGameTheme = true
+        
+        gameManager.resetGame()
+        
+        XCTAssertEqual(gameManager.score, 0)
+        XCTAssertEqual(gameManager.state, .InContDown)
+        XCTAssertFalse(soundManagerMock.isPlayingGameTheme)
+        
+        
+        
         
     }
 }
