@@ -40,7 +40,13 @@ extension GameScene {
     
     func countDownAnimation() {
         
-        let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 1)
+        let animationFadeInSlow = SKAction.fadeIn(withDuration: 0.6)
+        let animationFadeInFast = SKAction.fadeIn(withDuration: 0.1)
+        let animationFadeOutSlow = SKAction.fadeOut(withDuration: 0.6)
+        let animationFadeOut = SKAction.fadeOut(withDuration: 0.2)
+        let animationFadeOutFast = SKAction.fadeOut(withDuration: 0.05)
+        
+        let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 0)
         let animation2 = SKAction.animate(with: [SKTexture(imageNamed: "count2")], timePerFrame: 1)
         let animation3 = SKAction.animate(with: [SKTexture(imageNamed: "count3")], timePerFrame: 1)
         let animation4 = SKAction.animate(with: [SKTexture(imageNamed: "count4")], timePerFrame: 1)
@@ -60,14 +66,36 @@ extension GameScene {
             }
         }
         
+        let changeSize1 = SKAction.run { [weak self] in
+            self?.countDownNode.size = CGSize(width: 44, height: 87)
+        }
+        
+        let changeSize3 = SKAction.run { [weak self] in
+            self?.countDownNode.size = CGSize(width: 54, height: 87)
+        }
+        
         let changeSizeGoLabel = SKAction.run { [weak self] in
             self?.countDownNode.size = CGSize(width: 160, height: 87)
         }
         
-        let countDownSequence = SKAction.sequence([animation1,bipSound,
-                                                   animation2, bipSound,
-                                                   animation3,changeSizeGoLabel,endSound,
-                                                   animation4,performStartGame])
+        let wait = SKAction.wait(forDuration: 0.4)
+        let wait1sec = SKAction.wait(forDuration: 0.9)
+        
+        let countDownSequence = SKAction.sequence([animationFadeOutFast,
+                                                wait,
+                                                animationFadeInSlow, animationFadeOut,
+                                                wait,
+                                                animationFadeInFast, animationFadeOut,
+                                                animationFadeInFast, animationFadeOutFast,
+                                                animationFadeInFast, animationFadeOutFast,
+                                                animationFadeInFast, animationFadeOutSlow,
+                                                   
+                                                changeSize3,animation1,
+                                                animationFadeInFast, wait1sec, bipSound,
+                                                animation2, bipSound, changeSize1,
+                                                animation3,changeSizeGoLabel,endSound,
+                                                animation4,performStartGame
+                                               ])
         
         countDownNode.run(countDownSequence)
         
@@ -130,8 +158,7 @@ extension GameScene {
     }
     
     func createCountDownLabel() -> SKSpriteNode {
-        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
-        countDownNode.size = CGSize(width: 54, height: 87)
+        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "fone"))
 
         return countDownNode
     }
