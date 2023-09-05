@@ -270,6 +270,8 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 class GameManagerMock: GameManagerProtocol {
     
+    var didPauseNodePressed: Bool = false
+    
     var soundManager: SoundManagerProtocol = SoundManagerMock()
     
     var hapticsManager: HapticsManagerProtocol = HapticsManagerMock()
@@ -311,6 +313,7 @@ class GameManagerMock: GameManagerProtocol {
     }
     
     func pauseNodePressed() {
+        didPauseNodePressed = true
         
     }
     

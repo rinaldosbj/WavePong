@@ -41,14 +41,18 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         if isInGame() {
-            setupGameManager()
-            setupWorld()
-            setupNodes()
-            setupComponentsPosition()
+            setupGameScene()
             countDownAnimation()
         }
     }
     
+    func setupGameScene() {
+        setupGameManager()
+        setupWorld()
+        setupNodes()
+        setupComponentsPosition()
+        
+    }
     
     func startGame() {
         ball?.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
@@ -176,16 +180,8 @@ extension GameScene: GameSceneDelegate {
     
     private func resetSpriteNodes() {
         removeAllChildren()
+        setupNodes()
         
-        self.ball = createBall()
-        self.paddle = createPaddle()
-        self.cloud = createCloud()
-        self.cloud2 = creatCloud2()
-        self.cloud3 = createCloud3()
-        self.scoreLabel = createScoreLabel()
-        self.pauseNode = createPauseNode()
-        self.countDownBackground = createCountDownBackground()
-        self.countDownNode = createCountDownLabel()
     }
     
     func isInGame() -> Bool {
