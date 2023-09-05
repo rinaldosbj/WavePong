@@ -14,16 +14,16 @@ import SwiftUI
 class GameScene: SKScene {
     
     var gameManager: GameManagerProtocol
-    var ball: BallSprite!
-    var paddle: Paddle!
-    var cloud: Cloud!
-    var cloud2: Cloud!
+    var ball: BallSprite?
+    var paddle: Paddle?
+    var cloud: Cloud?
+    var cloud2: Cloud?
     var cloud3: Cloud!
-    var scoreLabel: ScoreLabel!
-    var borderNode: Border!
-    var pauseNode: PauseNode!
-    var countDownNode: SKSpriteNode!
-    var countDownBackground : SKSpriteNode!
+    var scoreLabel: ScoreLabel?
+    var borderNode: Border?
+    var pauseNode: PauseNode?
+    var countDownNode: SKSpriteNode?
+    var countDownBackground : SKSpriteNode?
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
@@ -77,9 +77,9 @@ class GameScene: SKScene {
     }
     
     private func cloudsVerticalAnimation() {
-        cloud.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud2.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud3.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud?.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2?.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3?.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
         
     }
     
@@ -96,7 +96,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud.run(repeatForever)
+        cloud?.run(repeatForever)
         
     }
     
@@ -107,7 +107,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveRight, moveLeft])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud2.run(repeatForever)
+        cloud2?.run(repeatForever)
         
     }
     
@@ -118,7 +118,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud3.run(repeatForever)
+        cloud3?.run(repeatForever)
         
     }
     
@@ -170,7 +170,7 @@ extension GameScene: GameSceneDelegate {
     }
     
     func UserScored(newScore score: Int) {
-        scoreLabel.text = "\(score)"
+        scoreLabel?.text = "\(score)"
         
     }
     

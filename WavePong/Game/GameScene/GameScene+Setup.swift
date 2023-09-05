@@ -17,7 +17,7 @@ extension GameScene {
     func setupWorld(){
         // MARK: Border
         borderNode = Border(reactFrame: self.frame)
-        addChild(borderNode)
+        addChild(borderNode ?? SKNode())
         
         background.size = size
         background.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -60,22 +60,22 @@ extension GameScene {
         
         let performStartGame = SKAction.run { [weak self] in
             if self?.isInGame() == true {
-                self?.countDownBackground.isHidden = true
-                self?.countDownNode.isHidden = true
+                self?.countDownBackground?.isHidden = true
+                self?.countDownNode?.isHidden = true
                 self?.gameManager.startGame()
             }
         }
         
         let changeSize1 = SKAction.run { [weak self] in
-            self?.countDownNode.size = CGSize(width: 44, height: 87)
+            self?.countDownNode?.size = CGSize(width: 44, height: 87)
         }
         
         let changeSize3 = SKAction.run { [weak self] in
-            self?.countDownNode.size = CGSize(width: 54, height: 87)
+            self?.countDownNode?.size = CGSize(width: 54, height: 87)
         }
         
         let changeSizeGoLabel = SKAction.run { [weak self] in
-            self?.countDownNode.size = CGSize(width: 160, height: 87)
+            self?.countDownNode?.size = CGSize(width: 160, height: 87)
         }
         
         let wait = SKAction.wait(forDuration: 0.4)
@@ -97,54 +97,54 @@ extension GameScene {
                                                 animation4,performStartGame
                                                ])
         
-        countDownNode.run(countDownSequence)
+        countDownNode?.run(countDownSequence)
         
     }
     
     func setupComponentsPosition(){
-        paddle.position = CGPoint(x: self.frame.midX,
+        paddle?.position = CGPoint(x: self.frame.midX,
                                   y: 125)
-        addChild(paddle)
+        addChild(paddle ?? SKNode())
         
         ball?.position = CGPoint(x:self.frame.midX,
                                 y: 175)
-        addChild(ball)
+        addChild(ball ?? SKNode())
       
         
-        cloud.zPosition = 2
-        cloud.position = CGPoint(x: self.frame.midX,
-                                 y: self.frame.maxY + cloud.size.height/2)
-        addChild(cloud)
+        cloud?.zPosition = 2
+        cloud?.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud!.size.height/2)
+        addChild(cloud ?? SKNode())
         
-        cloud2.zPosition = 3
-        cloud2.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2 + 15)
-        addChild(cloud2)
+        cloud2?.zPosition = 3
+        cloud2?.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud!.size.height/2 + 15)
+        addChild(cloud2 ?? SKNode())
         
-        cloud3.zPosition = 3
-        cloud3.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2 + 30)
-        addChild(cloud3)
+        cloud3?.zPosition = 3
+        cloud3?.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud!.size.height/2 + 30)
+        addChild(cloud3 ?? SKNode())
         
         
-        scoreLabel.zPosition = 4
-        scoreLabel.position = CGPoint(x: 50,
+        scoreLabel?.zPosition = 4
+        scoreLabel?.position = CGPoint(x: 50,
                                       y: self.frame.maxY - 100)
-        addChild(scoreLabel)
+        addChild(scoreLabel ?? SKNode())
         
         
-        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+        pauseNode?.position = CGPoint(x: self.frame.maxX - 50,
                                      y: self.frame.maxY - 75)
-        pauseNode.zPosition = 5
-        addChild(pauseNode)
+        pauseNode?.zPosition = 5
+        addChild(pauseNode ?? SKNode())
         
-        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownBackground.zPosition = 1000
-        addChild(countDownBackground)
+        countDownBackground?.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownBackground?.zPosition = 1000
+        addChild(countDownBackground ?? SKNode())
         
-        countDownNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownNode.zPosition = 1000
-        addChild(countDownNode)
+        countDownNode?.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownNode?.zPosition = 1000
+        addChild(countDownNode ?? SKNode())
 
         
     }
