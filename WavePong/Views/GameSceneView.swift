@@ -103,7 +103,7 @@ struct GameSceneView: View {
                     
                     Text(viewModel.recordLabel)
                         .font(Font.wavePongPrimary(.body))
-                        .foregroundColor(Color(ColorConstants.AMARELO))
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_300))
                         .accessibilityLabel("\(viewModel.recordLabel) pontos")
                     
                     
@@ -120,7 +120,7 @@ struct GameSceneView: View {
                         .accessibilityHidden(true)
                     
                 }
-                .foregroundColor(Color(ColorConstants.WHITE))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 
                 HStack {
                     HStack(spacing: 48)  {

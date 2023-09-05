@@ -202,14 +202,14 @@ extension GameManager: GameColisionDelegate {
             player.updateTopScore(NewTopScore: score,
                                   forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Novo recorde")
+                                          recordLabel: "NOVO RECORDE")
         } else {
             notifyUserOfEvent(.gameOver)
             var topScore: Int {
                 Player.shared.userTopScore(forDificulty: self.gameDificulty)
             }
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Recorde \(topScore)")
+                                          recordLabel: "RECORDE \(topScore)")
         }
         
         sceneDelegate?.gameOver()

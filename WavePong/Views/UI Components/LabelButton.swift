@@ -22,15 +22,15 @@ struct LabelButton: View {
     var textLabel: String {
         switch buttonStyle {
         case .start:
-            return "Começar"
+            return "COMEÇAR"
         case .resume:
-            return "Continuar"
+            return "CONTINUAR"
         case .easy:
-            return "Fácil"
+            return "FÁCIL"
         case .medium:
-            return "Médio"
+            return "MÉDIO"
         case .hard:
-            return "Difícil"
+            return "DIFÍCIL"
         }
     }
     
@@ -56,7 +56,7 @@ struct LabelButton: View {
             
             Text(textLabel)
                 .font(Font.wavePongPrimary(.body))
-                .foregroundColor(Color(ColorConstants.WHITE))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
         }
         .frame(width: 282, height: 84)
     }

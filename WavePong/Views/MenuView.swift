@@ -29,7 +29,6 @@ struct MenuView: View {
                     } label: {
                         LabelButton(buttonStyle: .start, buttonAction:{})
                     }
-                    .foregroundColor(.yellow)
                     .accessibilityLabel("jogar")
                     .accessibilityHint("Toque duas vezes na tela para começar um novo jogo")
                     Spacer().frame(height: 48)
@@ -40,7 +39,6 @@ struct MenuView: View {
                         }) {
                             IconButton(.settings, buttonType: .link, buttonAction: {})
                         }
-                            .foregroundColor(.yellow)
                             .accessibilityLabel("Configurações")
                             .accessibilityHint("Toque duas vezes na tela para ir para a tela de configurações")
                             .padding(.trailing,48)
@@ -50,7 +48,6 @@ struct MenuView: View {
                         }) {
                             IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
                         }
-                            .foregroundColor(.yellow)
                             .accessibilityLabel("game center")
                             .accessibilityHint("Toque duas vezes na tela para ir para a tela do game Center")
                     }

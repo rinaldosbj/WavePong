@@ -26,10 +26,10 @@ struct PosicaoView: View {
                 
                 Spacer()
                 
-                Text("A \(Text("posição").foregroundColor(.yellow)) da bola será \(Text("guiada").foregroundColor(.yellow)) pela música")
+                Text("A \(Text("posição").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) da bola será \(Text("guiada").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) pela música")
                     .font(.custom("DaysOne-Regular", size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .padding(.bottom, -32)

@@ -27,10 +27,10 @@ struct RaqueteView: View {
                 
                 Spacer()
                 
-                Text("\(Text("Deslize").foregroundColor(.yellow)) os dedos para os lados para \(Text("mover").foregroundColor(.yellow)) a raquete e rebater a bola")
+                Text("\(Text("Deslize").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) os dedos para os lados para \(Text("mover").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) a raquete e rebater a bola")
                     .font(.custom("DaysOne-Regular", size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .accessibilityHint("Toque duas vezes na tela para continuar")

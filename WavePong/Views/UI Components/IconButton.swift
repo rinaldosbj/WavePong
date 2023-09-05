@@ -52,14 +52,20 @@ struct IconButton: View {
         ZStack {
     
             Rectangle()
-                .fill(Color.white)
+                .fill(Color(ColorConstants.shared.WHITE_500))
                 .roundedCorner(24,corners: [.topLeft, .bottomRight])
                 .frame(width: 104, height: 104)
             
             Rectangle()
-                .fill(Color("button-purple"))
+                .fill(Color(ColorConstants.shared.PURPLE_500))
                 .roundedCorner(23,corners: [.topLeft, .bottomRight])
                 .frame(width: 101, height: 101)
+                .overlay(
+                    Image(systemName: "play.fill")
+                        .resizable()
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                        .padding(22)
+                )
             
         }
     }

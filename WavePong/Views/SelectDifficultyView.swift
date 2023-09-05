@@ -32,7 +32,7 @@ struct SelectDifficultyView: View {
                     Text("Dificuldade")
                         .font(.custom("DaysOne-Regular", size: 36))
                         .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                         .accessibilityLabel("Selecione a dificuldade de jogo para começar")
                     Spacer().frame(height: 48)
                     NavigationLink {
@@ -65,7 +65,7 @@ struct SelectDifficultyView: View {
                             Text("  < Voltar")
                                 .font(.custom("DaysOne-Regular", size: 24))
                                 .layoutPriority(.greatestFiniteMagnitude)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                         }
                         .accessibilityLabel("Voltar")
                         Spacer()

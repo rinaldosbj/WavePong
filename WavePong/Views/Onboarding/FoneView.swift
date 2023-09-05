@@ -17,8 +17,8 @@ struct FoneView: View {
                 .accessibilityHidden(true)
             
             VStack{
-                Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
-                    .foregroundColor(.white)
+                Text("\(Text("Coloque").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) o \(Text("fone").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) de ouvido, depois \(Text("toque").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
                     .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
