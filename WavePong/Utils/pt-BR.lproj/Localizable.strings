@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  Pong
+
+  Created by rsbj on 05/09/23.
+  
+*/
+
+// MARK: Onboarding
+
+"onboarding_hint" = "Toque duas vezes na tela para continuar";
+"coloque_fone" = "Coloque o fone de ouvido, depois toque na tela para continuar";
+"mover_raquete" = "Deslize os dedos para os lados para mover a raquete e rebater a bola";
+"bola_guia" = "A posição da bola será guiada pela música";
+"rebater_bola" = "Ao rebater a bola haverá uma vibração";
+"dois_toques" = "Dê Dois toques na tela para pausar o jogo";
+
+// MARK: Componentes
+"ajustes" = "Ajustes";
+"tutorial" = "Rever Tutorial";
+"modo_som" = "Modo de Som";
+"modo_hint" = "Selecione qual modo de som deseja escutar";
+"linear" = "Linear";
+"linear_hint" = "Modo linear";
+"exponencial" = "Exponencial";
+"exponencial_hint" = "Modo exponencial";
+"alto" = "Alto contraste";
+"alto_hint" = "Modo alto contraste";
+"volta" = "  < Voltar";
+"volta_hint" = "Voltar";
+
+"start" = "Começar";
+
+"home_hint" = "Voltar para menu";
+"recomecar_hint" = "Reiniciar";
+
+// MARK: Difficulty
+
+"dificuldade" = "Dificuldade";
+"dificuldade_hint" = "Selecione a dificuldade de jogo para começar";
+"continue" = "Continuar";
+"easy" = "Fácil";
+"medium" = "Médio";
+"hard" = "Difícil";
+
+
+
+// MARK: Notificações
+
+
+// MARK: Game over
+
+"recorde" = "Recorde";
+"ponto" = "Ponto";
+"pontos" = "Pontos";
+"novo_recorde" = "Novo recorde";
+
+
+
