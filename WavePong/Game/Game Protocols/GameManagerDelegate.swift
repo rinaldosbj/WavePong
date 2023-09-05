@@ -12,6 +12,8 @@ import Foundation
 /// When using a gameScene from SpriteKit, you may need inform a view for changes in the game state. This protocols should be used for notifing view when game is paused or when it's over
 protocol GameManagerDelegate: AnyObject {
     
+    var state: GameSceneViewState { get set }
+    
     /// Once game should be paused, the methods sould be used for implementing view changes
     func pauseNodePressed()
     

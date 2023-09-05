@@ -7,13 +7,16 @@
 
 import Foundation
 
+
+enum GameSceneViewState {
+    case game, pause, gameOver
+}
+
 class GameSceneViewModel: ObservableObject {
-    enum ViewMode {
-        case game, pause, gameOver
-    }
-    
+
+
     @Published var size: CGSize = CGSize()
-    @Published var state: ViewMode = .game
+    @Published var state: GameSceneViewState = .game
     @Published var userScore: String = ""
     @Published var recordLabel: String = ""
     
@@ -29,7 +32,7 @@ class GameSceneViewModel: ObservableObject {
     /// Once that user double tapped the game Screen, it should pause game and music
     func pauseTap() {
         if gameManager.canPause {
-            gameManager.pauseButtonPressed()
+            gameManager.pauseTrigger()
             state = .pause
         }
 

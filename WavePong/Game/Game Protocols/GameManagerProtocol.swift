@@ -37,7 +37,7 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     func pauseNodePressed()
     
-    func pauseButtonPressed()
+    func pauseTrigger()
     
     func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize)
     
