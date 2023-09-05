@@ -18,6 +18,8 @@ struct GameSceneView: View {
     
     @State var allowInteraction = true
     
+    let stringsConstants = StringsConstantsModel()
+    
     var gameScene: GameScene {
         let scene = GameScene(size: viewModel.size,
                               gameManager: viewModel.gameManager)
@@ -101,23 +103,40 @@ struct GameSceneView: View {
                         .frame(width: 208, height: 133)
                         .accessibilityHidden(true)
                     
-                    Text(viewModel.recordLabel)
-                        .font(Font.wavePongPrimary(.body))
-                        .foregroundColor(Color(ColorConstants.AMARELO))
-                        .accessibilityLabel("\(viewModel.recordLabel) pontos")
+                    if viewModel.userScore == "1" {
+                        Text(viewModel.recordLabel)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.AMARELO))
+                            .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.ponto)")
+                    }
+                    else {
+                        Text(viewModel.recordLabel)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.AMARELO))
+                            .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.pontos)")
+                    }
                     
                     
                 }
                 
                 VStack(spacing: -16) {
-                    Text(viewModel.userScore)
-                        .font(Font.wavePongSecundary(.scoreNumber))
-                        .accessibilityLabel("Você fez \(viewModel.userScore) pontos")
                     
-                    
-                    Text("Pontos")
-                        .font(Font.wavePongPrimary(.body))
-                        .accessibilityHidden(true)
+                    if viewModel.userScore == "1" {
+                        Text(viewModel.userScore)
+                            .font(Font.wavePongSecundary(.scoreNumber))
+                            .accessibilityLabel("\(viewModel.userScore) \(stringsConstants.ponto)")
+                        Text(stringsConstants.ponto)
+                            .font(Font.wavePongPrimary(.body))
+                            .accessibilityHidden(true)
+                    }
+                    else {
+                        Text(viewModel.userScore)
+                            .font(Font.wavePongSecundary(.scoreNumber))
+                            .accessibilityLabel("\(viewModel.userScore) \(stringsConstants.pontos)")
+                        Text(stringsConstants.pontos)
+                            .font(Font.wavePongPrimary(.body))
+                            .accessibilityHidden(true)
+                    }
                     
                 }
                 .foregroundColor(Color(ColorConstants.WHITE))
@@ -128,12 +147,12 @@ struct GameSceneView: View {
                             NavigationUtil.popToRootView()
                             viewModel.homeButtonPressed()
                         }
-                        .accessibilityLabel(Text("Voltar para menu"))
+                        .accessibilityLabel(stringsConstants.home_hint)
                         
                         IconButton(.refresh) {
                             viewModel.refreshPressed()
                         }
-                        .accessibilityLabel(Text("Reiniciar"))
+                        .accessibilityLabel(stringsConstants.recomecar_hint)
                     }
                     
                 }
@@ -157,7 +176,7 @@ struct GameSceneView: View {
                 LabelButton(buttonStyle: .resume) {
                     viewModel.continueButtonPressed()
                 }
-                .accessibilityLabel(Text("Continuar"))
+                .accessibilityLabel(stringsConstants.continuar)
                 
                 
                 HStack(spacing: 48)  {
@@ -165,12 +184,12 @@ struct GameSceneView: View {
                         NavigationUtil.popToRootView()
                         viewModel.homeButtonPressed()
                     }
-                    .accessibilityLabel(Text("Voltar para menu"))
+                    .accessibilityLabel(stringsConstants.home_hint)
                     
                     IconButton(.refresh) {
                         viewModel.refreshPressed()
                     }
-                    .accessibilityLabel(Text("Reiniciar"))
+                    .accessibilityLabel(stringsConstants.recomecar_hint)
                 }
             }
         }

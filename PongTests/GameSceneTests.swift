@@ -19,9 +19,9 @@ class GameSceneTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         gameManagerMock = GameManagerMock()
         gameScene = GameScene(size: CGSize(), gameManager: gameManagerMock)
-
+        
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
@@ -74,7 +74,7 @@ class GameSceneTests: XCTestCase {
     
     func testSetupGameManner() {
         gameScene.setupGameScene()
-
+        
         XCTAssertNotNil(gameScene.gameManager.sceneDelegate)
         XCTAssertNotNil(gameScene.physicsWorld.contactDelegate)
     }
@@ -84,5 +84,4 @@ class GameSceneTests: XCTestCase {
         
         XCTAssertNotNil(gameScene.background)
     }
-    
 }

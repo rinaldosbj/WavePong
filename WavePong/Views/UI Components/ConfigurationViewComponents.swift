@@ -8,25 +8,25 @@
 import SwiftUI
 
 extension ConfigurationView {
+    
     // MARK: View components
     var backToOnboardingButton: some View {
         NavigationLink {
             OnboardingView()
                 .navigationBarBackButtonHidden()
         } label: {
-            Text("Rever Tutorial")
+            Text(stringsConstants.tutorial)
                 .font(.custom("DaysOne-Regular", size: 24))
                 .foregroundColor(.white)
                 .underline(color:Color("amarelo"))
         }
-        .accessibilityLabel(Text("Rever tutorial"))
     }
     
     var soundModeConfigView: some View {
         VStack {
             HStack {
-                Text("Som")
-                    .accessibilityHint("Selecione qual modo de som deseja escutar:")
+                Text(stringsConstants.modo_som)
+                    .accessibilityHint(stringsConstants.modo_hint)
                     .font(.custom("DaysOne-Regular", size: 24))
                     .foregroundColor(.white)
                 Spacer()
@@ -36,7 +36,7 @@ extension ConfigurationView {
                 Toggle("", isOn: $togleIsLinear)
                     .toggleStyle(SelectCustomToggleStyle(mode: .linear))
                     .foregroundColor(.white)
-                    .accessibilityLabel("Modo linear")
+                    .accessibilityLabel(stringsConstants.linear_hint)
                     .onChange(of: togleIsLinear) { _ in
                         updateToggle(from: .linear)
                     }
@@ -46,7 +46,7 @@ extension ConfigurationView {
                 Toggle("",isOn: $togleIsCurved)
                     .toggleStyle(SelectCustomToggleStyle(mode: .curved))
                     .foregroundColor(.white)
-                    .accessibilityLabel("Modo exponencial")
+                    .accessibilityLabel(stringsConstants.exponencial_hint)
                     .onChange(of: togleIsCurved) { _ in
                         updateToggle(from: .curved)
                     }
@@ -57,7 +57,7 @@ extension ConfigurationView {
                 Toggle("",isOn: $togleIsHighContrast)
                     .toggleStyle(SelectCustomToggleStyle(mode: .highContrast))
                     .foregroundColor(.white)
-                    .accessibilityLabel("Modo alto contraste")
+                    .accessibilityLabel(stringsConstants.alto_hint)
                     .onChange(of: togleIsHighContrast) { _ in
                         updateToggle(from: .highContrast)
                     }
@@ -94,12 +94,12 @@ extension ConfigurationView {
                 Button {
                     presentation.wrappedValue.dismiss()
                 } label: {
-                    Text("  < Voltar")
+                    Text(stringsConstants.volta)
                         .font(.custom("DaysOne-Regular", size: 24))
                         .layoutPriority(.greatestFiniteMagnitude)
                         .foregroundColor(.white)
                 }
-                .accessibilityLabel("Voltar")
+                .accessibilityLabel(stringsConstants.volta_hint)
                 Spacer()
             }
             Spacer()
