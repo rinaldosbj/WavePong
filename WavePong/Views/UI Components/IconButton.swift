@@ -23,6 +23,7 @@ struct IconButton: View {
     
     var buttonAction: () -> Void
     
+    
     init(_ buttonStyle: ButtonStyle, buttonType: ButtonType = .action, buttonAction: @escaping () -> Void) {
         self.buttonStyle = buttonStyle
         self.buttonType = buttonType
@@ -33,6 +34,25 @@ struct IconButton: View {
         buttonStyle.rawValue
     }
     
+    
+    private var iconSize: [Double] {
+        var paddings: [Double]
+        switch buttonStyle {
+        case .settings:
+            paddings = [27, 25.8]
+        case .pause:
+            paddings = [32, 27]
+        case .start:
+            paddings = [32, 29]
+        case .gameCenter:
+            paddings = [1, 1]
+        case .home:
+            paddings = [60,54]
+        case .refresh:
+            paddings = [64,64]
+        }
+        return paddings
+    }
     
     var body: some View {
         switch buttonType{
@@ -47,6 +67,8 @@ struct IconButton: View {
         }
         
     }
+    
+    
     
     var button: some View {
         ZStack {
