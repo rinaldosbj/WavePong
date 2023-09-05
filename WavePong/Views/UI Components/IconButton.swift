@@ -43,16 +43,41 @@ struct IconButton: View {
                 button
             }
         case .link:
-                button
+            button
         }
         
     }
     
     var button: some View {
-        Image(buttonImageString)
-            .resizable()
-            .frame(width: 104, height: 104)
+        ZStack {
+    
+            Rectangle()
+                .fill(Color.white)
+                .roundedCorner(24,corners: [.topLeft, .bottomRight])
+                .frame(width: 104, height: 104)
+            
+            Rectangle()
+                .fill(Color("button-purple"))
+                .roundedCorner(23,corners: [.topLeft, .bottomRight])
+                .frame(width: 101, height: 101)
+            
+        }
     }
 }
 
 
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners) )
+    }
+}
