@@ -36,22 +36,22 @@ struct IconButton: View {
     
     
     private var iconSize: [Double] {
-        var paddings: [Double]
+        var sizes: [Double]
         switch buttonStyle {
         case .settings:
-            paddings = [27, 25.8]
+            sizes = [50, 52.3]
         case .pause:
-            paddings = [32, 27]
+            sizes = [40, 50]
         case .start:
-            paddings = [32, 29]
+            sizes = [40, 46]
         case .gameCenter:
-            paddings = [1, 1]
+            sizes = [43.5, 52]
         case .home:
-            paddings = [60,54]
+            sizes = [60,54]
         case .refresh:
-            paddings = [64,64]
+            sizes = [60.8,51.2]
         }
-        return paddings
+        return sizes
     }
     
     var body: some View {
