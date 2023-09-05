@@ -12,6 +12,8 @@ import Firebase
 /// Object responsable for dealing with game logic
 class GameManager: GameManagerProtocol {
     
+    let stringsConstants = StringsConstantsModel()
+    
     enum GameManagerState {
         case InContDown, playing, gameOver
     }
@@ -202,14 +204,14 @@ extension GameManager: GameColisionDelegate {
             player.updateTopScore(NewTopScore: score,
                                   forDificulty: self.gameDificulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Novo recorde")
+                                          recordLabel: stringsConstants.novo_record)
         } else {
             notifyUserOfEvent(.gameOver)
             var topScore: Int {
                 Player.shared.userTopScore(forDificulty: self.gameDificulty)
             }
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
-                                          recordLabel: "Recorde \(topScore)")
+                                          recordLabel: "\(stringsConstants.recorde) \(topScore)")
         }
         
         sceneDelegate?.gameOver()

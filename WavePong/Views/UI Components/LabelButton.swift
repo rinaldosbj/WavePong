@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct LabelButton: View {
+    
+    let stringsConstants = StringsConstantsModel()
+    
     enum ButtonStyle: String {
         case start, resume, easy, medium, hard
         
@@ -22,15 +25,15 @@ struct LabelButton: View {
     var textLabel: String {
         switch buttonStyle {
         case .start:
-            return "Começar"
+            return stringsConstants.start
         case .resume:
-            return "Continuar"
+            return stringsConstants.continuar
         case .easy:
-            return "Fácil"
+            return stringsConstants.easy
         case .medium:
-            return "Médio"
+            return stringsConstants.medium
         case .hard:
-            return "Difícil"
+            return stringsConstants.hard
         }
     }
     

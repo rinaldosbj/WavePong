@@ -81,23 +81,26 @@ extension GameScene {
         let wait = SKAction.wait(forDuration: 0.4)
         let wait1sec = SKAction.wait(forDuration: 0.9)
         
-        let countDownSequence = SKAction.sequence([animationFadeOutFast,
-                                                wait,
-                                                animationFadeInSlow, animationFadeOut,
-                                                wait,
-                                                animationFadeInFast, animationFadeOut,
-                                                animationFadeInFast, animationFadeOutFast,
-                                                animationFadeInFast, animationFadeOutFast,
-                                                animationFadeInFast, animationFadeOutSlow,
-                                                   
-                                                changeSize3,animation1,
+        let foneGlitchAnimationSequence = SKAction.sequence([animationFadeOutFast,
+                                                             wait,
+                                                             animationFadeInSlow, animationFadeOut,
+                                                             wait,
+                                                             animationFadeInFast, animationFadeOut,
+                                                             animationFadeInFast, animationFadeOutFast,
+                                                             animationFadeInFast, animationFadeOutFast,
+                                                             animationFadeInFast, animationFadeOutSlow])
+        
+        let countDownSequence = SKAction.sequence([changeSize3,animation1,
                                                 animationFadeInFast, wait1sec, bipSound,
                                                 animation2, bipSound, changeSize1,
-                                                animation3,changeSizeGoLabel,endSound,
-                                                animation4,performStartGame
+                                                animation3,changeSizeGoLabel,endSound
                                                ])
         
-        countDownNode.run(countDownSequence)
+        let animation = SKAction.sequence([foneGlitchAnimationSequence,
+                                          countDownSequence,
+                                          performStartGame])
+        
+        countDownNode.run(animation)
         
     }
     
