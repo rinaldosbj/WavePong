@@ -38,6 +38,18 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
+    internal func setupNodes() {
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
+        self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
+    }
+    
     func countDownAnimation() {
         
         let animationFadeInSlow = SKAction.fadeIn(withDuration: 0.6)

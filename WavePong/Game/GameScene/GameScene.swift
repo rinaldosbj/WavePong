@@ -18,7 +18,7 @@ class GameScene: SKScene {
     var paddle: Paddle?
     var cloud: Cloud?
     var cloud2: Cloud?
-    var cloud3: Cloud!
+    var cloud3: Cloud?
     var scoreLabel: ScoreLabel?
     var borderNode: Border?
     var pauseNode: PauseNode?
@@ -30,17 +30,8 @@ class GameScene: SKScene {
     public init(size: CGSize, gameManager: GameManagerProtocol) {
         
         self.gameManager = gameManager
-        
         super.init(size: size)
-        self.ball = createBall()
-        self.paddle = createPaddle()
-        self.cloud = createCloud()
-        self.cloud2 = creatCloud2()
-        self.cloud3 = createCloud3()
-        self.scoreLabel = createScoreLabel()
-        self.pauseNode = createPauseNode()
-        self.countDownBackground = createCountDownBackground()
-        self.countDownNode = createCountDownLabel()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,6 +43,7 @@ class GameScene: SKScene {
         if isInGame() {
             setupGameManager()
             setupWorld()
+            setupNodes()
             setupComponentsPosition()
             countDownAnimation()
         }
@@ -160,8 +152,6 @@ extension GameScene: GameSceneDelegate {
         setupWorld()
         setupComponentsPosition()
         countDownAnimation()
-        
-        //        ballSpeed = 500
         
     }
     

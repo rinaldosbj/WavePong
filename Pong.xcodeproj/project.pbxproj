@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */; };
 		0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA892A82E53A00844FB2 /* GameSceneView.swift */; };
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
@@ -101,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneTests.swift; sourceTree = "<group>"; };
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
+				0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
 			);
 			path = PongTests;
@@ -600,6 +603,7 @@
 			files = (
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
+				0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
