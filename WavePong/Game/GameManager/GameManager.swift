@@ -50,7 +50,7 @@ class GameManager: GameManagerProtocol {
     
     internal var analyticsManager: AnalyticsManager
     
-
+    
     
     /// Gate for controling if user can pause the game. While in count down it should be false
     internal var canPause: Bool {
@@ -80,6 +80,27 @@ class GameManager: GameManagerProtocol {
         self.player = player
         self.analyticsManager = analyticsManager
         self.physicsDetection.gameActionDelegate = self
+    }
+    
+    public func getCurrentBall() -> String {
+        let currentBall = player.selectedBall
+        
+        switch currentBall {
+        case .ball_yellow:
+            return "ball_yellow"
+        case .ball_green:
+            return "ball_green"
+        case .ball_cyan:
+            return "ball_cyan"
+        case .ball_blue:
+            return "ball_blue"
+        case .ball_purple:
+            return "ball_purple"
+        case .ball_red:
+            return "ball_red"
+        case .ball_orange:
+            return "ball_orange"
+        }
     }
     
     /// Informs Game Scene to start game and implements necesseray logic

@@ -188,7 +188,7 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
-        return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
+        return BallSprite(texture: SKTexture(image: UIImage(named: gameManager.getCurrentBall())!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
     }
     
     func createCloud() -> Cloud {
