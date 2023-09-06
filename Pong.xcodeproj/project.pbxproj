@@ -12,9 +12,10 @@
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
+		0C31671F2AA8F5B6006C596C /* ExperimentalGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C31671E2AA8F5B6006C596C /* ExperimentalGameScene.swift */; };
+		0C3167202AA924D0006C596C /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
 		0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A02A93015D00118E77 /* ColorConstants.swift */; };
 		0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A22A93A01700118E77 /* Cloud.swift */; };
-		0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
 		0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */; };
 		0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */; };
 		0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */; };
@@ -109,6 +110,7 @@
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0C31671E2AA8F5B6006C596C /* ExperimentalGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalGameScene.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0C49E0A22A93A01700118E77 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksModels.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				0C0EDBFC2A97C5BB0070339E /* ViewModifiers */,
 				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
+				0C31671E2AA8F5B6006C596C /* ExperimentalGameScene.swift */,
 				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */,
@@ -280,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
+				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
 				0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */,
@@ -387,7 +391,6 @@
 			children = (
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
-				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */,
 				D30F4E7F2AA7A55600554275 /* Localizable.strings */,
 			);
@@ -611,6 +614,7 @@
 			files = (
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
+				0C3167202AA924D0006C596C /* MocksModels.swift in Sources */,
 				0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
 			);
@@ -633,7 +637,6 @@
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,
-				0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */,
 				D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
@@ -656,6 +659,7 @@
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				0DB4EFE72A954C8E002E441A /* GameCenterView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
+				0C31671F2AA8F5B6006C596C /* ExperimentalGameScene.swift in Sources */,
 				D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */,
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,

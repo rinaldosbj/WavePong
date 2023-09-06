@@ -19,12 +19,13 @@ struct PongApp: App {
         
         WindowGroup {
             NavigationView {
-                if player.onboradingHappend {
-                    MenuView()
-                }
-                else {
-                    OnboardingView()
-                }
+//                if player.onboradingHappend {
+//                    MenuView()
+//                }
+//                else {
+//                    OnboardingView()
+//                }
+                ExperimentalGameSceneView()
             }
             .navigationViewStyle(.stack)
         }.onChange(of: scenePhase) { newScenePhase in

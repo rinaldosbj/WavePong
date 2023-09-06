@@ -5,6 +5,7 @@
 //  Created by Lucas Migge on 29/08/23.
 //
 
+@testable import Pong
 import Foundation
 import UIKit
 

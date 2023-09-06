@@ -31,7 +31,7 @@ class GameScene: SKScene {
         
         self.gameManager = gameManager
         super.init(size: size)
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
