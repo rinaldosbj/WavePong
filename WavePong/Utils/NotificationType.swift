@@ -28,11 +28,11 @@ enum notificationType {
     var title: String {
         switch self {
         case .twoDays:
-            return "O Wave Pong te espera"
+            return StringsConstantsModel().notificacao1
         case .oneWeek:
-            return "A música está no controle"
+            return StringsConstantsModel().notificacao2
         case .twoWeek:
-            return "É hora de jogar Wave Pong!"
+            return StringsConstantsModel().notificacao3
         }
         
     }
@@ -40,11 +40,11 @@ enum notificationType {
     var body: String {
         switch self {
         case .twoDays:
-            return "A batida retrowave te chama."
+            return StringsConstantsModel().notificacao_body1
         case .oneWeek:
-            return "Não perca o ritmo! Volte para o pong."
+            return StringsConstantsModel().notificacao_body2
         case .twoWeek:
-            return "A música está tocando, volte à diversão!"
+            return StringsConstantsModel().notificacao_body3
         }
     }
     

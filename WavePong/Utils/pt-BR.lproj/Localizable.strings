@@ -28,8 +28,20 @@
 "alto_hint" = "Modo alto contraste";
 "volta" = "  < Voltar";
 "volta_hint" = "Voltar";
+"jogar" = "jogar";
+"jogar_hint" = "Toque duas vezes na tela para começar um novo jogo";
+"configuracoes" = "Configurações";
+"configuracoes_hint" = "Toque duas vezes na tela para ir para a tela de configurações";
+"game_center" = "Game center";
+"game_center_hint" = "Toque duas vezes na tela para ir para a tela do game Center";
+"notificacao1" = "O Wave Pong te espera";
+"notificacao2" = "A música está no controle";
+"notificacao3" = "É hora de jogar Wave Pong!";
+"notificacao_body1" = "A batida retrowave te chama.";
+"notificacao_body2" = "Não perca o ritmo! Volte para o pong.";
+"notificacao_body3" = "A música está tocando, volte à diversão!";
 
-"start" = "Começar";
+"start" = "COMEÇAR";
 
 "home_hint" = "Voltar para menu";
 "recomecar_hint" = "Reiniciar";
@@ -38,10 +50,10 @@
 
 "dificuldade" = "Dificuldade";
 "dificuldade_hint" = "Selecione a dificuldade de jogo para começar";
-"continue" = "Continuar";
-"easy" = "Fácil";
-"medium" = "Médio";
-"hard" = "Difícil";
+"continue" = "CONTINUAR";
+"easy" = "FÁCIL";
+"medium" = "MÉDIO";
+"hard" = "DIFÍCIL";
 
 
 
