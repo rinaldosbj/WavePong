@@ -21,7 +21,9 @@ struct IconButton: View {
     
     var buttonType: ButtonType
     
+    
     var buttonAction: () -> Void
+    
     
     init(_ buttonStyle: ButtonStyle, buttonType: ButtonType = .action, buttonAction: @escaping () -> Void) {
         self.buttonStyle = buttonStyle
@@ -29,10 +31,46 @@ struct IconButton: View {
         self.buttonAction = buttonAction
     }
     
+    
     private var buttonImageString: String {
-        buttonStyle.rawValue
+        switch buttonStyle {
+        case .settings:
+            return ImageConstants.shared.SETTINGS
+        case .pause:
+            return ImageConstants.shared.PAUSE
+        case .start:
+            return ImageConstants.shared.PLAY
+        case .gameCenter:
+            return ImageConstants.shared.GAME_CENTER
+        case .home:
+            return ImageConstants.shared.HOME
+        case .refresh:
+            return ImageConstants.shared.PLAY_AGAIN
+        }
     }
     
+    
+    private var buttonIconSizes: [Double] {
+        switch buttonStyle {
+        case .settings:
+            return [50, 52.3]
+        case .pause:
+            return [40, 50]
+        case .start:
+            return [40, 46]
+        case .gameCenter:
+            return [43.5, 52]
+        case .home:
+            return [60,54]
+        case .refresh:
+            return [60.8,51.2]
+        }
+        
+    }
+    
+    private mutating func iconSetup () {
+        
+    }
     
     var body: some View {
         switch buttonType{
@@ -43,16 +81,51 @@ struct IconButton: View {
                 button
             }
         case .link:
-                button
+            button
         }
         
     }
     
+    
+    
     var button: some View {
-        Image(buttonImageString)
-            .resizable()
-            .frame(width: 104, height: 104)
+        
+        ZStack {
+            
+            Rectangle()
+                .fill(Color(ColorConstants.shared.WHITE_500))
+                .roundedCorner(24,corners: [.topLeft, .bottomRight])
+                .frame(width: 104, height: 104)
+            
+            Rectangle()
+                .fill(Color(ColorConstants.shared.PURPLE_500))
+                .roundedCorner(23,corners: [.topLeft, .bottomRight])
+                .frame(width: 101, height: 101)
+                .overlay(
+                    Image(buttonImageString)
+                        .resizable()
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                        .frame(width: buttonIconSizes[0], height: buttonIconSizes[1])
+                        .padding(20)
+                )
+            
+        }
     }
 }
 
 
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners) )
+    }
+}

@@ -31,7 +31,7 @@ struct RebaterView: View {
                 Text(stringsConstants.raquete_bola)
                     .font(.custom("DaysOne-Regular", size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .accessibilityHint(stringsConstants.onboading_hint)
@@ -41,7 +41,7 @@ struct RebaterView: View {
                     
                     Image("Ball")
                         .rotationEffect(Angle(degrees: 250))
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_600))
                         .offset(x: bola ? 100: 40, y: bola ? 0 : 100)
                         .animation(.easeOut(duration: 2).repeatForever(autoreverses: false),value: bola)
                         .accessibilityHidden(true)

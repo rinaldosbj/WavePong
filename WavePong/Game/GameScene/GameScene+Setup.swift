@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import SwiftUI
 
 extension GameScene {
     
@@ -105,7 +106,7 @@ extension GameScene {
         let countDownSequence = SKAction.sequence([changeSize3,animation1,
                                                 animationFadeInFast, wait1sec, bipSound,
                                                 animation2, bipSound, changeSize1,
-                                                animation3,changeSizeGoLabel,endSound
+                                                animation3, changeSizeGoLabel, endSound, animation4
                                                ])
         
         let animation = SKAction.sequence([foneGlitchAnimationSequence,
@@ -182,7 +183,7 @@ extension GameScene {
         let proportionalWidth = Double(frame.width * gameManager.gameManagerSetting.paddleProportion)
         
         return Paddle(texture: nil,
-                      color: UIColor(named: "Light-purple")!,
+                      color: UIColor(Color(ColorConstants.shared.PURPLE_300)),
                       size: CGSize(width: proportionalWidth, height: 20))
         
     }
@@ -226,11 +227,9 @@ extension GameScene {
     
     func createPauseNode() -> PauseNode {
         let pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
-                                  color: .cyan,
+                                  color: UIColor(Color(ColorConstants.shared.PURPLE_500)),
                                   size: CGSize(width: 42, height: 42))
         
         return pauseNode
     }
-    
-    
 }
