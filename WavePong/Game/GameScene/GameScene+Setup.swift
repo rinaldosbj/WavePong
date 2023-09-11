@@ -190,6 +190,4 @@ extension GameScene {
         
         return pauseNode
     }
-    
-    
 }

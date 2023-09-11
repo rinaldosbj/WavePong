@@ -42,13 +42,6 @@ struct SoundBoardView: View {
     
     private var gameThemeView: some View {
         Section("Game Theme") {
-//            Button {
-//                audioPlayer.playGameTheme()
-//            }
-//        label: {
-//            Image(systemName: audioPlayer.shouldPlay ? "pause.fill" : "play.fill")
-//        }
-            
             
             Button {
                 audioPlayer.stopGameTheme()

@@ -21,6 +21,7 @@ struct IconButton: View {
     
     var buttonType: ButtonType
     
+    
     var buttonAction: () -> Void
     
     
@@ -30,28 +31,45 @@ struct IconButton: View {
         self.buttonAction = buttonAction
     }
     
+    
     private var buttonImageString: String {
-        buttonStyle.rawValue
+        switch buttonStyle {
+        case .settings:
+            return ImageConstants.shared.SETTINGS
+        case .pause:
+            return ImageConstants.shared.PAUSE
+        case .start:
+            return ImageConstants.shared.PLAY
+        case .gameCenter:
+            return ImageConstants.shared.GAME_CENTER
+        case .home:
+            return ImageConstants.shared.HOME
+        case .refresh:
+            return ImageConstants.shared.PLAY_AGAIN
+        }
     }
     
     
-    private var iconSize: [Double] {
-        var sizes: [Double]
+    private var buttonIconSizes: [Double] {
         switch buttonStyle {
         case .settings:
-            sizes = [50, 52.3]
+            return [50, 52.3]
         case .pause:
-            sizes = [40, 50]
+            return [40, 50]
         case .start:
-            sizes = [40, 46]
+            return [40, 46]
         case .gameCenter:
-            sizes = [43.5, 52]
+            return [43.5, 52]
         case .home:
-            sizes = [60,54]
+            return [60,54]
         case .refresh:
-            sizes = [60.8,51.2]
+            return [60.8,51.2]
         }
-        return sizes
+        
+    }
+    
+    private mutating func iconSetup () {
+        
     }
     
     var body: some View {
@@ -71,8 +89,9 @@ struct IconButton: View {
     
     
     var button: some View {
+        
         ZStack {
-    
+            
             Rectangle()
                 .fill(Color(ColorConstants.shared.WHITE_500))
                 .roundedCorner(24,corners: [.topLeft, .bottomRight])
@@ -83,10 +102,11 @@ struct IconButton: View {
                 .roundedCorner(23,corners: [.topLeft, .bottomRight])
                 .frame(width: 101, height: 101)
                 .overlay(
-                    Image(systemName: "play.fill")
+                    Image(buttonImageString)
                         .resizable()
                         .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                        .padding(22)
+                        .frame(width: buttonIconSizes[0], height: buttonIconSizes[1])
+                        .padding(20)
                 )
             
         }
