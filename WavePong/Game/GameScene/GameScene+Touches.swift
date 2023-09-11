@@ -13,7 +13,10 @@ extension GameScene {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         
-        if pauseNode.contains(location) {
+        guard let safePaddle = self.paddle else { return }
+        guard let safePauseNode = self.pauseNode else { return }
+        
+        if safePauseNode.contains(location) {
             gameManager.pauseNodePressed()
         }
         
@@ -22,13 +25,13 @@ extension GameScene {
         }
         
         if isPaddlePositionTranspassingRight(horizontalLocation){
-            paddle.position.x = frame.maxX - paddle.size.width/2
+            safePaddle.position.x = frame.maxX - safePaddle.size.width/2
         }
         else if isPaddlePositionTranspassingLeft(horizontalLocation) {
-            paddle.position.x = frame.minX + paddle.size.width/2
+            safePaddle.position.x = frame.minX + safePaddle.size.width/2
         }
         else {
-            paddle.position.x = location.x
+            safePaddle.position.x = location.x
         }
     }
     
@@ -36,26 +39,30 @@ extension GameScene {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         
+        guard let safePaddle = self.paddle else { return }
+        
         var horizontalLocation: Double {
             location.x
         }
         
         if isPaddlePositionTranspassingRight(horizontalLocation) {
-            paddle.position.x = frame.maxX - paddle.size.width/2
+            safePaddle.position.x = frame.maxX - safePaddle.size.width/2
         }
         else if isPaddlePositionTranspassingLeft(horizontalLocation){
-            paddle.position.x = frame.minX + paddle.size.width/2
+            safePaddle.position.x = frame.minX + safePaddle.size.width/2
         }
         else {
-            paddle.position.x = location.x
+            safePaddle.position.x = location.x
         }
     }
     
     private func isPaddlePositionTranspassingRight(_ location: Double) -> Bool {
-        location > frame.maxX - (paddle.size.width / 2)
+        guard let safePaddle = self.paddle else { return false }
+        return location > frame.maxX - (safePaddle.size.width / 2)
     }
     
     private func isPaddlePositionTranspassingLeft(_ location: Double) -> Bool {
-        location < frame.minX + (paddle.size.width / 2)
+        guard let safePaddle = self.paddle else { return false }
+        return location < frame.minX + (safePaddle.size.width / 2)
     }
 }

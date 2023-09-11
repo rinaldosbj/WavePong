@@ -14,33 +14,24 @@ import SwiftUI
 class GameScene: SKScene {
     
     var gameManager: GameManagerProtocol
-    var ball: BallSprite!
-    var paddle: Paddle!
-    var cloud: Cloud!
-    var cloud2: Cloud!
-    var cloud3: Cloud!
-    var scoreLabel: ScoreLabel!
-    var borderNode: Border!
-    var pauseNode: PauseNode!
-    var countDownNode: SKSpriteNode!
-    var countDownBackground : SKSpriteNode!
+    var ball: BallSprite?
+    var paddle: Paddle?
+    var cloud: Cloud?
+    var cloud2: Cloud?
+    var cloud3: Cloud?
+    var scoreLabel: ScoreLabel?
+    var borderNode: Border?
+    var pauseNode: PauseNode?
+    var countDownNode: SKSpriteNode?
+    var countDownBackground : SKSpriteNode?
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
     public init(size: CGSize, gameManager: GameManagerProtocol) {
         
         self.gameManager = gameManager
-        
         super.init(size: size)
-        self.ball = createBall()
-        self.paddle = createPaddle()
-        self.cloud = createCloud()
-        self.cloud2 = creatCloud2()
-        self.cloud3 = createCloud3()
-        self.scoreLabel = createScoreLabel()
-        self.pauseNode = createPauseNode()
-        self.countDownBackground = createCountDownBackground()
-        self.countDownNode = createCountDownLabel()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,13 +41,18 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         if isInGame() {
-            setupGameManager()
-            setupWorld()
-            setupComponentsPosition()
+            setupGameScene()
             countDownAnimation()
         }
     }
     
+    func setupGameScene() {
+        setupGameManager()
+        setupWorld()
+        setupNodes()
+        setupComponentsPosition()
+        
+    }
     
     func startGame() {
         ball?.run(SKAction.applyImpulse(createRandomVector(), duration: 1))
@@ -77,9 +73,9 @@ class GameScene: SKScene {
     }
     
     private func cloudsVerticalAnimation() {
-        cloud.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud2.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud3.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud?.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2?.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3?.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
         
     }
     
@@ -96,7 +92,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud.run(repeatForever)
+        cloud?.run(repeatForever)
         
     }
     
@@ -107,7 +103,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveRight, moveLeft])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud2.run(repeatForever)
+        cloud2?.run(repeatForever)
         
     }
     
@@ -118,7 +114,7 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveLeft, moveRight])
         let repeatForever = SKAction.repeatForever(sequence)
         
-        cloud3.run(repeatForever)
+        cloud3?.run(repeatForever)
         
     }
     
@@ -161,8 +157,6 @@ extension GameScene: GameSceneDelegate {
         setupComponentsPosition()
         countDownAnimation()
         
-        //        ballSpeed = 500
-        
     }
     
     func resumeGame() {
@@ -170,7 +164,7 @@ extension GameScene: GameSceneDelegate {
     }
     
     func UserScored(newScore score: Int) {
-        scoreLabel.text = "\(score)"
+        scoreLabel?.text = "\(score)"
         
     }
     
@@ -186,16 +180,8 @@ extension GameScene: GameSceneDelegate {
     
     private func resetSpriteNodes() {
         removeAllChildren()
+        setupNodes()
         
-        self.ball = createBall()
-        self.paddle = createPaddle()
-        self.cloud = createCloud()
-        self.cloud2 = creatCloud2()
-        self.cloud3 = createCloud3()
-        self.scoreLabel = createScoreLabel()
-        self.pauseNode = createPauseNode()
-        self.countDownBackground = createCountDownBackground()
-        self.countDownNode = createCountDownLabel()
     }
     
     func isInGame() -> Bool {

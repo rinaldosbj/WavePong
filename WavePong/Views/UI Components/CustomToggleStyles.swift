@@ -33,12 +33,13 @@ struct NotificationsCustomToggleStyle: ToggleStyle {
 
 struct SelectCustomToggleStyle: ToggleStyle {
     
+    let stringsConstants = StringsConstantsModel()
+
     var mode: SoundMode
     
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             ZStack {
-                configuration.label
                 Color(ColorConstants.shared.WHITE_500)
                     .frame(width: 20, height: 20, alignment: .center)
                     .border(Color("roxo"),width: 2)
@@ -54,15 +55,15 @@ struct SelectCustomToggleStyle: ToggleStyle {
             
             switch mode {
             case .linear:
-                Text("Linear")
+                Text(stringsConstants.linear)
                     .font(.custom("DaysOne-Regular", size: 24))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .curved:
-                Text("Exponencial")
+                Text(stringsConstants.exponencial)
                     .font(.custom("DaysOne-Regular", size: 24))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .highContrast:
-                Text("Alto contraste")
+                Text(stringsConstants.alto)
                     .font(.custom("DaysOne-Regular", size: 24))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             }

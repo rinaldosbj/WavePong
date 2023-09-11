@@ -25,6 +25,8 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     var player: PlayerProtocol { get }
     
+    func getCurrentBall() -> String 
+    
     func startGame()
     
     func incrementBallSpeed()
@@ -37,7 +39,7 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     func pauseNodePressed()
     
-    func pauseButtonPressed()
+    func pauseTrigger()
     
     func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize)
     

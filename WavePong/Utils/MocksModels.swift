@@ -10,6 +10,13 @@ import UIKit
 
 class PlayerMock: PlayerProtocol {
     
+    var selectedBall: BallTypes = .ball_yellow
+    
+    func changeBall(_ ball: BallTypes) {
+        // NADA
+    }
+    
+    
     var onboradingHappend: Bool = false
     
     var soundMode: Pong.SoundMode = .linear
@@ -210,6 +217,139 @@ class HapticsManagerMock: HapticsManagerProtocol {
         lastImpactFeedbackType = type
         
     }
+    
+    
+}
+
+
+class GameSceneMock: GameSceneDelegate {
+    var isGameRunning: Bool = true
+
+    
+    func UserScored(newScore score: Int) {
+        
+    }
+    
+    func gameOver() {
+        isGameRunning = false
+        
+    }
+    
+    func pausePressed() {
+        isGameRunning = false
+        
+    }
+    
+    func resumeGame() {
+        isGameRunning = true
+        
+    }
+    
+    func startGame() {
+        isGameRunning = true
+        
+    }
+    
+    func resetGame() {
+        
+    }
+    
+    
+}
+
+class GameManagerDelegateMock: GameManagerDelegate {
+    
+    var state: GameSceneViewState = .game
+    
+    func pauseNodePressed() {
+        state = .pause
+        
+    }
+    
+    func gameOver(scoreLabel: String, recordLabel: String) {
+        state = .gameOver
+        
+    }
+    
+    
+}
+
+
+class GameManagerMock: GameManagerProtocol {
+    
+    func getCurrentBall() -> String { return "" }
+    
+    var didPauseNodePressed: Bool = false
+    
+    var soundManager: SoundManagerProtocol = SoundManagerMock()
+    
+    var hapticsManager: HapticsManagerProtocol = HapticsManagerMock()
+    
+    var gameDificulty: GameDifficulty = .easy
+    
+    var score: Int = 0
+    
+    var gameManagerSetting: gameManagerSettings = gameManagerSettings(difficulty: .easy)
+    
+    var state: GameManager.GameManagerState = .InContDown
+    
+    var physicsDetection: PhysicsDetection = PhysicsDetection()
+
+    var sceneDelegate: GameSceneDelegate?
+    
+    var gameManagerDelegate: GameManagerDelegate?
+    
+    var player: PlayerProtocol = PlayerMock()
+    
+    func startGame() {
+        
+    }
+    
+    func incrementBallSpeed() {
+        
+    }
+    
+    func correctedBallSpeed(for velocity: CGFloat) -> CGFloat {
+        return 0
+    }
+    
+    func resumeGame() {
+        
+    }
+    
+    func resetGame() {
+        
+    }
+    
+    func pauseNodePressed() {
+        didPauseNodePressed = true
+        
+    }
+    
+    func pauseTrigger() {
+        
+    }
+    
+    func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize) {
+        
+    }
+    
+    func countDownStep() {
+        
+    }
+    
+    func countDownEnded() {
+        
+    }
+    
+    func incrementScore() {
+        
+    }
+    
+    func didLose() {
+        
+    }
+
     
     
 }

@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Pong
+
+  Created by rsbj on 05/09/23.
+  
+*/
+
+// MARK: Onboarding
+
+"onboarding_hint" = "Double-tap the screen to continue";
+"coloque_fone" = "Put on the headphones, then tap the screen to continue";
+"mover_raquete" = "Swipe your fingers sideways to move the racket and hit the ball";
+"bola_guia" = "The ball's position will be guided by the music";
+"rebater_bola" = "There will be a vibration when hitting the ball";
+"dois_toques" = "Double-tap the screen to pause the game";
+
+// MARK: Componentes
+"ajustes" = "Settings";
+"tutorial" = "Review Tutorial";
+"modo_som" = "Sound Mode";
+"modo_hint" = "Select which sound mode you want to listen to";
+"linear" = "Linear";
+"linear_hint" = "Linear Mode";
+"exponencial" = "Exponential";
+"exponencial_hint" = "Exponential Mode";
+"alto" = "High Contrast";
+"alto_hint" = "High Contrast Mode";
+"volta" = "  < Back";
+"volta_hint" = "Back";
+
+"start" = "Start";
+
+"home_hint" = "Back to menu";
+"recomecar_hint" = "Restart";
+
+// MARK: Difficulty
+
+"dificuldade" = "Difficulty";
+"dificuldade_hint" = "Select the game difficulty to play";
+"continue" = "Continue";
+"easy" = "Easy";
+"medium" = "Medium";
+"hard" = "Hard";
+
+
+
+// MARK: Notificações
+
+// MARK: Game over
+
+"recorde" = "Record";
+"ponto" = "Point";
+"pontos" = "Points";
+"novo_recorde" = "New record";

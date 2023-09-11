@@ -16,6 +16,8 @@ struct ConfigurationView: View {
     @State var togleIsHighContrast: Bool = false
     var player: PlayerProtocol = Player()
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         //MARK: Main View Build
         ZStack {
@@ -25,7 +27,7 @@ struct ConfigurationView: View {
                 .accessibilityHidden(true)
             
             VStack(spacing: 32) {
-                Image("Ajustes")
+                Image(stringsConstants.ajustes)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 268 ,height: 53)
@@ -37,6 +39,8 @@ struct ConfigurationView: View {
                 Spacer().frame(height: 24)
                 
                 backToOnboardingButton
+                
+                NavigationLink("BallType", destination: SelectBallView())
                 
             }.padding(.horizontal, 60)
             

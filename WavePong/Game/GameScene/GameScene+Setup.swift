@@ -18,7 +18,7 @@ extension GameScene {
     func setupWorld(){
         // MARK: Border
         borderNode = Border(reactFrame: self.frame)
-        addChild(borderNode)
+        addChild(borderNode ?? SKNode())
         
         background.size = size
         background.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -39,9 +39,27 @@ extension GameScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
+    internal func setupNodes() {
+        self.ball = createBall()
+        self.paddle = createPaddle()
+        self.cloud = createCloud()
+        self.cloud2 = creatCloud2()
+        self.cloud3 = createCloud3()
+        self.scoreLabel = createScoreLabel()
+        self.pauseNode = createPauseNode()
+        self.countDownBackground = createCountDownBackground()
+        self.countDownNode = createCountDownLabel()
+    }
+    
     func countDownAnimation() {
         
-        let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 1)
+        let animationFadeInSlow = SKAction.fadeIn(withDuration: 0.6)
+        let animationFadeInFast = SKAction.fadeIn(withDuration: 0.1)
+        let animationFadeOutSlow = SKAction.fadeOut(withDuration: 0.6)
+        let animationFadeOut = SKAction.fadeOut(withDuration: 0.2)
+        let animationFadeOutFast = SKAction.fadeOut(withDuration: 0.05)
+        
+        let animation1 = SKAction.animate(with: [SKTexture(imageNamed: "count1")], timePerFrame: 0)
         let animation2 = SKAction.animate(with: [SKTexture(imageNamed: "count2")], timePerFrame: 1)
         let animation3 = SKAction.animate(with: [SKTexture(imageNamed: "count3")], timePerFrame: 1)
         let animation4 = SKAction.animate(with: [SKTexture(imageNamed: "count4")], timePerFrame: 1)
@@ -55,69 +73,94 @@ extension GameScene {
         
         let performStartGame = SKAction.run { [weak self] in
             if self?.isInGame() == true {
-                self?.countDownBackground.isHidden = true
-                self?.countDownNode.isHidden = true
+                self?.countDownBackground?.isHidden = true
+                self?.countDownNode?.isHidden = true
                 self?.gameManager.startGame()
             }
         }
         
-        let changeSizeGoLabel = SKAction.run { [weak self] in
-            self?.countDownNode.size = CGSize(width: 160, height: 87)
+        let changeSize1 = SKAction.run { [weak self] in
+            self?.countDownNode?.size = CGSize(width: 44, height: 87)
         }
         
-        let countDownSequence = SKAction.sequence([animation1,bipSound,
-                                                   animation2, bipSound,
-                                                   animation3,changeSizeGoLabel,endSound,
-                                                   animation4,performStartGame])
+        let changeSize3 = SKAction.run { [weak self] in
+            self?.countDownNode?.size = CGSize(width: 54, height: 87)
+        }
         
-        countDownNode.run(countDownSequence)
+        let changeSizeGoLabel = SKAction.run { [weak self] in
+            self?.countDownNode?.size = CGSize(width: 160, height: 87)
+        }
+        
+        let wait = SKAction.wait(forDuration: 0.4)
+        let wait1sec = SKAction.wait(forDuration: 0.9)
+        
+        let foneGlitchAnimationSequence = SKAction.sequence([animationFadeOutFast,
+                                                             wait,
+                                                             animationFadeInSlow, animationFadeOut,
+                                                             wait,
+                                                             animationFadeInFast, animationFadeOut,
+                                                             animationFadeInFast, animationFadeOutFast,
+                                                             animationFadeInFast, animationFadeOutFast,
+                                                             animationFadeInFast, animationFadeOutSlow])
+        
+        let countDownSequence = SKAction.sequence([changeSize3,animation1,
+                                                animationFadeInFast, wait1sec, bipSound,
+                                                animation2, bipSound, changeSize1,
+                                                animation3, changeSizeGoLabel, endSound, animation4
+                                               ])
+        
+        let animation = SKAction.sequence([foneGlitchAnimationSequence,
+                                          countDownSequence,
+                                          performStartGame])
+        
+        countDownNode?.run(animation)
         
     }
     
     func setupComponentsPosition(){
-        paddle.position = CGPoint(x: self.frame.midX,
+        paddle?.position = CGPoint(x: self.frame.midX,
                                   y: 125)
-        addChild(paddle)
+        addChild(paddle ?? SKNode())
         
         ball?.position = CGPoint(x:self.frame.midX,
                                 y: 175)
-        addChild(ball)
+        addChild(ball ?? SKNode())
       
         
-        cloud.zPosition = 2
-        cloud.position = CGPoint(x: self.frame.midX,
-                                 y: self.frame.maxY + cloud.size.height/2)
-        addChild(cloud)
+        cloud?.zPosition = 2
+        cloud?.position = CGPoint(x: self.frame.midX,
+                                 y: self.frame.maxY + cloud!.size.height/2)
+        addChild(cloud ?? SKNode())
         
-        cloud2.zPosition = 3
-        cloud2.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2 + 15)
-        addChild(cloud2)
+        cloud2?.zPosition = 3
+        cloud2?.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud!.size.height/2 + 15)
+        addChild(cloud2 ?? SKNode())
         
-        cloud3.zPosition = 3
-        cloud3.position = CGPoint(x: self.frame.midX,
-                                  y: self.frame.maxY + cloud.size.height/2 + 30)
-        addChild(cloud3)
+        cloud3?.zPosition = 3
+        cloud3?.position = CGPoint(x: self.frame.midX,
+                                  y: self.frame.maxY + cloud!.size.height/2 + 30)
+        addChild(cloud3 ?? SKNode())
         
         
-        scoreLabel.zPosition = 4
-        scoreLabel.position = CGPoint(x: 50,
+        scoreLabel?.zPosition = 4
+        scoreLabel?.position = CGPoint(x: 50,
                                       y: self.frame.maxY - 100)
-        addChild(scoreLabel)
+        addChild(scoreLabel ?? SKNode())
         
         
-        pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+        pauseNode?.position = CGPoint(x: self.frame.maxX - 50,
                                      y: self.frame.maxY - 75)
-        pauseNode.zPosition = 5
-        addChild(pauseNode)
+        pauseNode?.zPosition = 5
+        addChild(pauseNode ?? SKNode())
         
-        countDownBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownBackground.zPosition = 1000
-        addChild(countDownBackground)
+        countDownBackground?.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownBackground?.zPosition = 1000
+        addChild(countDownBackground ?? SKNode())
         
-        countDownNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        countDownNode.zPosition = 1000
-        addChild(countDownNode)
+        countDownNode?.position = CGPoint(x: frame.midX, y: frame.midY)
+        countDownNode?.zPosition = 1000
+        addChild(countDownNode ?? SKNode())
 
         
     }
@@ -131,8 +174,7 @@ extension GameScene {
     }
     
     func createCountDownLabel() -> SKSpriteNode {
-        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "count1"))
-        countDownNode.size = CGSize(width: 54, height: 87)
+        let countDownNode = SKSpriteNode(texture: SKTexture(imageNamed: "fone"))
 
         return countDownNode
     }
@@ -147,7 +189,7 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
-        return BallSprite(texture: SKTexture(image: UIImage(named: "neonBall")!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
+        return BallSprite(texture: SKTexture(image: UIImage(named: gameManager.getCurrentBall())!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
     }
     
     func createCloud() -> Cloud {

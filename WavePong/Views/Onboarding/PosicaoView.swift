@@ -11,6 +11,8 @@ struct PosicaoView: View {
     
     @State var bola = false
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             
@@ -26,14 +28,14 @@ struct PosicaoView: View {
                 
                 Spacer()
                 
-                Text("A \(Text("posição").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) da bola será \(Text("guiada").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) pela música")
+                Text(stringsConstants.bola_guiada)
                     .font(.custom("DaysOne-Regular", size: 35))
                     .fontWeight(.bold)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .padding(.bottom, -32)
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 
                 ZStack {
                     VStack {

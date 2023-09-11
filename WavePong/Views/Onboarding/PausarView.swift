@@ -11,6 +11,8 @@ struct PausarView: View {
     @State var scale: CGFloat = 1.0
     @State var animation = false
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             
@@ -21,14 +23,14 @@ struct PausarView: View {
                 .accessibilityHidden(true)
             
             VStack(alignment: .center, spacing: 60 ){
-                Text("Dê \(Text("dois toques").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) na tela para \(Text("pausar").foregroundColor(Color(ColorConstants.shared.YELLOW_600))) o jogo")
+                Text(stringsConstants.dois_toques)
                     .font(.custom("DaysOne-Regular", size: 35))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
                     .minimumScaleFactor(15)
                     .multilineTextAlignment(.center)
                     .padding(40)
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 
                 HStack{
                     Image(systemName: "circle.fill")
