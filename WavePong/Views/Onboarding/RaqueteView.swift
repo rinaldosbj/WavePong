@@ -32,7 +32,7 @@ struct RaqueteView: View {
                 Text(stringsConstants.mover_raquete)
                     .font(.custom("DaysOne-Regular", size: 35))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
                     .accessibilityHint(stringsConstants.onboading_hint)

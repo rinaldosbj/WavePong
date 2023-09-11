@@ -22,7 +22,7 @@ struct FoneView: View {
             VStack{
                 Text(stringsConstants.coloque_fone)
                     .font(.custom("DaysOne-Regular", size: 35))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
                     .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
