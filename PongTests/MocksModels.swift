@@ -143,6 +143,7 @@ class UserDefaultsMock: UserDefaultable {
 
 class SoundManagerMock: SoundManagerProtocol {
     
+    var updateAudioOrientationCalled: Bool = false
     var isPlayingGameTheme: Bool = false
     var isGameThemePaused: Bool = false
     var wasGamethemeResumed: Bool = false
@@ -159,7 +160,7 @@ class SoundManagerMock: SoundManagerProtocol {
     }
     
     func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        
+        updateAudioOrientationCalled = true
     }
     
     func playGameTheme() {
