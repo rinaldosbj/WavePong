@@ -253,7 +253,6 @@
 			children = (
 				0C0EDBFC2A97C5BB0070339E /* ViewModifiers */,
 				0C26DA892A82E53A00844FB2 /* GameSceneView.swift */,
-				0C31671E2AA8F5B6006C596C /* ExperimentalGameScene.swift */,
 				0C6363EF2A8D0A28002DAB8C /* GameSceneViewModel.swift */,
 				D32842C92A7E9FA0007FF85B /* MenuView.swift */,
 				D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */,
@@ -262,7 +261,7 @@
 				D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */,
 				0C8648E42A8D676000017F29 /* UI Components */,
 				D35EF5462A8AA7E300BD946E /* Onboarding */,
-				0CF6486E2A7946F100282A52 /* TestingViews */,
+				0CF6486E2A7946F100282A52 /* Testing */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,12 +369,13 @@
 			path = FX;
 			sourceTree = "<group>";
 		};
-		0CF6486E2A7946F100282A52 /* TestingViews */ = {
+		0CF6486E2A7946F100282A52 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				0C31671E2AA8F5B6006C596C /* ExperimentalGameScene.swift */,
 				0CF6486C2A7946E100282A52 /* SoundBoardView.swift */,
 			);
-			path = TestingViews;
+			path = Testing;
 			sourceTree = "<group>";
 		};
 		0DF0390A2A93E0670005551B /* Delegate */ = {

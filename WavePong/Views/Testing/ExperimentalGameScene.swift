@@ -82,6 +82,8 @@ class GameSceneExperimental: SKScene {
     func nextRound() {
         ball?.removeFromParent()
         
+//        DispatchQueue.main.as
+        
         ball = createBall()
         ball?.position = CGPoint(x:self.frame.midX,
                                  y: self.frame.maxY - 50)
