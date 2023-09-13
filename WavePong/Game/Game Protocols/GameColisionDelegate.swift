@@ -8,9 +8,11 @@
 import Foundation
 
 /// Protocols for informing gameLogic for colision Event
-protocol GameColisionDelegate: AnyObject {
+protocol GameColisionDelegate: AnyObject {    
     func incrementScore()
     
     func didLose()
     
 }
+
+

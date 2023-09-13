@@ -35,8 +35,8 @@ extension GameScene {
         addChild(inferiorWall)
         
         // MARK: World
-        self.physicsWorld.speed = 0.5
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        self.physicsWorld.speed = 0.49999
+//        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
     internal func setupNodes() {

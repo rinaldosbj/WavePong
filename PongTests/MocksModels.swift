@@ -5,6 +5,7 @@
 //  Created by Lucas Migge on 29/08/23.
 //
 
+@testable import Pong
 import Foundation
 import UIKit
 
@@ -276,6 +277,10 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 
 class GameManagerMock: GameManagerProtocol {
+    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        <#code#>
+    }
+    
     
     func getCurrentBall() -> String { return "" }
     
