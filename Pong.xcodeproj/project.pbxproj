@@ -82,6 +82,8 @@
 		D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */; };
 		D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */; };
 		D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54F2A8AAA3000BD946E /* PausarView.swift */; };
+		D37939342AB2277600D22457 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D37939332AB2277600D22457 /* GoogleMobileAds */; };
+		D37939362AB230C200D22457 /* Ads.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37939352AB230C200D22457 /* Ads.swift */; };
 		D391191D2A958A4200CA3C9E /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191C2A958A4200CA3C9E /* explosion.wav */; };
 		D391191F2A958BC000CA3C9E /* pickupCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191E2A958BC000CA3C9E /* pickupCoin.wav */; };
 		D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */; };
@@ -183,6 +185,7 @@
 		D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoView.swift; sourceTree = "<group>"; };
 		D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebaterView.swift; sourceTree = "<group>"; };
 		D35EF54F2A8AAA3000BD946E /* PausarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarView.swift; sourceTree = "<group>"; };
+		D37939352AB230C200D22457 /* Ads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ads.swift; sourceTree = "<group>"; };
 		D391191C2A958A4200CA3C9E /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		D391191E2A958BC000CA3C9E /* pickupCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickupCoin.wav; sourceTree = "<group>"; };
 		D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessibilityDirectInteractionTrait.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37939342AB2277600D22457 /* GoogleMobileAds in Frameworks */,
 				0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */,
 				0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
@@ -402,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
+				D37939352AB230C200D22457 /* Ads.swift */,
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
 				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */,
@@ -531,6 +536,7 @@
 			packageProductDependencies = (
 				0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */,
 				0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				D37939332AB2277600D22457 /* GoogleMobileAds */,
 			);
 			productName = DvdScreensaver;
 			productReference = D3BF927A28FEF6CD00EEF09B /* Pong.app */;
@@ -567,6 +573,7 @@
 			mainGroup = D3BF927128FEF6CD00EEF09B;
 			packageReferences = (
 				0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = D3BF927B28FEF6CD00EEF09B /* Products */;
 			projectDirPath = "";
@@ -685,6 +692,7 @@
 				0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */,
+				D37939362AB230C200D22457 /* Ads.swift in Sources */,
 				0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */,
 				D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
@@ -880,7 +888,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = GMAYGR5U3T;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -898,7 +906,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -918,7 +926,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = GMAYGR5U3T;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -936,7 +944,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -988,6 +996,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1005,6 +1021,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		D37939332AB2277600D22457 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
