@@ -278,11 +278,11 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 class GameManagerMock: GameManagerProtocol {
     func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
-        <#code#>
+        
     }
     
     
-    func getCurrentBall() -> String { return "" }
+    func getCurrentBall() -> String { return "ball_yellow" }
     
     var didPauseNodePressed: Bool = false
     

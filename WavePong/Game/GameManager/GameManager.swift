@@ -100,7 +100,9 @@ class GameManager: GameManagerProtocol {
             return "ball_red"
         case .ball_orange:
             return "ball_orange"
+            
         }
+        
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
