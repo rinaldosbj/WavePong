@@ -12,9 +12,6 @@ import Firebase
 /// Object responsable for dealing with game logic
 class GameManager: GameManagerProtocol {
     
-
-    
-    
     let stringsConstants = StringsConstantsModel()
     
     enum GameManagerState {
@@ -101,17 +98,17 @@ class GameManager: GameManagerProtocol {
         
         
         updateAudioOrientation(ballPosition: position, frameSize: frameSize)
-        incrementBallSpeed()
+        incrementVecticalBallSpeed()
         ballVelocityCorrected(correctBallSpeed(for: velocity))
     }
 
     
-    private func incrementBallSpeed() {
-        let ballSpeed = gameManagerSetting.ballSpeed
+    private func incrementVecticalBallSpeed() {
+        let ballSpeed = gameManagerSetting.ballSpeed.dy
         let maxBallSpeed = gameManagerSetting.maxBallSpeed
         
         if ballSpeed < maxBallSpeed {
-            gameManagerSetting.ballSpeed += 0.5
+            gameManagerSetting.ballSpeed.dy += 2
         }
     }
     
@@ -120,19 +117,19 @@ class GameManager: GameManagerProtocol {
         
         var correctedVelocity = velocity
         
-        if velocity.dy < 0 && velocity.dy > -ballSpeed {
-            correctedVelocity.dy = -ballSpeed
+        if velocity.dy < 0 && velocity.dy > -ballSpeed.dy {
+            correctedVelocity.dy = -ballSpeed.dy
         
         }
-        if velocity.dy > 0 && velocity.dy < ballSpeed {
-            correctedVelocity.dy = ballSpeed
+        if velocity.dy > 0 && velocity.dy < ballSpeed.dy {
+            correctedVelocity.dy = ballSpeed.dy
         }
         
-        if velocity.dx < 0 && velocity.dx > -ballSpeed {
-            correctedVelocity.dx = -ballSpeed
+        if velocity.dx < 0 && velocity.dx > -ballSpeed.dx {
+            correctedVelocity.dx = -ballSpeed.dx
         }
-        if velocity.dx > 0 && velocity.dx < ballSpeed {
-            correctedVelocity.dx = ballSpeed
+        if velocity.dx > 0 && velocity.dx < ballSpeed .dx{
+            correctedVelocity.dx = ballSpeed.dx
         }
         
         return correctedVelocity

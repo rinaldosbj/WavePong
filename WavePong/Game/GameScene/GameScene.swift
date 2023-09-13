@@ -63,9 +63,9 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         gameManager.updateGameScene(frameSize: self.size,
                                     ballPosition: ball?.position,
-                                    ballVelocity: ball?.physicsBody?.velocity) { velocity in
-            self.ball?.physicsBody?.velocity.dy = velocity.dy
-            self.ball?.physicsBody?.velocity.dx = velocity.dx
+                                    ballVelocity: ball?.physicsBody?.velocity) { newVelocity in
+            self.ball?.physicsBody?.velocity.dy = newVelocity.dy
+            self.ball?.physicsBody?.velocity.dx = newVelocity.dx
             
         }
     }
