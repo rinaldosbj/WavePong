@@ -25,6 +25,8 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     var player: PlayerProtocol { get }
     
+    func getCurrentBall() -> String 
+    
     func startGame()
     
     func updateGameScene(frameSize: CGSize,

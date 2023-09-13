@@ -11,6 +11,7 @@ import SwiftUI
 struct MenuView: View {
     
     @State private var isShowingGameCenter = false
+    let stringsConstants = StringsConstantsModel()
     
     var body: some View {
         GeometryReader{ geo in
@@ -30,8 +31,8 @@ struct MenuView: View {
                         LabelButton(buttonStyle: .start, buttonAction:{})
                     }
                     .foregroundColor(.yellow)
-                    .accessibilityLabel("jogar")
-                    .accessibilityHint("Toque duas vezes na tela para começar um novo jogo")
+                    .accessibilityLabel(stringsConstants.jogar)
+                    .accessibilityHint(stringsConstants.jogar_hint)
                     Spacer().frame(height: 48)
                     HStack {
                         NavigationLink(destination: {
@@ -41,8 +42,8 @@ struct MenuView: View {
                             IconButton(.settings, buttonType: .link, buttonAction: {})
                         }
                             .foregroundColor(.yellow)
-                            .accessibilityLabel("Configurações")
-                            .accessibilityHint("Toque duas vezes na tela para ir para a tela de configurações")
+                            .accessibilityLabel(stringsConstants.configuracoes)
+                            .accessibilityHint(stringsConstants.configuracoes_hint)
                             .padding(.trailing,48)
                         NavigationLink(destination: {
                             ComingSoonView()
@@ -51,8 +52,8 @@ struct MenuView: View {
                             IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
                         }
                             .foregroundColor(.yellow)
-                            .accessibilityLabel("game center")
-                            .accessibilityHint("Toque duas vezes na tela para ir para a tela do game Center")
+                            .accessibilityLabel(stringsConstants.game_center)
+                            .accessibilityHint(stringsConstants.game_center_hint)
                     }
                 }
             }

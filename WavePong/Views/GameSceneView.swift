@@ -106,13 +106,13 @@ struct GameSceneView: View {
                     if viewModel.userScore == "1" {
                         Text(viewModel.recordLabel)
                             .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.AMARELO))
+                            .foregroundColor(Color(ColorConstants.shared.YELLOW_300))
                             .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.ponto)")
                     }
                     else {
                         Text(viewModel.recordLabel)
                             .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.AMARELO))
+                            .foregroundColor(Color(ColorConstants.shared.YELLOW_300))
                             .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.pontos)")
                     }
                     
@@ -139,7 +139,7 @@ struct GameSceneView: View {
                     }
                     
                 }
-                .foregroundColor(Color(ColorConstants.WHITE))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 
                 HStack {
                     HStack(spacing: 48)  {

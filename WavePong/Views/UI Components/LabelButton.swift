@@ -59,7 +59,7 @@ struct LabelButton: View {
             
             Text(textLabel)
                 .font(Font.wavePongPrimary(.body))
-                .foregroundColor(Color(ColorConstants.WHITE))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
         }
         .frame(width: 282, height: 84)
     }

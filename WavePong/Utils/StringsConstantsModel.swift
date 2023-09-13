@@ -30,7 +30,18 @@ struct StringsConstantsModel {
     let alto_hint = String(localized: "alto_hint")
     let volta = String(localized: "volta")
     let volta_hint = String(localized: "volta_hint")
-    
+    let jogar = String(localized: "jogar")
+    let jogar_hint = String(localized: "jogar_hint")
+    let configuracoes = String(localized: "configuracoes")
+    let configuracoes_hint = String(localized: "configuracoes_hint")
+    let game_center = String(localized: "game_center")
+    let game_center_hint = String(localized: "game_center_hint")
+    let notificacao1 = String(localized: "notificacao1")
+    let notificacao2 = String(localized: "notificacao2")
+    let notificacao3 = String(localized: "notificacao2")
+    let notificacao_body1 = String(localized: "notificacao_body1")
+    let notificacao_body2 = String(localized: "notificacao_body2")
+    let notificacao_body3 = String(localized: "notificacao_body3")
     
     let start = String(localized: "start")
     

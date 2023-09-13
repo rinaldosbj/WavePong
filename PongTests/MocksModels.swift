@@ -11,6 +11,13 @@ import UIKit
 
 class PlayerMock: PlayerProtocol {
     
+    var selectedBall: BallTypes = .ball_yellow
+    
+    func changeBall(_ ball: BallTypes) {
+        // NADA
+    }
+    
+    
     var onboradingHappend: Bool = false
     
     var soundMode: Pong.SoundMode = .linear
@@ -274,6 +281,8 @@ class GameManagerMock: GameManagerProtocol {
         <#code#>
     }
     
+    
+    func getCurrentBall() -> String { return "" }
     
     var didPauseNodePressed: Bool = false
     

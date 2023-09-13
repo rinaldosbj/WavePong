@@ -40,6 +40,8 @@ struct ConfigurationView: View {
                 
                 backToOnboardingButton
                 
+                NavigationLink("BallType", destination: SelectBallView())
+                
             }.padding(.horizontal, 60)
             
             backButton

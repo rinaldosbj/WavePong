@@ -11,9 +11,6 @@ import Foundation
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
 
-
-    
-    
     static var shared: Player = Player()
     
     init(defaults: UserDefaultable = UserDefaults.standard) {
@@ -28,6 +25,7 @@ class Player: PlayerProtocol {
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
+        static var chosenBall = "chosenBall"
     }
     
     private let defaults: UserDefaultable
@@ -37,6 +35,33 @@ class Player: PlayerProtocol {
         return defaults.bool(forKey: Constants.hasSeenOnboarding)
     }
     
+    var selectedBall: BallTypes {
+        let intResult = defaults.integer(forKey: Constants.chosenBall)
+        
+        switch intResult {
+        case 0:
+            return .ball_yellow
+        case 1:
+            return .ball_green
+        case 2:
+            return .ball_cyan
+        case 3:
+            return .ball_blue
+        case 4:
+            return .ball_purple
+        case 5:
+            return .ball_red
+        case 6:
+            return .ball_orange
+        default:
+            return .ball_yellow
+        }
+        
+    }
+    
+    func changeBall(_ ball: BallTypes) {
+        defaults.set(ball.rawValue, forKey: Constants.chosenBall)
+    }
     
     /// Once player finishes onboarding, this methods must be called so the app won't show onboading every launch
     func userFinishedOnboarding() {
@@ -109,6 +134,10 @@ protocol PlayerProtocol {
     
     /// Must be called for persisting the highest score of user
     func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty)
+    
+    var selectedBall: BallTypes { get }
+    
+    func changeBall(_ ball: BallTypes)
     
     var soundMode: SoundMode { get }
     

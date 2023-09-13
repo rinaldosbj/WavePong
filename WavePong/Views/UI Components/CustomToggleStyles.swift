@@ -19,7 +19,7 @@ struct NotificationsCustomToggleStyle: ToggleStyle {
                 .frame(width: 51, height: 31, alignment: .center)
                 .overlay(
                     Circle()
-                        .foregroundColor(Color("amarelo"))
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_600))
                         .padding(.all, 3)
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)
                         .animation(Animation.linear(duration: 0.15),value: configuration.isOn)
@@ -40,13 +40,13 @@ struct SelectCustomToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             ZStack {
-                Color(UIColor(.white))
+                Color(ColorConstants.shared.WHITE_500)
                     .frame(width: 20, height: 20, alignment: .center)
                     .border(Color("roxo"),width: 2)
                 
                 if configuration.isOn {
                     Text("X")
-                        .foregroundColor(Color("roxo"))
+                        .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
                         .font(.custom("DaysOne-Regular", size: 20))
                         .frame(width: 20, height: 20, alignment: .center)
                 }
@@ -57,15 +57,15 @@ struct SelectCustomToggleStyle: ToggleStyle {
             case .linear:
                 Text(stringsConstants.linear)
                     .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .curved:
                 Text(stringsConstants.exponencial)
                     .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .highContrast:
                 Text(stringsConstants.alto)
                     .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             }
         }
         .onTapGesture { configuration.isOn.toggle() }

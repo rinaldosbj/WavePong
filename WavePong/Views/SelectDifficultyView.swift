@@ -34,7 +34,7 @@ struct SelectDifficultyView: View {
                     Text(stringsConstants.dificuldade)
                         .font(.custom("DaysOne-Regular", size: 36))
                         .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                         .accessibilityLabel(stringsConstants.dificuldade_hint)
                     Spacer().frame(height: 48)
                     NavigationLink {
@@ -67,7 +67,7 @@ struct SelectDifficultyView: View {
                             Text(stringsConstants.volta)
                                 .font(.custom("DaysOne-Regular", size: 24))
                                 .layoutPriority(.greatestFiniteMagnitude)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                         }
                         .accessibilityLabel(stringsConstants.volta_hint)
                         Spacer()
