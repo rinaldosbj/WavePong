@@ -27,9 +27,10 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     func startGame()
     
-    func incrementBallSpeed()
-    
-    func correctedBallSpeed(for velocity: CGFloat) -> CGFloat
+    func updateGameScene(frameSize: CGSize,
+                         ballPosition: CGPoint?,
+                         ballVelocity: CGVector?,
+                         ballVelocityCorrected: @escaping (CGVector) -> Void)
     
     func resumeGame()
     
@@ -39,7 +40,6 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     func pauseTrigger()
     
-    func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize)
     
     func countDownStep()
     

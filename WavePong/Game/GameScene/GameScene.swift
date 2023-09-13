@@ -61,10 +61,13 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        gameManager.updateAudioOrientation(ballPosition: ball?.position ?? CGPoint(),
-                                           frameSize: frame.size)
-        updateBallSpeed()
-        
+        gameManager.updateGameScene(frameSize: self.size,
+                                    ballPosition: ball?.position,
+                                    ballVelocity: ball?.physicsBody?.velocity) { velocity in
+            self.ball?.physicsBody?.velocity.dy = velocity.dy
+            self.ball?.physicsBody?.velocity.dx = velocity.dx
+            
+        }
     }
     
     func animateClouds() {
@@ -115,16 +118,6 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         cloud3?.run(repeatForever)
-        
-    }
-    
-    private func updateBallSpeed() {
-        
-        gameManager.incrementBallSpeed()
-        
-        ball?.physicsBody?.velocity.dy = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dy)!)
-        
-        ball?.physicsBody?.velocity.dx = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dx)!)
         
     }
     

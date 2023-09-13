@@ -12,6 +12,9 @@ import Firebase
 /// Object responsable for dealing with game logic
 class GameManager: GameManagerProtocol {
     
+
+    
+    
     let stringsConstants = StringsConstantsModel()
     
     enum GameManagerState {
@@ -92,7 +95,18 @@ class GameManager: GameManagerProtocol {
         score = 0
     }
     
-    public func incrementBallSpeed() {
+    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        guard let position = ballPosition else { return }
+        guard let velocity = ballVelocity else { return }
+        
+        
+        updateAudioOrientation(ballPosition: position, frameSize: frameSize)
+        incrementBallSpeed()
+        ballVelocityCorrected(correctBallSpeed(for: velocity))
+    }
+
+    
+    private func incrementBallSpeed() {
         let ballSpeed = gameManagerSetting.ballSpeed
         let maxBallSpeed = gameManagerSetting.maxBallSpeed
         
@@ -101,16 +115,28 @@ class GameManager: GameManagerProtocol {
         }
     }
     
-    public func correctedBallSpeed(for velocity: CGFloat) -> CGFloat {
+    private func correctBallSpeed(for velocity: CGVector) -> CGVector {
         let ballSpeed = gameManagerSetting.ballSpeed
         
-        if velocity < 0 && velocity > -ballSpeed {
-            return -ballSpeed
+        var correctedVelocity = velocity
+        
+        if velocity.dy < 0 && velocity.dy > -ballSpeed {
+            correctedVelocity.dy = -ballSpeed
+        
         }
-        if velocity > 0 && velocity < ballSpeed {
-            return ballSpeed
+        if velocity.dy > 0 && velocity.dy < ballSpeed {
+            correctedVelocity.dy = ballSpeed
         }
-        return velocity
+        
+        if velocity.dx < 0 && velocity.dx > -ballSpeed {
+            correctedVelocity.dx = -ballSpeed
+        }
+        if velocity.dx > 0 && velocity.dx < ballSpeed {
+            correctedVelocity.dx = ballSpeed
+        }
+        
+        return correctedVelocity
+        
     }
     
     public func resumeGame() {
