@@ -26,23 +26,30 @@ struct ConfigurationView: View {
                 .ignoresSafeArea()
                 .accessibilityHidden(true)
             
-            VStack(spacing: 32) {
-                Image(stringsConstants.ajustes)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 268 ,height: 53)
-                    .accessibilityHidden(true)
-                    .padding(.bottom, 32)
-                
-                soundModeConfigView
-                
-                Spacer().frame(height: 24)
-                
-                backToOnboardingButton
-                
-                NavigationLink("BallType", destination: SelectBallView())
-                
-            }.padding(.horizontal, 60)
+            ScrollView {
+                VStack(spacing: 32) {
+                    Image(stringsConstants.ajustes)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 268 ,height: 53)
+                        .accessibilityHidden(true)
+                        .padding(.vertical, 58)
+                    
+                    soundModeConfigView
+                    
+                    Spacer().frame(height: 24)
+                    
+                    backToOnboardingButton
+                    
+                    NavigationLink("BallType", destination: SelectBallView())
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Capsule().fill(Color.purple))
+                    
+                    AdsView()
+                    
+                }.padding(.horizontal, 60)
+            }
             
             backButton
             
