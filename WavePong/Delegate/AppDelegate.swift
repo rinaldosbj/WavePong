@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         notificationManager.requestNotificationAuthorization()
-        gameCenter.authenticatePlayer()
+//        gameCenter.authenticatePlayer()
         
         FirebaseApp.configure()
         return true

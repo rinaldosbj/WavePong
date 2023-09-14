@@ -23,9 +23,10 @@ class Player: PlayerProtocol {
         static var hasSeenOnboarding = "hasSeenOnboarding"
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
-        static var userTopScpreHard = "userTopScorehard"
+        static var userTopScoreHard = "userTopScorehard"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
+        static var coinAmount = "coinAmount"
     }
     
     private let defaults: UserDefaultable
@@ -75,7 +76,7 @@ class Player: PlayerProtocol {
         case .medium:
             return defaults.integer(forKey: Constants.userTopScoreMedium)
         case .hard:
-            return defaults.integer(forKey: Constants.userTopScpreHard)
+            return defaults.integer(forKey: Constants.userTopScoreHard)
         }
     }
     
@@ -89,7 +90,7 @@ class Player: PlayerProtocol {
             case .medium:
                 defaults.set(score, forKey: Constants.userTopScoreMedium)
             case .hard:
-                defaults.set(score, forKey: Constants.userTopScpreHard)
+                defaults.set(score, forKey: Constants.userTopScoreHard)
                 
             }
   
@@ -118,6 +119,15 @@ class Player: PlayerProtocol {
         
     }
     
+    func updatePlayerCoins (amount: Int) {
+        let oldAmount = defaults.integer(forKey: Constants.coinAmount)
+        let newAmount = oldAmount + amount
+        defaults.set(newAmount, forKey: Constants.coinAmount)
+    }
+    
+    func playerCoins () -> Int {
+        return defaults.integer(forKey: Constants.coinAmount)
+    }
 }
 
 /// Defines a standard interface for Player Class
@@ -143,4 +153,7 @@ protocol PlayerProtocol {
     
     func changeSoundMode(_ mode: SoundMode)
     
+    func updatePlayerCoins(amount: Int)
+    
+    func playerCoins () -> Int
 }

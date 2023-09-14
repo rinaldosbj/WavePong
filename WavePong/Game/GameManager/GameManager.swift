@@ -235,6 +235,8 @@ extension GameManager: GameColisionDelegate {
                                           recordLabel: "\(stringsConstants.recorde) \(topScore)")
         }
         
+        player.updatePlayerCoins(amount: score)
+        print(player.playerCoins())
         sceneDelegate?.gameOver()
         analyticsManager.logGameScore(score: score,
                                       dificulty: self.gameDificulty)

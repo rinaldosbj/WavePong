@@ -25,6 +25,7 @@ class PlayerMock: PlayerProtocol {
     var userTopScoreMedium = 0
     var userTopScoreHard = 0
     
+    var coinAmount = 0
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
@@ -58,6 +59,13 @@ class PlayerMock: PlayerProtocol {
     func changeSoundMode(_ mode: Pong.SoundMode) {
 //        soundMode = mode
         
+    }
+    
+    func updatePlayerCoins(amount: Int) {
+    }
+    
+    func playerCoins() -> Int {
+        return coinAmount
     }
     
 }
