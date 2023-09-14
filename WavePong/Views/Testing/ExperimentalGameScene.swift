@@ -165,7 +165,7 @@ class GameSceneExperimental: SKScene {
 
 extension GameSceneExperimental: GameSceneDelegate {
     
-    func UserScored(newScore score: Int) {
+    func userScored(newScore score: Int) {
         nextRound()
     }
     
@@ -254,7 +254,7 @@ class ExperimentalGameManager: GameColisionDelegate {
     }
     
     func incrementScore() {
-        sceneDelegate?.UserScored(newScore: score)
+        sceneDelegate?.userScored(newScore: score)
         
     }
     

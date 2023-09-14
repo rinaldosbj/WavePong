@@ -156,7 +156,7 @@ extension GameScene: GameSceneDelegate {
         isPaused = false
     }
     
-    func UserScored(newScore score: Int) {
+    func userScored(newScore score: Int) {
         scoreLabel?.text = "\(score)"
         
     }

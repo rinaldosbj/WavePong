@@ -27,6 +27,7 @@
 		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0C989CA32AB39936002BEBCB /* SoundManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */; };
 		0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */; };
 		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
 		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
@@ -126,6 +127,7 @@
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
 		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
 		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
 				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
+				0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
 				0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
@@ -632,6 +635,7 @@
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
 				0C3167202AA924D0006C596C /* MocksModels.swift in Sources */,
+				0C989CA32AB39936002BEBCB /* SoundManagerTests.swift in Sources */,
 				0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
 			);

@@ -236,7 +236,7 @@ extension GameManager: GameColisionDelegate {
     public func incrementScore(){
         score += 1
         notifyUserOfEvent(.scored)
-        sceneDelegate?.UserScored(newScore: score)
+        sceneDelegate?.userScored(newScore: score)
         
     }
     

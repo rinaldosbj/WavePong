@@ -16,9 +16,7 @@ class Player: PlayerProtocol {
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
     }
-    
-    
-    
+
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
         static var userTopScoreEasy = "userTopScoreEasy"

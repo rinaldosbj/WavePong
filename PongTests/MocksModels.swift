@@ -230,7 +230,7 @@ class GameSceneMock: GameSceneDelegate {
     var isGameRunning: Bool = true
 
     
-    func UserScored(newScore score: Int) {
+    func userScored(newScore score: Int) {
         
     }
     
