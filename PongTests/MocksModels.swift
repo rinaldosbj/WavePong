@@ -73,6 +73,7 @@ class UserDefaultsMock: UserDefaultable {
     var userTopScoreHard = 0
     
     var soundMod: Int = 0
+    var ballType: Int = 0
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
@@ -80,6 +81,7 @@ class UserDefaultsMock: UserDefaultable {
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
+        static var ballType = "ballType"
     }
     
     

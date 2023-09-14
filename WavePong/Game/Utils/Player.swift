@@ -27,6 +27,7 @@ class Player: PlayerProtocol {
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
     }
+
     
     private let defaults: UserDefaultable
     
@@ -121,20 +122,33 @@ class Player: PlayerProtocol {
 }
 
 /// Defines a standard interface for Player Class
-protocol PlayerProtocol {
+protocol PlayerProtocol: OnboardingPersistence,
+                         PlayerScorePersistence,
+                         PlayerPreferencesPersistence {
     
+}
+
+protocol OnboardingPersistence {
     /// Should return true if the user didn't seen onboarding yet
     var onboradingHappend: Bool { get }
-    
     
     /// Must be used for updating the info that user has seen onboarding and shouldn't show it anymore on launch
     func userFinishedOnboarding()
     
+}
+
+
+protocol PlayerScorePersistence {
+    /// must return the highest score for a given dificulty
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int
     
-    /// Must be called for persisting the highest score of user
+    /// Must be called for persisting the highest score of user for
     func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty)
-    
+}
+
+
+protocol PlayerPreferencesPersistence {
+
     var selectedBall: BallTypes { get }
     
     func changeBall(_ ball: BallTypes)
