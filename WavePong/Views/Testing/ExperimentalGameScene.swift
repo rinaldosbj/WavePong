@@ -189,6 +189,10 @@ extension GameSceneExperimental: GameSceneDelegate {
 }
 
 class ExperimentalGameManager: GameColisionDelegate {
+    func wallColision() {
+        
+    }
+    
     var player: PlayerProtocol?
     
     var soundManager: SoundManagerProtocol?

@@ -278,6 +278,7 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 
 class GameManagerMock: GameManagerProtocol {
+    
     func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
         
     }
@@ -355,6 +356,10 @@ class GameManagerMock: GameManagerProtocol {
     func didLose() {
         
     }
+    
+    func wallColision() {
+        
+    }
 
 }
 
@@ -419,6 +424,50 @@ class ImpactFeedbackGeneratorMock: ImpactFeedbackGeneratable {
     
     func impactOccurred(intensity: CGFloat) {
         intensityFeedbackOccurred = intensity
+    }
+    
+    
+}
+
+
+class AVAudioPlayerMock: AVAudioPlayerable {
+    var isInitialized = false
+    var isPreparedToPlay = false
+    var isPlaying = false
+    var isPaused = false
+    
+    required init(contentsOf url: URL) throws {
+        isInitialized = true
+    }
+    
+    var volume: Float = 0.0
+    var pan: Float = 0.0
+    var numberOfLoops: Int = 0
+    
+    func prepareToPlay() -> Bool {
+        isPreparedToPlay = true
+        return true
+    }
+    
+    func play() -> Bool {
+        isPlaying = true
+        return true
+    }
+    
+    func pause() {
+        isPaused = true
+        isPlaying = false
+    }
+    
+}
+
+
+class AVAudioplayerFactoryMock: AVAudioPlayerFactoryProtocol {
+    var audioPlayer: AVAudioPlayerMock?
+    
+    func creatAVAudioPlayer(contentsOf url: URL) -> Pong.AVAudioPlayerable? {
+        let audioPlayer = try? AVAudioPlayerMock(contentsOf: url)
+        return audioPlayer
     }
     
     

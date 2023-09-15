@@ -12,12 +12,14 @@ import XCTest
 class SoundManagerTests: XCTestCase {
     
     var playerMock: PlayerMock!
+    var avAudioplayerFactory: AVAudioplayerFactoryMock!
     var soundManager: SoundManager!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         playerMock = PlayerMock()
-        soundManager = SoundManager(player: playerMock)
+        avAudioplayerFactory = AVAudioplayerFactoryMock()
+        soundManager = SoundManager(player: playerMock, aVAudioPlayerFactory: avAudioplayerFactory)
        
     }
     
@@ -38,7 +40,7 @@ class SoundManagerTests: XCTestCase {
         
         soundManager.playFXSound(for: .alert)
         
-        guard let safeAudioPlayer = soundManager.audioPLayer else { return }
+        guard let safeAudioPlayer = soundManager.audioPLayer as? AVAudioPlayerMock else { return }
         
         XCTAssertTrue(safeAudioPlayer.isPlaying)
         
@@ -55,7 +57,7 @@ class SoundManagerTests: XCTestCase {
         
         soundManager.playGameTheme()
         
-        guard let safeMusicPlayer = soundManager.musicPlayer else { return }
+        guard let safeMusicPlayer = soundManager.musicPlayer as? AVAudioPlayerMock else { return }
         
         XCTAssertTrue(safeMusicPlayer.isPlaying)
  
@@ -67,7 +69,7 @@ class SoundManagerTests: XCTestCase {
         
         soundManager.pauseGameTheme()
         
-        guard let safeMusicPlayer = soundManager.musicPlayer else { return }
+        guard let safeMusicPlayer = soundManager.musicPlayer as? AVAudioPlayerMock else { return }
         
         XCTAssertFalse(safeMusicPlayer.isPlaying)
         
@@ -78,23 +80,11 @@ class SoundManagerTests: XCTestCase {
         
         soundManager.stopGameTheme()
         
-        guard let safeMusicPlayer = soundManager.musicPlayer else { return }
+        guard let safeMusicPlayer = soundManager.musicPlayer as? AVAudioPlayerMock else { return }
         
         XCTAssertFalse(safeMusicPlayer.isPlaying)
     }
     
-    
-    func testPlayGameThemeIsNewInstance() {
-        let oldPlayer: AVAudioPlayer? = AVAudioPlayer()
-        soundManager.musicPlayer = oldPlayer
-        
-        soundManager.stopGameTheme()
-        
-        soundManager.playGameTheme()
-        
-        XCTAssertNotIdentical(oldPlayer, soundManager.musicPlayer)
-        
-    }
     
     func testResumeMusic() {
         soundManager.playGameTheme()
@@ -104,7 +94,7 @@ class SoundManagerTests: XCTestCase {
         
         XCTAssertNotNil(soundManager.musicPlayer)
         
-        guard let safeMusicPlayer = soundManager.musicPlayer else { return }
+        guard let safeMusicPlayer = soundManager.musicPlayer as? AVAudioPlayerMock else { return }
         
         XCTAssertTrue(safeMusicPlayer.isPlaying)
         

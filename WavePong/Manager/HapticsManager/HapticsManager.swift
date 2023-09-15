@@ -51,6 +51,7 @@ public final class HapticsManager: HapticsManagerProtocol {
     /// - Parameter intensity: must be a value from 0 - 1
     public func vibrateImpact(for type: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat) {
 //        DispatchQueue.main.async {
+
             let impactFeedback = self.impactFeedbackFactory.createImpactFeedbackGenerator(withStyle: type)
             impactFeedback.prepare()
             impactFeedback.impactOccurred(intensity: intensity)
