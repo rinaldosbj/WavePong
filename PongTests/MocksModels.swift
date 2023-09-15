@@ -64,8 +64,6 @@ class PlayerMock: PlayerProtocol {
 }
 
 class UserDefaultsMock: UserDefaultable {
-
-    
     
     var didSeeOnboarding: Bool = false
     var userTopScoreEasy = 0

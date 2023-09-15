@@ -12,9 +12,6 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
     
-    /// Linear or curved gives diferent experience when estimating ball position. Curved is recomended
-
-    
     /// shared instance for global acess to Object
     static var shared: SoundManagerProtocol = SoundManager()
     
@@ -159,22 +156,3 @@ public class SoundManager: SoundManagerProtocol {
 }
 
 
-protocol SoundManagerProtocol {
-    
-    static var shared: SoundManagerProtocol { get }
-    
-    var player: PlayerProtocol { get }
-    
-    func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize)
-    
-    func playGameTheme()
-    
-    func pauseGameTheme()
-    
-    func resumeGameTheme()
-    
-    func stopGameTheme()
-    
-    func playFXSound(for name: FXSounds)
-    
-}
