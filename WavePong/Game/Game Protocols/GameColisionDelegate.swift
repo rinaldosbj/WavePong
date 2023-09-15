@@ -13,6 +13,8 @@ protocol GameColisionDelegate: AnyObject {
     
     func didLose()
     
+    func wallColision()
+    
 }
 
 

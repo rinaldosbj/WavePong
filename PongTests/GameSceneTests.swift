@@ -72,7 +72,7 @@ class GameSceneTests: XCTestCase {
         XCTAssertNotNil(gameScene.countDownBackground)
     }
     
-    func testSetupGameManner() {
+    func testSetupGameManneger() {
         gameScene.setupGameScene()
         
         XCTAssertNotNil(gameScene.gameManager.sceneDelegate)
@@ -83,5 +83,24 @@ class GameSceneTests: XCTestCase {
         gameScene.setupGameScene()
         
         XCTAssertNotNil(gameScene.background)
+    }
+    
+    func testSceneUserScoredCalled() {
+        // given
+        let previousScore: String = "0"
+        let newScore: Int = 50
+        
+        gameScene.setupNodes()
+        gameScene.scoreLabel?.text = previousScore
+        
+        // when
+        
+        gameScene.userScored(newScore: newScore)
+        
+        // then
+        
+        XCTAssertEqual(gameScene.scoreLabel?.text, "\(newScore)")
+        
+    
     }
 }

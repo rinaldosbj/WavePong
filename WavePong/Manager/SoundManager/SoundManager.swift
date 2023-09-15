@@ -12,23 +12,25 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
     
-    /// Linear or curved gives diferent experience when estimating ball position. Curved is recomended
-
-    
     /// shared instance for global acess to Object
     static var shared: SoundManagerProtocol = SoundManager()
     
     internal var player: PlayerProtocol
+    internal var avAudioPlayerFactory: AVAudioPlayerFactoryProtocol
     
-    init(player: PlayerProtocol = Player()) {
+    init(player: PlayerProtocol = Player(),
+         aVAudioPlayerFactory: AVAudioPlayerFactoryProtocol = AVAudioPlayerFactory()
+         
+    ) {
         self.player = player
+        self.avAudioPlayerFactory = aVAudioPlayerFactory
     }
     
     /// Responsable for holding the instance of player for background Music
-    internal var musicPlayer: AVAudioPlayer?
+    internal var musicPlayer: AVAudioPlayerable?
     
     /// Responsable for holding the instance of player for  FX Sounds
-    internal var audioPLayer: AVAudioPlayer?
+    internal var audioPLayer: AVAudioPlayerable?
     
     /// Allows adjust method for audio pan
     var panStyle: SoundMode {
@@ -89,16 +91,15 @@ public class SoundManager: SoundManagerProtocol {
             return
         }
         
-        do {
-            musicPlayer = nil
-            musicPlayer = try AVAudioPlayer(contentsOf: url)
-            musicPlayer?.numberOfLoops = -1
-            musicPlayer?.prepareToPlay()
-            musicPlayer?.play()
-            
-        } catch let error {
-            print("Erro ao tentar reproduzir a música: \(error.localizedDescription)")
-        }
+        
+        musicPlayer = nil
+        musicPlayer = avAudioPlayerFactory.creatAVAudioPlayer(contentsOf: url)
+        //            musicPlayer = try AVAudioPlayer(contentsOf: url)
+        musicPlayer?.numberOfLoops = -1
+        _ = musicPlayer?.prepareToPlay()
+        _ = musicPlayer?.play()
+        
+        
         
         
     }
@@ -113,7 +114,7 @@ public class SoundManager: SoundManagerProtocol {
     
     /// Resumes game theme music
     public func resumeGameTheme() {
-        musicPlayer?.play()
+        _ = musicPlayer?.play()
     }
     
     /// Stops game Theme Music
@@ -147,34 +148,13 @@ public class SoundManager: SoundManagerProtocol {
             return
         }
         
-        do {
-            audioPLayer = try AVAudioPlayer(contentsOf: url)
-            audioPLayer?.play()
-
-        } catch let error {
-            print("Erro ao reproduzir fx: \(error.localizedDescription)")
-        }
+        
+        audioPLayer = avAudioPlayerFactory.creatAVAudioPlayer(contentsOf: url)
+        _ = audioPLayer?.play()
+        
+        
     }
     
 }
 
 
-protocol SoundManagerProtocol {
-    
-    static var shared: SoundManagerProtocol { get }
-    
-    var player: PlayerProtocol { get }
-    
-    func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize)
-    
-    func playGameTheme()
-    
-    func pauseGameTheme()
-    
-    func resumeGameTheme()
-    
-    func stopGameTheme()
-    
-    func playFXSound(for name: FXSounds)
-    
-}

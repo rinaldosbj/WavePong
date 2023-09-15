@@ -209,6 +209,16 @@ class GameManager: GameManagerProtocol {
 
 extension GameManager: GameColisionDelegate {
     
+    func wallColision() {
+//        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: -500...500)
+//        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
+//
+//        gameManagerSetting.ballSpeed = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
+//                                                dy: verticalSpeed.dy)
+//        print("oioioi")
+    }
+    
+    
     private var isNewRecord: Bool {
         score > player.userTopScore(forDificulty: self.gameDificulty)
     }
@@ -236,7 +246,7 @@ extension GameManager: GameColisionDelegate {
     public func incrementScore(){
         score += 1
         notifyUserOfEvent(.scored)
-        sceneDelegate?.UserScored(newScore: score)
+        sceneDelegate?.userScored(newScore: score)
         
     }
     
