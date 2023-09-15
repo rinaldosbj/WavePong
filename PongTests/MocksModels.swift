@@ -391,21 +391,26 @@ class NotificationFeedbackgeneratorMock: NotificationFeedbackGeneratable {
 }
 
 class ImpactFeedbackGeneratorFactoryMock: ImpactFeedbackGeneratorFactoryProtocol {
+    
+    var impactFeedbackGenerator: ImpactFeedbackGeneratorMock!
+    
     func createImpactFeedbackGenerator(withStyle style: UIImpactFeedbackGenerator.FeedbackStyle) -> ImpactFeedbackGeneratable {
-        ImpactFeedbackGeneratorMock(style: style)
+        impactFeedbackGenerator = ImpactFeedbackGeneratorMock(style: style)
+        return impactFeedbackGenerator
+        
     }
     
 }
 
 class ImpactFeedbackGeneratorMock: ImpactFeedbackGeneratable {
     
-    var style: UIImpactFeedbackGenerator.FeedbackStyle
+    var styleFeedback: UIImpactFeedbackGenerator.FeedbackStyle
     
     var isReady: Bool = false
     var intensityFeedbackOccurred: CGFloat?
     
     required init(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        self.style = style
+        self.styleFeedback = style
     }
     
     func prepare() {

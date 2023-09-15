@@ -16,7 +16,7 @@ class HapticsManagerTests: XCTestCase {
 
     var seletectionFeedback: SelectionFeebackGeneretorMock!
     var notificiationFeedback: NotificationFeedbackgeneratorMock!
-    var impactFeedbackFactory: ImpactFeedbackGeneratorFactoryProtocol!
+    var impactFeedbackFactory: ImpactFeedbackGeneratorFactoryMock!
 
     
     override func setUp() async throws {
@@ -39,9 +39,62 @@ class HapticsManagerTests: XCTestCase {
         
         hapticsManager.vibrate()
         
-        XCTAssertTrue(seletectionFeedback.isReady)
+        
+        DispatchQueue.main.async {
+            XCTAssertTrue(self.seletectionFeedback.didVibrate)
+        }
         
     }
     
+    func testNotificiationfeedbackError() {
+        
+        notificiationFeedback.typeThatVibrated = nil
+        
+        hapticsManager.vibrateNotification(for: .error)
+        
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.notificiationFeedback.typeThatVibrated, .error)
+        }
+        
+    }
+    
+    func testNotificiationfeedbackWarming() {
+        
+        notificiationFeedback.typeThatVibrated = nil
+        
+        hapticsManager.vibrateNotification(for: .warning)
+        
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.notificiationFeedback.typeThatVibrated, .warning)
+        }
+        
+    }
+    
+    func testNotificiationfeedbackSuccess() {
+        
+        notificiationFeedback.typeThatVibrated = nil
+        
+        hapticsManager.vibrateNotification(for: .success)
+        
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.notificiationFeedback.typeThatVibrated, .success)
+        }
+        
+    }
+    
+    
+    func testImpactFeedback() {
+    
+        let expectedType: UIImpactFeedbackGenerator.FeedbackStyle = .heavy
+        let expectedIntensity: CGFloat = 0.8
+        
+        hapticsManager.vibrateImpact(for: expectedType, intensity: expectedIntensity)
+        
+        let impactFeedbackGeneretor = impactFeedbackFactory.impactFeedbackGenerator
+        
+        XCTAssertEqual(expectedType, impactFeedbackGeneretor?.styleFeedback)
+        XCTAssertEqual(expectedIntensity, impactFeedbackGeneretor?.intensityFeedbackOccurred)
+        
+    }
     
 }

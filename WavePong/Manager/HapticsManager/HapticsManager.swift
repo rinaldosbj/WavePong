@@ -14,9 +14,9 @@ public final class HapticsManager: HapticsManagerProtocol {
     /// instance for accessing features
     static let shared: HapticsManagerProtocol = HapticsManager()
     
-    let selectionFeedback: SelectionFeedbackGeneratable
-    let notificationFeedback: NotificationFeedbackGeneratable
-    let impactFeedbackFactory: ImpactFeedbackGeneratorFactoryProtocol
+    private let selectionFeedback: SelectionFeedbackGeneratable
+    private let notificationFeedback: NotificationFeedbackGeneratable
+    private let impactFeedbackFactory: ImpactFeedbackGeneratorFactoryProtocol
     
     init(selectionFeedback: SelectionFeedbackGeneratable = UISelectionFeedbackGenerator(),
          notificationFeedback: NotificationFeedbackGeneratable = UINotificationFeedbackGenerator(),
@@ -29,10 +29,10 @@ public final class HapticsManager: HapticsManagerProtocol {
     
     /// when called, produces a standard vibration
     public func vibrate() {
-//        DispatchQueue.main.async {
+        DispatchQueue.main.async {
             self.selectionFeedback.prepare()
             self.selectionFeedback.selectionChanged()
-//        }
+        }
         
     }
     
@@ -50,11 +50,11 @@ public final class HapticsManager: HapticsManagerProtocol {
     /// - Parameter type: must chose one of the feedback styles available
     /// - Parameter intensity: must be a value from 0 - 1
     public func vibrateImpact(for type: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat) {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             let impactFeedback = self.impactFeedbackFactory.createImpactFeedbackGenerator(withStyle: type)
             impactFeedback.prepare()
             impactFeedback.impactOccurred(intensity: intensity)
-        }
+//        }
     }
     
 }
