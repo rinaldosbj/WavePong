@@ -16,7 +16,7 @@ public final class HapticsManager: HapticsManagerProtocol {
     
     let selectionFeedback: SelectionFeedbackGeneratable
     let notificationFeedback: NotificationFeedbackGeneratable
-    var impactFeedbackFactory: ImpactFeedbackGeneratorFactoryProtocol
+    let impactFeedbackFactory: ImpactFeedbackGeneratorFactoryProtocol
     
     init(selectionFeedback: SelectionFeedbackGeneratable = UISelectionFeedbackGenerator(),
          notificationFeedback: NotificationFeedbackGeneratable = UINotificationFeedbackGenerator(),
@@ -29,10 +29,10 @@ public final class HapticsManager: HapticsManagerProtocol {
     
     /// when called, produces a standard vibration
     public func vibrate() {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             self.selectionFeedback.prepare()
             self.selectionFeedback.selectionChanged()
-        }
+//        }
         
     }
     

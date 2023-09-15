@@ -356,6 +356,65 @@ class GameManagerMock: GameManagerProtocol {
         
     }
 
+}
+
+class SelectionFeebackGeneretorMock: SelectionFeedbackGeneratable {
+    
+    var isReady: Bool = false
+    var didVibrate: Bool = false
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func selectionChanged() {
+        didVibrate = true
+    }
+    
+    
+}
+
+class NotificationFeedbackgeneratorMock: NotificationFeedbackGeneratable {
+    
+    var isReady: Bool = false
+    var typeThatVibrated: UINotificationFeedbackGenerator.FeedbackType?
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func notificationOccurred(_ notificationType: UINotificationFeedbackGenerator.FeedbackType) {
+        typeThatVibrated = notificationType
+    }
+    
+    
+}
+
+class ImpactFeedbackGeneratorFactoryMock: ImpactFeedbackGeneratorFactoryProtocol {
+    func createImpactFeedbackGenerator(withStyle style: UIImpactFeedbackGenerator.FeedbackStyle) -> ImpactFeedbackGeneratable {
+        ImpactFeedbackGeneratorMock(style: style)
+    }
+    
+}
+
+class ImpactFeedbackGeneratorMock: ImpactFeedbackGeneratable {
+    
+    var style: UIImpactFeedbackGenerator.FeedbackStyle
+    
+    var isReady: Bool = false
+    var intensityFeedbackOccurred: CGFloat?
+    
+    required init(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        self.style = style
+    }
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func impactOccurred(intensity: CGFloat) {
+        intensityFeedbackOccurred = intensity
+    }
     
     
 }
