@@ -59,13 +59,13 @@ final class GameManagerTests: XCTestCase {
     
     func testStartGameChangeManagerState() {
         gameManager.state = .InContDown
-
+        
         gameManager.startGame()
         
         let expectedManagerState = GameManager.GameManagerState.playing
-
+        
         XCTAssertEqual(expectedManagerState, gameManager.state)
-
+        
     }
     
     func testIfPadlleContactIncreasesScore() {
@@ -211,8 +211,37 @@ final class GameManagerTests: XCTestCase {
         XCTAssertEqual(gameManager.state, .InContDown)
         XCTAssertFalse(soundManagerMock.isPlayingGameTheme)
         
+    }
+    
+    func testUpdateGameSceneChangeBallVelocity() {
+        let frameSize = CGSize(width: 100, height: 100)
+        let ballPosition = CGPoint(x: 50, y: 50)
+        let ballVelocity = CGVector(dx: 1.0, dy: 1.0)
         
+        gameManager.updateGameScene(
+            frameSize: frameSize,
+            ballPosition: ballPosition,
+            ballVelocity: ballVelocity) { newVelocity in
+
+               XCTAssertNotEqual(newVelocity, ballVelocity)
+            }
         
+    }
+    
+    func testUpdateGameSceneCallsUpdateAudioOrientation() {
         
+        let frameSize = CGSize(width: 100, height: 100)
+        let ballPosition = CGPoint(x: 50, y: 50)
+        let ballVelocity = CGVector(dx: 1.0, dy: 1.0)
+        
+        gameManager.updateGameScene(
+            frameSize: frameSize,
+            ballPosition: ballPosition,
+            ballVelocity: ballVelocity) { newVelocity in
+
+               
+            }
+        
+        XCTAssertTrue(self.soundManagerMock.updateAudioOrientationCalled)
     }
 }

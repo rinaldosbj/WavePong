@@ -31,7 +31,7 @@ class GameScene: SKScene {
         
         self.gameManager = gameManager
         super.init(size: size)
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,10 +61,13 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        gameManager.updateAudioOrientation(ballPosition: ball?.position ?? CGPoint(),
-                                           frameSize: frame.size)
-        updateBallSpeed()
-        
+        gameManager.updateGameScene(frameSize: self.size,
+                                    ballPosition: ball?.position,
+                                    ballVelocity: ball?.physicsBody?.velocity) { newVelocity in
+            self.ball?.physicsBody?.velocity.dy = newVelocity.dy
+            self.ball?.physicsBody?.velocity.dx = newVelocity.dx
+            
+        }
     }
     
     func animateClouds() {
@@ -118,16 +121,6 @@ class GameScene: SKScene {
         
     }
     
-    private func updateBallSpeed() {
-        
-        gameManager.incrementBallSpeed()
-        
-        ball?.physicsBody?.velocity.dy = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dy)!)
-        
-        ball?.physicsBody?.velocity.dx = gameManager.correctedBallSpeed(for: (ball?.physicsBody?.velocity.dx)!)
-        
-    }
-    
     private func createRandomVector() -> CGVector {
         let startAtRightOrientation = Bool.random()
         let randomX = Double.random(in: 4...10)
@@ -163,7 +156,7 @@ extension GameScene: GameSceneDelegate {
         isPaused = false
     }
     
-    func UserScored(newScore score: Int) {
+    func userScored(newScore score: Int) {
         scoreLabel?.text = "\(score)"
         
     }

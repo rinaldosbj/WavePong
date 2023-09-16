@@ -5,6 +5,7 @@
 //  Created by Lucas Migge on 29/08/23.
 //
 
+@testable import Pong
 import Foundation
 import UIKit
 
@@ -63,8 +64,6 @@ class PlayerMock: PlayerProtocol {
 }
 
 class UserDefaultsMock: UserDefaultable {
-
-    
     
     var didSeeOnboarding: Bool = false
     var userTopScoreEasy = 0
@@ -72,6 +71,7 @@ class UserDefaultsMock: UserDefaultable {
     var userTopScoreHard = 0
     
     var soundMod: Int = 0
+    var ballType: Int = 0
     
     private struct Constants {
         static var hasSeenOnboarding = "hasSeenOnboarding"
@@ -79,6 +79,7 @@ class UserDefaultsMock: UserDefaultable {
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
+        static var ballType = "ballType"
     }
     
     
@@ -142,6 +143,7 @@ class UserDefaultsMock: UserDefaultable {
 
 class SoundManagerMock: SoundManagerProtocol {
     
+    var updateAudioOrientationCalled: Bool = false
     var isPlayingGameTheme: Bool = false
     var isGameThemePaused: Bool = false
     var wasGamethemeResumed: Bool = false
@@ -158,7 +160,7 @@ class SoundManagerMock: SoundManagerProtocol {
     }
     
     func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        
+        updateAudioOrientationCalled = true
     }
     
     func playGameTheme() {
@@ -226,7 +228,7 @@ class GameSceneMock: GameSceneDelegate {
     var isGameRunning: Bool = true
 
     
-    func UserScored(newScore score: Int) {
+    func userScored(newScore score: Int) {
         
     }
     
@@ -277,7 +279,12 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 class GameManagerMock: GameManagerProtocol {
     
-    func getCurrentBall() -> String { return "" }
+    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        
+    }
+    
+    
+    func getCurrentBall() -> String { return "ball_yellow" }
     
     var didPauseNodePressed: Bool = false
     
@@ -349,7 +356,119 @@ class GameManagerMock: GameManagerProtocol {
     func didLose() {
         
     }
+    
+    func wallColision() {
+        
+    }
 
+}
+
+class SelectionFeebackGeneretorMock: SelectionFeedbackGeneratable {
+    
+    var isReady: Bool = false
+    var didVibrate: Bool = false
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func selectionChanged() {
+        didVibrate = true
+    }
+    
+    
+}
+
+class NotificationFeedbackgeneratorMock: NotificationFeedbackGeneratable {
+    
+    var isReady: Bool = false
+    var typeThatVibrated: UINotificationFeedbackGenerator.FeedbackType?
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func notificationOccurred(_ notificationType: UINotificationFeedbackGenerator.FeedbackType) {
+        typeThatVibrated = notificationType
+    }
+    
+    
+}
+
+class ImpactFeedbackGeneratorFactoryMock: ImpactFeedbackGeneratorFactoryProtocol {
+    
+    var impactFeedbackGenerator: ImpactFeedbackGeneratorMock!
+    
+    func createImpactFeedbackGenerator(withStyle style: UIImpactFeedbackGenerator.FeedbackStyle) -> ImpactFeedbackGeneratable {
+        impactFeedbackGenerator = ImpactFeedbackGeneratorMock(style: style)
+        return impactFeedbackGenerator
+        
+    }
+    
+}
+
+class ImpactFeedbackGeneratorMock: ImpactFeedbackGeneratable {
+    
+    var styleFeedback: UIImpactFeedbackGenerator.FeedbackStyle
+    
+    var isReady: Bool = false
+    var intensityFeedbackOccurred: CGFloat?
+    
+    required init(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        self.styleFeedback = style
+    }
+    
+    func prepare() {
+        isReady = true
+    }
+    
+    func impactOccurred(intensity: CGFloat) {
+        intensityFeedbackOccurred = intensity
+    }
+    
+    
+}
+
+
+class AVAudioPlayerMock: AVAudioPlayerable {
+    var isInitialized = false
+    var isPreparedToPlay = false
+    var isPlaying = false
+    var isPaused = false
+    
+    required init(contentsOf url: URL) throws {
+        isInitialized = true
+    }
+    
+    var volume: Float = 0.0
+    var pan: Float = 0.0
+    var numberOfLoops: Int = 0
+    
+    func prepareToPlay() -> Bool {
+        isPreparedToPlay = true
+        return true
+    }
+    
+    func play() -> Bool {
+        isPlaying = true
+        return true
+    }
+    
+    func pause() {
+        isPaused = true
+        isPlaying = false
+    }
+    
+}
+
+
+class AVAudioplayerFactoryMock: AVAudioPlayerFactoryProtocol {
+    var audioPlayer: AVAudioPlayerMock?
+    
+    func creatAVAudioPlayer(contentsOf url: URL) -> Pong.AVAudioPlayerable? {
+        let audioPlayer = try? AVAudioPlayerMock(contentsOf: url)
+        return audioPlayer
+    }
     
     
 }

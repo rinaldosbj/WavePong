@@ -13,7 +13,7 @@ import Foundation
 protocol GameSceneDelegate: AnyObject {
     
     /// Once player scored, the methods should be used by the game scene to inform user
-    func UserScored(newScore score: Int)
+    func userScored(newScore score: Int)
     
     /// Once game is over, this methods should be used by the game scene change it's state
     func gameOver()

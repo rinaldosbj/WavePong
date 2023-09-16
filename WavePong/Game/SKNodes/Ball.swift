@@ -23,7 +23,7 @@ class BallSprite: SKSpriteNode {
          self.physicsBody?.linearDamping = 0
          self.physicsBody?.angularDamping = 0
          self.physicsBody?.isDynamic = true
-         self.physicsBody?.affectedByGravity = true
+         self.physicsBody?.affectedByGravity = false
          self.physicsBody?.categoryBitMask = 1 // BitMask para a bola
          self.physicsBody?.contactTestBitMask = 2 | 4 | 8 // BitMask para colisões com a raquete
      }

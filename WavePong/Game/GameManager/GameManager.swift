@@ -100,7 +100,9 @@ class GameManager: GameManagerProtocol {
             return "ball_red"
         case .ball_orange:
             return "ball_orange"
+            
         }
+        
     }
     
     /// Informs Game Scene to start game and implements necesseray logic
@@ -113,25 +115,48 @@ class GameManager: GameManagerProtocol {
         score = 0
     }
     
-    public func incrementBallSpeed() {
-        let ballSpeed = gameManagerSetting.ballSpeed
+    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        guard let position = ballPosition else { return }
+        guard let velocity = ballVelocity else { return }
+        
+        
+        updateAudioOrientation(ballPosition: position, frameSize: frameSize)
+        incrementVecticalBallSpeed()
+        ballVelocityCorrected(correctBallSpeed(for: velocity))
+    }
+
+    
+    private func incrementVecticalBallSpeed() {
+        let ballSpeed = gameManagerSetting.ballSpeed.dy
         let maxBallSpeed = gameManagerSetting.maxBallSpeed
         
         if ballSpeed < maxBallSpeed {
-            gameManagerSetting.ballSpeed += 0.5
+            gameManagerSetting.ballSpeed.dy += 2
         }
     }
     
-    public func correctedBallSpeed(for velocity: CGFloat) -> CGFloat {
+    private func correctBallSpeed(for velocity: CGVector) -> CGVector {
         let ballSpeed = gameManagerSetting.ballSpeed
         
-        if velocity < 0 && velocity > -ballSpeed {
-            return -ballSpeed
+        var correctedVelocity = velocity
+        
+        if velocity.dy < 0 && velocity.dy > -ballSpeed.dy {
+            correctedVelocity.dy = -ballSpeed.dy
+        
         }
-        if velocity > 0 && velocity < ballSpeed {
-            return ballSpeed
+        if velocity.dy > 0 && velocity.dy < ballSpeed.dy {
+            correctedVelocity.dy = ballSpeed.dy
         }
-        return velocity
+        
+        if velocity.dx < 0 && velocity.dx > -ballSpeed.dx {
+            correctedVelocity.dx = -ballSpeed.dx
+        }
+        if velocity.dx > 0 && velocity.dx < ballSpeed .dx{
+            correctedVelocity.dx = ballSpeed.dx
+        }
+        
+        return correctedVelocity
+        
     }
     
     public func resumeGame() {
@@ -184,6 +209,16 @@ class GameManager: GameManagerProtocol {
 
 extension GameManager: GameColisionDelegate {
     
+    func wallColision() {
+//        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: -500...500)
+//        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
+//
+//        gameManagerSetting.ballSpeed = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
+//                                                dy: verticalSpeed.dy)
+//        print("oioioi")
+    }
+    
+    
     private var isNewRecord: Bool {
         score > player.userTopScore(forDificulty: self.gameDificulty)
     }
@@ -211,7 +246,7 @@ extension GameManager: GameColisionDelegate {
     public func incrementScore(){
         score += 1
         notifyUserOfEvent(.scored)
-        sceneDelegate?.UserScored(newScore: score)
+        sceneDelegate?.userScored(newScore: score)
         
     }
     
