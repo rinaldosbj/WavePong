@@ -79,7 +79,7 @@ class GameManager: GameManagerProtocol {
         self.physicsDetection = physicsDetection
         self.player = player
         self.analyticsManager = analyticsManager
-        self.physicsDetection.gameActionDelegate = self
+        self.physicsDetection.gameColisionDelegate = self
     }
     
     public func getCurrentBall() -> String {
@@ -209,13 +209,15 @@ class GameManager: GameManagerProtocol {
 
 extension GameManager: GameColisionDelegate {
     
-    func wallColision() {
-//        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: -500...500)
-//        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
-//
-//        gameManagerSetting.ballSpeed = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
-//                                                dy: verticalSpeed.dy)
-//        print("oioioi")
+    func wallColision(ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: 1...60)
+        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
+        
+        let velocity = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
+                                dy: verticalSpeed.dy)
+
+        gameManagerSetting.ballSpeed = velocity
+        ballVelocityCorrected(correctBallSpeed(for: velocity))
     }
     
     

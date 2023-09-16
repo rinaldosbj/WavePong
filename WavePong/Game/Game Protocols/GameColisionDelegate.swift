@@ -13,7 +13,7 @@ protocol GameColisionDelegate: AnyObject {
     
     func didLose()
     
-    func wallColision()
+    func wallColision(ballVelocityCorrected: @escaping (CGVector) -> Void)
     
 }
 

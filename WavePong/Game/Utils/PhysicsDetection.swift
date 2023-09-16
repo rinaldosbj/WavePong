@@ -18,19 +18,18 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
         static let AROUNDBORDER: UInt32 = 8
     }
 
-    var gameActionDelegate: GameColisionDelegate?
+    var gameColisionDelegate: GameColisionDelegate?
     
     
     func didBegin(_ contact: SKPhysicsContact) {
         let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         if collision == ColliderType.BALL | ColliderType.PADDLE{
-            gameActionDelegate?.incrementScore()
+            gameColisionDelegate?.incrementScore()
         } else if collision == ColliderType.BALL | ColliderType.INFERIORBORDER {
-            gameActionDelegate?.didLose()
+            gameColisionDelegate?.didLose()
         }
         else if collision == ColliderType.BALL | ColliderType.AROUNDBORDER {
-            gameActionDelegate?.wallColision()
-            
+            gameColisionDelegate?.wallColision(){ _ in }
         }
         
         

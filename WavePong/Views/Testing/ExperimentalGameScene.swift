@@ -189,7 +189,7 @@ extension GameSceneExperimental: GameSceneDelegate {
 }
 
 class ExperimentalGameManager: GameColisionDelegate {
-    func wallColision() {
+    func wallColision(ballVelocityCorrected: @escaping (CGVector) -> Void) {
         
     }
     
@@ -214,7 +214,7 @@ class ExperimentalGameManager: GameColisionDelegate {
     var physicsDetection: PhysicsDetection = PhysicsDetection()
     
     init() {
-        self.physicsDetection.gameActionDelegate = self
+        self.physicsDetection.gameColisionDelegate = self
     }
     
     func startGame() {

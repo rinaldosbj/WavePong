@@ -71,7 +71,7 @@ final class GameManagerTests: XCTestCase {
     func testIfPadlleContactIncreasesScore() {
         gameManager.score = 0
         
-        gameManager.physicsDetection.gameActionDelegate?.incrementScore()
+        gameManager.physicsDetection.gameColisionDelegate?.incrementScore()
         
         let expectedScore = 1
         
@@ -85,7 +85,7 @@ final class GameManagerTests: XCTestCase {
         hapticsManagerMock.didVibrate = false
         
         // when
-        gameManager.physicsDetection.gameActionDelegate?.incrementScore()
+        gameManager.physicsDetection.gameColisionDelegate?.incrementScore()
         
         // then
         
@@ -102,7 +102,7 @@ final class GameManagerTests: XCTestCase {
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
         
-        gameManager.physicsDetection.gameActionDelegate?.didLose()
+        gameManager.physicsDetection.gameColisionDelegate?.didLose()
         
         let expectedFXSound = FXSounds.explosion
         
@@ -243,5 +243,17 @@ final class GameManagerTests: XCTestCase {
             }
         
         XCTAssertTrue(self.soundManagerMock.updateAudioOrientationCalled)
+    }
+    
+    func testWallCollisionIsChangingHorizontalBallSpeed() {
+        let ballSpeed = gameManager.gameManagerSetting.ballSpeed
+        let oldVelocity = ballSpeed
+        
+        gameManager.wallColision() {
+            newVelocity in
+            
+            XCTAssertNotEqual(oldVelocity,newVelocity)
+        }
+        
     }
 }
