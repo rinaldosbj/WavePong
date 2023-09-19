@@ -23,24 +23,6 @@ final class PlayerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    
-    func testShouldshowOnboardingOnFirstLaunch() {
-        XCTAssertFalse(player.onboradingHappend)
-    }
-    
-    func testShouldNotShowOnboardingAfterFirstLaunch() {
-        // given
-        player.userFinishedOnboarding()
-        
-        // when
-        player = Player(defaults: userDefaultsMock)
-        
-        
-        // then
-        XCTAssertTrue(player.onboradingHappend)
-        
-    }
-    
     func testUpdateTopScoreEasy() {
         // given
         let newTopScore = 10

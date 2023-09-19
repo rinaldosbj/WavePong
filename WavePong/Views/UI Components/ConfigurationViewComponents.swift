@@ -12,7 +12,7 @@ extension ConfigurationView {
     // MARK: View components
     var backToOnboardingButton: some View {
         NavigationLink {
-            OnboardingView()
+            OnboardingView(for: .main)
                 .navigationBarBackButtonHidden()
         } label: {
             Text(stringsConstants.tutorial)
@@ -89,7 +89,7 @@ extension ConfigurationView {
         // We can't disable notifications in that way
         HStack {
             Text("Notificações")
-                .font(.custom("DaysOne-Regular", size: 24))
+                .font(Font.wavePongPrimary(.body))
                 .layoutPriority(.greatestFiniteMagnitude)
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 .accessibilityHidden(true)
