@@ -35,8 +35,8 @@ extension GameScene {
         addChild(inferiorWall)
         
         // MARK: World
-        self.physicsWorld.speed = 0.5
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        self.physicsWorld.speed = 0.49999
+//        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
     internal func setupNodes() {
@@ -189,7 +189,8 @@ extension GameScene {
     }
     
     func createBall() -> BallSprite {
-        return BallSprite(texture: SKTexture(image: UIImage(named: gameManager.getCurrentBall())!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
+        // TODO: TAVA DANDO ERRO POR ALGUM MOTIVO QUANDO TESTAVA AQUI
+        return BallSprite(texture: SKTexture(image: UIImage(named: gameManager.getCurrentBall()) ?? UIImage(named: "ball_yellow")!), color: .clear, size: gameManager.gameManagerSetting.ballSize)
     }
     
     func createCloud() -> Cloud {

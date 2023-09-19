@@ -23,24 +23,6 @@ final class PlayerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    
-    func testShouldshowOnboardingOnFirstLaunch() {
-        XCTAssertFalse(player.onboradingHappend)
-    }
-    
-    func testShouldNotShowOnboardingAfterFirstLaunch() {
-        // given
-        player.userFinishedOnboarding()
-        
-        // when
-        player = Player(defaults: userDefaultsMock)
-        
-        
-        // then
-        XCTAssertTrue(player.onboradingHappend)
-        
-    }
-    
     func testUpdateTopScoreEasy() {
         // given
         let newTopScore = 10
@@ -131,5 +113,45 @@ final class PlayerTests: XCTestCase {
         
     }
 
+    func testGetSoundModeHightConstrast() {
+        let expectedSoundMode: SoundMode = SoundMode.highContrast
+        
+        userDefaultsMock.soundMod = expectedSoundMode.rawValue
+        
+        XCTAssertEqual(player.soundMode, expectedSoundMode)
+        
+    }
 
+
+    func testGetSoundModeLinear() {
+        let expectedSoundMode: SoundMode = SoundMode.linear
+        
+        userDefaultsMock.soundMod = expectedSoundMode.rawValue
+        
+        XCTAssertEqual(player.soundMode, expectedSoundMode)
+        
+    }
+    
+    func testGetSoundModeCurved() {
+        let expectedSoundMode: SoundMode = SoundMode.curved
+        
+        userDefaultsMock.soundMod = expectedSoundMode.rawValue
+        
+        XCTAssertEqual(player.soundMode, expectedSoundMode)
+        
+    }
+    
+    func testChangeBall() {
+        let previusBall: BallTypes = .ball_blue
+        let newBall: BallTypes = .ball_red
+        userDefaultsMock.ballType = previusBall.rawValue
+        
+        player.changeBall(newBall)
+        
+        XCTAssertNotEqual(previusBall, player.selectedBall)
+        
+
+    }
+    
+    
 }

@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */; };
+		0C1828342AB4094B00E659BF /* SoundManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */; };
 		0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA892A82E53A00844FB2 /* GameSceneView.swift */; };
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
 		0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2BBDC62A7440BE0031480F /* GameScene.swift */; };
+		0C3167202AA924D0006C596C /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
+		0C376C5C2AB4E0B400BE393E /* AVAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C376C5B2AB4E0B400BE393E /* AVAudioPlayer.swift */; };
+		0C376C5E2AB4E0DD00BE393E /* AVAudioplayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C376C5D2AB4E0DD00BE393E /* AVAudioplayerFactory.swift */; };
 		0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A02A93015D00118E77 /* ColorConstants.swift */; };
 		0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49E0A22A93A01700118E77 /* Cloud.swift */; };
-		0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */; };
 		0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */; };
 		0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5325362A9EB376007B8263 /* GameManagerProtocol.swift */; };
 		0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363EB2A8BEA57002DAB8C /* PauseNode.swift */; };
@@ -26,6 +29,7 @@
 		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0C989CA32AB39936002BEBCB /* SoundManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */; };
 		0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */; };
 		0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59C02A9E725300BEA7EA /* PongTests.swift */; };
 		0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */; };
@@ -36,6 +40,10 @@
 		0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */; };
 		0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */; };
 		0CD122122A744D3000E486B0 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD122112A744D3000E486B0 /* Ball.swift */; };
+		0CE00EF32AB409FC008C1E06 /* HapticsManagerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE00EF22AB409FC008C1E06 /* HapticsManagerProtocols.swift */; };
+		0CE00EF52AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE00EF42AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift */; };
+		0CE00EF72AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE00EF62AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift */; };
+		0CE00EF92AB47647008C1E06 /* HapticsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE00EF82AB47647008C1E06 /* HapticsManagerTests.swift */; };
 		0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF648562A7846AD00282A52 /* SoundManager.swift */; };
 		0CF648592A7847CF00282A52 /* WavePong_soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */; };
 		0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6485B2A7944AA00282A52 /* surprise.mp3 */; };
@@ -46,7 +54,6 @@
 		0CF648682A7944AA00282A52 /* mouse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648602A7944AA00282A52 /* mouse.mp3 */; };
 		0CF648692A7944AA00282A52 /* failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648612A7944AA00282A52 /* failed.mp3 */; };
 		0CF6486A2A7944AA00282A52 /* cuteClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648622A7944AA00282A52 /* cuteClick.mp3 */; };
-		0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6486C2A7946E100282A52 /* SoundBoardView.swift */; };
 		0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */; };
 		0CF648862A7D23AB00282A52 /* bonus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF6487F2A7D23AA00282A52 /* bonus.mp3 */; };
 		0CF648872A7D23AB00282A52 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648802A7D23AA00282A52 /* success.mp3 */; };
@@ -65,6 +72,7 @@
 		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
+		D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */; };
 		D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */; };
 		D306E2282AA11C96004F0D9C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2272AA11C96004F0D9C /* NavigationHelper.swift */; };
 		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
@@ -77,12 +85,15 @@
 		D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33405392A784626006CA42B /* GameScene+Touches.swift */; };
 		D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053B2A7846DA006CA42B /* GameScene+Setup.swift */; };
 		D334053E2A784842006CA42B /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334053D2A784842006CA42B /* Paddle.swift */; };
+		D345AE952ABA0B5700AB528A /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D345AE942ABA0B5700AB528A /* OnboardingTests.swift */; };
 		D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF5442A8AA7C900BD946E /* OnboardingView.swift */; };
 		D35EF5482A8AA83600BD946E /* FoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF5472A8AA83600BD946E /* FoneView.swift */; };
 		D35EF54A2A8AA86700BD946E /* RaqueteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF5492A8AA86700BD946E /* RaqueteView.swift */; };
 		D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */; };
 		D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */; };
 		D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54F2A8AAA3000BD946E /* PausarView.swift */; };
+		D37939342AB2277600D22457 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D37939332AB2277600D22457 /* GoogleMobileAds */; };
+		D37939362AB230C200D22457 /* Ads.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37939352AB230C200D22457 /* Ads.swift */; };
 		D391191D2A958A4200CA3C9E /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191C2A958A4200CA3C9E /* explosion.wav */; };
 		D391191F2A958BC000CA3C9E /* pickupCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191E2A958BC000CA3C9E /* pickupCoin.wav */; };
 		D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */; };
@@ -95,6 +106,7 @@
 		D3C24F1A2A954A430083F842 /* countDownEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F182A954A430083F842 /* countDownEnd.wav */; };
 		D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F192A954A430083F842 /* countDownBip.wav */; };
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
+		D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,10 +121,13 @@
 
 /* Begin PBXFileReference section */
 		0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneTests.swift; sourceTree = "<group>"; };
+		0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerProtocol.swift; sourceTree = "<group>"; };
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0C376C5B2AB4E0B400BE393E /* AVAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioPlayer.swift; sourceTree = "<group>"; };
+		0C376C5D2AB4E0DD00BE393E /* AVAudioplayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioplayerFactory.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0C49E0A22A93A01700118E77 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksModels.swift; sourceTree = "<group>"; };
@@ -125,6 +140,7 @@
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
 		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
 		0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		0CAA59BE2A9E725300BEA7EA /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +152,10 @@
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
 		0CD122112A744D3000E486B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WavePongTestPlan.xctestplan; sourceTree = "<group>"; };
+		0CE00EF22AB409FC008C1E06 /* HapticsManagerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManagerProtocols.swift; sourceTree = "<group>"; };
+		0CE00EF42AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackGeneratebleProtocols.swift; sourceTree = "<group>"; };
+		0CE00EF62AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactFeedbackGeneratorFactory.swift; sourceTree = "<group>"; };
+		0CE00EF82AB47647008C1E06 /* HapticsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManagerTests.swift; sourceTree = "<group>"; };
 		0CF648562A7846AD00282A52 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WavePong_soundtrack.mp3; sourceTree = "<group>"; };
 		0CF6485B2A7944AA00282A52 /* surprise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = surprise.mp3; sourceTree = "<group>"; };
@@ -146,7 +166,6 @@
 		0CF648602A7944AA00282A52 /* mouse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouse.mp3; sourceTree = "<group>"; };
 		0CF648612A7944AA00282A52 /* failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = failed.mp3; sourceTree = "<group>"; };
 		0CF648622A7944AA00282A52 /* cuteClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cuteClick.mp3; sourceTree = "<group>"; };
-		0CF6486C2A7946E100282A52 /* SoundBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBoardView.swift; sourceTree = "<group>"; };
 		0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXSoundsEnuns.swift; sourceTree = "<group>"; };
 		0CF6487F2A7D23AA00282A52 /* bonus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bonus.mp3; sourceTree = "<group>"; };
 		0CF648802A7D23AA00282A52 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
@@ -166,6 +185,7 @@
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
+		D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDifficultyView.swift; sourceTree = "<group>"; };
 		D306E2272AA11C96004F0D9C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		D30EF6DB2A79CC5800125DB0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -179,12 +199,14 @@
 		D33405392A784626006CA42B /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
 		D334053B2A7846DA006CA42B /* GameScene+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Setup.swift"; sourceTree = "<group>"; };
 		D334053D2A784842006CA42B /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
+		D345AE942ABA0B5700AB528A /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		D35EF5442A8AA7C900BD946E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D35EF5472A8AA83600BD946E /* FoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoneView.swift; sourceTree = "<group>"; };
 		D35EF5492A8AA86700BD946E /* RaqueteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaqueteView.swift; sourceTree = "<group>"; };
 		D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoView.swift; sourceTree = "<group>"; };
 		D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebaterView.swift; sourceTree = "<group>"; };
 		D35EF54F2A8AAA3000BD946E /* PausarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarView.swift; sourceTree = "<group>"; };
+		D37939352AB230C200D22457 /* Ads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ads.swift; sourceTree = "<group>"; };
 		D391191C2A958A4200CA3C9E /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		D391191E2A958BC000CA3C9E /* pickupCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickupCoin.wav; sourceTree = "<group>"; };
 		D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessibilityDirectInteractionTrait.swift; sourceTree = "<group>"; };
@@ -199,6 +221,7 @@
 		D3C24F182A954A430083F842 /* countDownEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownEnd.wav; sourceTree = "<group>"; };
 		D3C24F192A954A430083F842 /* countDownBip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownBip.wav; sourceTree = "<group>"; };
 		D3E10B6B2A86BE5800E30649 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37939342AB2277600D22457 /* GoogleMobileAds in Frameworks */,
 				0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */,
 				0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
@@ -228,6 +252,16 @@
 				D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		0C1828322AB4092C00E659BF /* SoundManager */ = {
+			isa = PBXGroup;
+			children = (
+				0CF648562A7846AD00282A52 /* SoundManager.swift */,
+				0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */,
+				0C376C5D2AB4E0DD00BE393E /* AVAudioplayerFactory.swift */,
+			);
+			path = SoundManager;
 			sourceTree = "<group>";
 		};
 		0C6B93A92A7EE43500023DC8 /* SKNodes */ = {
@@ -267,7 +301,6 @@
 				D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */,
 				0C8648E42A8D676000017F29 /* UI Components */,
 				D35EF5462A8AA7E300BD946E /* Onboarding */,
-				0CF6486E2A7946F100282A52 /* TestingViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,8 +308,9 @@
 		0C8648E62A8D68D300017F29 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				0CF648562A7846AD00282A52 /* SoundManager.swift */,
-				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
+				D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */,
+				0C1828322AB4092C00E659BF /* SoundManager */,
+				0CE00EF12AB409E5008C1E06 /* HapticsManager */,
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
 				0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */,
 				0CC0C16C2AA6613F00E13FE9 /* AnalyticsManager.swift */,
@@ -289,10 +323,15 @@
 			isa = PBXGroup;
 			children = (
 				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
+				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
+				0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */,
+				0CE00EF82AB47647008C1E06 /* HapticsManagerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
+				D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */,
 				0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
+				D345AE942ABA0B5700AB528A /* OnboardingTests.swift */,
 			);
 			path = PongTests;
 			sourceTree = "<group>";
@@ -339,6 +378,17 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		0CE00EF12AB409E5008C1E06 /* HapticsManager */ = {
+			isa = PBXGroup;
+			children = (
+				0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */,
+				0CE00EF22AB409FC008C1E06 /* HapticsManagerProtocols.swift */,
+				0CE00EF42AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift */,
+				0CE00EF62AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift */,
+			);
+			path = HapticsManager;
+			sourceTree = "<group>";
+		};
 		0CF6485A2A7847D700282A52 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,14 +425,6 @@
 			path = FX;
 			sourceTree = "<group>";
 		};
-		0CF6486E2A7946F100282A52 /* TestingViews */ = {
-			isa = PBXGroup;
-			children = (
-				0CF6486C2A7946E100282A52 /* SoundBoardView.swift */,
-			);
-			path = TestingViews;
-			sourceTree = "<group>";
-		};
 		0D6680F82AA8F28D0043C58B /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,9 +446,10 @@
 		0DF0390F2A93E1120005551B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0C376C5B2AB4E0B400BE393E /* AVAudioPlayer.swift */,
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
+				D37939352AB230C200D22457 /* Ads.swift */,
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
-				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */,
 				D30F4E842AA8E47E00554275 /* SelectBallView.swift */,
 				D30F4E862AA8E4A300554275 /* BallTypesEnum.swift */,
@@ -534,6 +577,7 @@
 			packageProductDependencies = (
 				0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */,
 				0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				D37939332AB2277600D22457 /* GoogleMobileAds */,
 			);
 			productName = DvdScreensaver;
 			productReference = D3BF927A28FEF6CD00EEF09B /* Pong.app */;
@@ -570,6 +614,7 @@
 			mainGroup = D3BF927128FEF6CD00EEF09B;
 			packageReferences = (
 				0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = D3BF927B28FEF6CD00EEF09B /* Products */;
 			projectDirPath = "";
@@ -631,8 +676,13 @@
 			files = (
 				0CAA59C72A9E726300BEA7EA /* PlayerTests.swift in Sources */,
 				0C5325352A9EB2DE007B8263 /* GameManagerTests.swift in Sources */,
+				0CE00EF92AB47647008C1E06 /* HapticsManagerTests.swift in Sources */,
+				0C3167202AA924D0006C596C /* MocksModels.swift in Sources */,
+				0C989CA32AB39936002BEBCB /* SoundManagerTests.swift in Sources */,
 				0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */,
+				D345AE952ABA0B5700AB528A /* OnboardingTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
+				D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,10 +692,13 @@
 			files = (
 				D30F4E822AA7A6C200554275 /* StringsConstantsModel.swift in Sources */,
 				D3AEE22F2A96607200ED2382 /* ComingSoonView.swift in Sources */,
+				0CE00EF52AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift in Sources */,
 				D35EF54A2A8AA86700BD946E /* RaqueteView.swift in Sources */,
 				0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */,
+				0C376C5C2AB4E0B400BE393E /* AVAudioPlayer.swift in Sources */,
 				D35EF5482A8AA83600BD946E /* FoneView.swift in Sources */,
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
+				D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */,
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
 				D30F4E872AA8E4A300554275 /* BallTypesEnum.swift in Sources */,
 				D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */,
@@ -654,7 +707,6 @@
 				D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */,
 				0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */,
 				0CCCE3312A8AA60F00BCB4E5 /* Fonts Extension.swift in Sources */,
-				0C50F77B2A9EC4FA004CC635 /* MocksModels.swift in Sources */,
 				D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
@@ -663,11 +715,15 @@
 				0C6363F02A8D0A28002DAB8C /* GameSceneViewModel.swift in Sources */,
 				0CD122122A744D3000E486B0 /* Ball.swift in Sources */,
 				0DB4EFE52A954BF1002E441A /* GameCenterManager.swift in Sources */,
+				0C1828342AB4094B00E659BF /* SoundManagerProtocol.swift in Sources */,
 				0C6363EE2A8BF830002DAB8C /* ScoreLabel.swift in Sources */,
 				0D6680FC2AA8F3BE0043C58B /* ImageConstants.swift in Sources */,
 				0C49E0A12A93015D00118E77 /* ColorConstants.swift in Sources */,
 				0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */,
 				0CC0C1712AA6651A00E13FE9 /* GameManagerSettings.swift in Sources */,
+				0CE00EF72AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift in Sources */,
+				0C376C5E2AB4E0DD00BE393E /* AVAudioplayerFactory.swift in Sources */,
+				0CE00EF32AB409FC008C1E06 /* HapticsManagerProtocols.swift in Sources */,
 				0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */,
 				0DF0390C2A93E07C0005551B /* AppDelegate.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
@@ -682,12 +738,12 @@
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0DF039112A93E11E0005551B /* NotificationType.swift in Sources */,
-				0CF6486D2A7946E100282A52 /* SoundBoardView.swift in Sources */,
 				0C49E0A32A93A01700118E77 /* Cloud.swift in Sources */,
 				0C6363F42A8D268F002DAB8C /* LabelButton.swift in Sources */,
 				0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */,
 				0CF648702A79A40500282A52 /* FXSoundsEnuns.swift in Sources */,
 				0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */,
+				D37939362AB230C200D22457 /* Ads.swift in Sources */,
 				0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */,
 				D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
@@ -884,7 +940,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = GMAYGR5U3T;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -902,7 +958,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -922,7 +978,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = GMAYGR5U3T;
+				DEVELOPMENT_TEAM = B6XWN7H84M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -940,7 +996,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong1";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -992,6 +1048,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1009,6 +1073,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C956B582A95420800277D99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		D37939332AB2277600D22457 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D37939322AB2277600D22457 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

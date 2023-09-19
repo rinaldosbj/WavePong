@@ -14,7 +14,8 @@ enum GameDifficulty: String {
 struct gameManagerSettings {
     var difficulty: GameDifficulty
     
-    var ballSpeed: CGFloat
+//    var ballSpeed: CGFloat
+    var ballSpeed: CGVector
     var maxBallSpeed: CGFloat
     var cloudVelocity: Double
     var ballSize: CGSize
@@ -25,19 +26,19 @@ struct gameManagerSettings {
         
         switch difficulty{
         case .easy:
-            self.ballSpeed = 200
+            self.ballSpeed = CGVector(dx: 200, dy: 200)
             self.maxBallSpeed = 400
             self.cloudVelocity = 40
             self.ballSize = CGSize(width: 80, height: 80)
             self.paddleProportion = 1/2.5
         case .medium:
-            self.ballSpeed = 300
+            self.ballSpeed = CGVector(dx: 300, dy: 300)
             self.maxBallSpeed = 600
             self.cloudVelocity = 20
             self.ballSize = CGSize(width: 70, height: 70)
             self.paddleProportion = 1/2.75
         case .hard:
-            self.ballSpeed = 500
+            self.ballSpeed = CGVector(dx: 500, dy: 500)
             self.maxBallSpeed = 1000
             self.cloudVelocity = 5
             self.ballSize = CGSize(width: 60, height: 60)
