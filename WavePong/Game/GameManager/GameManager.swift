@@ -236,6 +236,7 @@ extension GameManager: GameColisionDelegate {
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "\(stringsConstants.recorde) \(topScore)")
         }
+        
         if chipManager.isFirstGameToday() {
             chipManager.collectFirstGameChips()
             print("É seu primeiro jogo do dia!")

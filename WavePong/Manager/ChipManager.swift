@@ -11,6 +11,7 @@ class ChipManager {
     static let shared = ChipManager()
     
     let chipKey: String = "totalCoins"
+    let lastDatePlayedKey: String = "lastDatePlayed"
     
     @Published var totalChips: Int = 0
     @Published var chipsCollectedToday: Int = 0
@@ -24,6 +25,7 @@ class ChipManager {
             chipsCollectedToday += amount
             saveChips()
         }
+        updateLastPlayedDate()
     }
     
     func saveChips() {
@@ -37,6 +39,8 @@ class ChipManager {
     
     func calculateChipsForScore(_ score: Int) {
         let chipsEarned = Int(Double(score) * 0.1)
+        print("Você ganhou fichas!")
+        print(chipsEarned)
         addChips(chipsEarned)
     }
     
@@ -46,22 +50,20 @@ class ChipManager {
     
     func resetDailyChipsIfNecessary() {
         if isFirstGameToday() {
-            //Se o dia atual não é o dia do último jogo, redefinir última data para hoje
             chipsCollectedToday = 0
-            updateLastPlayedDate()
         }
     }
     
     func isFirstGameToday () -> Bool {
-        lastDatePlayed = UserDefaults.standard.object(forKey: "lastClaimedDate") as? Date ?? Date.distantPast
+        lastDatePlayed = UserDefaults.standard.object(forKey: lastDatePlayedKey) as? Date ?? Date.distantPast
         currentDate = Date()
-        
+
         return !Calendar.current.isDate(lastDatePlayed, inSameDayAs: currentDate)
     }
     
     func updateLastPlayedDate() {
-        let currentDate = Date()
-        UserDefaults.standard.set(currentDate, forKey: "lastPlayedDate")
+        currentDate = Date()
+        UserDefaults.standard.set(currentDate, forKey: lastDatePlayedKey)
     }
     
     func collectFirstGameChips () {
