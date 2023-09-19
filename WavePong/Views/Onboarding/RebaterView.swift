@@ -29,7 +29,7 @@ struct RebaterView: View {
                 Spacer()
                 
                 Text(stringsConstants.raquete_bola)
-                    .font(.custom("DaysOne-Regular", size: 35))
+                    .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)

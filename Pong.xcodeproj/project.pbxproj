@@ -71,6 +71,7 @@
 		0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF638202A78496100CCC34B /* PhysicsDetection.swift */; };
 		864FCABB2908661E00CA0664 /* DaysOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */; };
 		BCD63B9629114B0A006C8DE8 /* strasua.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCD63B95291149ED006C8DE8 /* strasua.ttf */; };
+		D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */; };
 		D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */; };
 		D306E2282AA11C96004F0D9C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306E2272AA11C96004F0D9C /* NavigationHelper.swift */; };
 		D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EF6DB2A79CC5800125DB0 /* GameManager.swift */; };
@@ -180,6 +181,7 @@
 		864FCABA2908661E00CA0664 /* DaysOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DaysOne-Regular.ttf"; sourceTree = "<group>"; };
 		864FCABD2908665A00CA0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCD63B95291149ED006C8DE8 /* strasua.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = strasua.ttf; sourceTree = "<group>"; };
+		D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		D306E2212AA10E7A004F0D9C /* SelectDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDifficultyView.swift; sourceTree = "<group>"; };
 		D306E2272AA11C96004F0D9C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		D30EF6DB2A79CC5800125DB0 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		0C8648E62A8D68D300017F29 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				D30104472AB8DBEE00A72F9D /* OnboardingManager.swift */,
 				0C1828322AB4092C00E659BF /* SoundManager */,
 				0CE00EF12AB409E5008C1E06 /* HapticsManager */,
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
@@ -684,6 +687,7 @@
 				0C376C5C2AB4E0B400BE393E /* AVAudioPlayer.swift in Sources */,
 				D35EF5482A8AA83600BD946E /* FoneView.swift in Sources */,
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
+				D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */,
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
 				D30F4E872AA8E4A300554275 /* BallTypesEnum.swift in Sources */,
 				D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */,

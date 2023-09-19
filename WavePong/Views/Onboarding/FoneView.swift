@@ -21,7 +21,7 @@ struct FoneView: View {
             
             VStack{
                 Text(stringsConstants.coloque_fone)
-                    .font(.custom("DaysOne-Regular", size: 35))
+                    .font(Font.wavePongPrimary(.headline))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
                     .minimumScaleFactor(0.1)

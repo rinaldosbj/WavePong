@@ -12,6 +12,8 @@ struct PongApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    var onboard = OnboardingManager()
+    
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var notificationManager = NotificationManager.shared
     var player = Player.shared
@@ -19,12 +21,7 @@ struct PongApp: App {
         
         WindowGroup {
             NavigationView {
-                if player.onboradingHappend {
-                    MenuView()
-                }
-                else {
-                    OnboardingView()
-                }
+                OnboardingView(for: .main)
             }
             .navigationViewStyle(.stack)
         }.onChange(of: scenePhase) { newScenePhase in

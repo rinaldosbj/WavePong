@@ -12,11 +12,11 @@ extension ConfigurationView {
     // MARK: View components
     var backToOnboardingButton: some View {
         NavigationLink {
-            OnboardingView()
+            OnboardingView(for: .watchAgain)
                 .navigationBarBackButtonHidden()
         } label: {
             Text(stringsConstants.tutorial)
-                .font(.custom("DaysOne-Regular", size: 24))
+                .font(Font.wavePongPrimary(.body))
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 .underline(color:Color(ColorConstants.shared.YELLOW_600))
         }
@@ -27,7 +27,7 @@ extension ConfigurationView {
             HStack {
                 Text(stringsConstants.modo_som)
                     .accessibilityHint(stringsConstants.modo_hint)
-                    .font(.custom("DaysOne-Regular", size: 24))
+                    .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 Spacer()
             }
@@ -70,7 +70,7 @@ extension ConfigurationView {
         // Unused
         HStack {
             Text("Notificações")
-                .font(.custom("DaysOne-Regular", size: 24))
+                .font(Font.wavePongPrimary(.body))
                 .layoutPriority(.greatestFiniteMagnitude)
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 .accessibilityHidden(true)
@@ -95,7 +95,7 @@ extension ConfigurationView {
                     presentation.wrappedValue.dismiss()
                 } label: {
                     Text(stringsConstants.volta)
-                        .font(.custom("DaysOne-Regular", size: 24))
+                        .font(Font.wavePongPrimary(.body))
                         .layoutPriority(.greatestFiniteMagnitude)
                         .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 }

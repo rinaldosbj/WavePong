@@ -29,7 +29,7 @@ struct PosicaoView: View {
                 Spacer()
                 
                 Text(stringsConstants.bola_guiada)
-                    .font(.custom("DaysOne-Regular", size: 35))
+                    .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
