@@ -246,14 +246,12 @@ final class GameManagerTests: XCTestCase {
     }
     
     func testWallCollisionIsChangingHorizontalBallSpeed() {
-        let ballSpeed = gameManager.gameManagerSetting.ballSpeed
-        let oldVelocity = ballSpeed
+        let oldVelocity = gameManager.gameManagerSetting.ballSpeed
         
-        gameManager.wallColision() {
-            newVelocity in
-            
-            XCTAssertNotEqual(oldVelocity,newVelocity)
-        }
+        gameManager.wallColision()
         
+        let newVelocity = gameManager.gameManagerSetting.ballSpeed
+        
+        XCTAssertNotEqual(oldVelocity, newVelocity)
     }
 }

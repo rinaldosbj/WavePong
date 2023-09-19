@@ -209,7 +209,7 @@ class GameManager: GameManagerProtocol {
 
 extension GameManager: GameColisionDelegate {
     
-    func wallColision(ballVelocityCorrected: @escaping (CGVector) -> Void) {
+    func wallColision() {
         let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: 1...60)
         let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
         
@@ -217,7 +217,6 @@ extension GameManager: GameColisionDelegate {
                                 dy: verticalSpeed.dy)
 
         gameManagerSetting.ballSpeed = velocity
-        ballVelocityCorrected(correctBallSpeed(for: velocity))
     }
     
     

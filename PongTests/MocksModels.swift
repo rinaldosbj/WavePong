@@ -357,7 +357,7 @@ class GameManagerMock: GameManagerProtocol {
         
     }
     
-    func wallColision(ballVelocityCorrected: @escaping (CGVector) -> Void) {
+    func wallColision() {
         
     }
 
