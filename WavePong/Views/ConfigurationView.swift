@@ -34,6 +34,7 @@ struct ConfigurationView: View {
                         .frame(width: 268 ,height: 53)
                         .accessibilityHidden(true)
                         .padding(.vertical, 58)
+                        .padding(.top, 76)
                     
                     soundModeConfigView
                     
@@ -41,12 +42,21 @@ struct ConfigurationView: View {
                     
                     backToOnboardingButton
                     
-                    NavigationLink("BallType", destination: SelectBallView())
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Capsule().fill(Color.purple))
+                    // TODO: Find somewhere to put these
+                    Spacer().frame(height: 1000)
+                    
+                    NavigationLink {
+                        SelectBallView()
+                    } label: {
+                        Text("Ball Color")
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                            .underline(color:Color(ColorConstants.shared.YELLOW_600))
+                    }
                     
                     AdsView()
+                    // TODO: It doesn't belong here
+                        .padding(.bottom, 50)
                     
                 }.padding(.horizontal, 60)
             }
@@ -76,6 +86,7 @@ extension ConfigurationView {
     
     
     func updateToggle(from mode: SoundMode){
+        // Could be improved
         switch mode {
             
         case .linear:

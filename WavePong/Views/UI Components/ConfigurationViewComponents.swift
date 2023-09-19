@@ -66,8 +66,27 @@ extension ConfigurationView {
         }
     }
     
+    var backButton: some View {
+        HStack {
+            VStack {
+                Button {
+                    presentation.wrappedValue.dismiss()
+                } label: {
+                    Text(stringsConstants.volta)
+                        .font(Font.wavePongPrimary(.body))
+                        .layoutPriority(.greatestFiniteMagnitude)
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                }
+                .accessibilityLabel(stringsConstants.volta_hint)
+                Spacer()
+            }
+            Spacer()
+        }
+    }
+    
     var notificationToggleView: some View {
-        // Unused
+        // MARK: This Notification is Unused
+        // We can't disable notifications in that way
         HStack {
             Text("Notificações")
                 .font(Font.wavePongPrimary(.body))
@@ -85,24 +104,6 @@ extension ConfigurationView {
                     .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(Color(ColorConstants.shared.PURPLE_500)), offColor: .darkGray))
                     .accessibilityLabel(Text("Ativar notificações"))
             }
-        }
-    }
-    
-    var backButton: some View {
-        HStack {
-            VStack {
-                Button {
-                    presentation.wrappedValue.dismiss()
-                } label: {
-                    Text(stringsConstants.volta)
-                        .font(Font.wavePongPrimary(.body))
-                        .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                }
-                .accessibilityLabel(stringsConstants.volta_hint)
-                Spacer()
-            }
-            Spacer()
         }
     }
 }
