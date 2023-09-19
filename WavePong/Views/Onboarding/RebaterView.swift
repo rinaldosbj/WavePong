@@ -31,6 +31,7 @@ struct RebaterView: View {
                 Text(stringsConstants.raquete_bola)
                     .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
+                    .minimumScaleFactor(0.1)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)

@@ -21,7 +21,12 @@ struct PongApp: App {
         
         WindowGroup {
             NavigationView {
-                OnboardingView(for: .main)
+                if onboard.onboradingHappend {
+                    MenuView()
+                }
+                else {
+                    OnboardingView(for: .main)
+                }
             }
             .navigationViewStyle(.stack)
         }.onChange(of: scenePhase) { newScenePhase in

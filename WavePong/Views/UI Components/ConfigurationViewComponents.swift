@@ -12,7 +12,7 @@ extension ConfigurationView {
     // MARK: View components
     var backToOnboardingButton: some View {
         NavigationLink {
-            OnboardingView(for: .watchAgain)
+            OnboardingView(for: .main)
                 .navigationBarBackButtonHidden()
         } label: {
             Text(stringsConstants.tutorial)

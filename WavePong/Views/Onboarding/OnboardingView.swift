@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum OnboadingCases {
-    case main, watchAgain, notification, gameCenter
+    case main, notification, gameCenter
 }
 
 struct OnboardingView: View {
@@ -51,34 +51,15 @@ struct OnboardingView: View {
                         .onTapGesture { nextView() }
                 case 1:
                     PausarView()
-                        .onTapGesture { nextView() }
+                        .onTapGesture {
+                            if onboardingManager.onboradingHappend {
+                                presentation.wrappedValue.dismiss()
+                            }
+                            else { nextView() }
+                        }
                 default:
                     MenuView()
                         .onAppear { onboardingManager.userFinishedOnboarding() }
-                }
-            }.id(viewState)
-                .onAppear {
-                    if onboardingManager.onboradingHappend { viewState = 0 }
-                }
-            
-        case .watchAgain:
-            Group{
-                switch viewState {
-                case 5:
-                    FoneView()
-                        .onTapGesture { nextView() }
-                case 4:
-                    RaqueteView()
-                        .onTapGesture { nextView() }
-                case 3:
-                    PosicaoView()
-                        .onTapGesture { nextView() }
-                case 2:
-                    RebaterView()
-                        .onTapGesture { nextView() }
-                default:
-                    PausarView()
-                        .onTapGesture { presentation.wrappedValue.dismiss() }
                 }
             }.id(viewState)
             

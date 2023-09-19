@@ -32,6 +32,7 @@ struct RaqueteView: View {
                 Text(stringsConstants.mover_raquete)
                     .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
+                    .minimumScaleFactor(0.1)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)

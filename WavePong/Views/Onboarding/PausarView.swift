@@ -27,7 +27,7 @@ struct PausarView: View {
                     .font(Font.wavePongPrimary(.headline))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
-                    .minimumScaleFactor(15)
+                    .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
                     .padding(40)
                     .accessibilityHint(stringsConstants.onboading_hint)

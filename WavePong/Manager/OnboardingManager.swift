@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-
-struct OnboardingManager: OnboardingPersistence {
+class OnboardingManager: OnboardingProtocol,ObservableObject {
     
     private let defaults: UserDefaultable
     
@@ -17,7 +16,7 @@ struct OnboardingManager: OnboardingPersistence {
     }
     
     private struct Constants {
-        static var hasSeenOnboarding = "hadSeenOnboarding"
+        static var hasSeenOnboarding = "hasSeenOnboarding"
     }
     
     ///  Informs if the user already seen onboarding
@@ -32,7 +31,7 @@ struct OnboardingManager: OnboardingPersistence {
     
 }
 
-protocol OnboardingPersistence {
+protocol OnboardingProtocol {
     /// Should return true if the user didn't seen onboarding yet
     var onboradingHappend: Bool { get }
     
