@@ -12,6 +12,8 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
     
+    var soundKit: SoundKit?
+    
     /// shared instance for global acess to Object
     static var shared: SoundManagerProtocol = SoundManager()
     
@@ -142,7 +144,7 @@ public class SoundManager: SoundManagerProtocol {
     
     /// Play a FX Sound for a given type
     public func playFXSound(for name: FXSounds) {
-        
+
         guard let url = getURLSoundFX(for: name) else {
             print("arquivo fx não encontrado")
             return
@@ -157,4 +159,7 @@ public class SoundManager: SoundManagerProtocol {
     
 }
 
+enum gameSounds {
+    case win, lose, record, hit
+}
 

@@ -8,10 +8,41 @@
 import Foundation
 
 
+struct GameTheme {
+    
+    var currentGameTheme: Theme?
+    var backgroundSkin: BackgroundSkin?
+    var ballSkin: BallSkin?
+    var paddleSkin: PaddleSkin?
+    var cloudSkin: CloudSkin?
+    var soundKit: SoundKit?
+    
+    init(currentGameTheme: Theme) {
+        self.currentGameTheme = currentGameTheme
+        self.backgroundSkin = BackgroundSkin(theme: currentGameTheme)
+        self.ballSkin = BallSkin(theme: currentGameTheme)
+        self.paddleSkin = PaddleSkin(theme: currentGameTheme)
+        self.cloudSkin = CloudSkin(theme: currentGameTheme)
+        self.soundKit = SoundKit(theme: currentGameTheme)
+    }
+}
+
+
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
 
     static var shared: Player = Player()
+    
+    var gameTheme: GameTheme {
+        let intResult = defaults.integer(forKey: Constants.chosenGameTheme)
+        
+        switch intResult {
+        case 1:
+            return GameTheme(currentGameTheme: .theme2)
+        default:
+            return GameTheme(currentGameTheme: .defaultTheme)
+        }
+    }
     
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
@@ -23,13 +54,14 @@ class Player: PlayerProtocol {
         static var userTopScpreHard = "userTopScorehard"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
+        static var chosenGameTheme = "chosenGameTheme"
     }
 
     
     private let defaults: UserDefaultable
     
     
-    var selectedBall: BallTypes {
+    var selectedBall: PreviousBallSkin {
         let intResult = defaults.integer(forKey: Constants.chosenBall)
         
         switch intResult {
@@ -53,7 +85,7 @@ class Player: PlayerProtocol {
         
     }
     
-    func changeBall(_ ball: BallTypes) {
+    func changeBall(_ ball: PreviousBallSkin) {
         defaults.set(ball.rawValue, forKey: Constants.chosenBall)
     }
     
@@ -128,9 +160,9 @@ protocol PlayerScorePersistence {
 
 protocol PlayerPreferencesPersistence {
 
-    var selectedBall: BallTypes { get }
+    var selectedBall: PreviousBallSkin { get }
     
-    func changeBall(_ ball: BallTypes)
+    func changeBall(_ ball: PreviousBallSkin)
     
     var soundMode: SoundMode { get }
     

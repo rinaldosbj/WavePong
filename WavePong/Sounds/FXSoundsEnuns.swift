@@ -19,3 +19,4 @@ enum SoundMode: Int {
     case linear, curved, highContrast
 }
 
+//public enum SoundTrack: String, CaseIterable

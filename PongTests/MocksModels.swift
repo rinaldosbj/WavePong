@@ -11,9 +11,9 @@ import UIKit
 
 class PlayerMock: PlayerProtocol {
     
-    var selectedBall: BallTypes = .ball_yellow
+    var selectedBall: BallSkins = .ball_yellow
     
-    func changeBall(_ ball: BallTypes) {
+    func changeBall(_ ball: BallSkins) {
         // NADA
     }
     
