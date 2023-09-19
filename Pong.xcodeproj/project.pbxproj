@@ -103,6 +103,7 @@
 		D3C24F1A2A954A430083F842 /* countDownEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F182A954A430083F842 /* countDownEnd.wav */; };
 		D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F192A954A430083F842 /* countDownBip.wav */; };
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
+		D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 		D3C24F182A954A430083F842 /* countDownEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownEnd.wav; sourceTree = "<group>"; };
 		D3C24F192A954A430083F842 /* countDownBip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownBip.wav; sourceTree = "<group>"; };
 		D3E10B6B2A86BE5800E30649 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 				0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */,
 				0CE00EF82AB47647008C1E06 /* HapticsManagerTests.swift */,
 				0C5325342A9EB2DE007B8263 /* GameManagerTests.swift */,
+				D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */,
 				0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */,
 				0CAA59C02A9E725300BEA7EA /* PongTests.swift */,
 			);
@@ -669,6 +672,7 @@
 				0C989CA32AB39936002BEBCB /* SoundManagerTests.swift in Sources */,
 				0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */,
 				0CAA59C12A9E725300BEA7EA /* PongTests.swift in Sources */,
+				D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
