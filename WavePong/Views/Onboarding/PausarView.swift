@@ -24,10 +24,10 @@ struct PausarView: View {
             
             VStack(alignment: .center, spacing: 60 ){
                 Text(stringsConstants.dois_toques)
-                    .font(.custom("DaysOne-Regular", size: 35))
+                    .font(Font.wavePongPrimary(.headline))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
-                    .minimumScaleFactor(15)
+                    .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
                     .padding(40)
                     .accessibilityHint(stringsConstants.onboading_hint)

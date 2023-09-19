@@ -29,8 +29,9 @@ struct RebaterView: View {
                 Spacer()
                 
                 Text(stringsConstants.raquete_bola)
-                    .font(.custom("DaysOne-Regular", size: 35))
+                    .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
+                    .minimumScaleFactor(0.1)
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)

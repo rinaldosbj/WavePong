@@ -41,14 +41,14 @@ struct SelectCustomToggleStyle: ToggleStyle {
         HStack {
             ZStack {
                 Color(ColorConstants.shared.WHITE_500)
-                    .frame(width: 20, height: 20, alignment: .center)
-                    .border(Color("roxo"),width: 2)
+                    .frame(width: 24, height: 24, alignment: .center)
+                    .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
                 
                 if configuration.isOn {
                     Text("X")
                         .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
-                        .font(.custom("DaysOne-Regular", size: 20))
-                        .frame(width: 20, height: 20, alignment: .center)
+                        .font(Font.wavePongPrimary(.body))
+                        .frame(width: 24, height: 24, alignment: .center)
                 }
                 
             }
@@ -56,15 +56,15 @@ struct SelectCustomToggleStyle: ToggleStyle {
             switch mode {
             case .linear:
                 Text(stringsConstants.linear)
-                    .font(.custom("DaysOne-Regular", size: 24))
+                    .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .curved:
                 Text(stringsConstants.exponencial)
-                    .font(.custom("DaysOne-Regular", size: 24))
+                    .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             case .highContrast:
                 Text(stringsConstants.alto)
-                    .font(.custom("DaysOne-Regular", size: 24))
+                    .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             }
         }

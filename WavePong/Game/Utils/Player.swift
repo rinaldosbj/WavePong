@@ -18,7 +18,6 @@ class Player: PlayerProtocol {
     }
 
     private struct Constants {
-        static var hasSeenOnboarding = "hasSeenOnboarding"
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScpreHard = "userTopScorehard"
@@ -29,10 +28,6 @@ class Player: PlayerProtocol {
     
     private let defaults: UserDefaultable
     
-    ///  Informs if the user already seen onboarding
-    var onboradingHappend: Bool {
-        return defaults.bool(forKey: Constants.hasSeenOnboarding)
-    }
     
     var selectedBall: BallTypes {
         let intResult = defaults.integer(forKey: Constants.chosenBall)
@@ -62,10 +57,6 @@ class Player: PlayerProtocol {
         defaults.set(ball.rawValue, forKey: Constants.chosenBall)
     }
     
-    /// Once player finishes onboarding, this methods must be called so the app won't show onboading every launch
-    func userFinishedOnboarding() {
-        defaults.set(true, forKey: Constants.hasSeenOnboarding)
-    }
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
@@ -120,18 +111,8 @@ class Player: PlayerProtocol {
 }
 
 /// Defines a standard interface for Player Class
-protocol PlayerProtocol: OnboardingPersistence,
-                         PlayerScorePersistence,
-                         PlayerPreferencesPersistence {
-    
-}
-
-protocol OnboardingPersistence {
-    /// Should return true if the user didn't seen onboarding yet
-    var onboradingHappend: Bool { get }
-    
-    /// Must be used for updating the info that user has seen onboarding and shouldn't show it anymore on launch
-    func userFinishedOnboarding()
+protocol PlayerProtocol:PlayerScorePersistence,
+                        PlayerPreferencesPersistence {
     
 }
 

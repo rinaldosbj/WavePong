@@ -17,9 +17,6 @@ class PlayerMock: PlayerProtocol {
         // NADA
     }
     
-    
-    var onboradingHappend: Bool = false
-    
     var soundMode: Pong.SoundMode = .linear
     
     var userTopScoreEasy = 0
@@ -51,17 +48,14 @@ class PlayerMock: PlayerProtocol {
     }
     
     
-    func userFinishedOnboarding() {
-//        onboradingHappend = true
-    }
-    
-    
     func changeSoundMode(_ mode: Pong.SoundMode) {
 //        soundMode = mode
         
     }
     
 }
+
+
 
 class UserDefaultsMock: UserDefaultable {
     
