@@ -14,9 +14,6 @@ struct SelectDifficultyView: View {
     @Environment(\.presentationMode) var presentation
     
     @StateObject var viewModel: SelectDifficultyViewModel = SelectDifficultyViewModel()
-    
-    
-    let stringsConstants = StringsConstantsModel()
 
     
     var body: some View {
@@ -28,11 +25,11 @@ struct SelectDifficultyView: View {
                     .accessibilityHidden(true)
                 
                 VStack {
-                    Text(stringsConstants.dificuldade)
+                    Text(viewModel.labelDifficulty)
                         .font(Font.wavePongPrimary(.headline))
                         .layoutPriority(.greatestFiniteMagnitude)
                         .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                        .accessibilityLabel(stringsConstants.dificuldade_hint)
+                        .accessibilityLabel(viewModel.labelDifficultyHint)
                     
                     Spacer().frame(height: 48)
 
@@ -60,12 +57,12 @@ struct SelectDifficultyView: View {
                         Button {
                             presentation.wrappedValue.dismiss()
                         } label: {
-                            Text(stringsConstants.volta)
+                            Text(viewModel.labelReturn)
                                 .font(Font.wavePongPrimary(.body))
                                 .layoutPriority(.greatestFiniteMagnitude)
                                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                         }
-                        .accessibilityLabel(stringsConstants.volta_hint)
+                        .accessibilityLabel(viewModel.labelReturnHint)
                         Spacer()
                     }
                     Spacer()

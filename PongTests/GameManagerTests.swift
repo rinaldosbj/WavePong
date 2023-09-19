@@ -27,10 +27,10 @@ final class GameManagerTests: XCTestCase {
         gameManagerDelegateMock = GameManagerDelegateMock()
         
         gameManager = GameManager(
+            gameDifficulty: .easy,
             soundManager: soundManagerMock,
             hapticsManager: hapticsManagerMock,
-            player: playerMock,
-            gameDifficulty: .easy
+            player: playerMock
         )
         
         gameManager.sceneDelegate = gameSceneDelegateMock
