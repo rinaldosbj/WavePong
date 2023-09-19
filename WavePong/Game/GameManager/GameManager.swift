@@ -37,6 +37,8 @@ class GameManager: GameManagerProtocol {
     /// Instance for calling game center
     var gameCenterManager: GameCenterManager = GameCenterManager.shared
     
+    var chipManager: ChipManager = ChipManager.shared
+    
     /// Instance of object responsable for dealing with game colision logic
     internal var physicsDetection: PhysicsDetection
     
@@ -234,9 +236,12 @@ extension GameManager: GameColisionDelegate {
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "\(stringsConstants.recorde) \(topScore)")
         }
+        if chipManager.isFirstGameToday() {
+            chipManager.collectFirstGameChips()
+            print("É seu primeiro jogo do dia!")
+        }
         
-        player.updatePlayerCoins(amount: score)
-        print(player.playerCoins())
+        chipManager.calculateChipsForScore(score)
         sceneDelegate?.gameOver()
         analyticsManager.logGameScore(score: score,
                                       dificulty: self.gameDificulty)

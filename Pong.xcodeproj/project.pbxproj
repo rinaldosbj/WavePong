@@ -56,7 +56,7 @@
 		0CF6488B2A7D23AB00282A52 /* winter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648842A7D23AB00282A52 /* winter.mp3 */; };
 		0CF6488C2A7D23AB00282A52 /* slimejump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CF648852A7D23AB00282A52 /* slimejump.mp3 */; };
 		0D6680FC2AA8F3BE0043C58B /* ImageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6680FB2AA8F3BE0043C58B /* ImageConstants.swift */; };
-		0D7E1FCA2AB238240082D3A1 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E1FC92AB238240082D3A1 /* Coin.swift */; };
+		0D7E1FCA2AB238240082D3A1 /* ChipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E1FC92AB238240082D3A1 /* ChipManager.swift */; };
 		0DB4EFE52A954BF1002E441A /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */; };
 		0DB4EFE72A954C8E002E441A /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE62A954C8E002E441A /* GameCenterView.swift */; };
 		0DF0390C2A93E07C0005551B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0390B2A93E07C0005551B /* AppDelegate.swift */; };
@@ -156,7 +156,7 @@
 		0CF648842A7D23AB00282A52 /* winter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winter.mp3; sourceTree = "<group>"; };
 		0CF648852A7D23AB00282A52 /* slimejump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slimejump.mp3; sourceTree = "<group>"; };
 		0D6680FB2AA8F3BE0043C58B /* ImageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstants.swift; sourceTree = "<group>"; };
-		0D7E1FC92AB238240082D3A1 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		0D7E1FC92AB238240082D3A1 /* ChipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipManager.swift; sourceTree = "<group>"; };
 		0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		0DB4EFE62A954C8E002E441A /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		0DF0390B2A93E07C0005551B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +280,7 @@
 				0DF0390D2A93E0D60005551B /* NotificationManager.swift */,
 				0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */,
 				0CC0C16C2AA6613F00E13FE9 /* AnalyticsManager.swift */,
+				0D7E1FC92AB238240082D3A1 /* ChipManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -420,7 +421,6 @@
 				D306E2272AA11C96004F0D9C /* NavigationHelper.swift */,
 				0C26DA8B2A83303200844FB2 /* Player.swift */,
 				0DF638202A78496100CCC34B /* PhysicsDetection.swift */,
-				0D7E1FC92AB238240082D3A1 /* Coin.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -693,7 +693,7 @@
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
 				D30F4E852AA8E47E00554275 /* SelectBallView.swift in Sources */,
 				0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */,
-				0D7E1FCA2AB238240082D3A1 /* Coin.swift in Sources */,
+				0D7E1FCA2AB238240082D3A1 /* ChipManager.swift in Sources */,
 				0CF648572A7846AD00282A52 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

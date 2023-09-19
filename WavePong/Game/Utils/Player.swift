@@ -26,7 +26,6 @@ class Player: PlayerProtocol {
         static var userTopScoreHard = "userTopScorehard"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
-        static var coinAmount = "coinAmount"
     }
     
     private let defaults: UserDefaultable
@@ -118,16 +117,6 @@ class Player: PlayerProtocol {
         defaults.set(mode.rawValue, forKey: Constants.soundMod)
         
     }
-    
-    func updatePlayerCoins (amount: Int) {
-        let oldAmount = defaults.integer(forKey: Constants.coinAmount)
-        let newAmount = oldAmount + amount
-        defaults.set(newAmount, forKey: Constants.coinAmount)
-    }
-    
-    func playerCoins () -> Int {
-        return defaults.integer(forKey: Constants.coinAmount)
-    }
 }
 
 /// Defines a standard interface for Player Class
@@ -152,8 +141,4 @@ protocol PlayerProtocol {
     var soundMode: SoundMode { get }
     
     func changeSoundMode(_ mode: SoundMode)
-    
-    func updatePlayerCoins(amount: Int)
-    
-    func playerCoins () -> Int
 }
