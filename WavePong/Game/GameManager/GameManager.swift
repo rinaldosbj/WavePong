@@ -33,7 +33,7 @@ class GameManager: GameManagerProtocol {
     internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
     internal var hapticsManager: HapticsManagerProtocol
-
+    
     /// Instance for calling game center
     var gameCenterManager: GameCenterManager = GameCenterManager.shared
     
@@ -61,16 +61,17 @@ class GameManager: GameManagerProtocol {
         }
     }
     
-    init(score: Int = 0,
-         state: GameManagerState = .InContDown,
-         soundManager: SoundManagerProtocol = SoundManager.shared,
-         hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
-         physicsDetection: PhysicsDetection = PhysicsDetection(),
-         player: PlayerProtocol = Player(),
-         gameDifficulty: GameDifficulty,
-         analyticsManager: AnalyticsManager = AnalyticsManager()
+    init(
+        gameDifficulty: GameDifficulty,
+        score: Int = 0,
+        state: GameManagerState = .InContDown,
+        soundManager: SoundManagerProtocol = SoundManager.shared,
+        hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
+        physicsDetection: PhysicsDetection = PhysicsDetection(),
+        player: PlayerProtocol = Player(),
+        analyticsManager: AnalyticsManager = AnalyticsManager()
     ) {
-
+        
         self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
@@ -124,7 +125,7 @@ class GameManager: GameManagerProtocol {
         incrementVecticalBallSpeed()
         ballVelocityCorrected(correctBallSpeed(for: velocity))
     }
-
+    
     
     private func incrementVecticalBallSpeed() {
         let ballSpeed = gameManagerSetting.ballSpeed.dy
@@ -142,7 +143,7 @@ class GameManager: GameManagerProtocol {
         
         if velocity.dy < 0 && velocity.dy > -ballSpeed.dy {
             correctedVelocity.dy = -ballSpeed.dy
-        
+            
         }
         if velocity.dy > 0 && velocity.dy < ballSpeed.dy {
             correctedVelocity.dy = ballSpeed.dy
@@ -210,12 +211,12 @@ class GameManager: GameManagerProtocol {
 extension GameManager: GameColisionDelegate {
     
     func wallColision() {
-//        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: -500...500)
-//        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
-//
-//        gameManagerSetting.ballSpeed = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
-//                                                dy: verticalSpeed.dy)
-//        print("oioioi")
+        //        let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: -500...500)
+        //        let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
+        //
+        //        gameManagerSetting.ballSpeed = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
+        //                                                dy: verticalSpeed.dy)
+        //        print("oioioi")
     }
     
     

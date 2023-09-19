@@ -19,6 +19,7 @@ struct PongApp: App {
         
         WindowGroup {
             NavigationView {
+                
                 if player.onboradingHappend {
                     MenuView()
                 }
