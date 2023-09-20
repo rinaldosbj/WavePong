@@ -13,11 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @ObservedObject var notificationManager = NotificationManager.shared
     let gameCenter = GameCenterManager.shared
+    let chipManager = ChipManager.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         notificationManager.requestNotificationAuthorization()
-        gameCenter.authenticatePlayer()
-        
+        chipManager.loadChips()
+        print ("Você tinha essas moedas quando carregou o jogo:")
+        print(UserDefaults.standard.integer(forKey: chipManager.chipKey))
+//        gameCenter.authenticatePlayer()
         FirebaseApp.configure()
         return true
     }
