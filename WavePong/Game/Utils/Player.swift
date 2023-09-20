@@ -10,14 +10,14 @@ import Foundation
 
 struct GameTheme {
     
-    var currentGameTheme: Theme?
+    var currentGameTheme: ThemeStyle?
     var backgroundSkin: BackgroundSkin?
     var ballSkin: BallSkin?
     var paddleSkin: PaddleSkin?
     var cloudSkin: CloudSkin?
     var soundKit: SoundKit?
     
-    init(currentGameTheme: Theme) {
+    init(currentGameTheme: ThemeStyle) {
         self.currentGameTheme = currentGameTheme
         self.backgroundSkin = BackgroundSkin(theme: currentGameTheme)
         self.ballSkin = BallSkin(theme: currentGameTheme)
@@ -33,16 +33,24 @@ class Player: PlayerProtocol {
 
     static var shared: Player = Player()
     
-    var gameTheme: GameTheme {
+    
+    
+    var theme: Theme {
         let intResult = defaults.integer(forKey: Constants.chosenGameTheme)
         
         switch intResult {
         case 1:
-            return GameTheme(currentGameTheme: .theme2)
+            return ThemeFactory.createTheme(theme: .defaultTheme)
         default:
-            return GameTheme(currentGameTheme: .defaultTheme)
+            return ThemeFactory.createTheme(theme: .theme2)
         }
     }
+    
+    func setTheme(theme: ThemeStyle) {
+        defaults.set(theme.rawValue, forKey: Constants.chosenGameTheme)
+    }
+    
+    
     
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
