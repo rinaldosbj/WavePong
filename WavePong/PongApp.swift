@@ -16,17 +16,12 @@ struct PongApp: App {
     
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var notificationManager = NotificationManager.shared
-    var player = Player.shared
+
     var body: some Scene {
         
         WindowGroup {
             NavigationView {
-<<<<<<< HEAD
-                
-                if player.onboradingHappend {
-=======
                 if onboard.onboradingHappend {
->>>>>>> develop
                     MenuView()
                 }
                 else {
