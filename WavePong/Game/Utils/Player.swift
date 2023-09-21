@@ -8,45 +8,25 @@
 import Foundation
 
 
-struct GameTheme {
-    
-    var currentGameTheme: ThemeStyle?
-    var backgroundSkin: BackgroundSkin?
-    var ballSkin: BallSkin?
-    var paddleSkin: PaddleSkin?
-    var cloudSkin: CloudSkin?
-    var soundKit: SoundKit?
-    
-    init(currentGameTheme: ThemeStyle) {
-        self.currentGameTheme = currentGameTheme
-        self.backgroundSkin = BackgroundSkin(theme: currentGameTheme)
-        self.ballSkin = BallSkin(theme: currentGameTheme)
-        self.paddleSkin = PaddleSkin(theme: currentGameTheme)
-        self.cloudSkin = CloudSkin(theme: currentGameTheme)
-        self.soundKit = SoundKit(theme: currentGameTheme)
-    }
-}
-
 
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
 
+
     static var shared: Player = Player()
-    
-    
     
     var theme: Theme {
         let intResult = defaults.integer(forKey: Constants.chosenGameTheme)
         
         switch intResult {
         case 1:
-            return ThemeFactory.createTheme(theme: .defaultTheme)
+            return ThemeFactory().createTheme(theme: .variation1)
         default:
-            return ThemeFactory.createTheme(theme: .theme2)
+            return ThemeFactory().createTheme(theme: .defaultTheme)
         }
     }
     
-    func setTheme(theme: ThemeStyle) {
+    func setTheme(for theme: ThemeStyle) {
         defaults.set(theme.rawValue, forKey: Constants.chosenGameTheme)
     }
     
@@ -173,6 +153,10 @@ protocol PlayerPreferencesPersistence {
     func changeBall(_ ball: PreviousBallSkin)
     
     var soundMode: SoundMode { get }
+    
+    var theme: Theme { get }
+    
+    func setTheme(for theme: ThemeStyle)
     
     func changeSoundMode(_ mode: SoundMode)
     

@@ -9,204 +9,95 @@ enum PreviousBallSkin: Int, CaseIterable {
     case ball_yellow, ball_green, ball_cyan, ball_blue, ball_purple, ball_red, ball_orange
 }
 
-
-
-
-
-
 enum ThemeStyle: Int {
-    case defaultTheme, theme2, theme3
+    case defaultTheme, variation1
 }
 
-
-protocol Clouds {
-    var cloud1: String { get }
-    var cloud2: String { get }
-    var cloud3: String { get }
-}
-
-struct DefaultClouds: Clouds {
-    var cloud1 = "Cloud1variation1"
-    var cloud2 = "Cloud2variation1"
-    var cloud3 = "Cloud3variation1"
-    
-    
-}
-
-struct VariationClouds1: Clouds {
-    var cloud1 = "Cloud1variation2"
-    var cloud2 = "Cloud2variation2"
-    var cloud3 = "Cloud3variation2"
-}
-
-
-class CloudStyleFactory {
-    static func createCloud(theme: ThemeStyle) -> Clouds {
-        switch theme {
-        case .defaultTheme:
-            return DefaultClouds()
-        case .theme2:
-            return VariationClouds1()
-        case .theme3:
-            
-        }
-        
-        
-    }
-}
-
-struct CloudSkinmn {
-    
-    var theme: ThemeStyle
-    var cloud1: String
-    var cloud2: String
-    var cloud3: String
-    
-    init(theme: ThemeStyle) {
-        self.theme = theme
-        
-        switch theme {
-        case .defaultTheme:
-            cloud1 = "Cloud1variation1"
-            cloud2 = "Cloud2variation1"
-            cloud3 = "Cloud3variation1"
-        case .theme2:
-            cloud1 = "Cloud1variation2"
-            cloud2 = "Cloud2variation2"
-            cloud3 = "Cloud3variation2"
-        case .theme3:
-            
-        }
-    }
-    
-}
 
 struct SoundKit {
-    
-    var theme: ThemeStyle
     var soundTrack: String
     var fxSoundHitPaddle: FXSounds
     var fxSoundLose: FXSounds
     var fxSoundRecord: FXSounds
     
-    init(theme: ThemeStyle) {
-        self.theme = theme
-        switch theme {
-        case .defaultTheme:
-            soundTrack = "blablabla"
-            fxSoundHitPaddle = .alert
-            fxSoundLose = .alert
-            fxSoundRecord = .alert
-        case .theme2:
-            soundTrack = "blablabla"
-            fxSoundHitPaddle = .alert
-            fxSoundLose = .alert
-            fxSoundRecord = .alert
-        }
-    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class ThemeFactory {
-    static func createTheme(theme: ThemeStyle) -> Theme {
-        switch theme {
-        case .defaultTheme:
-            return DefaultTheme()
-        case .theme2:
-            return Variation1Theme()
-        }
-    }
-}
-
-protocol Theme {
+struct CloudSkins {
+    var cloud1: String
+    var cloud2: String
+    var cloud3: String
     
+}
+
+
+protocol ThemeSkin {
     var backgroundSkin: String { get }
     var ballSkin: String { get }
     var paddleSkin: String { get }
-    var cloudSkin: CloudSkin { get }
+    var cloudsSkins: CloudSkins { get }
+}
+
+protocol ThemeSound {
+    
     var soundKit: SoundKit { get }
+}
+
+struct Theme: ThemeSkin, ThemeSound {
+    var backgroundSkin: String
+    
+    var ballSkin: String
+    
+    var paddleSkin: String
+    
+    var cloudsSkins: CloudSkins
+    
+    var soundKit: SoundKit
+    
+    init(backgroundSkin: String = "backgroundGame", ballSkin: String = "ball_yellow", paddleSkin: String = "raquete", cloudsSkins: CloudSkins = CloudSkins(cloud1: "wave1", cloud2: "wave2", cloud3: "wave3") , soundKit: SoundKit = SoundKit(soundTrack: "", fxSoundHitPaddle: .alert, fxSoundLose: .alert, fxSoundRecord: .alert)) {
+        self.backgroundSkin = backgroundSkin
+        self.ballSkin = ballSkin
+        self.paddleSkin = paddleSkin
+        self.cloudsSkins = cloudsSkins
+        self.soundKit = soundKit
+    }
     
 }
 
-class DefaultTheme: Theme {
-    var backgroundSkin: String =  "BackgroundVariation1"
+
+class ThemeFactory {
     
-    var ballSkin: String = "BallVariation1"
+    let constants: ImageConstants
     
-    var paddleSkin: String = "PaddleVariation1"
+    init(constants: ImageConstants = ImageConstants.shared) {
+        self.constants = constants
+    }
     
-    var cloudSkin: CloudSkin = CloudSkin(theme: .defaultTheme)
-    
-    var soundKit: SoundKit = SoundKit(theme: .defaultTheme)
+    func createTheme(theme: ThemeStyle) -> Theme {
+        switch theme {
+            
+        case .variation1:
+            let clouds = CloudSkins(
+                cloud1: constants.DEFAULTWAVE1,
+                cloud2: constants.DEFAULTWAVE2,
+                cloud3: constants.DEFAULTWAVE3)
+            
+            let soundKit = SoundKit(soundTrack: "WavePong_soundtrack ", fxSoundHitPaddle: .hehe, fxSoundLose: .bonus, fxSoundRecord: .cuteClick)
+            
+            return Theme(backgroundSkin: constants.DEFAULTBACKGROUND, ballSkin: constants.DEFAULTBALL, paddleSkin: constants.DEFAULTPADDLE, cloudsSkins: clouds, soundKit: soundKit)
+
+            
+            
+        default:
+            let clouds = CloudSkins(
+                cloud1: constants.DEFAULTWAVE1,
+                cloud2: constants.DEFAULTWAVE2,
+                cloud3: constants.DEFAULTWAVE3)
+            
+            let soundKit = SoundKit(soundTrack: "WavePong_soundtrack ", fxSoundHitPaddle: .hehe, fxSoundLose: .bonus, fxSoundRecord: .cuteClick)
+            
+            return Theme(backgroundSkin: constants.DEFAULTBACKGROUND, ballSkin: constants.DEFAULTBALL, paddleSkin: constants.DEFAULTPADDLE, cloudsSkins: clouds, soundKit: soundKit)
+        }
+    }
 }
 
-class Variation1Theme: Theme {
-    var backgroundSkin: String =  "BackgroundVariation1"
-    
-    var ballSkin: String = "BallVariation1"
-    
-    var paddleSkin: String = "PaddleVariation1"
-    
-    var cloudSkin: CloudSkin = CloudSkin(theme: .theme2)
-    
-    var soundKit: SoundKit = SoundKit(theme: .theme2)
-}
+
