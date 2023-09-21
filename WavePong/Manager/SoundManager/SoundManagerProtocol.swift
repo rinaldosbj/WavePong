@@ -15,6 +15,8 @@ protocol SoundManagerProtocol {
     
     func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize)
     
+    func updateAudioOrientationForPaddle(ballPosition position: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint?)
+    
     func playGameTheme()
     
     func pauseGameTheme()

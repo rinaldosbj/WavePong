@@ -15,8 +15,8 @@ public enum FXSounds: String, CaseIterable {
     case bonus, horse, shooting, slimejump, success, transition, winter, alert, bounce, cuteClick, failed, hehe, mouse, surprise, winzinho, countDownBip, countDownEnd, explosion, pickupCoin
 }
 
-enum SoundMode: Int {
-    case linear, curved, highContrast
+enum SoundMode: Int, CaseIterable {
+    case paddleRelated, curved, highContrast,linear
 }
 
 //public enum SoundTrack: String, CaseIterable

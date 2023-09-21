@@ -10,10 +10,8 @@ import SwiftUI
 struct ConfigurationView: View {
     
     @Environment(\.presentationMode) var presentation
-    @State var togleNotifications : Bool = false
-    @State var togleIsLinear : Bool = true
-    @State var togleIsCurved : Bool = false
-    @State var togleIsHighContrast: Bool = false
+    @State var selectedMode: SoundMode = .linear
+    @State var togleNotifications = true
     var player: PlayerProtocol = Player()
     
     let stringsConstants = StringsConstantsModel()
@@ -74,51 +72,7 @@ struct ConfigurationView: View {
 extension ConfigurationView {
     // MARK: RelationShip Functions
     func checksCurrentSoundMode(){
-        switch player.soundMode {
-        case .linear:
-            togleIsLinear = true
-        case .curved:
-            togleIsCurved = true
-        case .highContrast:
-            togleIsHighContrast = true
-        }
-    }
-    
-    
-    func updateToggle(from mode: SoundMode){
-        // Could be improved
-        switch mode {
-            
-        case .linear:
-            if togleIsLinear {
-                togleIsCurved = false
-                togleIsHighContrast = false
-                player.changeSoundMode(.linear)
-            }
-            else if !togleIsCurved && !togleIsHighContrast {
-                togleIsLinear = true
-            }
-            
-        case .curved:
-            if togleIsCurved{
-                togleIsLinear = false
-                togleIsHighContrast = false
-                player.changeSoundMode(.curved)
-            }
-            else if !togleIsLinear && !togleIsHighContrast {
-                togleIsCurved = true
-            }
-        case .highContrast:
-            if togleIsHighContrast{
-                togleIsCurved = false
-                togleIsLinear = false
-                player.changeSoundMode(.highContrast)
-            }
-            else if !togleIsLinear && !togleIsCurved {
-                togleIsHighContrast = true
-            }
-        }
-        
+        selectedMode = player.soundMode
     }
 }
 

@@ -11,6 +11,11 @@ import AVFoundation
 
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
+    func updateAudioOrientationForPaddle(ballPosition position: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint?) {
+        
+    }
+    
+    
     
 //    var soundTheme: ThemeSound? = DefaultTheme()
     
@@ -43,30 +48,28 @@ public class SoundManager: SoundManagerProtocol {
         player.theme.soundKit
     }
     
-    /// Allows player to estimate ball position by diferance in stereo output
-    public func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        
+    func updateAudioOrientationForPaddle(ballPosition: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint) {
         let volumeAdjusted = Float(
-            1 - (position.y / (size.height - 130))
+            1 - (ballPosition.y / (size.height - 130))
         )
         
         musicPlayer?.volume = volumeAdjusted
         
         switch panStyle {
         case .curved:
-            let proportion = Float(position.x / size.width)
+            let proportion = Float(ballPosition.x / size.width)
             let curvedProportion = sigmoidCurve(proportion)
             
             musicPlayer?.pan = curvedProportion
             
         case .linear:
-            let proportion = Float((position.x - (size.width / 2) ) / (size.width/2))
+            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
             musicPlayer?.pan = proportion
             audioPLayer?.pan = proportion
             
         case .highContrast:
             // need some work
-            var proportion = Float((position.x - (size.width / 2) ) / (size.width/2))
+            var proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
             
             if proportion >= 0.33 {
                 proportion = 1
@@ -78,6 +81,55 @@ public class SoundManager: SoundManagerProtocol {
                 proportion = 0
             }
             
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
+            
+        case .paddleRelated:
+            let proportion = Float((ballPosition.x - paddlePosition.x ) / (size.width))
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
+        }
+    }
+    /// Allows player to estimate ball position by diferance in stereo output
+    public func updateAudioOrientation(ballPosition: CGPoint, frameSize size: CGSize) {
+        
+        let volumeAdjusted = Float(
+            1 - (ballPosition.y / (size.height - 130))
+        )
+        
+        musicPlayer?.volume = volumeAdjusted
+        
+        switch panStyle {
+        case .curved:
+            let proportion = Float(ballPosition.x / size.width)
+            let curvedProportion = sigmoidCurve(proportion)
+            
+            musicPlayer?.pan = curvedProportion
+            
+        case .linear:
+            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
+            
+        case .highContrast:
+            // need some work
+            var proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
+            
+            if proportion >= 0.33 {
+                proportion = 1
+            }
+            else if proportion <= -0.33 {
+                proportion = -1
+            }
+            else {
+                proportion = 0
+            }
+            
+            musicPlayer?.pan = proportion
+            audioPLayer?.pan = proportion
+            
+        case .paddleRelated:
+            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
             musicPlayer?.pan = proportion
             audioPLayer?.pan = proportion
         }
@@ -166,13 +218,13 @@ public class SoundManager: SoundManagerProtocol {
         var url: URL? {
             switch gameSound {
             case .win:
-                 Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
+                return Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
             case .lose:
-                 Bundle.main.url(forResource: soundKit.fxSoundLose.rawValue, withExtension: "wav")
+                return Bundle.main.url(forResource: soundKit.fxSoundLose.rawValue, withExtension: "wav")
             case .record:
-                Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
+                return Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
             case .hit:
-                Bundle.main.url(forResource: soundKit.fxSoundHitPaddle.rawValue, withExtension: "wav")
+                return Bundle.main.url(forResource: soundKit.fxSoundHitPaddle.rawValue, withExtension: "wav")
             }
         }
         

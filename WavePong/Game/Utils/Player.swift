@@ -111,7 +111,7 @@ class Player: PlayerProtocol {
         
         switch intResult {
         case 0:
-            return .linear
+            return .paddleRelated
         case 1:
             return .curved
         case 2:

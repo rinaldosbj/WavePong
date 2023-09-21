@@ -36,6 +36,8 @@ final class AnalyticsManager {
             return "curved"
         case .highContrast:
             return "highConstrast"
+        case .paddleRelated:
+            return "paddleRelated"
         }
         
         
