@@ -17,4 +17,13 @@ struct ImageConstants {
     let GAME_CENTER = "game center"
     let PAUSE = "pause"
     
+    // default theme
+    let DEFAULTPADDLE = "raquete"
+    let DEFAULTBALL = "ball_yellow"
+    let DEFAULTWAVE1 = "wave1"
+    let DEFAULTWAVE2 = "wave2"
+    let DEFAULTWAVE3 = "wave3"
+    let DEFAULTBACKGROUND = "backgroundGame"
+    
+    
 }

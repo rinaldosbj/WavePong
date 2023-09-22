@@ -82,7 +82,7 @@
 		D30F4E7D2AA7A55600554275 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D30F4E7F2AA7A55600554275 /* Localizable.strings */; };
 		D30F4E822AA7A6C200554275 /* StringsConstantsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */; };
 		D30F4E852AA8E47E00554275 /* SelectBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30F4E842AA8E47E00554275 /* SelectBallView.swift */; };
-		D30F4E872AA8E4A300554275 /* BallTypesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30F4E862AA8E4A300554275 /* BallTypesEnum.swift */; };
+		D30F4E872AA8E4A300554275 /* CustomizeblesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30F4E862AA8E4A300554275 /* CustomizeblesEnum.swift */; };
 		D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842C92A7E9FA0007FF85B /* MenuView.swift */; };
 		D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */; };
 		D334053A2A784626006CA42B /* GameScene+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33405392A784626006CA42B /* GameScene+Touches.swift */; };
@@ -199,7 +199,7 @@
 		D30F4E802AA7A55A00554275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsConstantsModel.swift; sourceTree = "<group>"; };
 		D30F4E842AA8E47E00554275 /* SelectBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBallView.swift; sourceTree = "<group>"; };
-		D30F4E862AA8E4A300554275 /* BallTypesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallTypesEnum.swift; sourceTree = "<group>"; };
+		D30F4E862AA8E4A300554275 /* CustomizeblesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeblesEnum.swift; sourceTree = "<group>"; };
 		D32842C92A7E9FA0007FF85B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D32842CB2A7E9FBC007FF85B /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		D33405392A784626006CA42B /* GameScene+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touches.swift"; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
 				D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */,
 				D30F4E842AA8E47E00554275 /* SelectBallView.swift */,
-				D30F4E862AA8E4A300554275 /* BallTypesEnum.swift */,
+				D30F4E862AA8E4A300554275 /* CustomizeblesEnum.swift */,
 				D30F4E7F2AA7A55600554275 /* Localizable.strings */,
 			);
 			path = Utils;
@@ -726,7 +726,7 @@
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
 				D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */,
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
-				D30F4E872AA8E4A300554275 /* BallTypesEnum.swift in Sources */,
+				D30F4E872AA8E4A300554275 /* CustomizeblesEnum.swift in Sources */,
 				D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */,
 				D3AEF2ED2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift in Sources */,
 				0CC0C16D2AA6613F00E13FE9 /* AnalyticsManager.swift in Sources */,

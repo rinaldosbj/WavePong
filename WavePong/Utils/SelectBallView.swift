@@ -11,7 +11,7 @@ struct SelectBallView: View {
     
     var player: PlayerProtocol = Player.shared
     
-    @State var selectedBall: BallTypes = .ball_yellow
+    @State var selectedBall: PreviousBallSkin = .ball_yellow
     
     var body: some View {
         ScrollView {
@@ -50,7 +50,7 @@ struct SelectBallView: View {
                     }
                 }.padding(20)
                 
-                ForEach(BallTypes.allCases, id: \.self) {
+                ForEach(PreviousBallSkin.allCases, id: \.self) {
                     type in
                     Button {
                         player.changeBall(type)

@@ -12,6 +12,8 @@ import AVFoundation
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
     
+//    var soundTheme: ThemeSound? = DefaultTheme()
+    
     /// shared instance for global acess to Object
     static var shared: SoundManagerProtocol = SoundManager()
     
@@ -35,6 +37,10 @@ public class SoundManager: SoundManagerProtocol {
     /// Allows adjust method for audio pan
     var panStyle: SoundMode {
         player.soundMode
+    }
+    
+    var soundKit: SoundKit {
+        player.theme.soundKit
     }
     
     /// Allows player to estimate ball position by diferance in stereo output
@@ -142,7 +148,7 @@ public class SoundManager: SoundManagerProtocol {
     
     /// Play a FX Sound for a given type
     public func playFXSound(for name: FXSounds) {
-        
+
         guard let url = getURLSoundFX(for: name) else {
             print("arquivo fx não encontrado")
             return
@@ -155,6 +161,31 @@ public class SoundManager: SoundManagerProtocol {
         
     }
     
+    
+    func playFXSound(for gameSound: gameSound) {
+        var url: URL? {
+            switch gameSound {
+            case .win:
+                 Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
+            case .lose:
+                 Bundle.main.url(forResource: soundKit.fxSoundLose.rawValue, withExtension: "wav")
+            case .record:
+                Bundle.main.url(forResource: soundKit.fxSoundRecord.rawValue, withExtension: "wav")
+            case .hit:
+                Bundle.main.url(forResource: soundKit.fxSoundHitPaddle.rawValue, withExtension: "wav")
+            }
+        }
+        
+        
+        guard let safeURL = url else { return }
+        
+        audioPLayer = avAudioPlayerFactory.creatAVAudioPlayer(contentsOf: safeURL)
+        _ = audioPLayer?.play()
+        
+    }
 }
 
+enum gameSound {
+    case win, lose, record, hit
+}
 

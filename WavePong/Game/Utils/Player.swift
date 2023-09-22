@@ -8,10 +8,29 @@
 import Foundation
 
 
+
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
 
+
     static var shared: Player = Player()
+    
+    var theme: Theme {
+        let intResult = defaults.integer(forKey: Constants.chosenGameTheme)
+        
+        switch intResult {
+        case 1:
+            return ThemeFactory().createTheme(theme: .variation1)
+        default:
+            return ThemeFactory().createTheme(theme: .defaultTheme)
+        }
+    }
+    
+    func setTheme(for theme: ThemeStyle) {
+        defaults.set(theme.rawValue, forKey: Constants.chosenGameTheme)
+    }
+    
+    
     
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
@@ -23,13 +42,14 @@ class Player: PlayerProtocol {
         static var userTopScoreHard = "userTopScorehard"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
+        static var chosenGameTheme = "chosenGameTheme"
     }
 
     
     private let defaults: UserDefaultable
     
     
-    var selectedBall: BallTypes {
+    var selectedBall: PreviousBallSkin {
         let intResult = defaults.integer(forKey: Constants.chosenBall)
         
         switch intResult {
@@ -53,7 +73,7 @@ class Player: PlayerProtocol {
         
     }
     
-    func changeBall(_ ball: BallTypes) {
+    func changeBall(_ ball: PreviousBallSkin) {
         defaults.set(ball.rawValue, forKey: Constants.chosenBall)
     }
     
@@ -127,11 +147,15 @@ protocol PlayerScorePersistence {
 
 protocol PlayerPreferencesPersistence {
 
-    var selectedBall: BallTypes { get }
+    var selectedBall: PreviousBallSkin { get }
     
-    func changeBall(_ ball: BallTypes)
+    func changeBall(_ ball: PreviousBallSkin)
     
     var soundMode: SoundMode { get }
+    
+    var theme: Theme { get }
+    
+    func setTheme(for theme: ThemeStyle)
     
     func changeSoundMode(_ mode: SoundMode)
 }
