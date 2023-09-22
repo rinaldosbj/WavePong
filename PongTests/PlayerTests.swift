@@ -142,8 +142,8 @@ final class PlayerTests: XCTestCase {
     }
     
     func testChangeBall() {
-        let previusBall: BallSkins = .ball_blue
-        let newBall: BallSkins = .ball_red
+        let previusBall: PreviousBallSkin = .ball_blue
+        let newBall: PreviousBallSkin = .ball_red
         userDefaultsMock.ballType = previusBall.rawValue
         
         player.changeBall(newBall)

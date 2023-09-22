@@ -117,17 +117,18 @@ class GameManager: GameManagerProtocol {
         score = 0
     }
     
-    func updateGameScene(nodes: AudioNodesRelatable, ballVelocityCorrected: @escaping (CGVector) -> Void) {
-        guard let ballPosition = nodes.ball?.position else { return }
-        guard let velocity = nodes.ball?.physicsBody?.velocity else { return }
-        guard let paddlePosition = nodes.paddle?.position else { return }
-
+    func updateGameScene(nodes: UpdatableSceneNodes, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        let paddlePosition = nodes.paddle.position
+        let ballPosition = nodes.ball.position
+        let ballSpeed = nodes.ball.physicsBody?.velocity ?? CGVector()
         
-        let audioInfo = AudioOrientationInfo(paddlePosition: paddlePosition, ballPosition: ballPosition, size: nodes.size)
+        let audioInfo = AudioOrientationInfo(paddlePosition: paddlePosition,
+                                             ballPosition: ballPosition,
+                                             size: nodes.size)
         
         incrementVecticalBallSpeed()
         soundManager.updateAudioOrientation(audioInfo)
-        ballVelocityCorrected(correctBallSpeed(for: velocity))
+        ballVelocityCorrected(correctBallSpeed(for: ballSpeed))
     }
 
     

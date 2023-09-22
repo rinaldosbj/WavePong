@@ -7,6 +7,7 @@
 
 @testable import Pong
 import XCTest
+import SpriteKit
 
 final class GameManagerTests: XCTestCase {
     
@@ -216,31 +217,39 @@ final class GameManagerTests: XCTestCase {
     func testUpdateGameSceneChangeBallVelocity() {
         let frameSize = CGSize(width: 100, height: 100)
         let ballPosition = CGPoint(x: 50, y: 50)
-        let ballVelocity = CGVector(dx: 1.0, dy: 1.0)
+        let ballVelocity = CGVector(dx: 1, dy: 1)
         
-        gameManager.updateGameScene(
-            frameSize: frameSize,
-            ballPosition: ballPosition,
-            ballVelocity: ballVelocity) { newVelocity in
+        let ball = SKNode()
+        ball.position = ballPosition
+        ball.physicsBody?.velocity = ballVelocity
+        
+        let paddle = SKNode()
+        
+        
+        let updatableNodes = UpdatableSceneNodes(paddle: ball, ball: paddle, size: frameSize)
+        
+        
+        
+        gameManager.updateGameScene(nodes: updatableNodes) { newVelocity in
+            XCTAssertNotEqual(ballVelocity, newVelocity)
+        }
+        
 
-               XCTAssertNotEqual(newVelocity, ballVelocity)
-            }
         
     }
     
     func testUpdateGameSceneCallsUpdateAudioOrientation() {
         
-        let frameSize = CGSize(width: 100, height: 100)
-        let ballPosition = CGPoint(x: 50, y: 50)
-        let ballVelocity = CGVector(dx: 1.0, dy: 1.0)
         
-        gameManager.updateGameScene(
-            frameSize: frameSize,
-            ballPosition: ballPosition,
-            ballVelocity: ballVelocity) { newVelocity in
-
-               
-            }
+        let updatableNodes = UpdatableSceneNodes(paddle: SKNode(),
+                                                 ball: SKNode(),
+                                                 size: CGSize()
+        )
+        
+        
+        gameManager.updateGameScene(nodes: updatableNodes) { newVelocity in
+        
+        }
         
         XCTAssertTrue(self.soundManagerMock.updateAudioOrientationCalled)
     }

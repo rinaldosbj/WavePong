@@ -8,12 +8,11 @@
 import Foundation
 import SpriteKit
 import UIKit
-import SwiftUI
 
 
-class GameScene: SKScene, AudioNodesRelatable {
+class GameScene: SKScene {
     
-    var gameManager: GameManager
+    var gameManager: GameManagerProtocol
     var ball: BallSprite?
     var paddle: Paddle?
     var cloud: Cloud?
@@ -27,7 +26,7 @@ class GameScene: SKScene, AudioNodesRelatable {
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
-    public init(size: CGSize, gameManager: GameManager) {
+    public init(size: CGSize, gameManager: GameManagerProtocol) {
         
         self.gameManager = gameManager
         super.init(size: size)
@@ -62,7 +61,13 @@ class GameScene: SKScene, AudioNodesRelatable {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        gameManager.updateGameScene(nodes: self) { newVelocity in
+        
+        guard let safeBall = ball else { return }
+        guard let safePaddle = paddle else { return }
+        
+        let nodes = UpdatableSceneNodes(paddle: safePaddle, ball: safeBall, size: frame.size)
+        
+        gameManager.updateGameScene(nodes: nodes) { newVelocity in
             self.ball?.physicsBody?.velocity.dy = newVelocity.dy
             self.ball?.physicsBody?.velocity.dx = newVelocity.dx
         }
