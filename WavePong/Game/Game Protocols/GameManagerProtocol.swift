@@ -29,10 +29,7 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     func startGame()
     
-    func updateGameScene(frameSize: CGSize,
-                         ballPosition: CGPoint?,
-                         ballVelocity: CGVector?,
-                         ballVelocityCorrected: @escaping (CGVector) -> Void)
+    func updateGameScene(nodes: AudioNodesRelatable, ballVelocityCorrected: @escaping (CGVector) -> Void)
     
     func resumeGame()
     

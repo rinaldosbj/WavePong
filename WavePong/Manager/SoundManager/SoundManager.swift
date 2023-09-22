@@ -8,17 +8,9 @@
 import Foundation
 import AVFoundation
 
-
 /// Object responsable for managing sounds and music of APP
 public class SoundManager: SoundManagerProtocol {
-    func updateAudioOrientationForPaddle(ballPosition position: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint?) {
-        
-    }
-    
-    
-    
-//    var soundTheme: ThemeSound? = DefaultTheme()
-    
+
     /// shared instance for global acess to Object
     static var shared: SoundManagerProtocol = SoundManager()
     
@@ -40,58 +32,31 @@ public class SoundManager: SoundManagerProtocol {
     internal var audioPLayer: AVAudioPlayerable?
     
     /// Allows adjust method for audio pan
-    var panStyle: SoundMode {
-        player.soundMode
+    
+    var orientationStrategy: StereoProportionCalculable {
+        switch player.soundMode {
+        case .curved:
+            return CurvedOrientationStragtegy()
+
+        case .linear:
+            return LinearOrientationStrategy()
+            
+        case .paddleRelated:
+            return PaddleOrientationStrategy()
+            
+        case .highContrast:
+            return HighContrastOrientationStrategy()
+            
+        }
     }
     
     var soundKit: SoundKit {
         player.theme.soundKit
     }
     
-    func updateAudioOrientationForPaddle(ballPosition: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint) {
-        let volumeAdjusted = Float(
-            1 - (ballPosition.y / (size.height - 130))
-        )
-        
-        musicPlayer?.volume = volumeAdjusted
-        
-        switch panStyle {
-        case .curved:
-            let proportion = Float(ballPosition.x / size.width)
-            let curvedProportion = sigmoidCurve(proportion)
-            
-            musicPlayer?.pan = curvedProportion
-            
-        case .linear:
-            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
-            
-        case .highContrast:
-            // need some work
-            var proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
-            
-            if proportion >= 0.33 {
-                proportion = 1
-            }
-            else if proportion <= -0.33 {
-                proportion = -1
-            }
-            else {
-                proportion = 0
-            }
-            
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
-            
-        case .paddleRelated:
-            let proportion = Float((ballPosition.x - paddlePosition.x ) / (size.width))
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
-        }
-    }
-    /// Allows player to estimate ball position by diferance in stereo output
-    public func updateAudioOrientation(ballPosition: CGPoint, frameSize size: CGSize) {
+    func updateAudioOrientation(_ info: AudioOrientationInfo) {
+        let ballPosition = info.ballPosition
+        let size = info.size
         
         let volumeAdjusted = Float(
             1 - (ballPosition.y / (size.height - 130))
@@ -99,42 +64,14 @@ public class SoundManager: SoundManagerProtocol {
         
         musicPlayer?.volume = volumeAdjusted
         
-        switch panStyle {
-        case .curved:
-            let proportion = Float(ballPosition.x / size.width)
-            let curvedProportion = sigmoidCurve(proportion)
-            
-            musicPlayer?.pan = curvedProportion
-            
-        case .linear:
-            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
-            
-        case .highContrast:
-            // need some work
-            var proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
-            
-            if proportion >= 0.33 {
-                proportion = 1
-            }
-            else if proportion <= -0.33 {
-                proportion = -1
-            }
-            else {
-                proportion = 0
-            }
-            
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
-            
-        case .paddleRelated:
-            let proportion = Float((ballPosition.x - (size.width / 2) ) / (size.width/2))
-            musicPlayer?.pan = proportion
-            audioPLayer?.pan = proportion
+        orientationStrategy.processStereoProportion(nodesInfo: info) { newProportion in
+            self.musicPlayer?.pan = newProportion
+            self.audioPLayer?.pan = newProportion
         }
         
+       
     }
+
     
     private func sigmoidCurve(_ x: Float) -> Float {
         return Float(
@@ -156,9 +93,7 @@ public class SoundManager: SoundManagerProtocol {
         musicPlayer?.numberOfLoops = -1
         _ = musicPlayer?.prepareToPlay()
         _ = musicPlayer?.play()
-        
-        
-        
+    
         
     }
     

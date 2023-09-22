@@ -11,9 +11,9 @@ import UIKit
 import SwiftUI
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, AudioNodesRelatable {
     
-    var gameManager: GameManagerProtocol
+    var gameManager: GameManager
     var ball: BallSprite?
     var paddle: Paddle?
     var cloud: Cloud?
@@ -27,10 +27,11 @@ class GameScene: SKScene {
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
-    public init(size: CGSize, gameManager: GameManagerProtocol) {
+    public init(size: CGSize, gameManager: GameManager) {
         
         self.gameManager = gameManager
         super.init(size: size)
+        
         
     }
     
@@ -61,13 +62,11 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        gameManager.updateGameScene(frameSize: self.size,
-                                    ballPosition: ball?.position,
-                                    ballVelocity: ball?.physicsBody?.velocity) { newVelocity in
+        gameManager.updateGameScene(nodes: self) { newVelocity in
             self.ball?.physicsBody?.velocity.dy = newVelocity.dy
             self.ball?.physicsBody?.velocity.dx = newVelocity.dx
-            
         }
+
     }
     
     func animateClouds() {
@@ -76,10 +75,11 @@ class GameScene: SKScene {
     }
     
     private func cloudsVerticalAnimation() {
+        // TODO: Subitrair 100 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // MARK: ISSO TA CAUSANDO LAG NA GAMESCENE
-        cloud?.run(SKAction.moveTo(y: self.frame.midY + 100, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud2?.run(SKAction.moveTo(y: self.frame.midY + 115, duration: gameManager.gameManagerSetting.cloudVelocity))
-        cloud3?.run(SKAction.moveTo(y: self.frame.midY + 130, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud?.run(SKAction.moveTo(y: self.frame.midY + 200, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud2?.run(SKAction.moveTo(y: self.frame.midY + 215, duration: gameManager.gameManagerSetting.cloudVelocity))
+        cloud3?.run(SKAction.moveTo(y: self.frame.midY + 230, duration: gameManager.gameManagerSetting.cloudVelocity))
         
     }
     

@@ -104,6 +104,9 @@
 		D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928428FEF6CF00EEF09B /* Preview Assets.xcassets */; };
 		D3C24F1A2A954A430083F842 /* countDownEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F182A954A430083F842 /* countDownEnd.wav */; };
 		D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F192A954A430083F842 /* countDownBip.wav */; };
+		D3D2DD712ABE216A00732116 /* AudioOrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD702ABE216A00732116 /* AudioOrientationInfo.swift */; };
+		D3D2DD732ABE219700732116 /* AudioOrientationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD722ABE219700732116 /* AudioOrientationStrategy.swift */; };
+		D3D2DD752ABE220300732116 /* AudioRelatableNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */; };
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
 		D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */; };
 /* End PBXBuildFile section */
@@ -218,6 +221,9 @@
 		D3C24F172A953BA40083F842 /* WavePong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WavePong.entitlements; sourceTree = "<group>"; };
 		D3C24F182A954A430083F842 /* countDownEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownEnd.wav; sourceTree = "<group>"; };
 		D3C24F192A954A430083F842 /* countDownBip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownBip.wav; sourceTree = "<group>"; };
+		D3D2DD702ABE216A00732116 /* AudioOrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOrientationInfo.swift; sourceTree = "<group>"; };
+		D3D2DD722ABE219700732116 /* AudioOrientationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOrientationStrategy.swift; sourceTree = "<group>"; };
+		D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRelatableNodes.swift; sourceTree = "<group>"; };
 		D3E10B6B2A86BE5800E30649 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				0CF648562A7846AD00282A52 /* SoundManager.swift */,
+				D3D2DD722ABE219700732116 /* AudioOrientationStrategy.swift */,
+				D3D2DD702ABE216A00732116 /* AudioOrientationInfo.swift */,
 				0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */,
 				0C376C5D2AB4E0DD00BE393E /* AVAudioplayerFactory.swift */,
 			);
@@ -337,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
+				D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
 				D334053B2A7846DA006CA42B /* GameScene+Setup.swift */,
 			);
@@ -707,6 +716,7 @@
 				D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
+				D3D2DD752ABE220300732116 /* AudioRelatableNodes.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
 				0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */,
 				0C6363F02A8D0A28002DAB8C /* GameSceneViewModel.swift in Sources */,
@@ -726,12 +736,14 @@
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */,
 				D334053C2A7846DA006CA42B /* GameScene+Setup.swift in Sources */,
+				D3D2DD712ABE216A00732116 /* AudioOrientationInfo.swift in Sources */,
 				D306E2282AA11C96004F0D9C /* NavigationHelper.swift in Sources */,
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				0DB4EFE72A954C8E002E441A /* GameCenterView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
 				D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */,
+				D3D2DD732ABE219700732116 /* AudioOrientationStrategy.swift in Sources */,
 				D35EF5452A8AA7C900BD946E /* OnboardingView.swift in Sources */,
 				D334053E2A784842006CA42B /* Paddle.swift in Sources */,
 				0DF039112A93E11E0005551B /* NotificationType.swift in Sources */,

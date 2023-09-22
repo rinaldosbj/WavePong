@@ -148,6 +148,10 @@ class UserDefaultsMock: UserDefaultable {
 }
 
 class SoundManagerMock: SoundManagerProtocol {
+    func updateAudioOrientationForPaddle(ballPosition position: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint?) {
+        
+    }
+    
     
     var updateAudioOrientationCalled: Bool = false
     var isPlayingGameTheme: Bool = false
