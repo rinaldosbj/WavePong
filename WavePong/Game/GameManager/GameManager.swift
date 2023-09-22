@@ -25,11 +25,11 @@ class GameManager: GameManagerProtocol {
     /// User Current Score
     public var score: Int
     
-    public var gameDificulty: GameDifficulty {
+    public var gameDifficulty: GameDifficulty {
         gameManagerSetting.difficulty
     }
     
-    var gameManagerSetting: gameManagerSettings
+    var gameManagerSetting: GameManagerSettings
     
     /// Instance for calling sounds
     internal var soundManager: SoundManagerProtocol
@@ -73,7 +73,7 @@ class GameManager: GameManagerProtocol {
          analyticsManager: AnalyticsManager = AnalyticsManager()
     ) {
 
-        self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
+        self.gameManagerSetting = GameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
         self.soundManager = soundManager
@@ -110,11 +110,12 @@ class GameManager: GameManagerProtocol {
     /// Informs Game Scene to start game and implements necesseray logic
     public func startGame() {
         analyticsManager.logGameSession(panStyle: player.soundMode,
-                                        dificulty: self.gameDificulty)
+                                        dificulty: self.gameDifficulty)
         state = .playing
         sceneDelegate?.startGame()
         soundManager.playGameTheme()
         score = 0
+        gameManagerSetting = GameManagerSettings(difficulty: gameDifficulty)
     }
     
     func updateGameScene(nodes: AudioNodesRelatable, ballVelocityCorrected: @escaping (CGVector) -> Void) {
@@ -170,8 +171,9 @@ class GameManager: GameManagerProtocol {
     }
     
     public func resetGame() {
+        print(sceneDelegate)
         analyticsManager.logGameSession(panStyle: player.soundMode,
-                                        dificulty: self.gameDificulty)
+                                        dificulty: self.gameDifficulty)
         restoreGameManager()
         sceneDelegate?.resetGame()
     }
@@ -213,16 +215,24 @@ extension GameManager: GameColisionDelegate {
     func wallColision() {
         let randomIncrementHorizontalSpeed: CGFloat = CGFloat.random(in: 1...60)
         let verticalSpeed: CGVector = gameManagerSetting.ballSpeed
+        let maxBallSpeed = gameManagerSetting.maxBallSpeed
+        var velocity = CGVector(dx: 0.0, dy: 0.0)
         
-        let velocity = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
-                                dy: verticalSpeed.dy)
+        if verticalSpeed.dx + randomIncrementHorizontalSpeed < maxBallSpeed {
+            velocity = CGVector(dx: verticalSpeed.dx + randomIncrementHorizontalSpeed,
+                                    dy: verticalSpeed.dy)
+        }
+        else {
+            velocity = CGVector(dx: verticalSpeed.dx - randomIncrementHorizontalSpeed,
+                                    dy: verticalSpeed.dy)
+        }
 
         gameManagerSetting.ballSpeed = velocity
     }
     
     
     private var isNewRecord: Bool {
-        score > player.userTopScore(forDificulty: self.gameDificulty)
+        score > player.userTopScore(forDificulty: self.gameDifficulty)
     }
     
     
@@ -260,13 +270,13 @@ extension GameManager: GameColisionDelegate {
             notifyUserOfEvent(.newTopScore)
             gameCenterManager.submitScore(with: score)
             player.updateTopScore(NewTopScore: score,
-                                  forDificulty: self.gameDificulty)
+                                  forDificulty: self.gameDifficulty)
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: stringsConstants.novo_record)
         } else {
             notifyUserOfEvent(.gameOver)
             var topScore: Int {
-                Player.shared.userTopScore(forDificulty: self.gameDificulty)
+                Player.shared.userTopScore(forDificulty: self.gameDifficulty)
             }
             gameManagerDelegate?.gameOver(scoreLabel: "\(score)",
                                           recordLabel: "\(stringsConstants.recorde) \(topScore)")
@@ -274,7 +284,7 @@ extension GameManager: GameColisionDelegate {
         
         sceneDelegate?.gameOver()
         analyticsManager.logGameScore(score: score,
-                                      dificulty: self.gameDificulty)
+                                      dificulty: self.gameDifficulty)
         
     }
     

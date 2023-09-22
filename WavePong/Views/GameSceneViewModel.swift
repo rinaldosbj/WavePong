@@ -26,7 +26,6 @@ class GameSceneViewModel: ObservableObject {
     init(gameManager: GameManager) {
         self.gameManager = gameManager
         self.gameManager.gameManagerDelegate = self
-        
     }
     
     /// Once that user double tapped the game Screen, it should pause game and music
