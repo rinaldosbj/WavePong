@@ -16,7 +16,7 @@ public enum FXSounds: String, CaseIterable {
 }
 
 enum SoundMode: Int, CaseIterable {
-    case paddleRelated, curved, highContrast, linear
+    case paddleRelatedLinear, paddleRelatedCurved, paddleRelatedHighContrast, curved, highContrast, linear
 }
 
 //public enum SoundTrack: String, CaseIterable

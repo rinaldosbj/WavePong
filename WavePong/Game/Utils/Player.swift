@@ -11,7 +11,15 @@ import Foundation
 
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
-
+    
+    var isSoundRelatedtoPaddle: Bool {
+        defaults.bool(forKey: Constants.isSoundRelatedtoPaddle)
+    }
+    
+    func togleIsSoundRelatedtoPaddle() {
+        defaults.set(!isSoundRelatedtoPaddle, forKey: Constants.isSoundRelatedtoPaddle)
+        
+    }
 
     static var shared: Player = Player()
     
@@ -43,6 +51,7 @@ class Player: PlayerProtocol {
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
         static var chosenGameTheme = "chosenGameTheme"
+        static var isSoundRelatedtoPaddle = "isSoundRelatedtoPaddle"
     }
 
     
@@ -111,10 +120,14 @@ class Player: PlayerProtocol {
         
         switch intResult {
         case 0:
-            return .paddleRelated
+            return .paddleRelatedLinear
         case 1:
-            return .curved
+            return .paddleRelatedCurved
         case 2:
+            return .paddleRelatedHighContrast
+        case 3:
+            return .curved
+        case 4:
             return .highContrast
         default:
             return .linear
@@ -155,7 +168,11 @@ protocol PlayerPreferencesPersistence {
     
     var theme: Theme { get }
     
+    var isSoundRelatedtoPaddle: Bool { get }
+    
     func setTheme(for theme: ThemeStyle)
     
     func changeSoundMode(_ mode: SoundMode)
+    
+    func togleIsSoundRelatedtoPaddle()
 }

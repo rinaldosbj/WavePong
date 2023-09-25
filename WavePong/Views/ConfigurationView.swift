@@ -11,6 +11,7 @@ struct ConfigurationView: View {
     
     @Environment(\.presentationMode) var presentation
     @State var selectedMode: SoundMode = .linear
+    @State var toglePaddle = false
     @State var togleNotifications = true
     var player: PlayerProtocol = Player()
     
@@ -37,8 +38,34 @@ struct ConfigurationView: View {
                     soundModeConfigView
                     
                     Spacer().frame(height: 24)
+
+                    HStack {
+                        ZStack {
+                            Color(ColorConstants.shared.WHITE_500)
+                                .frame(width: 24, height: 24, alignment: .center)
+                                .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                            
+                            if toglePaddle {
+                                Text("X")
+                                    .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                                    .font(Font.wavePongPrimary(.body))
+                                    .frame(width: 24, height: 24, alignment: .center)
+                            }
+                        }
+                        
+                        Text("isRelatedToPaddle")
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                        
+                        
+                        Spacer()
+                    }.onTapGesture {
+                        player.togleIsSoundRelatedtoPaddle()
+                        toglePaddle.toggle()
+                    }
                     
                     backToOnboardingButton
+                    
                     
                     // TODO: Find somewhere to put these
                     Spacer().frame(height: 1000)
@@ -73,6 +100,7 @@ extension ConfigurationView {
     // MARK: RelationShip Functions
     func checksCurrentSoundMode(){
         selectedMode = player.soundMode
+        toglePaddle = player.isSoundRelatedtoPaddle
     }
 }
 

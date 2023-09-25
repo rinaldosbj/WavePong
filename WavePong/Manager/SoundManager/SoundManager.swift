@@ -41,12 +41,15 @@ public class SoundManager: SoundManagerProtocol {
         case .linear:
             return LinearOrientationStrategy()
             
-        case .paddleRelated:
-            return PaddleOrientationStrategy()
+        case .paddleRelatedLinear:
+            return PaddleOrientationLinearStrategy()
             
         case .highContrast:
             return HighContrastOrientationStrategy()
-            
+        case .paddleRelatedCurved:
+            return PaddleOrientationExponencialStrategy()
+        case .paddleRelatedHighContrast:
+            return PaddleOrientationHighContrastStrategy()
         }
     }
     
@@ -58,11 +61,11 @@ public class SoundManager: SoundManagerProtocol {
         let ballPosition = info.ballPosition
         let size = info.size
         
-        let volumeAdjusted = Float(
-            1 - (ballPosition.y / (size.height - 130))
-        )
-        
-        musicPlayer?.volume = volumeAdjusted
+//        let volumeAdjusted = Float(
+//            1 - (ballPosition.y / (size.height - 130))
+//        )
+//        
+//        musicPlayer?.volume = volumeAdjusted
         
         orientationStrategy.processStereoProportion(nodesInfo: info) { newProportion in
             self.musicPlayer?.pan = newProportion
