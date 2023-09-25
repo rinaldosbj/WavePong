@@ -20,11 +20,11 @@ class GameSceneViewModel: ObservableObject {
     @Published var userScore: String = ""
     @Published var recordLabel: String = ""
     
-    /// Instance for accessing the logic layer of the gameScene
+    
     var gameManager: GameManager
 
     init(gameManager: GameManager) {
-        self.gameManager = gameManager
+        self.gameManager =  gameManager
         self.gameManager.gameManagerDelegate = self
     }
     

@@ -26,7 +26,6 @@ class PlayerMock: PlayerProtocol {
     var userTopScoreMedium = 0
     var userTopScoreHard = 0
     
-    
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
         case .easy:

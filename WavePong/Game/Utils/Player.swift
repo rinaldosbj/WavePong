@@ -39,7 +39,7 @@ class Player: PlayerProtocol {
     private struct Constants {
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
-        static var userTopScpreHard = "userTopScorehard"
+        static var userTopScoreHard = "userTopScorehard"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
         static var chosenGameTheme = "chosenGameTheme"
@@ -85,7 +85,7 @@ class Player: PlayerProtocol {
         case .medium:
             return defaults.integer(forKey: Constants.userTopScoreMedium)
         case .hard:
-            return defaults.integer(forKey: Constants.userTopScpreHard)
+            return defaults.integer(forKey: Constants.userTopScoreHard)
         }
     }
     
@@ -99,7 +99,7 @@ class Player: PlayerProtocol {
             case .medium:
                 defaults.set(score, forKey: Constants.userTopScoreMedium)
             case .hard:
-                defaults.set(score, forKey: Constants.userTopScpreHard)
+                defaults.set(score, forKey: Constants.userTopScoreHard)
                 
             }
   
@@ -127,7 +127,6 @@ class Player: PlayerProtocol {
         defaults.set(mode.rawValue, forKey: Constants.soundMod)
         
     }
-    
 }
 
 /// Defines a standard interface for Player Class
@@ -159,5 +158,4 @@ protocol PlayerPreferencesPersistence {
     func setTheme(for theme: ThemeStyle)
     
     func changeSoundMode(_ mode: SoundMode)
-    
 }

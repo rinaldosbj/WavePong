@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GameDifficulty: String {
+enum GameDifficulty: String, CaseIterable {
     case easy, medium, hard
 }
 

@@ -35,9 +35,11 @@ class GameManager: GameManagerProtocol {
     internal var soundManager: SoundManagerProtocol
     /// Instance for calling vibrations
     internal var hapticsManager: HapticsManagerProtocol
-
+    
     /// Instance for calling game center
     var gameCenterManager: GameCenterManager = GameCenterManager.shared
+    
+    var chipManager: ChipManager = ChipManager.shared
     
     /// Instance of object responsable for dealing with game colision logic
     internal var physicsDetection: PhysicsDetection
@@ -63,17 +65,18 @@ class GameManager: GameManagerProtocol {
         }
     }
     
-    init(score: Int = 0,
-         state: GameManagerState = .InContDown,
-         soundManager: SoundManagerProtocol = SoundManager.shared,
-         hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
-         physicsDetection: PhysicsDetection = PhysicsDetection(),
-         player: PlayerProtocol = Player(),
-         gameDifficulty: GameDifficulty,
-         analyticsManager: AnalyticsManager = AnalyticsManager()
+    init(
+        gameDifficulty: GameDifficulty,
+        score: Int = 0,
+        state: GameManagerState = .InContDown,
+        soundManager: SoundManagerProtocol = SoundManager.shared,
+        hapticsManager: HapticsManagerProtocol = HapticsManager.shared,
+        physicsDetection: PhysicsDetection = PhysicsDetection(),
+        player: PlayerProtocol = Player(),
+        analyticsManager: AnalyticsManager = AnalyticsManager()
     ) {
-
-        self.gameManagerSetting = GameManagerSettings(difficulty: gameDifficulty)
+        
+        self.gameManagerSetting = gameManagerSettings(difficulty: gameDifficulty)
         self.score = score
         self.state = state
         self.soundManager = soundManager
@@ -130,7 +133,7 @@ class GameManager: GameManagerProtocol {
         soundManager.updateAudioOrientation(audioInfo)
         ballVelocityCorrected(correctBallSpeed(for: velocity))
     }
-
+    
     
     private func incrementVecticalBallSpeed() {
         let ballSpeed = gameManagerSetting.ballSpeed.dy
@@ -148,7 +151,7 @@ class GameManager: GameManagerProtocol {
         
         if velocity.dy < 0 && velocity.dy > -ballSpeed.dy {
             correctedVelocity.dy = -ballSpeed.dy
-        
+            
         }
         if velocity.dy > 0 && velocity.dy < ballSpeed.dy {
             correctedVelocity.dy = ballSpeed.dy
@@ -282,6 +285,12 @@ extension GameManager: GameColisionDelegate {
                                           recordLabel: "\(stringsConstants.recorde) \(topScore)")
         }
         
+        if chipManager.isFirstGameToday() {
+            chipManager.collectFirstGameChips()
+            print("É seu primeiro jogo do dia!")
+        }
+        
+        chipManager.calculateChipsForScore(score)
         sceneDelegate?.gameOver()
         analyticsManager.logGameScore(score: score,
                                       dificulty: self.gameDifficulty)
