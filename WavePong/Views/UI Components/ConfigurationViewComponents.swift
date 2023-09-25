@@ -32,37 +32,48 @@ extension ConfigurationView {
                 Spacer()
             }
             
-            HStack {
-                Toggle("", isOn: $togleIsLinear)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .linear))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    .accessibilityLabel(stringsConstants.linear_hint)
-                    .onChange(of: togleIsLinear) { _ in
-                        updateToggle(from: .linear)
+            ForEach(SoundMode.allCases, id: \.self) { type in
+                HStack {
+                    ZStack {
+                        Color(ColorConstants.shared.WHITE_500)
+                            .frame(width: 24, height: 24, alignment: .center)
+                            .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                        
+                        if selectedMode == type {
+                            Text("X")
+                                .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                                .font(Font.wavePongPrimary(.body))
+                                .frame(width: 24, height: 24, alignment: .center)
+                        }
                     }
-                Spacer()
-            }
-            HStack {
-                Toggle("",isOn: $togleIsCurved)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .curved))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    .accessibilityLabel(stringsConstants.exponencial_hint)
-                    .onChange(of: togleIsCurved) { _ in
-                        updateToggle(from: .curved)
+                    
+                    switch type {
+                    case .linear:
+                        Text(stringsConstants.linear)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    case .curved:
+                        Text(stringsConstants.exponencial)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    case .highContrast:
+                        Text(stringsConstants.alto)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    case .paddleRelated:
+                        Text("PaddleRelated")
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     }
-                Spacer()
+                    
+                    Spacer()
+                }
+                .onTapGesture {
+                    player.changeSoundMode(type)
+                    selectedMode = player.soundMode
+                }
             }
-            
-            HStack {
-                Toggle("",isOn: $togleIsHighContrast)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .highContrast))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    .accessibilityLabel(stringsConstants.alto_hint)
-                    .onChange(of: togleIsHighContrast) { _ in
-                        updateToggle(from: .highContrast)
-                    }
-                Spacer()
-            }
+
         }
     }
     

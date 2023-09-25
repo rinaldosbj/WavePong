@@ -9,6 +9,8 @@ import SpriteKit
 import Firebase
 
 
+
+
 /// Object responsable for dealing with game logic
 class GameManager: GameManagerProtocol {
     
@@ -118,14 +120,18 @@ class GameManager: GameManagerProtocol {
         score = 0
     }
     
-    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
-        guard let position = ballPosition else { return }
-        guard let velocity = ballVelocity else { return }
+    func updateGameScene(nodes: UpdatableSceneNodes, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        let paddlePosition = nodes.paddle.position
+        let ballPosition = nodes.ball.position
+        let ballSpeed = nodes.ball.physicsBody?.velocity ?? CGVector()
         
+        let audioInfo = AudioOrientationInfo(paddlePosition: paddlePosition,
+                                             ballPosition: ballPosition,
+                                             size: nodes.size)
         
-        updateAudioOrientation(ballPosition: position, frameSize: frameSize)
         incrementVecticalBallSpeed()
-        ballVelocityCorrected(correctBallSpeed(for: velocity))
+        soundManager.updateAudioOrientation(audioInfo)
+        ballVelocityCorrected(correctBallSpeed(for: ballSpeed))
     }
     
     
@@ -194,10 +200,6 @@ class GameManager: GameManagerProtocol {
             gameManagerDelegate?.pauseNodePressed()
         }
         
-    }
-    
-    public func updateAudioOrientation(ballPosition: CGPoint, frameSize: CGSize) {
-        soundManager.updateAudioOrientation(ballPosition: ballPosition, frameSize: frameSize)
     }
     
     public func countDownStep() {

@@ -13,7 +13,7 @@ protocol SoundManagerProtocol {
     
     var player: PlayerProtocol { get }
     
-    func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize)
+    func updateAudioOrientation(_ info: AudioOrientationInfo)
     
     func playGameTheme()
     
