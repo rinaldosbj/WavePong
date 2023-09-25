@@ -175,7 +175,6 @@ class GameManager: GameManagerProtocol {
     }
     
     public func resetGame() {
-        print(sceneDelegate)
         analyticsManager.logGameSession(panStyle: player.soundMode,
                                         dificulty: self.gameDifficulty)
         restoreGameManager()
