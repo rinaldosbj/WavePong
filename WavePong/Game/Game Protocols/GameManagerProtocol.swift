@@ -9,11 +9,11 @@ import Foundation
 
 protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
-    var gameDificulty: GameDifficulty { get }
+    var gameDifficulty: GameDifficulty { get }
     
     var score: Int { get set }
     
-    var gameManagerSetting: gameManagerSettings { get }
+    var gameManagerSetting: GameManagerSettings { get }
         
     var state: GameManager.GameManagerState { get set }
     

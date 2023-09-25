@@ -11,10 +11,9 @@ enum GameDifficulty: String, CaseIterable {
     case easy, medium, hard
 }
 
-struct gameManagerSettings {
+struct GameManagerSettings {
     var difficulty: GameDifficulty
     
-//    var ballSpeed: CGFloat
     var ballSpeed: CGVector
     var maxBallSpeed: CGFloat
     var cloudVelocity: Double

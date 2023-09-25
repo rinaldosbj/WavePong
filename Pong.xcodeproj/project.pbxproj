@@ -746,6 +746,7 @@
 				D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
+				D3D2DD752ABE220300732116 /* AudioRelatableNodes.swift in Sources */,
 				0C6253152AB8DC090051D5D5 /* GameManagerBuilder.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
 				0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */,

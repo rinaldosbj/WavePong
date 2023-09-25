@@ -292,11 +292,11 @@ class GameManagerMock: GameManagerProtocol {
     
     var hapticsManager: HapticsManagerProtocol = HapticsManagerMock()
     
-    var gameDificulty: GameDifficulty = .easy
+    var gameDifficulty: GameDifficulty = .easy
     
     var score: Int = 0
     
-    var gameManagerSetting: gameManagerSettings = gameManagerSettings(difficulty: .easy)
+    var gameManagerSetting: GameManagerSettings = GameManagerSettings(difficulty: .easy)
     
     var state: GameManager.GameManagerState = .InContDown
     

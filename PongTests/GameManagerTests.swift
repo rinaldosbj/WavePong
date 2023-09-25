@@ -117,7 +117,7 @@ final class GameManagerTests: XCTestCase {
         let userTopScore = 1
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDificulty)
+        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDifficulty)
         
         
         let newScore = 60
@@ -128,14 +128,14 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(newScore, playerMock.userTopScore(forDificulty: gameManager.gameDificulty))
+        XCTAssertEqual(newScore, playerMock.userTopScore(forDificulty: gameManager.gameDifficulty))
     }
     
     func testDidLoseGameOver() {
         let userTopScore = 100
         soundManagerMock.lastFXSoundPlayed = nil
         hapticsManagerMock.didVibrate = false
-        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDificulty)
+        playerMock.updateTopScore(NewTopScore: userTopScore, forDificulty: gameManager.gameDifficulty)
         
         
         
@@ -147,7 +147,7 @@ final class GameManagerTests: XCTestCase {
         
         XCTAssertTrue(hapticsManagerMock.didVibrate)
         XCTAssertEqual(expectedFXSound, soundManagerMock.lastFXSoundPlayed)
-        XCTAssertEqual(userTopScore, playerMock.userTopScore(forDificulty: gameManager.gameDificulty))
+        XCTAssertEqual(userTopScore, playerMock.userTopScore(forDificulty: gameManager.gameDifficulty))
     }
     
     

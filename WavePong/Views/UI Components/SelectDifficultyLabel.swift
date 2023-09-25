@@ -40,6 +40,6 @@ struct SelectDifficultyLabel: View {
 }
 
 
-#Preview {
-    SelectDifficultyLabel(difficulty: .easy)
-}
+//#Preview {
+//    SelectDifficultyLabel(difficulty: .easy)
+//}
