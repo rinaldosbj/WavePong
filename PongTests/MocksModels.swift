@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class PlayerMock: PlayerProtocol {
-   
-    
 
     var theme: Theme = Theme()
     
@@ -147,10 +145,7 @@ class UserDefaultsMock: UserDefaultable {
 }
 
 class SoundManagerMock: SoundManagerProtocol {
-    func updateAudioOrientationForPaddle(ballPosition position: CGPoint, frameSize size: CGSize, paddlePosition: CGPoint?) {
-        
-    }
-    
+
     
     var updateAudioOrientationCalled: Bool = false
     var isPlayingGameTheme: Bool = false
@@ -168,9 +163,6 @@ class SoundManagerMock: SoundManagerProtocol {
         self.player = player
     }
     
-    func updateAudioOrientation(ballPosition position: CGPoint, frameSize size: CGSize) {
-        updateAudioOrientationCalled = true
-    }
     
     func playGameTheme() {
         isPlayingGameTheme = true
@@ -199,6 +191,10 @@ class SoundManagerMock: SoundManagerProtocol {
         didPlayedFXSound = true
         lastFXSoundPlayed = name
         
+    }
+    
+    func updateAudioOrientation(_ info: Pong.AudioOrientationInfo) {
+        updateAudioOrientationCalled = true
     }
     
     
@@ -287,13 +283,8 @@ class GameManagerDelegateMock: GameManagerDelegate {
 
 
 class GameManagerMock: GameManagerProtocol {
-    
-    func updateGameScene(frameSize: CGSize, ballPosition: CGPoint?, ballVelocity: CGVector?, ballVelocityCorrected: @escaping (CGVector) -> Void) {
-        
-    }
-    
-    
-    func getCurrentBall() -> String { return "ball_yellow" }
+
+   
     
     var didPauseNodePressed: Bool = false
     
@@ -316,6 +307,12 @@ class GameManagerMock: GameManagerProtocol {
     var gameManagerDelegate: GameManagerDelegate?
     
     var player: PlayerProtocol = PlayerMock()
+    
+    func getCurrentBall() -> String { return "ball_yellow" }
+    
+    func updateGameScene(nodes: Pong.UpdatableSceneNodes, ballVelocityCorrected: @escaping (CGVector) -> Void) {
+        
+    }
     
     func startGame() {
         

@@ -28,6 +28,7 @@
 		0C6363F22A8D266A002DAB8C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363F12A8D266A002DAB8C /* IconButton.swift */; };
 		0C6363F42A8D268F002DAB8C /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363F32A8D268F002DAB8C /* LabelButton.swift */; };
 		0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */; };
+		0C8D17452ABE2CBC00F82985 /* UpdatableSceneNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D17442ABE2CBC00F82985 /* UpdatableSceneNodes.swift */; };
 		0C956B572A953D2400277D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C956B562A953D2400277D99 /* GoogleService-Info.plist */; };
 		0C956B5A2A95420800277D99 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B592A95420800277D99 /* FirebaseAnalyticsSwift */; };
 		0C956B5C2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0C956B5B2A95420800277D99 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -110,7 +111,6 @@
 		D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3C24F192A954A430083F842 /* countDownBip.wav */; };
 		D3D2DD712ABE216A00732116 /* AudioOrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD702ABE216A00732116 /* AudioOrientationInfo.swift */; };
 		D3D2DD732ABE219700732116 /* AudioOrientationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD722ABE219700732116 /* AudioOrientationStrategy.swift */; };
-		D3D2DD752ABE220300732116 /* AudioRelatableNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */; };
 		D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E10B6B2A86BE5800E30649 /* Border.swift */; };
 		D3FF91FB2AB5D39600B12C64 /* AdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */; };
 /* End PBXBuildFile section */
@@ -147,6 +147,7 @@
 		0C6363F12A8D266A002DAB8C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0C6363F32A8D268F002DAB8C /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		0C6B93AA2A7EE46200023DC8 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
+		0C8D17442ABE2CBC00F82985 /* UpdatableSceneNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableSceneNodes.swift; sourceTree = "<group>"; };
 		0C956B562A953D2400277D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
 		0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulteble.swift; sourceTree = "<group>"; };
@@ -231,7 +232,6 @@
 		D3C24F192A954A430083F842 /* countDownBip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countDownBip.wav; sourceTree = "<group>"; };
 		D3D2DD702ABE216A00732116 /* AudioOrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOrientationInfo.swift; sourceTree = "<group>"; };
 		D3D2DD722ABE219700732116 /* AudioOrientationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOrientationStrategy.swift; sourceTree = "<group>"; };
-		D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRelatableNodes.swift; sourceTree = "<group>"; };
 		D3E10B6B2A86BE5800E30649 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 		D3FF91FA2AB5D39600B12C64 /* AdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -363,7 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
-				D3D2DD742ABE220300732116 /* AudioRelatableNodes.swift */,
+				0C8D17442ABE2CBC00F82985 /* UpdatableSceneNodes.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
 				D334053B2A7846DA006CA42B /* GameScene+Setup.swift */,
 			);
@@ -625,7 +625,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					0CAA59BD2A9E725300BEA7EA = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -733,6 +733,7 @@
 				D35EF5482A8AA83600BD946E /* FoneView.swift in Sources */,
 				0C62531A2ABA1BA60051D5D5 /* SelectDifficultyLabel.swift in Sources */,
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,
+				0C8D17452ABE2CBC00F82985 /* UpdatableSceneNodes.swift in Sources */,
 				D30104482AB8DBEE00A72F9D /* OnboardingManager.swift in Sources */,
 				D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */,
 				D30F4E872AA8E4A300554275 /* CustomizeblesEnum.swift in Sources */,
