@@ -8,8 +8,35 @@
 import SwiftUI
 
 extension ConfigurationView {
-    
     // MARK: View components
+    
+    var relatedToPaddleTogle: some View {
+        HStack {
+            ZStack {
+                Color(ColorConstants.shared.WHITE_500)
+                    .frame(width: 24, height: 24, alignment: .center)
+                    .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                
+                if toglePaddle {
+                    Text("X")
+                        .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                        .font(Font.wavePongPrimary(.body))
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+            
+            Text("Som em relação a raquete")
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+            
+            
+            Spacer()
+        }.onTapGesture {
+            player.togleIsSoundRelatedtoPaddle()
+            toglePaddle.toggle()
+        }
+    }
+    
     var backToOnboardingButton: some View {
         NavigationLink {
             OnboardingView(for: .main)
