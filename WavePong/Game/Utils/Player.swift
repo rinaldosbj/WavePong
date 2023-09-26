@@ -120,15 +120,11 @@ class Player: PlayerProtocol {
         
         switch intResult {
         case 0:
-            return .paddleRelatedLinear
+            return .linear
         case 1:
-            return .paddleRelatedCurved
-        case 2:
-            return .paddleRelatedHighContrast
-        case 3:
-            return .curved
-        case 4:
             return .highContrast
+        case 2:
+            return .curved
         default:
             return .linear
         }

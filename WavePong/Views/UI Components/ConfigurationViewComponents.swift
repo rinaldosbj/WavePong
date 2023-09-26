@@ -60,18 +60,6 @@ extension ConfigurationView {
                         Text(stringsConstants.alto)
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    case .paddleRelatedLinear:
-                        Text("PaddleRelatedLinear")
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    case .paddleRelatedCurved:
-                        Text("PaddleRelatedCurved")
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    case .paddleRelatedHighContrast:
-                        Text("PaddleRelatedHighContrast")
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     }
                     
                     Spacer()

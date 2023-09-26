@@ -36,20 +36,23 @@ public class SoundManager: SoundManagerProtocol {
     var orientationStrategy: StereoProportionCalculable {
         switch player.soundMode {
         case .curved:
-            return CurvedOrientationStragtegy()
-
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationExponencialStrategy()
+            } else {
+                return CurvedOrientationStragtegy()
+            }
         case .linear:
-            return LinearOrientationStrategy()
-            
-        case .paddleRelatedLinear:
-            return PaddleOrientationLinearStrategy()
-            
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationLinearStrategy()
+            } else {
+                return LinearOrientationStrategy()
+            }
         case .highContrast:
-            return HighContrastOrientationStrategy()
-        case .paddleRelatedCurved:
-            return PaddleOrientationExponencialStrategy()
-        case .paddleRelatedHighContrast:
-            return PaddleOrientationHighContrastStrategy()
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationHighContrastStrategy()
+            } else {
+                return HighContrastOrientationStrategy()
+            }
         }
     }
     
@@ -61,11 +64,13 @@ public class SoundManager: SoundManagerProtocol {
         let ballPosition = info.ballPosition
         let size = info.size
         
-//        let volumeAdjusted = Float(
-//            1 - (ballPosition.y / (size.height - 130))
-//        )
-//        
-//        musicPlayer?.volume = volumeAdjusted
+        let volumeAdjusted = Float(
+            1 - (ballPosition.y / (size.height - 130))
+        )
+        
+        musicPlayer?.volume = volumeAdjusted
+        
+//        print(player.soundMode, player.isSoundRelatedtoPaddle)
         
         orientationStrategy.processStereoProportion(nodesInfo: info) { newProportion in
             self.musicPlayer?.pan = newProportion
