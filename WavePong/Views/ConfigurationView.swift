@@ -26,20 +26,22 @@ struct ConfigurationView: View {
                 .accessibilityHidden(true)
             
             ScrollView {
-                VStack(spacing: 32) {
+                VStack(spacing: 20) {
                     Image(stringsConstants.ajustes)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 268 ,height: 53)
                         .accessibilityHidden(true)
-                        .padding(.vertical, 58)
-                        .padding(.top, 76)
+                        .padding(.vertical, 40)
+                        .padding(.top, 40)
                     
                     soundModeConfigView
                     
                     Spacer().frame(height: 24)
 
                     relatedToPaddleTogle
+                        .padding(.bottom, 34)
+                    
                     
                     backToOnboardingButton
                     

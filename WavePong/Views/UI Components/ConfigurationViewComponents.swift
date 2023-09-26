@@ -39,7 +39,7 @@ extension ConfigurationView {
     
     var backToOnboardingButton: some View {
         
-        VStack {
+        VStack(spacing: 20) {
             NavigationLink {
                 OnboardingSceneView()
                     .navigationBarBackButtonHidden()
