@@ -38,15 +38,32 @@ extension ConfigurationView {
     }
     
     var backToOnboardingButton: some View {
-        NavigationLink {
-            OnboardingView(for: .main)
-                .navigationBarBackButtonHidden()
-        } label: {
-            Text(stringsConstants.tutorial)
-                .font(Font.wavePongPrimary(.body))
-                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                .underline(color:Color(ColorConstants.shared.YELLOW_600))
+        
+        VStack {
+            NavigationLink {
+                OnboardingSceneView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text("Preview SoundMode")
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+
+            
+            NavigationLink {
+                OnboardingView(for: .main)
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text(stringsConstants.tutorial)
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+            
         }
+        
+      
     }
     
     var soundModeConfigView: some View {
