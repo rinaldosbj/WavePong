@@ -8,7 +8,7 @@
 import Foundation
 
 enum GameDifficulty: String, CaseIterable {
-    case easy, medium, hard
+    case easy, medium, hard, extreme
 }
 
 struct GameManagerSettings {
@@ -25,18 +25,25 @@ struct GameManagerSettings {
         
         switch difficulty{
         case .easy:
+            self.ballSpeed = CGVector(dx: 100, dy: 100)
+            self.maxBallSpeed = 200
+            self.cloudVelocity = 60
+            self.ballSize = CGSize(width: 90, height: 90)
+            self.paddleProportion = 1/2
+           
+        case .medium:
             self.ballSpeed = CGVector(dx: 200, dy: 200)
             self.maxBallSpeed = 400
             self.cloudVelocity = 40
             self.ballSize = CGSize(width: 80, height: 80)
             self.paddleProportion = 1/2.5
-        case .medium:
+        case .hard:
             self.ballSpeed = CGVector(dx: 300, dy: 300)
             self.maxBallSpeed = 600
             self.cloudVelocity = 20
             self.ballSize = CGSize(width: 70, height: 70)
             self.paddleProportion = 1/2.75
-        case .hard:
+        case .extreme:
             self.ballSpeed = CGVector(dx: 500, dy: 500)
             self.maxBallSpeed = 1000
             self.cloudVelocity = 5

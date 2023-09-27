@@ -48,6 +48,7 @@ class Player: PlayerProtocol {
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScoreHard = "userTopScorehard"
+        static var userTopScoreExtreme = "userTopScoreExtreme"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
         static var chosenGameTheme = "chosenGameTheme"
@@ -95,6 +96,8 @@ class Player: PlayerProtocol {
             return defaults.integer(forKey: Constants.userTopScoreMedium)
         case .hard:
             return defaults.integer(forKey: Constants.userTopScoreHard)
+        case .extreme:
+            return defaults.integer(forKey: Constants.userTopScoreExtreme)
         }
     }
     
@@ -109,7 +112,8 @@ class Player: PlayerProtocol {
                 defaults.set(score, forKey: Constants.userTopScoreMedium)
             case .hard:
                 defaults.set(score, forKey: Constants.userTopScoreHard)
-                
+            case .extreme:
+                defaults.set(score, forKey: Constants.userTopScoreExtreme)
             }
   
         }
