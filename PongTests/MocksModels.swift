@@ -27,6 +27,7 @@ class PlayerMock: PlayerProtocol {
     var userTopScoreEasy = 0
     var userTopScoreMedium = 0
     var userTopScoreHard = 0
+    var userTopScoreExtreme = 0
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
@@ -36,6 +37,8 @@ class PlayerMock: PlayerProtocol {
             return userTopScoreMedium
         case .hard:
             return userTopScoreHard
+        case .extreme:
+            return userTopScoreExtreme
         }
     }
     
@@ -47,6 +50,8 @@ class PlayerMock: PlayerProtocol {
             userTopScoreMedium = score
         case .hard:
             userTopScoreHard = score
+        case .extreme:
+            userTopScoreExtreme = score
         }
         
     }
@@ -80,6 +85,7 @@ class UserDefaultsMock: UserDefaultable {
     var userTopScoreEasy = 0
     var userTopScoreMedium = 0
     var userTopScoreHard = 0
+    var userTopScoreExtreme = 0
     
     var soundMod: Int = 0
     var ballType: Int = 0
@@ -89,6 +95,7 @@ class UserDefaultsMock: UserDefaultable {
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScpreHard = "userTopScorehard"
+        static var userTopscoreExtreme = "userTopScoreExtreme"
         static var soundMod = "soundMod"
         static var ballType = "ballType"
     }
