@@ -18,6 +18,8 @@ class GameManagerFactory {
             return GameManager(gameDifficulty: .medium)
         case .hard:
             return GameManager(gameDifficulty: .hard)
+        case .extreme:
+            return GameManager(gameDifficulty: .extreme)
         }
         
     }

@@ -46,8 +46,8 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
 }
 
 protocol GameUserFeedbackProtocol {
-    var soundManager: SoundManagerProtocol { get set }
-    
-    var hapticsManager: HapticsManagerProtocol { get set }
+//    var soundManager: SoundManagerProtocol { get set }
+//    
+//    var hapticsManager: HapticsManagerProtocol { get set }
     
 }

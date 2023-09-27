@@ -36,17 +36,23 @@ public class SoundManager: SoundManagerProtocol {
     var orientationStrategy: StereoProportionCalculable {
         switch player.soundMode {
         case .curved:
-            return CurvedOrientationStragtegy()
-
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationExponencialStrategy()
+            } else {
+                return CurvedOrientationStragtegy()
+            }
         case .linear:
-            return LinearOrientationStrategy()
-            
-        case .paddleRelated:
-            return PaddleOrientationStrategy()
-            
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationLinearStrategy()
+            } else {
+                return LinearOrientationStrategy()
+            }
         case .highContrast:
-            return HighContrastOrientationStrategy()
-            
+            if player.isSoundRelatedtoPaddle {
+                return PaddleOrientationHighContrastStrategy()
+            } else {
+                return HighContrastOrientationStrategy()
+            }
         }
     }
     
@@ -63,6 +69,8 @@ public class SoundManager: SoundManagerProtocol {
         )
         
         musicPlayer?.volume = volumeAdjusted
+        
+//        print(player.soundMode, player.isSoundRelatedtoPaddle)
         
         orientationStrategy.processStereoProportion(nodesInfo: info) { newProportion in
             self.musicPlayer?.pan = newProportion

@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class PlayerMock: PlayerProtocol {
+   
+    
+
+    
 
     var theme: Theme = Theme()
     
@@ -17,7 +21,7 @@ class PlayerMock: PlayerProtocol {
     func setTheme(for theme: Pong.ThemeStyle) {
      
     }
-    
+    var isSoundRelatedtoPaddle: Bool = false
     var soundMode: Pong.SoundMode = .linear
     var selectedBall: PreviousBallSkin = .ball_yellow
     var userTopScoreEasy = 0
@@ -60,6 +64,10 @@ class PlayerMock: PlayerProtocol {
     
     func changeBall(_ ball: PreviousBallSkin) {
         selectedBall = ball
+    }
+    
+    func togleIsSoundRelatedtoPaddle() {
+        
     }
     
 }

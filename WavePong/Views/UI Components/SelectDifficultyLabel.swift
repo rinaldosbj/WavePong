@@ -21,6 +21,8 @@ struct SelectDifficultyLabel: View {
             return stringsConstatns.medium
         case .hard:
             return stringsConstatns.hard
+        case .extreme:
+            return stringsConstatns.extreme
         }
     }
     

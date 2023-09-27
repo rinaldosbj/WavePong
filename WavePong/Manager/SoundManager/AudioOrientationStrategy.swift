@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol StereoProportionCalculable {
     
     func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void)
@@ -45,19 +44,6 @@ class LinearOrientationStrategy: StereoProportionCalculable {
     
 }
 
-class PaddleOrientationStrategy: StereoProportionCalculable {
-    func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void) {
-        let ballPositionX = nodesInfo.ballPosition.x
-        let paddlePositionX = nodesInfo.paddlePosition.x
-        let sizeWidth = nodesInfo.size.width
-        
-        let proportion = Float((ballPositionX - paddlePositionX ) / (sizeWidth/1.25))
-        newProportion(proportion)
-    }
-    
-    
-}
-
 class HighContrastOrientationStrategy: StereoProportionCalculable {
     func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void) {
         let ballPositionX = nodesInfo.ballPosition.x
@@ -74,6 +60,56 @@ class HighContrastOrientationStrategy: StereoProportionCalculable {
             proportion = 0
         }
         
+        newProportion(proportion)
+    }
+}
+
+class PaddleOrientationLinearStrategy: StereoProportionCalculable {
+    func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void) {
+        let ballPositionX = nodesInfo.ballPosition.x
+        let paddlePositionX = nodesInfo.paddlePosition.x
+        let sizeWidth = nodesInfo.size.width
+        
+        var proportion = Float((ballPositionX - paddlePositionX ) / (sizeWidth/2.5))
+        if proportion >= 1 { proportion = 1 }
+        if proportion <= -1 { proportion = -1 }
+        
+        newProportion(proportion)
+    }
+}
+
+class PaddleOrientationExponencialStrategy: StereoProportionCalculable {
+    func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void) {
+        let ballPositionX = nodesInfo.ballPosition.x
+        let paddlePositionX = nodesInfo.paddlePosition.x
+        let sizeWidth = nodesInfo.size.width
+        
+        let proportion = Float((ballPositionX - paddlePositionX)/sizeWidth) + 0.5
+        var curvedProportion = sigmoidCurve(proportion)
+        
+        if curvedProportion >= 1 { curvedProportion = 1 }
+        if curvedProportion <= -1 { curvedProportion = -1 }
+        print(curvedProportion)
+        newProportion(curvedProportion)
+    }
+    
+    private func sigmoidCurve(_ x: Float) -> Float {
+        return Float(
+            pow((x - 0.5), 3) / 0.0675)
+    }
+}
+
+class PaddleOrientationHighContrastStrategy: StereoProportionCalculable {
+    func processStereoProportion(nodesInfo: AudioOrientationInfo, newProportion: @escaping (Float) -> Void) {
+        let ballPositionX = nodesInfo.ballPosition.x
+        let paddlePositionX = nodesInfo.paddlePosition.x
+        let sizeWidth = nodesInfo.size.width
+        
+        var proportion = Float((ballPositionX - paddlePositionX ) / (sizeWidth/5))
+        if proportion >= 1 { proportion = 1 }
+        else if proportion <= -1 { proportion = -1 }
+        else { proportion = 0 }
+        print(proportion)
         newProportion(proportion)
     }
 }

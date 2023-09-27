@@ -11,7 +11,15 @@ import Foundation
 
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
-
+    
+    var isSoundRelatedtoPaddle: Bool {
+        defaults.bool(forKey: Constants.isSoundRelatedtoPaddle)
+    }
+    
+    func togleIsSoundRelatedtoPaddle() {
+        defaults.set(!isSoundRelatedtoPaddle, forKey: Constants.isSoundRelatedtoPaddle)
+        
+    }
 
     static var shared: Player = Player()
     
@@ -40,9 +48,11 @@ class Player: PlayerProtocol {
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
         static var userTopScoreHard = "userTopScorehard"
+        static var userTopScoreExtreme = "userTopScoreExtreme"
         static var soundMod = "soundMod"
         static var chosenBall = "chosenBall"
         static var chosenGameTheme = "chosenGameTheme"
+        static var isSoundRelatedtoPaddle = "isSoundRelatedtoPaddle"
     }
 
     
@@ -86,6 +96,8 @@ class Player: PlayerProtocol {
             return defaults.integer(forKey: Constants.userTopScoreMedium)
         case .hard:
             return defaults.integer(forKey: Constants.userTopScoreHard)
+        case .extreme:
+            return defaults.integer(forKey: Constants.userTopScoreExtreme)
         }
     }
     
@@ -100,7 +112,8 @@ class Player: PlayerProtocol {
                 defaults.set(score, forKey: Constants.userTopScoreMedium)
             case .hard:
                 defaults.set(score, forKey: Constants.userTopScoreHard)
-                
+            case .extreme:
+                defaults.set(score, forKey: Constants.userTopScoreExtreme)
             }
   
         }
@@ -111,11 +124,11 @@ class Player: PlayerProtocol {
         
         switch intResult {
         case 0:
-            return .paddleRelated
+            return .linear
         case 1:
-            return .curved
-        case 2:
             return .highContrast
+        case 2:
+            return .curved
         default:
             return .linear
         }
@@ -155,7 +168,11 @@ protocol PlayerPreferencesPersistence {
     
     var theme: Theme { get }
     
+    var isSoundRelatedtoPaddle: Bool { get }
+    
     func setTheme(for theme: ThemeStyle)
     
     func changeSoundMode(_ mode: SoundMode)
+    
+    func togleIsSoundRelatedtoPaddle()
 }

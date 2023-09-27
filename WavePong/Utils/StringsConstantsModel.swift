@@ -51,6 +51,7 @@ struct StringsConstantsModel {
     let easy = String(localized: "easy")
     let medium = String(localized: "medium")
     let hard = String(localized: "hard")
+    let extreme = String(localized: "extreme")
     
     let home_hint = String(localized: "home_hint")
     let recomecar_hint = String(localized: "recomecar_hint")

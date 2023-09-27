@@ -8,18 +8,62 @@
 import SwiftUI
 
 extension ConfigurationView {
-    
     // MARK: View components
-    var backToOnboardingButton: some View {
-        NavigationLink {
-            OnboardingView(for: .main)
-                .navigationBarBackButtonHidden()
-        } label: {
-            Text(stringsConstants.tutorial)
+    
+    var relatedToPaddleTogle: some View {
+        HStack {
+            ZStack {
+                Color(ColorConstants.shared.WHITE_500)
+                    .frame(width: 24, height: 24, alignment: .center)
+                    .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                
+                if toglePaddle {
+                    Text("X")
+                        .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                        .font(Font.wavePongPrimary(.body))
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+            
+            Text("Som em relação a raquete")
                 .font(Font.wavePongPrimary(.body))
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            
+            
+            Spacer()
+        }.onTapGesture {
+            player.togleIsSoundRelatedtoPaddle()
+            toglePaddle.toggle()
         }
+    }
+    
+    var backToOnboardingButton: some View {
+        
+        VStack(spacing: 20) {
+            NavigationLink {
+                OnboardingSceneView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text("Preview SoundMode")
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+
+            
+            NavigationLink {
+                OnboardingView(for: .main)
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text(stringsConstants.tutorial)
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+            
+        }
+        
+      
     }
     
     var soundModeConfigView: some View {
@@ -58,10 +102,6 @@ extension ConfigurationView {
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     case .highContrast:
                         Text(stringsConstants.alto)
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    case .paddleRelated:
-                        Text("PaddleRelated")
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     }

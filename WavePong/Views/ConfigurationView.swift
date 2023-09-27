@@ -11,6 +11,7 @@ struct ConfigurationView: View {
     
     @Environment(\.presentationMode) var presentation
     @State var selectedMode: SoundMode = .linear
+    @State var toglePaddle = false
     @State var togleNotifications = true
     var player: PlayerProtocol = Player()
     
@@ -25,20 +26,25 @@ struct ConfigurationView: View {
                 .accessibilityHidden(true)
             
             ScrollView {
-                VStack(spacing: 32) {
+                VStack(spacing: 20) {
                     Image(stringsConstants.ajustes)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 268 ,height: 53)
                         .accessibilityHidden(true)
-                        .padding(.vertical, 58)
-                        .padding(.top, 76)
+                        .padding(.vertical, 40)
+                        .padding(.top, 40)
                     
                     soundModeConfigView
                     
                     Spacer().frame(height: 24)
+
+                    relatedToPaddleTogle
+                        .padding(.bottom, 34)
+                    
                     
                     backToOnboardingButton
+                    
                     
                     // TODO: Find somewhere to put these
                     Spacer().frame(height: 1000)
@@ -73,6 +79,7 @@ extension ConfigurationView {
     // MARK: RelationShip Functions
     func checksCurrentSoundMode(){
         selectedMode = player.soundMode
+        toglePaddle = player.isSoundRelatedtoPaddle
     }
 }
 
