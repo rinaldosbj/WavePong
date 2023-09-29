@@ -89,7 +89,12 @@ public class SoundManager: SoundManagerProtocol {
     /// Plays background music
     public func playGameTheme() {
         
-        guard let url = Bundle.main.url(forResource: "WavePong_soundtrack", withExtension: "mp3") else {
+//        guard let url = Bundle.main.url(forResource: "WavePong_soundtrack", withExtension: "mp3") else {
+//            print("arquivo não encontrado")
+//            return
+//        }
+        
+        guard let url = Bundle.main.url(forResource: "NewGameTheme", withExtension: "mp3") else {
             print("arquivo não encontrado")
             return
         }

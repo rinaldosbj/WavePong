@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */; };
 		0C1828342AB4094B00E659BF /* SoundManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */; };
+		0C1CD0622AC75CDA00F02177 /* NewGameTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */; };
+		0C1CD0642AC7661000F02177 /* OnboardingGameSceneStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CD0632AC7661000F02177 /* OnboardingGameSceneStrategy.swift */; };
+		0C1CD0662AC7662F00F02177 /* OnboardingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CD0652AC7662F00F02177 /* OnboardingGameScene.swift */; };
 		0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA892A82E53A00844FB2 /* GameSceneView.swift */; };
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
@@ -129,6 +132,9 @@
 /* Begin PBXFileReference section */
 		0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneTests.swift; sourceTree = "<group>"; };
 		0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerProtocol.swift; sourceTree = "<group>"; };
+		0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewGameTheme.mp3; sourceTree = "<group>"; };
+		0C1CD0632AC7661000F02177 /* OnboardingGameSceneStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGameSceneStrategy.swift; sourceTree = "<group>"; };
+		0C1CD0652AC7662F00F02177 /* OnboardingGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGameScene.swift; sourceTree = "<group>"; };
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -364,7 +370,7 @@
 		0CC0C16E2AA664F100E13FE9 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
-				0CFA711F2AC20BEE00982585 /* OnboardingSceneView.swift */,
+				0CDB1DE52AC4C27D000FC094 /* OnboardingGameScenes */,
 				0C2BBDC62A7440BE0031480F /* GameScene.swift */,
 				0C8D17442ABE2CBC00F82985 /* UpdatableSceneNodes.swift */,
 				D33405392A784626006CA42B /* GameScene+Touches.swift */,
@@ -406,6 +412,16 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		0CDB1DE52AC4C27D000FC094 /* OnboardingGameScenes */ = {
+			isa = PBXGroup;
+			children = (
+				0CFA711F2AC20BEE00982585 /* OnboardingSceneView.swift */,
+				0C1CD0652AC7662F00F02177 /* OnboardingGameScene.swift */,
+				0C1CD0632AC7661000F02177 /* OnboardingGameSceneStrategy.swift */,
+			);
+			path = OnboardingGameScenes;
+			sourceTree = "<group>";
+		};
 		0CDDC9C22ABA2085008CA575 /* SelectDifficulty */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +445,7 @@
 		0CF6485A2A7847D700282A52 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */,
 				0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */,
 				0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */,
 				0CF6486B2A7944B000282A52 /* FX */,
@@ -696,6 +713,7 @@
 				D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */,
 				0CF648672A7944AA00282A52 /* hehe.mp3 in Resources */,
 				0CF648662A7944AA00282A52 /* bounce.mp3 in Resources */,
+				0C1CD0622AC75CDA00F02177 /* NewGameTheme.mp3 in Resources */,
 				0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */,
 				D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */,
 				0CF648652A7944AA00282A52 /* alert.mp3 in Resources */,
@@ -766,6 +784,7 @@
 				0C376C5E2AB4E0DD00BE393E /* AVAudioplayerFactory.swift in Sources */,
 				0CE00EF32AB409FC008C1E06 /* HapticsManagerProtocols.swift in Sources */,
 				0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */,
+				0C1CD0642AC7661000F02177 /* OnboardingGameSceneStrategy.swift in Sources */,
 				0DF0390C2A93E07C0005551B /* AppDelegate.swift in Sources */,
 				0C2BBDC72A7440BE0031480F /* GameScene.swift in Sources */,
 				D3E10B6C2A86BE5800E30649 /* Border.swift in Sources */,
@@ -775,6 +794,7 @@
 				D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */,
 				D32842CA2A7E9FA0007FF85B /* MenuView.swift in Sources */,
 				0CDDC9C42ABA209E008CA575 /* SelectDifficultyViewModel.swift in Sources */,
+				0C1CD0662AC7662F00F02177 /* OnboardingGameScene.swift in Sources */,
 				0DB4EFE72A954C8E002E441A /* GameCenterView.swift in Sources */,
 				D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */,
 				D3AC7C582A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift in Sources */,
