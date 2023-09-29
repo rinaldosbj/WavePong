@@ -121,8 +121,8 @@ class PanAndVolumeOnboardingStrategy: OnboardingGameSceneStrategy {
 class OnboardingGameScene: SKScene {
     
     var updateSceneStrategy: OnboardingGameSceneStrategy = PanAndVolumeOnboardingStrategy()
-    
-    var soundManager: SoundManager? = nil
+
+    var soundManager: SoundManagerProtocol? = SoundManager.shared
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
@@ -266,7 +266,7 @@ struct OnboardingSceneView: View {
     @Environment(\.dismiss) private var dismiss
     @State var size = CGSize()
     
-    var soundManager: SoundManager?
+    var soundManager: SoundManagerProtocol? = SoundManager.shared
     
     
     var scene: OnboardingGameScene {
