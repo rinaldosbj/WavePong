@@ -29,13 +29,13 @@ class PanOnboardingStrategy: OnboardingGameSceneStrategy {
         let width = sceneInfo.size.width
         
         
-        if ballPosition.x > width {
+        if ballPosition.x > width - 5 {
             isBallGoingRight = false
-        } else if ballPosition.x < 0 {
+        } else if ballPosition.x < 5 {
             isBallGoingRight = true
         }
         
-        let newPosition = CGPoint(x: ballPosition.x + CGFloat(3 * ballOrientation),
+        let newPosition = CGPoint(x: ballPosition.x + CGFloat(2 * ballOrientation),
                                   y: ballPosition.y)
         
         updatedBallPosition(newPosition)
@@ -65,7 +65,7 @@ class VolumeOnboardingStrategy: OnboardingGameSceneStrategy {
         }
         
         let newPosition = CGPoint(x: ballPosition.x,
-                                  y: ballPosition.y + CGFloat(2 * ballOrientation))
+                                  y: ballPosition.y + CGFloat(3 * ballOrientation))
         
         updatedBallPosition(newPosition)
         
@@ -78,7 +78,7 @@ class PanAndVolumeOnboardingStrategy: OnboardingGameSceneStrategy {
     private var isBallGoingRight: Bool = true
     private var isBallGoingUp: Bool = true
     
-    private var ballhorientationOrientation: Int {
+    private var ballHorientationOrientation: Int {
         isBallGoingRight ? 1 : -1
     }
     
@@ -89,30 +89,28 @@ class PanAndVolumeOnboardingStrategy: OnboardingGameSceneStrategy {
     
     func executeStrategy(sceneInfo: AudioOrientationInfo, updatedBallPosition: @escaping (CGPoint) -> Void) {
         
-        let ballPosition = sceneInfo.ballPosition
-        let minHeight = sceneInfo.paddlePosition.y + 50
-        let height = sceneInfo.size.height
+        var ballPosition = sceneInfo.ballPosition
+        let minHeight = sceneInfo.paddlePosition.y + 30
+        let height = sceneInfo.size.height - 50
         let width = sceneInfo.size.width
         
         
-        if ballPosition.y < height {
-            isBallGoingUp = false
-        } else if ballPosition.y < minHeight {
+        if ballPosition.y < minHeight {
             isBallGoingUp = true
+        } else if ballPosition.y > height {
+            isBallGoingUp = false
         }
         
-        if ballPosition.x > width {
+        if ballPosition.x > width - 5 {
             isBallGoingRight = false
-        } else if ballPosition.x < 0 {
+        } else if ballPosition.x < 5 {
             isBallGoingRight = true
         }
         
-        let newPosition = CGPoint(x: CGFloat(3 * ballhorientationOrientation),
-                                  y: CGFloat(2 * ballVerticalHorientation)
-        )
+        ballPosition.x += CGFloat(2 * ballHorientationOrientation)
+        ballPosition.y += CGFloat(3 * ballVerticalHorientation)
         
-        updatedBallPosition(newPosition)
-        
+        updatedBallPosition(ballPosition)
         
     }
     
@@ -122,7 +120,7 @@ class PanAndVolumeOnboardingStrategy: OnboardingGameSceneStrategy {
 
 class OnboardingGameScene: SKScene {
     
-    var updateSceneStrategy: OnboardingGameSceneStrategy = VolumeOnboardingStrategy()
+    var updateSceneStrategy: OnboardingGameSceneStrategy = PanAndVolumeOnboardingStrategy()
     
     var soundManager: SoundManager? = nil
     
@@ -133,6 +131,11 @@ class OnboardingGameScene: SKScene {
     var paddle = Paddle(texture: nil,
                         color: UIColor(Color(ColorConstants.shared.PURPLE_300)),
                         size: CGSize(width: 150, height: 20))
+    
+    var panLabel: SKLabelNode = SKLabelNode(text: "Pan")
+    var volumeLabel: SKLabelNode = SKLabelNode(text: "Volume")
+    var gameLabel: SKLabelNode = SKLabelNode(text: "Both")
+    
     
     
     
@@ -148,6 +151,19 @@ class OnboardingGameScene: SKScene {
         ball.position = CGPoint(x:self.frame.midX,
                                 y: 250)
         addChild(ball)
+        
+        
+        panLabel.position = CGPoint(x: frame.midX,
+                                    y: frame.height - 100)
+        addChild(panLabel)
+        
+        volumeLabel.position = CGPoint(x: frame.midX,
+                                       y: frame.height - 200)
+        addChild(volumeLabel)
+        
+        gameLabel.position = CGPoint(x: frame.midX,
+                                     y: frame.height - 300)
+        addChild(gameLabel)
         
     }
     
@@ -176,6 +192,21 @@ class OnboardingGameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
+        
+        if panLabel.contains(location) {
+            updateSceneStrategy = PanOnboardingStrategy()
+            return
+        }
+        
+        if volumeLabel.contains(location) {
+            updateSceneStrategy = VolumeOnboardingStrategy()
+            return
+        }
+        
+        if gameLabel.contains(location) {
+            updateSceneStrategy = PanAndVolumeOnboardingStrategy()
+            return
+        }
         
         
         var horizontalLocation: Double {
@@ -223,9 +254,9 @@ class OnboardingGameScene: SKScene {
     
     func changeStrategy() {
         print(updateSceneStrategy)
-//        self.updateSceneStrategy = VolumeOnboardingStrategy()
+        //        self.updateSceneStrategy = VolumeOnboardingStrategy()
         
-//        print(updateSceneStrategy)
+        //        print(updateSceneStrategy)
     }
     
     
@@ -268,15 +299,7 @@ struct OnboardingSceneView: View {
                     
                     Spacer()
                 }
-                Button {
-                    scene.changeStrategy()
-
-                    scene.view?.setNeedsDisplay()
-                    print(scene.updateSceneStrategy)
-                } label: {
-                    Text("Mudar")
-                    
-                }
+                
                 
             }
             
