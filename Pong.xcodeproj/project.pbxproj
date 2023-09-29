@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C15E0012AA7ABD000E5680B /* GameSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */; };
 		0C1828342AB4094B00E659BF /* SoundManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */; };
+		0C1CD0622AC75CDA00F02177 /* NewGameTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */; };
 		0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA892A82E53A00844FB2 /* GameSceneView.swift */; };
 		0C26DA8C2A83303200844FB2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26DA8B2A83303200844FB2 /* Player.swift */; };
 		0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */; };
@@ -129,6 +130,7 @@
 /* Begin PBXFileReference section */
 		0C15E0002AA7ABD000E5680B /* GameSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneTests.swift; sourceTree = "<group>"; };
 		0C1828332AB4094B00E659BF /* SoundManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerProtocol.swift; sourceTree = "<group>"; };
+		0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewGameTheme.mp3; sourceTree = "<group>"; };
 		0C26DA892A82E53A00844FB2 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		0CF6485A2A7847D700282A52 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				0C1CD0612AC75CDA00F02177 /* NewGameTheme.mp3 */,
 				0CF648582A7847CF00282A52 /* WavePong_soundtrack.mp3 */,
 				0CF6486F2A79A40500282A52 /* FXSoundsEnuns.swift */,
 				0CF6486B2A7944B000282A52 /* FX */,
@@ -696,6 +699,7 @@
 				D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */,
 				0CF648672A7944AA00282A52 /* hehe.mp3 in Resources */,
 				0CF648662A7944AA00282A52 /* bounce.mp3 in Resources */,
+				0C1CD0622AC75CDA00F02177 /* NewGameTheme.mp3 in Resources */,
 				0CF648632A7944AA00282A52 /* surprise.mp3 in Resources */,
 				D3C24F1B2A954A430083F842 /* countDownBip.wav in Resources */,
 				0CF648652A7944AA00282A52 /* alert.mp3 in Resources */,
