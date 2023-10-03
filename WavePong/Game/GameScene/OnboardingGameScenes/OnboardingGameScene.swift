@@ -7,11 +7,12 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 
 class OnboardingGameScene: SKScene {
     
-    var updateSceneStrategy: OnboardingGameSceneStrategy = PanAndVolumeOnboardingStrategy()
+    var updateSceneStrategy: OnboardingGameSceneStrategy
 
     var soundManager: SoundManagerProtocol? = SoundManager.shared
     
@@ -22,10 +23,6 @@ class OnboardingGameScene: SKScene {
     var paddle = Paddle(texture: nil,
                         color: UIColor(Color(ColorConstants.shared.PURPLE_300)),
                         size: CGSize(width: 150, height: 20))
-    
-    var panLabel: SKLabelNode = SKLabelNode(text: "Pan")
-    var volumeLabel: SKLabelNode = SKLabelNode(text: "Volume")
-    var gameLabel: SKLabelNode = SKLabelNode(text: "Both")
     
     
     
@@ -43,19 +40,6 @@ class OnboardingGameScene: SKScene {
                                 y: 250)
         addChild(ball)
         
-        
-        panLabel.position = CGPoint(x: frame.midX,
-                                    y: frame.height - 100)
-        addChild(panLabel)
-        
-        volumeLabel.position = CGPoint(x: frame.midX,
-                                       y: frame.height - 200)
-        addChild(volumeLabel)
-        
-        gameLabel.position = CGPoint(x: frame.midX,
-                                     y: frame.height - 300)
-        addChild(gameLabel)
-        
     }
     
     
@@ -72,8 +56,10 @@ class OnboardingGameScene: SKScene {
     }
     
     
-    override init(size: CGSize) {
+    init(size: CGSize, strategy: OnboardingGameSceneStrategy) {
+        self.updateSceneStrategy = strategy
         super.init(size: size)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,22 +69,6 @@ class OnboardingGameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        
-        if panLabel.contains(location) {
-            updateSceneStrategy = PanOnboardingStrategy()
-            return
-        }
-        
-        if volumeLabel.contains(location) {
-            updateSceneStrategy = VolumeOnboardingStrategy()
-            return
-        }
-        
-        if gameLabel.contains(location) {
-            updateSceneStrategy = PanAndVolumeOnboardingStrategy()
-            return
-        }
-        
         
         var horizontalLocation: Double {
             location.x

@@ -41,7 +41,8 @@ extension ConfigurationView {
         
         VStack(spacing: 20) {
             NavigationLink {
-                OnboardingSceneView()
+                OnboardingSceneView( demoCase: .game
+                )
                     .navigationBarBackButtonHidden()
             } label: {
                 Text("Preview SoundMode")
