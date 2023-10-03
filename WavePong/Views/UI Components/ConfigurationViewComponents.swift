@@ -9,82 +9,112 @@ import SwiftUI
 
 extension ConfigurationView {
     // MARK: View components
-    var backToOnboardingButton: some View {
-        NavigationLink {
-            OnboardingView()
-                .navigationBarBackButtonHidden()
-        } label: {
-            Text("Rever Tutorial")
-                .font(.custom("DaysOne-Regular", size: 24))
-                .foregroundColor(.white)
-                .underline(color:Color("amarelo"))
+    
+    var relatedToPaddleTogle: some View {
+        HStack {
+            ZStack {
+                Color(ColorConstants.shared.WHITE_500)
+                    .frame(width: 24, height: 24, alignment: .center)
+                    .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                
+                if toglePaddle {
+                    Text("X")
+                        .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                        .font(Font.wavePongPrimary(.body))
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+            
+            Text("Som em relação a raquete")
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+            
+            
+            Spacer()
+        }.onTapGesture {
+            player.togleIsSoundRelatedtoPaddle()
+            toglePaddle.toggle()
         }
-        .accessibilityLabel(Text("Rever tutorial"))
+    }
+    
+    var backToOnboardingButton: some View {
+        
+        VStack(spacing: 20) {
+            NavigationLink {
+                OnboardingSceneView( demoCase: .game
+                )
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text("Preview SoundMode")
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+
+            
+            NavigationLink {
+                OnboardingView(for: .main)
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Text(stringsConstants.tutorial)
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
+            }
+            
+        }
+        
+      
     }
     
     var soundModeConfigView: some View {
         VStack {
             HStack {
-                Text("Som")
-                    .accessibilityHint("Selecione qual modo de som deseja escutar:")
-                    .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
+                Text(stringsConstants.modo_som)
+                    .accessibilityHint(stringsConstants.modo_hint)
+                    .font(Font.wavePongPrimary(.body))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 Spacer()
             }
             
-            HStack {
-                Toggle("", isOn: $togleIsLinear)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .linear))
-                    .foregroundColor(.white)
-                    .accessibilityLabel("Modo linear")
-                    .onChange(of: togleIsLinear) { _ in
-                        updateToggle(from: .linear)
+            ForEach(SoundMode.allCases, id: \.self) { type in
+                HStack {
+                    ZStack {
+                        Color(ColorConstants.shared.WHITE_500)
+                            .frame(width: 24, height: 24, alignment: .center)
+                            .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                        
+                        if selectedMode == type {
+                            Text("X")
+                                .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                                .font(Font.wavePongPrimary(.body))
+                                .frame(width: 24, height: 24, alignment: .center)
+                        }
                     }
-                Spacer()
-            }
-            HStack {
-                Toggle("",isOn: $togleIsCurved)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .curved))
-                    .foregroundColor(.white)
-                    .accessibilityLabel("Modo exponencial")
-                    .onChange(of: togleIsCurved) { _ in
-                        updateToggle(from: .curved)
+                    
+                    switch type {
+                    case .linear:
+                        Text(stringsConstants.linear)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    case .curved:
+                        Text(stringsConstants.exponencial)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    case .highContrast:
+                        Text(stringsConstants.alto)
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     }
-                Spacer()
+                    
+                    Spacer()
+                }
+                .onTapGesture {
+                    player.changeSoundMode(type)
+                    selectedMode = player.soundMode
+                }
             }
-            
-            HStack {
-                Toggle("",isOn: $togleIsHighContrast)
-                    .toggleStyle(SelectCustomToggleStyle(mode: .highContrast))
-                    .foregroundColor(.white)
-                    .accessibilityLabel("Modo alto contraste")
-                    .onChange(of: togleIsHighContrast) { _ in
-                        updateToggle(from: .highContrast)
-                    }
-                Spacer()
-            }
-        }
-    }
-    
-    var notificationToggleView: some View {
-        // Unused
-        HStack {
-            Text("Notificações")
-                .font(.custom("DaysOne-Regular", size: 24))
-                .layoutPriority(.greatestFiniteMagnitude)
-                .foregroundColor(.white)
-                .accessibilityHidden(true)
-            if togleNotifications {
-                Toggle("", isOn: $togleNotifications)
-                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
-                    .accessibilityLabel(Text("Desativar notificações"))
-                
-            }
-            else {
-                Toggle("", isOn: $togleNotifications)
-                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(named: "Light-purple")!, offColor: .darkGray))
-                    .accessibilityLabel(Text("Ativar notificações"))
-            }
+
         }
     }
     
@@ -94,15 +124,38 @@ extension ConfigurationView {
                 Button {
                     presentation.wrappedValue.dismiss()
                 } label: {
-                    Text("  < Voltar")
-                        .font(.custom("DaysOne-Regular", size: 24))
+                    Text(stringsConstants.volta)
+                        .font(Font.wavePongPrimary(.body))
                         .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                 }
-                .accessibilityLabel("Voltar")
+                .accessibilityLabel(stringsConstants.volta_hint)
                 Spacer()
             }
             Spacer()
+        }
+    }
+    
+    var notificationToggleView: some View {
+        // MARK: This Notification is Unused
+        // We can't disable notifications in that way
+        HStack {
+            Text("Notificações")
+                .font(Font.wavePongPrimary(.body))
+                .layoutPriority(.greatestFiniteMagnitude)
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                .accessibilityHidden(true)
+            if togleNotifications {
+                Toggle("", isOn: $togleNotifications)
+                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(Color(ColorConstants.shared.PURPLE_500)), offColor: .darkGray))
+                    .accessibilityLabel(Text("Desativar notificações"))
+                
+            }
+            else {
+                Toggle("", isOn: $togleNotifications)
+                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(Color(ColorConstants.shared.PURPLE_500)), offColor: .darkGray))
+                    .accessibilityLabel(Text("Ativar notificações"))
+            }
         }
     }
 }

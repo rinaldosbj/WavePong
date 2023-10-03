@@ -19,7 +19,7 @@ struct NotificationsCustomToggleStyle: ToggleStyle {
                 .frame(width: 51, height: 31, alignment: .center)
                 .overlay(
                     Circle()
-                        .foregroundColor(Color("amarelo"))
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_600))
                         .padding(.all, 3)
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)
                         .animation(Animation.linear(duration: 0.15),value: configuration.isOn)
@@ -30,44 +30,3 @@ struct NotificationsCustomToggleStyle: ToggleStyle {
         
     }
 }
-
-struct SelectCustomToggleStyle: ToggleStyle {
-    
-    var mode: SoundMode
-    
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            ZStack {
-                configuration.label
-                Color(UIColor(.white))
-                    .frame(width: 20, height: 20, alignment: .center)
-                    .border(Color("roxo"),width: 2)
-                
-                if configuration.isOn {
-                    Text("X")
-                        .foregroundColor(Color("roxo"))
-                        .font(.custom("DaysOne-Regular", size: 20))
-                        .frame(width: 20, height: 20, alignment: .center)
-                }
-                
-            }
-            
-            switch mode {
-            case .linear:
-                Text("Linear")
-                    .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
-            case .curved:
-                Text("Exponencial")
-                    .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
-            case .highContrast:
-                Text("Alto contraste")
-                    .font(.custom("DaysOne-Regular", size: 24))
-                    .foregroundColor(.white)
-            }
-        }
-        .onTapGesture { configuration.isOn.toggle() }
-    }
-}
-

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FoneView: View {
+    
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             Image("background")
@@ -17,14 +20,15 @@ struct FoneView: View {
                 .accessibilityHidden(true)
             
             VStack{
-                Text("\(Text("Coloque").foregroundColor(.yellow)) o \(Text("fone").foregroundColor(.yellow)) de ouvido, depois \(Text("toque").foregroundColor(.yellow)) na tela para continuar").font(.custom("DaysOne-Regular", size: 35))
-                    .foregroundColor(.white)
+                Text(stringsConstants.coloque_fone)
+                    .font(Font.wavePongPrimary(.headline))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
                     .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
                     .padding(40)
                     .padding()
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 
                 Image("fone")
                     .accessibilityHidden(true)

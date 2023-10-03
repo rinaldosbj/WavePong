@@ -11,6 +11,8 @@ struct RebaterView: View {
     
     @State var bola = false
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             
@@ -26,20 +28,21 @@ struct RebaterView: View {
                 
                 Spacer()
                 
-                Text("Ao \(Text("rebater").foregroundColor(.yellow)) a bola haverá uma \(Text("vibração").foregroundColor(.yellow))")
-                    .font(.custom("DaysOne-Regular", size: 35))
+                Text(stringsConstants.raquete_bola)
+                    .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .minimumScaleFactor(0.1)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 Spacer()
                 
                 VStack {
                     
                     Image("Ball")
                         .rotationEffect(Angle(degrees: 250))
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_600))
                         .offset(x: bola ? 100: 40, y: bola ? 0 : 100)
                         .animation(.easeOut(duration: 2).repeatForever(autoreverses: false),value: bola)
                         .accessibilityHidden(true)

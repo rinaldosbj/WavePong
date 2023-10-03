@@ -11,6 +11,8 @@ struct PausarView: View {
     @State var scale: CGFloat = 1.0
     @State var animation = false
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             
@@ -21,14 +23,14 @@ struct PausarView: View {
                 .accessibilityHidden(true)
             
             VStack(alignment: .center, spacing: 60 ){
-                Text("Dê \(Text("Dois toques").foregroundColor(.yellow)) na tela para \(Text("pausar").foregroundColor(.yellow)) o jogo")
-                    .font(.custom("DaysOne-Regular", size: 35))
-                    .foregroundColor(.white)
+                Text(stringsConstants.dois_toques)
+                    .font(Font.wavePongPrimary(.headline))
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .bold()
-                    .minimumScaleFactor(15)
+                    .minimumScaleFactor(0.1)
                     .multilineTextAlignment(.center)
                     .padding(40)
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 
                 HStack{
                     Image(systemName: "circle.fill")
@@ -37,19 +39,19 @@ struct PausarView: View {
                         .frame(width: 50, height: 50, alignment: .center)
                         .padding(10)
                         .blur(radius: scale, opaque: false)
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color(ColorConstants.shared.YELLOW_600))
                         .accessibilityHidden(true)
                         .overlay(
                             ZStack{
                                 Circle()
-                                    .stroke(Color.yellow)
+                                    .stroke(Color(ColorConstants.shared.YELLOW_600))
                                     .frame(width: 100, height: 100)
                                     .blur(radius: scale)
                                     .scaleEffect(scale)
                                     .opacity(Double(2 - scale))
                                     .animation(.easeOut(duration: 3).repeatForever(autoreverses: false), value: animation)
                                 Circle()
-                                    .stroke(Color.yellow)
+                                    .stroke(Color(ColorConstants.shared.YELLOW_600))
                                     .frame(width: 100, height: 100)
                                     .blur(radius: scale)
                                     .scaleEffect(scale - 0.5)

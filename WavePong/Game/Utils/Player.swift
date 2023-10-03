@@ -8,40 +8,85 @@
 import Foundation
 
 
+
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
-
-
     
+    var isSoundRelatedtoPaddle: Bool {
+        defaults.bool(forKey: Constants.isSoundRelatedtoPaddle)
+    }
     
+    func togleIsSoundRelatedtoPaddle() {
+        defaults.set(!isSoundRelatedtoPaddle, forKey: Constants.isSoundRelatedtoPaddle)
+        
+    }
+
     static var shared: Player = Player()
+    
+    var theme: Theme {
+        let intResult = defaults.integer(forKey: Constants.chosenGameTheme)
+        
+        switch intResult {
+        case 1:
+            return ThemeFactory().createTheme(theme: .variation1)
+        default:
+            return ThemeFactory().createTheme(theme: .defaultTheme)
+        }
+    }
+    
+    func setTheme(for theme: ThemeStyle) {
+        defaults.set(theme.rawValue, forKey: Constants.chosenGameTheme)
+    }
+    
+    
     
     init(defaults: UserDefaultable = UserDefaults.standard) {
         self.defaults = defaults
     }
-    
-    
-    
+
     private struct Constants {
-        static var hasSeenOnboarding = "hasSeenOnboarding"
         static var userTopScoreEasy = "userTopScoreEasy"
         static var userTopScoreMedium = "userTopScoreMedium"
-        static var userTopScpreHard = "userTopScorehard"
+        static var userTopScoreHard = "userTopScorehard"
+        static var userTopScoreExtreme = "userTopScoreExtreme"
         static var soundMod = "soundMod"
+        static var chosenBall = "chosenBall"
+        static var chosenGameTheme = "chosenGameTheme"
+        static var isSoundRelatedtoPaddle = "isSoundRelatedtoPaddle"
     }
+
     
     private let defaults: UserDefaultable
     
-    ///  Informs if the user already seen onboarding
-    var onboradingHappend: Bool {
-        return defaults.bool(forKey: Constants.hasSeenOnboarding)
+    
+    var selectedBall: PreviousBallSkin {
+        let intResult = defaults.integer(forKey: Constants.chosenBall)
+        
+        switch intResult {
+        case 0:
+            return .ball_yellow
+        case 1:
+            return .ball_green
+        case 2:
+            return .ball_cyan
+        case 3:
+            return .ball_blue
+        case 4:
+            return .ball_purple
+        case 5:
+            return .ball_red
+        case 6:
+            return .ball_orange
+        default:
+            return .ball_yellow
+        }
+        
     }
     
-    
-    /// Once player finishes onboarding, this methods must be called so the app won't show onboading every launch
-    func userFinishedOnboarding() {
-        defaults.set(true, forKey: Constants.hasSeenOnboarding)
+    func changeBall(_ ball: PreviousBallSkin) {
+        defaults.set(ball.rawValue, forKey: Constants.chosenBall)
     }
+    
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
         switch dificulty {
@@ -50,7 +95,9 @@ class Player: PlayerProtocol {
         case .medium:
             return defaults.integer(forKey: Constants.userTopScoreMedium)
         case .hard:
-            return defaults.integer(forKey: Constants.userTopScpreHard)
+            return defaults.integer(forKey: Constants.userTopScoreHard)
+        case .extreme:
+            return defaults.integer(forKey: Constants.userTopScoreExtreme)
         }
     }
     
@@ -64,8 +111,9 @@ class Player: PlayerProtocol {
             case .medium:
                 defaults.set(score, forKey: Constants.userTopScoreMedium)
             case .hard:
-                defaults.set(score, forKey: Constants.userTopScpreHard)
-                
+                defaults.set(score, forKey: Constants.userTopScoreHard)
+            case .extreme:
+                defaults.set(score, forKey: Constants.userTopScoreExtreme)
             }
   
         }
@@ -78,9 +126,9 @@ class Player: PlayerProtocol {
         case 0:
             return .linear
         case 1:
-            return .curved
-        case 2:
             return .highContrast
+        case 2:
+            return .curved
         default:
             return .linear
         }
@@ -92,26 +140,39 @@ class Player: PlayerProtocol {
         defaults.set(mode.rawValue, forKey: Constants.soundMod)
         
     }
-    
 }
 
 /// Defines a standard interface for Player Class
-protocol PlayerProtocol {
+protocol PlayerProtocol:PlayerScorePersistence,
+                        PlayerPreferencesPersistence {
     
-    /// Should return true if the user didn't seen onboarding yet
-    var onboradingHappend: Bool { get }
-    
-    
-    /// Must be used for updating the info that user has seen onboarding and shouldn't show it anymore on launch
-    func userFinishedOnboarding()
-    
+}
+
+
+protocol PlayerScorePersistence {
+    /// must return the highest score for a given dificulty
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int
     
-    /// Must be called for persisting the highest score of user
+    /// Must be called for persisting the highest score of user for
     func updateTopScore(NewTopScore score: Int, forDificulty dificulty: GameDifficulty)
+}
+
+
+protocol PlayerPreferencesPersistence {
+
+    var selectedBall: PreviousBallSkin { get }
+    
+    func changeBall(_ ball: PreviousBallSkin)
     
     var soundMode: SoundMode { get }
     
+    var theme: Theme { get }
+    
+    var isSoundRelatedtoPaddle: Bool { get }
+    
+    func setTheme(for theme: ThemeStyle)
+    
     func changeSoundMode(_ mode: SoundMode)
     
+    func togleIsSoundRelatedtoPaddle()
 }

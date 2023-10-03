@@ -10,11 +10,12 @@ import SwiftUI
 struct ConfigurationView: View {
     
     @Environment(\.presentationMode) var presentation
-    @State var togleNotifications : Bool = false
-    @State var togleIsLinear : Bool = true
-    @State var togleIsCurved : Bool = false
-    @State var togleIsHighContrast: Bool = false
+    @State var selectedMode: SoundMode = .linear
+    @State var toglePaddle = false
+    @State var togleNotifications = true
     var player: PlayerProtocol = Player()
+    
+    let stringsConstants = StringsConstantsModel()
     
     var body: some View {
         //MARK: Main View Build
@@ -24,21 +25,45 @@ struct ConfigurationView: View {
                 .ignoresSafeArea()
                 .accessibilityHidden(true)
             
-            VStack(spacing: 32) {
-                Image("Ajustes")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 268 ,height: 53)
-                    .accessibilityHidden(true)
-                    .padding(.bottom, 32)
-                
-                soundModeConfigView
-                
-                Spacer().frame(height: 24)
-                
-                backToOnboardingButton
-                
-            }.padding(.horizontal, 60)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image(stringsConstants.ajustes)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 268 ,height: 53)
+                        .accessibilityHidden(true)
+                        .padding(.vertical, 40)
+                        .padding(.top, 40)
+                    
+                    soundModeConfigView
+                    
+                    Spacer().frame(height: 24)
+
+                    relatedToPaddleTogle
+                        .padding(.bottom, 34)
+                    
+                    
+                    backToOnboardingButton
+                    
+                    
+                    // TODO: Find somewhere to put these
+                    Spacer().frame(height: 1000)
+                    
+                    NavigationLink {
+                        SelectBallView()
+                    } label: {
+                        Text("Ball Color")
+                            .font(Font.wavePongPrimary(.body))
+                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                            .underline(color:Color(ColorConstants.shared.YELLOW_600))
+                    }
+                    
+                    AdsView()
+                    // TODO: It doesn't belong here
+                        .padding(.bottom, 50)
+                    
+                }.padding(.horizontal, 60)
+            }
             
             backButton
             
@@ -53,50 +78,8 @@ struct ConfigurationView: View {
 extension ConfigurationView {
     // MARK: RelationShip Functions
     func checksCurrentSoundMode(){
-        switch player.soundMode {
-        case .linear:
-            togleIsLinear = true
-        case .curved:
-            togleIsCurved = true
-        case .highContrast:
-            togleIsHighContrast = true
-        }
-    }
-    
-    
-    func updateToggle(from mode: SoundMode){
-        switch mode {
-            
-        case .linear:
-            if togleIsLinear {
-                togleIsCurved = false
-                togleIsHighContrast = false
-                player.changeSoundMode(.linear)
-            }
-            else if !togleIsCurved && !togleIsHighContrast {
-                togleIsLinear = true
-            }
-            
-        case .curved:
-            if togleIsCurved{
-                togleIsLinear = false
-                togleIsHighContrast = false
-                player.changeSoundMode(.curved)
-            }
-            else if !togleIsLinear && !togleIsHighContrast {
-                togleIsCurved = true
-            }
-        case .highContrast:
-            if togleIsHighContrast{
-                togleIsCurved = false
-                togleIsLinear = false
-                player.changeSoundMode(.highContrast)
-            }
-            else if !togleIsLinear && !togleIsCurved {
-                togleIsHighContrast = true
-            }
-        }
-        
+        selectedMode = player.soundMode
+        toglePaddle = player.isSoundRelatedtoPaddle
     }
 }
 

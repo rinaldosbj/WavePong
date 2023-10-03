@@ -12,6 +12,8 @@ struct RaqueteView: View {
     @State var deslize = 100
     @State var animation = false
     
+    let stringsConstants = StringsConstantsModel()
+    
     var body: some View {
         ZStack{
             
@@ -27,13 +29,14 @@ struct RaqueteView: View {
                 
                 Spacer()
                 
-                Text("\(Text("Deslize").foregroundColor(.yellow)) os dedos para os lados para \(Text("mover").foregroundColor(.yellow)) a raquete e rebater a bola")
-                    .font(.custom("DaysOne-Regular", size: 35))
+                Text(stringsConstants.mover_raquete)
+                    .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .minimumScaleFactor(0.1)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
-                    .accessibilityHint("Toque duas vezes na tela para continuar")
+                    .accessibilityHint(stringsConstants.onboading_hint)
                 
                 Spacer()
                 
