@@ -12,12 +12,28 @@ import SpriteKit
 struct OnboardingSceneView: View {
     @Environment(\.dismiss) private var dismiss
     @State var size = CGSize()
+    @State var demoCase: DemoCase
+    
+    enum DemoCase {
+        case pan, volume, game
+    }
+    
+    var strategy: OnboardingGameSceneStrategy {
+        switch demoCase {
+        case .pan:
+           return  PanOnboardingStrategy()
+        case .volume:
+           return  VolumeOnboardingStrategy()
+        case .game:
+           return  PanAndVolumeOnboardingStrategy()
+        }
+    }
     
     var soundManager: SoundManagerProtocol? = SoundManager.shared
     
     
     var scene: OnboardingGameScene {
-        let scene = OnboardingGameScene(size: size)
+        let scene = OnboardingGameScene(size: size, strategy: strategy)
         scene.scaleMode = .resizeFill
         return scene
     }
@@ -47,7 +63,6 @@ struct OnboardingSceneView: View {
                     Spacer()
                 }
                 
-                
             }
             
         }
@@ -56,5 +71,5 @@ struct OnboardingSceneView: View {
 }
 
 #Preview {
-    OnboardingSceneView()
+    OnboardingSceneView(demoCase: .volume)
 }
