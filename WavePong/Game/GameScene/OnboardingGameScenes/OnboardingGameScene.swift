@@ -10,11 +10,31 @@ import SpriteKit
 import SwiftUI
 
 
-class OnboardingGameScene: SKScene {
+class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
+    
+    private var shouldVibrate: Bool
+    @Binding var didColide: Bool
+    
+    struct ColliderType{
+        static let BALL: UInt32 = 1
+        static let PADDLE: UInt32 = 2
+        static let INFERIORBORDER: UInt32 = 4
+        static let AROUNDBORDER: UInt32 = 8
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+            if (collision == ColliderType.BALL | ColliderType.PADDLE) && shouldVibrate {
+                didColide = true
+                hapticsManager?.vibrateNotification(for: .success)
+            }
+    }
     
     var updateSceneStrategy: OnboardingGameSceneStrategy
 
     var soundManager: SoundManagerProtocol? = SoundManager.shared
+    
+    var hapticsManager: HapticsManagerProtocol? = HapticsManager.shared
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
@@ -28,6 +48,8 @@ class OnboardingGameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        
         background.size = size
         background.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(background)
@@ -56,8 +78,10 @@ class OnboardingGameScene: SKScene {
     }
     
     
-    init(size: CGSize, strategy: OnboardingGameSceneStrategy) {
+    init(size: CGSize, strategy: OnboardingGameSceneStrategy, shouldVibrate: Bool, didColide: Binding<Bool>) {
         self.updateSceneStrategy = strategy
+        self.shouldVibrate = shouldVibrate
+        _didColide = didColide
         super.init(size: size)
         
     }
@@ -113,12 +137,6 @@ class OnboardingGameScene: SKScene {
         return location < frame.minX + (paddle.size.width / 2)
     }
     
-    func changeStrategy() {
-        print(updateSceneStrategy)
-        //        self.updateSceneStrategy = VolumeOnboardingStrategy()
-        
-        //        print(updateSceneStrategy)
-    }
     
     
 }

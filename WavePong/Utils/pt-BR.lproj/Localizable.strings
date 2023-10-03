@@ -11,7 +11,8 @@
 "onboarding_hint" = "Toque duas vezes na tela para continuar";
 "coloque_fone" = "Coloque o fone de ouvido, depois toque na tela para continuar";
 "mover_raquete" = "Deslize os dedos para os lados para mover a raquete e rebater a bola";
-"bola_guia" = "A posição da bola será guiada pela música";
+"volume_onboarding" = "A distância da bola será guiada pelo volume da música";
+"bola_guia" = "A posição da bola será guiada pelo deslocamento lateral da música";
 "rebater_bola" = "Ao rebater a bola haverá uma vibração";
 "dois_toques" = "Dê Dois toques na tela para pausar o jogo";
 

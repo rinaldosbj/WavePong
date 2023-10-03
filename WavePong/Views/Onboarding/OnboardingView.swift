@@ -13,13 +13,17 @@ enum OnboadingCases {
 
 struct OnboardingView: View {
     
+    let stringsConstants = StringsConstantsModel()
+    
     var onboardingManager = OnboardingManager()
     var hapticsManager: HapticsManagerProtocol = HapticsManager.shared
     var soundManager: SoundManagerProtocol = SoundManager.shared
     
     var onboadingCase: OnboadingCases
     
-    @State var viewState = 5
+    @State var viewState = 6
+    
+    @State var didColide = false
     
     @Environment(\.presentationMode) private var presentation
     
@@ -37,20 +41,57 @@ struct OnboardingView: View {
         case .main:
             Group{
                 switch viewState {
-                case 5:
+                case 6:
                     FoneView()
+                        .accessibilityLabel(stringsConstants.coloque_fone)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onTapGesture { nextView() }
+                        
+                case 5:
+                    RaqueteView()
+                        .accessibilityLabel(stringsConstants.raquete_bola)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
                         .onTapGesture { nextView() }
                 case 4:
-                    RaqueteView()
-                        .onTapGesture { nextView() }
+                    VolumeView()
+                        .accessibilityLabel(stringsConstants.volume_onboarding)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onTapGesture {
+                            nextView()
+                            soundManager.stopGameTheme()
+                        }
                 case 3:
                     PosicaoView()
-                        .onTapGesture { nextView() }
+                        .accessibilityLabel(stringsConstants.bola_guiada)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onTapGesture {
+                            nextView()
+                            soundManager.stopGameTheme()
+                        }
                 case 2:
-                    RebaterView()
-                        .onTapGesture { nextView() }
+                    RebaterView(didColide: $didColide)
+                        .accessibilityLabel(stringsConstants.mover_raquete)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .onChange(of: didColide, perform: { newValue in
+                            nextView()
+                            soundManager.stopGameTheme()
+                        })
                 case 1:
                     PausarView()
+                        .accessibilityLabel(stringsConstants.dois_toques)
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
                         .onTapGesture {
                             if onboardingManager.onboradingHappend {
                                 presentation.wrappedValue.dismiss()

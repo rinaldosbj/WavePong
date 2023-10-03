@@ -38,20 +38,6 @@ extension ConfigurationView {
     }
     
     var backToOnboardingButton: some View {
-        
-        VStack(spacing: 20) {
-            NavigationLink {
-                OnboardingSceneView( demoCase: .game
-                )
-                    .navigationBarBackButtonHidden()
-            } label: {
-                Text("Preview SoundMode")
-                    .font(Font.wavePongPrimary(.body))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
-            }
-
-            
             NavigationLink {
                 OnboardingView(for: .main)
                     .navigationBarBackButtonHidden()
@@ -61,9 +47,6 @@ extension ConfigurationView {
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .underline(color:Color(ColorConstants.shared.YELLOW_600))
             }
-            
-        }
-        
       
     }
     

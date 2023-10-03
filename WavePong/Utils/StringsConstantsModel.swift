@@ -12,6 +12,7 @@ struct StringsConstantsModel {
     let onboading_hint = String(localized: "onboarding_hint")
     let coloque_fone = String(localized: "coloque_fone")
     let mover_raquete = String(localized: "mover_raquete")
+    let volume_onboarding = String(localized: "volume_onboarding")
     let bola_guiada = String(localized: "bola_guia")
     let raquete_bola = String(localized: "rebater_bola")
     let dois_toques = String(localized: "dois_toques")

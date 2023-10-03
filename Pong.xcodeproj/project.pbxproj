@@ -108,6 +108,7 @@
 		D3AEE22F2A96607200ED2382 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */; };
 		D3AEF2ED2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEF2EC2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift */; };
 		D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AEF2EE2A9D3C2100EE10A7 /* CustomToggleStyles.swift */; };
+		D3B703552ACC9D5600072685 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B703542ACC9D5600072685 /* VolumeView.swift */; };
 		D3BF927E28FEF6CD00EEF09B /* PongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF927D28FEF6CD00EEF09B /* PongApp.swift */; };
 		D3BF928228FEF6CF00EEF09B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928128FEF6CF00EEF09B /* Assets.xcassets */; };
 		D3BF928528FEF6CF00EEF09B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BF928428FEF6CF00EEF09B /* Preview Assets.xcassets */; };
@@ -231,6 +232,7 @@
 		D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
 		D3AEF2EC2A9D3B7600EE10A7 /* ConfigurationViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewComponents.swift; sourceTree = "<group>"; };
 		D3AEF2EE2A9D3C2100EE10A7 /* CustomToggleStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyles.swift; sourceTree = "<group>"; };
+		D3B703542ACC9D5600072685 /* VolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
 		D3BF927A28FEF6CD00EEF09B /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3BF927D28FEF6CD00EEF09B /* PongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongApp.swift; sourceTree = "<group>"; };
 		D3BF928128FEF6CF00EEF09B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 				D35EF5472A8AA83600BD946E /* FoneView.swift */,
 				D35EF5492A8AA86700BD946E /* RaqueteView.swift */,
 				D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */,
+				D3B703542ACC9D5600072685 /* VolumeView.swift */,
 				D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */,
 				D35EF54F2A8AAA3000BD946E /* PausarView.swift */,
 			);
@@ -745,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B703552ACC9D5600072685 /* VolumeView.swift in Sources */,
 				0CFA71202AC20BEE00982585 /* OnboardingSceneView.swift in Sources */,
 				D30F4E822AA7A6C200554275 /* StringsConstantsModel.swift in Sources */,
 				D3AEE22F2A96607200ED2382 /* ComingSoonView.swift in Sources */,

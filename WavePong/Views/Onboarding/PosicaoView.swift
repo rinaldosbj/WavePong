@@ -9,24 +9,17 @@ import SwiftUI
 
 struct PosicaoView: View {
     
-    @State var bola = false
-    
     let stringsConstants = StringsConstantsModel()
+    @State var didColide = false
     
     var body: some View {
         ZStack{
             
-            Image("background")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-                .accessibilityHidden(true)
+            OnboardingSceneView(demoCase: .pan, didColide: $didColide).ignoresSafeArea()
             
             VStack{
                 Spacer()
                     .frame(height: 64)
-                
-                Spacer()
                 
                 Text(stringsConstants.bola_guiada)
                     .font(Font.wavePongPrimary(.headline))
@@ -38,25 +31,8 @@ struct PosicaoView: View {
                     .padding(.bottom, -32)
                     .accessibilityHint(stringsConstants.onboading_hint)
                 
-                ZStack {
-                    VStack {
-                        Image("Ball")
-                            .offset(x: bola ? 40: -60, y: bola ? 100: 0)
-                            .animation(.easeOut(duration: 1.5).repeatForever(autoreverses: false),value: bola)
-                            .accessibilityHidden(true)
-                        Image("raquete")
-                            .scaledToFill()
-                            .frame(width: 145, height: 33, alignment: .center)
-                            .padding(.top, 100)
-                            .accessibilityHidden(true)
-                        
-                    }
-                }
                 Spacer()
             }
-        }
-        .onAppear{
-            bola = true
         }
     }
 }

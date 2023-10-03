@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct VolumeView: View {
+    
+    let stringsConstants = StringsConstantsModel()
+    @State var didColide = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            
+            OnboardingSceneView(demoCase: .volume, didColide: $didColide).ignoresSafeArea()
+            
+            VStack{
+                Spacer()
+                    .frame(height: 64)
+                
+                Text(stringsConstants.volume_onboarding)
+                    .font(Font.wavePongPrimary(.headline))
+                    .fontWeight(.bold)
+                    .minimumScaleFactor(0.1)
+                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 310, height: 270, alignment: .center)
+                    .padding(.bottom, -32)
+                    .accessibilityHint(stringsConstants.onboading_hint)
+                
+                Spacer()
+            }
+        }
     }
 }
 

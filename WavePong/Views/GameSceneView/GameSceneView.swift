@@ -44,6 +44,7 @@ struct GameSceneView: View {
                 gameView
                     .ignoresSafeArea()
                     .accessibilityElement()
+                    .accessibilityRespondsToUserInteraction()
                     .modifier(AddAccessibilityDirectInteractionTrait(condition: acessbility))
                     .onAppear(){
                         viewModel.size = geo.size
