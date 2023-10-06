@@ -7,9 +7,11 @@
 */
 
 // MARK: Onboarding
-
-"onboarding_hint" = "Double-tap the screen to continue";
-"coloque_fone" = "Put on the headphones, then tap the screen to continue";
+"onboarding_hint" = "Tap the screen to continue";
+"onboarding_hint_pause" = "Double-tap the screen to continue";
+"onboarding_hint_raquete" = "Hit the ball to continue";
+"tutorial_onboarding" = "Onboarding";
+"coloque_fone" = "Tutorial. Put on the headphones, then tap the screen to continue";
 "mover_raquete" = "Swipe your fingers sideways to move the racket and hit the ball";
 "volume_onboarding" = "The distance of the ball will be guided by the volume of the music";
 "bola_guia" = "The position of the ball will be guided by the lateral displacement of the music";
@@ -17,6 +19,9 @@
 "dois_toques" = "Double-tap the screen to pause the game";
 
 // MARK: Componentes
+"som_relacionado" = "Sound related to paddle";
+"selecionado" = "selected";
+"nao_selecionado" = ",not selected";
 "ajustes" = "Settings";
 "tutorial" = "Review Tutorial";
 "modo_som" = "Sound Mode";

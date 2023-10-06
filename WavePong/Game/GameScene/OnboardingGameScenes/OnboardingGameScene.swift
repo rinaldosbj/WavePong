@@ -14,6 +14,7 @@ class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
     
     private var shouldVibrate: Bool
     @Binding var didColide: Bool
+    private var isPause: Bool
     
     struct ColliderType{
         static let BALL: UInt32 = 1
@@ -44,6 +45,10 @@ class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
                         color: UIColor(Color(ColorConstants.shared.PURPLE_300)),
                         size: CGSize(width: 150, height: 20))
     
+    var pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
+                              color: UIColor(Color(ColorConstants.shared.PURPLE_500)),
+                              size: CGSize(width: 42, height: 42))
+    
     
     
     
@@ -62,6 +67,12 @@ class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
                                 y: 250)
         addChild(ball)
         
+        if isPause {
+            pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                         y: self.frame.maxY - 75)
+            pauseNode.zPosition = 5
+            addChild(pauseNode)
+        }
     }
     
     
@@ -78,10 +89,11 @@ class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    init(size: CGSize, strategy: OnboardingGameSceneStrategy, shouldVibrate: Bool, didColide: Binding<Bool>) {
+    init(size: CGSize, strategy: OnboardingGameSceneStrategy, shouldVibrate: Bool, didColide: Binding<Bool>, isPause: Bool) {
         self.updateSceneStrategy = strategy
         self.shouldVibrate = shouldVibrate
         _didColide = didColide
+        self.isPause = isPause
         super.init(size: size)
         
     }

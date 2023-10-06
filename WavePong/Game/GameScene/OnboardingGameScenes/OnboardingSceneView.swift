@@ -14,6 +14,7 @@ struct OnboardingSceneView: View {
     @State var size = CGSize()
     @State var demoCase: DemoCase
     @Binding var didColide: Bool
+    var isPause: Bool
     
     enum DemoCase {
         case pan, volume, game
@@ -42,7 +43,7 @@ struct OnboardingSceneView: View {
     var soundManager: SoundManagerProtocol? = SoundManager.shared
     
     var scene: OnboardingGameScene {
-        let scene = OnboardingGameScene(size: size, strategy: strategy, shouldVibrate: shouldVibrate, didColide: $didColide)
+        let scene = OnboardingGameScene(size: size, strategy: strategy, shouldVibrate: shouldVibrate, didColide: $didColide, isPause: isPause)
         scene.scaleMode = .resizeFill
         return scene
     }

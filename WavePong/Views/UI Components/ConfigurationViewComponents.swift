@@ -21,11 +21,13 @@ extension ConfigurationView {
                     Text("X")
                         .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
                         .font(Font.wavePongPrimary(.body))
+                        .accessibilityHidden(true)
                         .frame(width: 24, height: 24, alignment: .center)
                 }
             }
             
-            Text("Som em relação a raquete")
+            Text(stringsConstants.som_relacionado)
+                .accessibilityLabel(toglePaddle ? "\(stringsConstants.som_relacionado) \(stringsConstants.selecionado)" : "\(stringsConstants.som_relacionado) \(stringsConstants.nao_selecionado)")
                 .font(Font.wavePongPrimary(.body))
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             
@@ -70,6 +72,7 @@ extension ConfigurationView {
                         if selectedMode == type {
                             Text("X")
                                 .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                                .accessibilityHidden(true)
                                 .font(Font.wavePongPrimary(.body))
                                 .frame(width: 24, height: 24, alignment: .center)
                         }
@@ -78,14 +81,17 @@ extension ConfigurationView {
                     switch type {
                     case .linear:
                         Text(stringsConstants.linear)
+                            .accessibilityLabel(selectedMode == .linear ? "\(stringsConstants.linear) \(stringsConstants.selecionado)" : "\(stringsConstants.linear) \(stringsConstants.nao_selecionado)")
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     case .curved:
                         Text(stringsConstants.exponencial)
+                            .accessibilityLabel(selectedMode == .curved ? "\(stringsConstants.exponencial) \(stringsConstants.selecionado)" : "\(stringsConstants.exponencial) \(stringsConstants.nao_selecionado)")
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     case .highContrast:
                         Text(stringsConstants.alto)
+                            .accessibilityLabel(selectedMode == .highContrast ? "\(stringsConstants.alto) \(stringsConstants.selecionado)" : "\(stringsConstants.alto) \(stringsConstants.nao_selecionado)")
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     }

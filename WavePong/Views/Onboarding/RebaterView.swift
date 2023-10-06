@@ -16,7 +16,7 @@ struct RebaterView: View {
     var body: some View {
         ZStack{
             
-            OnboardingSceneView(demoCase: .game, didColide: $didColide).ignoresSafeArea()
+            OnboardingSceneView(demoCase: .game, didColide: $didColide, isPause: false).ignoresSafeArea()
                 
             VStack{
                 Spacer()

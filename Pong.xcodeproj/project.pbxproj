@@ -539,9 +539,9 @@
 			children = (
 				D35EF5442A8AA7C900BD946E /* OnboardingView.swift */,
 				D35EF5472A8AA83600BD946E /* FoneView.swift */,
-				D35EF5492A8AA86700BD946E /* RaqueteView.swift */,
 				D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */,
 				D3B703542ACC9D5600072685 /* VolumeView.swift */,
+				D35EF5492A8AA86700BD946E /* RaqueteView.swift */,
 				D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */,
 				D35EF54F2A8AAA3000BD946E /* PausarView.swift */,
 			);

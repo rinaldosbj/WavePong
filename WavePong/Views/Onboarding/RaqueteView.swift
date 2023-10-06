@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RaqueteView: View {
     
+    @State var didColide = false
+    
     @State var deslize = 100
     @State var animation = false
     
@@ -17,17 +19,11 @@ struct RaqueteView: View {
     var body: some View {
         ZStack{
             
-            Image("background")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-                .accessibilityHidden(true)
-            
-            VStack {
+            OnboardingSceneView(demoCase: .game, didColide: $didColide, isPause: false).ignoresSafeArea()
+                
+            VStack{
                 Spacer()
                     .frame(height: 64)
-                
-                Spacer()
                 
                 Text(stringsConstants.mover_raquete)
                     .font(Font.wavePongPrimary(.headline))
@@ -36,23 +32,9 @@ struct RaqueteView: View {
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 270, alignment: .center)
+                    .padding(.bottom, -32)
                     .accessibilityHint(stringsConstants.onboading_hint)
                 
-                Spacer()
-                
-                VStack{
-                    
-                    Image("raquete")
-                        .frame(width: 145, height: 33)
-                        .offset(x: CGFloat(deslize))
-                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true),value: animation)
-                        .onAppear{
-                            deslize = -100
-                            animation.toggle()
-                        }
-                        .accessibilityHidden(true)
-
-                }
                 Spacer()
             }
         }

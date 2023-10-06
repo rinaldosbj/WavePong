@@ -15,7 +15,7 @@ struct PosicaoView: View {
     var body: some View {
         ZStack{
             
-            OnboardingSceneView(demoCase: .pan, didColide: $didColide).ignoresSafeArea()
+            OnboardingSceneView(demoCase: .pan, didColide: $didColide, isPause: false).ignoresSafeArea()
             
             VStack{
                 Spacer()

@@ -8,7 +8,10 @@
 
 // MARK: Onboarding
 
-"onboarding_hint" = "Toque duas vezes na tela para continuar";
+"onboarding_hint" = "Toque na tela para continuar";
+"onboarding_hint_pause" = "Toque duas vezes na tela para continuar";
+"onboarding_hint_raquete" = "Rebata a bola para continuar";
+"tutorial_onboarding" = "Tutorial";
 "coloque_fone" = "Coloque o fone de ouvido, depois toque na tela para continuar";
 "mover_raquete" = "Deslize os dedos para os lados para mover a raquete e rebater a bola";
 "volume_onboarding" = "A distância da bola será guiada pelo volume da música";
@@ -17,6 +20,9 @@
 "dois_toques" = "Dê Dois toques na tela para pausar o jogo";
 
 // MARK: Componentes
+"som_relacionado" = "Som em relação a raquete";
+"selecionado" = "selecionado";
+"nao_selecionado" = ",não selecionado";
 "ajustes" = "Ajustes";
 "tutorial" = "Rever Tutorial";
 "modo_som" = "Modo de Som";

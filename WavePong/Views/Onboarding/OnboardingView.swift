@@ -43,64 +43,74 @@ struct OnboardingView: View {
                 switch viewState {
                 case 6:
                     FoneView()
-                        .accessibilityLabel(stringsConstants.coloque_fone)
                         .accessibilityElement()
                         .accessibilityRespondsToUserInteraction()
                         .accessibilityAddTraits(.allowsDirectInteraction)
+                        .accessibilityLabel("\(stringsConstants.tutorial_onboarding)..\(stringsConstants.coloque_fone)")
+                        .accessibilityHint(stringsConstants.onboading_hint)
                         .onTapGesture { nextView() }
-                        
                 case 5:
-                    RaqueteView()
-                        .accessibilityLabel(stringsConstants.raquete_bola)
-                        .accessibilityElement()
-                        .accessibilityRespondsToUserInteraction()
-                        .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onTapGesture { nextView() }
-                case 4:
                     VolumeView()
-                        .accessibilityLabel(stringsConstants.volume_onboarding)
                         .accessibilityElement()
                         .accessibilityRespondsToUserInteraction()
                         .accessibilityAddTraits(.allowsDirectInteraction)
+                        .accessibilityLabel(stringsConstants.volume_onboarding)
+                        .onTapGesture {
+                            nextView()
+                            soundManager.stopGameTheme()
+                        }
+                case 4:
+                    PosicaoView()
+                        .accessibilityElement()
+                        .accessibilityRespondsToUserInteraction()
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .accessibilityLabel(stringsConstants.bola_guiada)
+                        .accessibilityHint(stringsConstants.onboading_hint)
                         .onTapGesture {
                             nextView()
                             soundManager.stopGameTheme()
                         }
                 case 3:
-                    PosicaoView()
-                        .accessibilityLabel(stringsConstants.bola_guiada)
+                    RaqueteView()
                         .accessibilityElement()
                         .accessibilityRespondsToUserInteraction()
                         .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onTapGesture {
-                            nextView()
-                            soundManager.stopGameTheme()
-                        }
+                        .accessibilityLabel(stringsConstants.mover_raquete)
+                        .accessibilityHint(stringsConstants.onboading_hint)
+                        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                            .onEnded({ value in
+                                if value.translation.width < -10 || value.translation.width > 10 {
+                                    soundManager.stopGameTheme()
+                                    nextView()
+                                }
+                            }))
                 case 2:
                     RebaterView(didColide: $didColide)
-                        .accessibilityLabel(stringsConstants.mover_raquete)
                         .accessibilityElement()
                         .accessibilityRespondsToUserInteraction()
                         .accessibilityAddTraits(.allowsDirectInteraction)
+                        .accessibilityLabel(stringsConstants.raquete_bola)
+                        .accessibilityHint(stringsConstants.onboarding_hint_raquete)
                         .onChange(of: didColide, perform: { newValue in
                             nextView()
                             soundManager.stopGameTheme()
                         })
                 case 1:
                     PausarView()
-                        .accessibilityLabel(stringsConstants.dois_toques)
                         .accessibilityElement()
                         .accessibilityRespondsToUserInteraction()
                         .accessibilityAddTraits(.allowsDirectInteraction)
-                        .onTapGesture {
+                        .accessibilityLabel(stringsConstants.dois_toques)
+                        .accessibilityHint(stringsConstants.onboarding_hint_pause)
+                        .onTapGesture(count: 2, perform: {
+                            soundManager.stopGameTheme()
                             if onboardingManager.onboradingHappend {
                                 presentation.wrappedValue.dismiss()
                             }
                             else { nextView() }
-                        }
+                        })
                 default:
                     MenuView()
-                        .onAppear { onboardingManager.userFinishedOnboarding() }
                 }
             }.id(viewState)
             

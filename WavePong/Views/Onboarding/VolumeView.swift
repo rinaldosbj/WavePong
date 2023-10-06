@@ -15,7 +15,7 @@ struct VolumeView: View {
     var body: some View {
         ZStack{
             
-            OnboardingSceneView(demoCase: .volume, didColide: $didColide).ignoresSafeArea()
+            OnboardingSceneView(demoCase: .volume, didColide: $didColide, isPause: false).ignoresSafeArea()
             
             VStack{
                 Spacer()
