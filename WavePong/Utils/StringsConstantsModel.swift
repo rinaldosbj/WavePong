@@ -26,6 +26,7 @@ struct StringsConstantsModel {
     let selecionado = String(localized: "selecionado")
     let nao_selecionado = String(localized: "nao_selecionado")
     let ajustes = String(localized: "ajustes")
+    let sound_preview = String(localized: "sound_preview")
     let tutorial = String(localized: "tutorial")
     let modo_som = String(localized: "modo_som")
     let modo_hint = String(localized: "modo_hint")
@@ -51,6 +52,7 @@ struct StringsConstantsModel {
     let notificacao_body3 = String(localized: "notificacao_body3")
     
     let start = String(localized: "start")
+    let save = String(localized: "save")
     
     let dificuldade = String(localized: "dificuldade")
     let dificuldade_hint = String(localized: "dificuldade_hint")

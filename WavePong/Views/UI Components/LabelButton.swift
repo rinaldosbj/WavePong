@@ -13,8 +13,7 @@ struct LabelButton: View {
     let stringsConstants = StringsConstantsModel()
     
     enum ButtonStyle: String {
-        case start, resume, easy, medium, hard
-        
+        case start, resume, easy, medium, hard, save
     }
     
     var buttonStyle: ButtonStyle
@@ -34,6 +33,8 @@ struct LabelButton: View {
             return stringsConstants.medium
         case .hard:
             return stringsConstants.hard
+        case .save:
+            return stringsConstants.save
         }
     }
     
@@ -44,6 +45,12 @@ struct LabelButton: View {
                 buttonAction()
             } label: {
                 button
+            }
+        case .save:
+            Button {
+                buttonAction()
+            } label: {
+                buttonShort
             }
         default:
             button
@@ -62,5 +69,18 @@ struct LabelButton: View {
                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
         }
         .frame(width: 282, height: 84)
+    }
+    
+    var buttonShort: some View {
+        ZStack {
+            Image("BackgroundButton")
+                .resizable()
+                .scaledToFill()
+            
+            Text(textLabel)
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+        }
+        .frame(width: 227, height: 84)
     }
 }

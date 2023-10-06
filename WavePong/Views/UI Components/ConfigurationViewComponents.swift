@@ -12,18 +12,21 @@ extension ConfigurationView {
     
     var relatedToPaddleTogle: some View {
         HStack {
-            ZStack {
-                Color(ColorConstants.shared.WHITE_500)
-                    .frame(width: 24, height: 24, alignment: .center)
-                    .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
-                
-                if toglePaddle {
-                    Text("X")
-                        .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
-                        .font(Font.wavePongPrimary(.body))
-                        .accessibilityHidden(true)
+            VStack {
+                ZStack {
+                    Image("toggleRectangle")
                         .frame(width: 24, height: 24, alignment: .center)
-                }
+                        .accessibilityHidden(true)
+                    
+                    if toglePaddle {
+                        Text("X")
+                            .foregroundColor(Color(ColorConstants.shared.PURPLE_500))
+                            .font(Font.wavePongPrimary(.body))
+                            .accessibilityHidden(true)
+                            .frame(width: 24, height: 24, alignment: .center)
+                    }
+                }.padding(.top, 5)
+                Spacer()
             }
             
             Text(stringsConstants.som_relacionado)
@@ -40,34 +43,56 @@ extension ConfigurationView {
     }
     
     var backToOnboardingButton: some View {
-            NavigationLink {
-                OnboardingView(for: .main)
-                    .navigationBarBackButtonHidden()
-            } label: {
-                Text(stringsConstants.tutorial)
-                    .font(Font.wavePongPrimary(.body))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    .underline(color:Color(ColorConstants.shared.YELLOW_600))
-            }
-      
+        NavigationLink {
+            OnboardingView(for: .main)
+                .navigationBarBackButtonHidden()
+        } label: {
+            Text(stringsConstants.tutorial)
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                .underline(color:Color(ColorConstants.shared.YELLOW_600))
+        }
+        
+    }
+    
+    var soundPreview: some View {
+        NavigationLink {
+            OnboardingSceneView(demoCase: .game, didColide: $didColide, isPause: false)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            SoundManager.shared.stopGameTheme()
+                            NavigationUtil.popToPreviusView()
+                        } label: {
+                            Text(stringsConstants.volta)
+                                .font(Font.wavePongPrimary(.body))
+                                .layoutPriority(.greatestFiniteMagnitude)
+                                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                        }
+                    }
+                }
+                .navigationBarBackButtonHidden()
+        } label: {
+            Text(stringsConstants.sound_preview)
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                .underline(color:Color(ColorConstants.shared.YELLOW_600))
+        }
     }
     
     var soundModeConfigView: some View {
         VStack {
-            HStack {
-                Text(stringsConstants.modo_som)
-                    .accessibilityHint(stringsConstants.modo_hint)
-                    .font(Font.wavePongPrimary(.body))
-                    .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                Spacer()
-            }
+            Text(stringsConstants.modo_som)
+                .accessibilityHint(stringsConstants.modo_hint)
+                .font(Font.wavePongPrimary(.body))
+                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             
             ForEach(SoundMode.allCases, id: \.self) { type in
                 HStack {
                     ZStack {
-                        Color(ColorConstants.shared.WHITE_500)
+                        Image("toggleRectangle")
                             .frame(width: 24, height: 24, alignment: .center)
-                            .border(Color(ColorConstants.shared.PURPLE_500),width: 2)
+                            .accessibilityHidden(true)
                         
                         if selectedMode == type {
                             Text("X")
@@ -84,11 +109,6 @@ extension ConfigurationView {
                             .accessibilityLabel(selectedMode == .linear ? "\(stringsConstants.linear) \(stringsConstants.selecionado)" : "\(stringsConstants.linear) \(stringsConstants.nao_selecionado)")
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                    case .curved:
-                        Text(stringsConstants.exponencial)
-                            .accessibilityLabel(selectedMode == .curved ? "\(stringsConstants.exponencial) \(stringsConstants.selecionado)" : "\(stringsConstants.exponencial) \(stringsConstants.nao_selecionado)")
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     case .highContrast:
                         Text(stringsConstants.alto)
                             .accessibilityLabel(selectedMode == .highContrast ? "\(stringsConstants.alto) \(stringsConstants.selecionado)" : "\(stringsConstants.alto) \(stringsConstants.nao_selecionado)")
@@ -103,7 +123,7 @@ extension ConfigurationView {
                     selectedMode = player.soundMode
                 }
             }
-
+            
         }
     }
     

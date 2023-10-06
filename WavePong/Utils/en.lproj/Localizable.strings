@@ -24,7 +24,8 @@
 "nao_selecionado" = ",not selected";
 "ajustes" = "Settings";
 "tutorial" = "Review Tutorial";
-"modo_som" = "Sound Mode";
+"sound_preview" = "Preview Sound Mode";
+"modo_som" = "SOUND MODE";
 "modo_hint" = "Select which sound mode you want to listen to";
 "linear" = "Linear";
 "linear_hint" = "Linear Mode";
@@ -48,6 +49,7 @@
 "notificacao_body3" = "The music is playing, get back to the fun!";
 
 "start" = "START";
+"save" = "SAVE";
 
 "home_hint" = "Back to menu";
 "recomecar_hint" = "Restart";
