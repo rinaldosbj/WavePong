@@ -44,6 +44,7 @@ struct GameSceneView: View {
                 gameView
                     .ignoresSafeArea()
                     .accessibilityElement()
+                    .accessibilityRespondsToUserInteraction()
                     .modifier(AddAccessibilityDirectInteractionTrait(condition: acessbility))
                     .onAppear(){
                         viewModel.size = geo.size
@@ -103,17 +104,17 @@ struct GameSceneView: View {
                         .frame(width: 208, height: 133)
                         .accessibilityHidden(true)
                     
-                    if viewModel.userScore == "1" {
+                    if viewModel.recordLabel == "\(stringsConstants.recorde) 1" {
                         Text(viewModel.recordLabel)
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.YELLOW_300))
-                            .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.ponto)")
+                            .accessibilityLabel("\(viewModel.recordLabel) \(stringsConstants.ponto)")
                     }
                     else {
                         Text(viewModel.recordLabel)
                             .font(Font.wavePongPrimary(.body))
                             .foregroundColor(Color(ColorConstants.shared.YELLOW_300))
-                            .accessibilityLabel("\(stringsConstants.recorde) \(viewModel.recordLabel) \(stringsConstants.pontos)")
+                            .accessibilityLabel("\(viewModel.recordLabel) \(stringsConstants.pontos)")
                     }
                     
                     
@@ -144,8 +145,9 @@ struct GameSceneView: View {
                 HStack {
                     HStack(spacing: 48)  {
                         IconButton(.home) {
-                            NavigationUtil.popToRootView()
                             viewModel.homeButtonPressed()
+                            NavigationUtil.popToRootView()
+                            presentation.wrappedValue.dismiss()
                         }
                         .accessibilityLabel(stringsConstants.home_hint)
                         
@@ -182,7 +184,7 @@ struct GameSceneView: View {
                 HStack(spacing: 48)  {
                     IconButton(.home) {
                         NavigationUtil.popToRootView()
-                        viewModel.homeButtonPressed()
+                        presentation.wrappedValue.dismiss()
                     }
                     .accessibilityLabel(stringsConstants.home_hint)
                     

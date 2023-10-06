@@ -1,29 +1,27 @@
 //
-//  PausarView.swift
+//  VolumeView.swift
 //  WavePong
 //
-//  Created by rsbj on 14/08/23.
+//  Created by rsbj on 03/10/23.
 //
 
 import SwiftUI
 
-struct PausarView: View {
-    @State var scale: CGFloat = 1.0
-    @State var animation = false
-    @State var didColide = false
+struct VolumeView: View {
     
     let stringsConstants = StringsConstantsModel()
+    @State var didColide = false
     
     var body: some View {
         ZStack{
             
-            OnboardingSceneView(demoCase: .game, didColide: $didColide, isPause: true).ignoresSafeArea()
-                
+            OnboardingSceneView(demoCase: .volume, didColide: $didColide, isPause: false).ignoresSafeArea()
+            
             VStack{
                 Spacer()
                     .frame(height: 64)
                 
-                Text(stringsConstants.dois_toques)
+                Text(stringsConstants.volume_onboarding)
                     .font(Font.wavePongPrimary(.headline))
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.1)
@@ -39,8 +37,6 @@ struct PausarView: View {
     }
 }
 
-struct PausarView_Previews: PreviewProvider {
-    static var previews: some View {
-        PausarView()
-    }
+#Preview {
+    VolumeView()
 }

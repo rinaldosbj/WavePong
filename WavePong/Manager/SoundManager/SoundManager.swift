@@ -35,12 +35,6 @@ public class SoundManager: SoundManagerProtocol {
     
     var orientationStrategy: StereoProportionCalculable {
         switch player.soundMode {
-        case .curved:
-            if player.isSoundRelatedtoPaddle {
-                return PaddleOrientationExponencialStrategy()
-            } else {
-                return CurvedOrientationStragtegy()
-            }
         case .linear:
             if player.isSoundRelatedtoPaddle {
                 return PaddleOrientationLinearStrategy()

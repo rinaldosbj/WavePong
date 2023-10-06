@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @State private var playFistGame = false
     @State private var isShowingGameCenter = false
     let stringsConstants = StringsConstantsModel()
     
@@ -56,10 +57,21 @@ struct MenuView: View {
                             .accessibilityHint(stringsConstants.game_center_hint)
                     }
                 }
+                .onAppear {
+                    if !OnboardingManager().onboradingHappend {
+                        playFistGame = true
+                        OnboardingManager().userFinishedOnboarding()
+                    }
+                }
             }
+            .fullScreenCover(isPresented: $playFistGame, content: {
+                GameSceneView(viewModel: SelectDifficultyViewModel().viewModelToBePresented(selectedDifficulty: .easy))
+                    .ignoresSafeArea()
+            })
             .sheet(isPresented: $isShowingGameCenter) {
                 GameCenterView(isPresented: $isShowingGameCenter).ignoresSafeArea()
             }
+            
         }
     }
 }

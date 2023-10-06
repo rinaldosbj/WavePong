@@ -32,8 +32,6 @@ final class AnalyticsManager {
         switch panStyle {
         case .linear:
             return "linear"
-        case .curved:
-            return "curved"
         case .highContrast:
             return "highConstrast"
         }

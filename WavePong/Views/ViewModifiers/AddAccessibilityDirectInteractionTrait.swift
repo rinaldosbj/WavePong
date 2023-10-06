@@ -13,10 +13,12 @@ struct AddAccessibilityDirectInteractionTrait: ViewModifier {
     func body(content: Content) -> some View {
         if condition {
             return content
+                .accessibilityHidden(false)
                 .accessibilityAddTraits(.allowsDirectInteraction)
         } else {
             return content
                 .accessibilityRemoveTraits(.allowsDirectInteraction)
+                .accessibilityHidden(true)
         }
     }
 }

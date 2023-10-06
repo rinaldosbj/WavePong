@@ -10,11 +10,32 @@ import SpriteKit
 import SwiftUI
 
 
-class OnboardingGameScene: SKScene {
+class OnboardingGameScene: SKScene, SKPhysicsContactDelegate {
+    
+    private var shouldVibrate: Bool
+    @Binding var didColide: Bool
+    private var isPause: Bool
+    
+    struct ColliderType{
+        static let BALL: UInt32 = 1
+        static let PADDLE: UInt32 = 2
+        static let INFERIORBORDER: UInt32 = 4
+        static let AROUNDBORDER: UInt32 = 8
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+            if (collision == ColliderType.BALL | ColliderType.PADDLE) && shouldVibrate {
+                didColide = true
+                hapticsManager?.vibrateNotification(for: .success)
+            }
+    }
     
     var updateSceneStrategy: OnboardingGameSceneStrategy
 
     var soundManager: SoundManagerProtocol? = SoundManager.shared
+    
+    var hapticsManager: HapticsManagerProtocol? = HapticsManager.shared
     
     var background = SKSpriteNode(imageNamed: "backgroundGame")
     
@@ -24,10 +45,16 @@ class OnboardingGameScene: SKScene {
                         color: UIColor(Color(ColorConstants.shared.PURPLE_300)),
                         size: CGSize(width: 150, height: 20))
     
+    var pauseNode = PauseNode(texture: SKTexture(imageNamed: "pause"),
+                              color: UIColor(Color(ColorConstants.shared.PURPLE_500)),
+                              size: CGSize(width: 42, height: 42))
+    
     
     
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        
         background.size = size
         background.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(background)
@@ -40,6 +67,12 @@ class OnboardingGameScene: SKScene {
                                 y: 250)
         addChild(ball)
         
+        if isPause {
+            pauseNode.position = CGPoint(x: self.frame.maxX - 50,
+                                         y: self.frame.maxY - 75)
+            pauseNode.zPosition = 5
+            addChild(pauseNode)
+        }
     }
     
     
@@ -56,8 +89,11 @@ class OnboardingGameScene: SKScene {
     }
     
     
-    init(size: CGSize, strategy: OnboardingGameSceneStrategy) {
+    init(size: CGSize, strategy: OnboardingGameSceneStrategy, shouldVibrate: Bool, didColide: Binding<Bool>, isPause: Bool) {
         self.updateSceneStrategy = strategy
+        self.shouldVibrate = shouldVibrate
+        _didColide = didColide
+        self.isPause = isPause
         super.init(size: size)
         
     }
@@ -113,12 +149,6 @@ class OnboardingGameScene: SKScene {
         return location < frame.minX + (paddle.size.width / 2)
     }
     
-    func changeStrategy() {
-        print(updateSceneStrategy)
-        //        self.updateSceneStrategy = VolumeOnboardingStrategy()
-        
-        //        print(updateSceneStrategy)
-    }
     
     
 }

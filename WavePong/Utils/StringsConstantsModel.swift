@@ -10,15 +10,23 @@ struct StringsConstantsModel {
     // MARK: Onboarding
     
     let onboading_hint = String(localized: "onboarding_hint")
+    let onboarding_hint_pause = String(localized: "onboarding_hint_pause")
+    let onboarding_hint_raquete = String(localized: "onboarding_hint_raquete")
+    let tutorial_onboarding = String(localized: "tutorial_onboarding")
     let coloque_fone = String(localized: "coloque_fone")
     let mover_raquete = String(localized: "mover_raquete")
+    let volume_onboarding = String(localized: "volume_onboarding")
     let bola_guiada = String(localized: "bola_guia")
     let raquete_bola = String(localized: "rebater_bola")
     let dois_toques = String(localized: "dois_toques")
 
     // MARK: Componentes
     
+    let som_relacionado = String(localized: "som_relacionado")
+    let selecionado = String(localized: "selecionado")
+    let nao_selecionado = String(localized: "nao_selecionado")
     let ajustes = String(localized: "ajustes")
+    let sound_preview = String(localized: "sound_preview")
     let tutorial = String(localized: "tutorial")
     let modo_som = String(localized: "modo_som")
     let modo_hint = String(localized: "modo_hint")
@@ -44,6 +52,7 @@ struct StringsConstantsModel {
     let notificacao_body3 = String(localized: "notificacao_body3")
     
     let start = String(localized: "start")
+    let save = String(localized: "save")
     
     let dificuldade = String(localized: "dificuldade")
     let dificuldade_hint = String(localized: "dificuldade_hint")
