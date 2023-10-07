@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConfigurationView: View {
     
+    @State var didColide = false
     @Environment(\.presentationMode) var presentation
     @State var selectedMode: SoundMode = .linear
     @State var toglePaddle = false
@@ -33,22 +34,25 @@ struct ConfigurationView: View {
                         .frame(width: 268 ,height: 53)
                         .accessibilityHidden(true)
                         .padding(.vertical, 40)
-                        .padding(.top, 40)
+                        .padding(.top, 32)
                     
                     soundModeConfigView
-                    
-                    Spacer().frame(height: 24)
 
                     relatedToPaddleTogle
-                        .padding(.bottom, 34)
                     
-                    
+                    soundPreview
+                        .padding(24)
                     backToOnboardingButton
+                        .padding(.bottom,24)
                     
+                    LabelButton(buttonStyle: .save, buttonAction: {
+                        presentation.wrappedValue.dismiss()
+                    })
                     
+
                     // TODO: Find somewhere to put these
                     Spacer().frame(height: 1000)
-                    
+/*
                     NavigationLink {
                         SelectBallView()
                     } label: {
@@ -57,15 +61,13 @@ struct ConfigurationView: View {
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                             .underline(color:Color(ColorConstants.shared.YELLOW_600))
                     }
-                    
+ */
                     AdsView()
                     // TODO: It doesn't belong here
                         .padding(.bottom, 50)
-                    
+
                 }.padding(.horizontal, 60)
             }
-            
-            backButton
             
             .onAppear {
                 checksCurrentSoundMode()

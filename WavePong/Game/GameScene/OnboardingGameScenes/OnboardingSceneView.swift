@@ -13,6 +13,8 @@ struct OnboardingSceneView: View {
     @Environment(\.dismiss) private var dismiss
     @State var size = CGSize()
     @State var demoCase: DemoCase
+    @Binding var didColide: Bool
+    var isPause: Bool
     
     enum DemoCase {
         case pan, volume, game
@@ -29,11 +31,19 @@ struct OnboardingSceneView: View {
         }
     }
     
+    var shouldVibrate: Bool {
+        switch demoCase {
+        case .game:
+           return  true
+        default:
+            return false
+        }
+    }
+    
     var soundManager: SoundManagerProtocol? = SoundManager.shared
     
-    
     var scene: OnboardingGameScene {
-        let scene = OnboardingGameScene(size: size, strategy: strategy)
+        let scene = OnboardingGameScene(size: size, strategy: strategy, shouldVibrate: shouldVibrate, didColide: $didColide, isPause: isPause)
         scene.scaleMode = .resizeFill
         return scene
     }
@@ -46,22 +56,10 @@ struct OnboardingSceneView: View {
                     .onAppear {
                         size = geo.size
                         soundManager?.playGameTheme()
-                        
                     }
-                VStack {
-                    HStack {
-                        Image("settings")
-                            .onTapGesture {
-                                soundManager?.stopGameTheme()
-                                dismiss()
-                            }
-                            .padding()
-                        
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }
+                    .onChange(of: didColide, perform: {newValue in
+                        didColide = true
+                    })
                 
             }
             
@@ -70,6 +68,3 @@ struct OnboardingSceneView: View {
     }
 }
 
-#Preview {
-    OnboardingSceneView(demoCase: .volume)
-}

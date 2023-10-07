@@ -31,7 +31,5 @@ class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
         else if collision == ColliderType.BALL | ColliderType.AROUNDBORDER {
             gameColisionDelegate?.wallColision()
         }
-        
-        
     }
 }

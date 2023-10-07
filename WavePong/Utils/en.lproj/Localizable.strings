@@ -7,18 +7,25 @@
 */
 
 // MARK: Onboarding
-
-"onboarding_hint" = "Double-tap the screen to continue";
-"coloque_fone" = "Put on the headphones, then tap the screen to continue";
+"onboarding_hint" = "Tap the screen to continue";
+"onboarding_hint_pause" = "Double-tap the screen to continue";
+"onboarding_hint_raquete" = "Hit the ball to continue";
+"tutorial_onboarding" = "Onboarding";
+"coloque_fone" = "Tutorial. Put on the headphones, then tap the screen to continue";
 "mover_raquete" = "Swipe your fingers sideways to move the racket and hit the ball";
-"bola_guia" = "The ball's position will be guided by the music";
+"volume_onboarding" = "The distance of the ball will be guided by the volume of the music";
+"bola_guia" = "The position of the ball will be guided by the lateral displacement of the music";
 "rebater_bola" = "There will be a vibration when hitting the ball";
 "dois_toques" = "Double-tap the screen to pause the game";
 
 // MARK: Componentes
+"som_relacionado" = "Sound related to paddle";
+"selecionado" = "selected";
+"nao_selecionado" = ",not selected";
 "ajustes" = "Settings";
 "tutorial" = "Review Tutorial";
-"modo_som" = "Sound Mode";
+"sound_preview" = "Preview Sound Mode";
+"modo_som" = "SOUND MODE";
 "modo_hint" = "Select which sound mode you want to listen to";
 "linear" = "Linear";
 "linear_hint" = "Linear Mode";
@@ -42,6 +49,7 @@
 "notificacao_body3" = "The music is playing, get back to the fun!";
 
 "start" = "START";
+"save" = "SAVE";
 
 "home_hint" = "Back to menu";
 "recomecar_hint" = "Restart";
@@ -66,3 +74,6 @@
 "ponto" = "Point";
 "pontos" = "Points";
 "novo_recorde" = "New record";
+
+"ads" = "Watch ads to help the developers (secret)";
+"carregando" = "Loading...";

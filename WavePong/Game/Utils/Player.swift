@@ -127,8 +127,6 @@ class Player: PlayerProtocol {
             return .linear
         case 1:
             return .highContrast
-        case 2:
-            return .curved
         default:
             return .linear
         }
