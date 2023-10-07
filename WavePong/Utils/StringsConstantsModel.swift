@@ -74,4 +74,7 @@ struct StringsConstantsModel {
     let ponto = String(localized: "ponto")
     let pontos = String(localized: "pontos")
     let novo_record = String(localized: "novo_recorde")
+    
+    let ads = String(localized: "ads")
+    let carregando = String(localized: "carregando")
 }

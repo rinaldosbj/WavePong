@@ -20,15 +20,18 @@ struct PongApp: App {
     var body: some Scene {
         
         WindowGroup {
-            NavigationView {
-                if onboard.onboradingHappend {
-                    MenuView()
+            ZStack {
+                HomeButtonHiden
+                NavigationView {
+                    if onboard.onboradingHappend {
+                        MenuView()
+                    }
+                    else {
+                        OnboardingView(for: .main)
+                    }
                 }
-                else {
-                    OnboardingView(for: .main)
-                }
+                .navigationViewStyle(.stack)
             }
-            .navigationViewStyle(.stack)
         }.onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {
             case .active:
@@ -42,6 +45,16 @@ struct PongApp: App {
             @unknown default:
                 print("Oh - interesting: I received an unexpected new value.")
             }
+        }
+    }
+}
+
+extension PongApp {
+//  Gambs to Hide the Home button in the app
+    var HomeButtonHiden: some View {
+        ZStack { Text("")
+        if #available(iOS 16.0, *) { Text("")
+                    .persistentSystemOverlays(.hidden) }
         }
     }
 }

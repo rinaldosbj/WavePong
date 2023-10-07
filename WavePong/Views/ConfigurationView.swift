@@ -49,10 +49,10 @@ struct ConfigurationView: View {
                         presentation.wrappedValue.dismiss()
                     })
                     
-/*
+
                     // TODO: Find somewhere to put these
                     Spacer().frame(height: 1000)
-                    
+/*
                     NavigationLink {
                         SelectBallView()
                     } label: {
@@ -61,11 +61,11 @@ struct ConfigurationView: View {
                             .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                             .underline(color:Color(ColorConstants.shared.YELLOW_600))
                     }
-                    
+ */
                     AdsView()
                     // TODO: It doesn't belong here
                         .padding(.bottom, 50)
-*/
+
                 }.padding(.horizontal, 60)
             }
             

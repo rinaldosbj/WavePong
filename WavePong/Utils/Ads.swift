@@ -5,6 +5,7 @@ import SwiftUI
 struct AdsView: View {
     
     var ads = RewardedAd()
+    let stringsConstants = StringsConstantsModel()
     
     @State var buttonState = true
     
@@ -18,13 +19,13 @@ struct AdsView: View {
         }) {
             
             if buttonState {
-                Text("Assistir Ads")
+                Text(stringsConstants.ads)
                     .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
                     .underline(color:Color(ColorConstants.shared.YELLOW_600))
             }
             else {
-                Text("Loading...")
+                Text(stringsConstants.carregando)
                     .font(Font.wavePongPrimary(.body))
                     .foregroundColor(Color(ColorConstants.shared.WHITE_500))
             }
@@ -34,8 +35,9 @@ struct AdsView: View {
 
 
 class RewardedAd {
-    private let rewardId = "ca-app-pub-3940256099942544/1712485313"
+    private let rewardId = "ca-app-pub-4468906973477488/7219319001"
     // TODO: replace this with your own Ad ID
+    // ID teste: ca-app-pub-3940256099942544/1712485313
     // Nosso ID: ca-app-pub-4468906973477488/7219319001
     
     var rewardedAd: GADRewardedAd?
