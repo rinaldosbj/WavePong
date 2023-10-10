@@ -70,6 +70,9 @@
 		0D7E1FCA2AB238240082D3A1 /* ChipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7E1FC92AB238240082D3A1 /* ChipManager.swift */; };
 		0DB4EFE52A954BF1002E441A /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */; };
 		0DB4EFE72A954C8E002E441A /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4EFE62A954C8E002E441A /* GameCenterView.swift */; };
+		0DC8E0992AC4A1A7004F021F /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8E0982AC4A1A7004F021F /* StoreView.swift */; };
+		0DC8E09B2AC4A320004F021F /* StoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8E09A2AC4A320004F021F /* StoreCard.swift */; };
+		0DC8E09D2AC4C4F0004F021F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8E09C2AC4C4F0004F021F /* RoundedCorner.swift */; };
 		0DF0390C2A93E07C0005551B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0390B2A93E07C0005551B /* AppDelegate.swift */; };
 		0DF0390E2A93E0D60005551B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0390D2A93E0D60005551B /* NotificationManager.swift */; };
 		0DF039112A93E11E0005551B /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF039102A93E11E0005551B /* NotificationType.swift */; };
@@ -188,6 +191,9 @@
 		0D7E1FC92AB238240082D3A1 /* ChipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipManager.swift; sourceTree = "<group>"; };
 		0DB4EFE42A954BF1002E441A /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		0DB4EFE62A954C8E002E441A /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
+		0DC8E0982AC4A1A7004F021F /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		0DC8E09A2AC4A320004F021F /* StoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCard.swift; sourceTree = "<group>"; };
+		0DC8E09C2AC4C4F0004F021F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		0DF0390B2A93E07C0005551B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DF0390D2A93E0D60005551B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0DF039102A93E11E0005551B /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */,
+				0DC8E09C2AC4C4F0004F021F /* RoundedCorner.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -308,6 +315,7 @@
 				0C6363F32A8D268F002DAB8C /* LabelButton.swift */,
 				0C6253192ABA1BA60051D5D5 /* SelectDifficultyLabel.swift */,
 				0C6363F12A8D266A002DAB8C /* IconButton.swift */,
+				0DC8E09A2AC4A320004F021F /* StoreCard.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -324,6 +332,7 @@
 				D3AEE22E2A96607200ED2382 /* ComingSoonView.swift */,
 				0C8648E42A8D676000017F29 /* UI Components */,
 				D35EF5462A8AA7E300BD946E /* Onboarding */,
+				0DC8E0982AC4A1A7004F021F /* StoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -746,7 +755,6 @@
 				D306E2222AA10E7A004F0D9C /* SelectDifficultyView.swift in Sources */,
 				0C26DA8A2A82E53A00844FB2 /* GameSceneView.swift in Sources */,
 				D30EF6DC2A79CC5800125DB0 /* GameManager.swift in Sources */,
-				D3D2DD752ABE220300732116 /* AudioRelatableNodes.swift in Sources */,
 				0C6253152AB8DC090051D5D5 /* GameManagerBuilder.swift in Sources */,
 				0C6B93AB2A7EE46200023DC8 /* GameSceneDelegate.swift in Sources */,
 				0C98A6562A9E8F67001CFF2B /* UserDefaulteble.swift in Sources */,
@@ -760,6 +768,7 @@
 				0C6363EC2A8BEA57002DAB8C /* PauseNode.swift in Sources */,
 				0CC0C1712AA6651A00E13FE9 /* GameManagerSettings.swift in Sources */,
 				0CE00EF72AB40A88008C1E06 /* ImpactFeedbackGeneratorFactory.swift in Sources */,
+				0DC8E09B2AC4A320004F021F /* StoreCard.swift in Sources */,
 				0C376C5E2AB4E0DD00BE393E /* AVAudioplayerFactory.swift in Sources */,
 				0CE00EF32AB409FC008C1E06 /* HapticsManagerProtocols.swift in Sources */,
 				0C27260E2A7EF6CC0069C5C9 /* HapticsManager.swift in Sources */,
@@ -786,7 +795,9 @@
 				0CCCE3332A8ADB0000BCB4E5 /* GameManagerDelegate.swift in Sources */,
 				D37939362AB230C200D22457 /* Ads.swift in Sources */,
 				0C5325372A9EB376007B8263 /* GameManagerProtocol.swift in Sources */,
+				0DC8E09D2AC4C4F0004F021F /* RoundedCorner.swift in Sources */,
 				D3AEF2EF2A9D3C2100EE10A7 /* CustomToggleStyles.swift in Sources */,
+				0DC8E0992AC4A1A7004F021F /* StoreView.swift in Sources */,
 				0C26DA8C2A83303200844FB2 /* Player.swift in Sources */,
 				D30F4E852AA8E47E00554275 /* SelectBallView.swift in Sources */,
 				0CCCE3352A8ADB2500BCB4E5 /* GameColisionDelegate.swift in Sources */,
@@ -981,7 +992,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -999,7 +1010,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong2";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1019,7 +1030,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WavePong/Preview Content\"";
-				DEVELOPMENT_TEAM = B6XWN7H84M;
+				DEVELOPMENT_TEAM = GMAYGR5U3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WavePong/Info.plist;
@@ -1037,7 +1048,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy-rsbj.WavePong2";
 				PRODUCT_NAME = Pong;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
