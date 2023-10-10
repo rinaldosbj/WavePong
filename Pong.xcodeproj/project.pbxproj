@@ -140,6 +140,7 @@
 		0C26DA8B2A83303200844FB2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0C27260D2A7EF6CC0069C5C9 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		0C2BBDC62A7440BE0031480F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0C2DE3BD2AD5CA2400D0D3C0 /* WavePongTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = WavePongTestPlan.xctestplan; sourceTree = SOURCE_ROOT; };
 		0C376C5B2AB4E0B400BE393E /* AVAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioPlayer.swift; sourceTree = "<group>"; };
 		0C376C5D2AB4E0DD00BE393E /* AVAudioplayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioplayerFactory.swift; sourceTree = "<group>"; };
 		0C49E0A02A93015D00118E77 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		0CCCE3322A8ADB0000BCB4E5 /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		0CCCE3342A8ADB2500BCB4E5 /* GameColisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColisionDelegate.swift; sourceTree = "<group>"; };
 		0CD122112A744D3000E486B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
-		0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WavePongTestPlan.xctestplan; sourceTree = "<group>"; };
 		0CDDC9C32ABA209E008CA575 /* SelectDifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDifficultyViewModel.swift; sourceTree = "<group>"; };
 		0CE00EF22AB409FC008C1E06 /* HapticsManagerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManagerProtocols.swift; sourceTree = "<group>"; };
 		0CE00EF42AB40A57008C1E06 /* FeedBackGeneratebleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackGeneratebleProtocols.swift; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		0CAA59BF2A9E725300BEA7EA /* PongTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CDDAA742AA11C2900D6E0B0 /* WavePongTestPlan.xctestplan */,
+				0C2DE3BD2AD5CA2400D0D3C0 /* WavePongTestPlan.xctestplan */,
 				0C50F77A2A9EC4FA004CC635 /* MocksModels.swift */,
 				0CAA59B82A9E717000BEA7EA /* PlayerTests.swift */,
 				0C989CA22AB39936002BEBCB /* SoundManagerTests.swift */,

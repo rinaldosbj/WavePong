@@ -139,8 +139,8 @@ class SoundManagerTests: XCTestCase {
         
     }
     
-    func testUpdateAudioOrientationChangesPanCurvedMode() {
-        playerMock.soundMode = .curved
+    func testUpdateAudioOrientationChangesHighConstrastMode() {
+        playerMock.soundMode = .highContrast
 
         let paddlePosition = CGPoint()
         let ballPosition = CGPoint(x: 0, y: 50)
