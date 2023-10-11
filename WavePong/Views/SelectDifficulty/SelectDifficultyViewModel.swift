@@ -28,6 +28,7 @@ class SelectDifficultyViewModel: ObservableObject {
         stringsConstants.volta_hint
     }
 
+    ///  Makes differents game manager for diffent difficulties
     func viewModelToBePresented(selectedDifficulty: GameDifficulty) -> GameSceneViewModel {
         let gameManager = GameManagerFactory.createGameManager(selectedDifficulty)
         return GameSceneViewModel(gameManager: gameManager)

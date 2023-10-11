@@ -8,6 +8,7 @@
 import SwiftUI
 import GameKit
 
+/// Displayes Game Center
 struct GameCenterView: UIViewControllerRepresentable {
     let gameCenter = GameCenterManager.shared
     @Binding var isPresented: Bool

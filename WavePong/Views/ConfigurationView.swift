@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View for changing game settings such as audio orientation and reatch onboarding
 struct ConfigurationView: View {
     
     @State var didColide = false
@@ -62,9 +63,6 @@ struct ConfigurationView: View {
                             .underline(color:Color(ColorConstants.shared.YELLOW_600))
                     }
  */
-                    AdsView()
-                    // TODO: It doesn't belong here
-                        .padding(.bottom, 50)
 
                 }.padding(.horizontal, 60)
             }

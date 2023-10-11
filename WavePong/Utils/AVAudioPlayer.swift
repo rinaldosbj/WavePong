@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-
+/// Protocol where we can use part of AVAudioPlayer's structure for mock making in tests
 protocol AVAudioPlayerable {
     
     init(contentsOf url: URL) throws

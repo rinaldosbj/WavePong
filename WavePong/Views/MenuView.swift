@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+/// First View, where the user can chose where to go, start a Game, Configuration or Game center.
 struct MenuView: View {
     
     @State private var playFistGame = false
@@ -47,8 +47,7 @@ struct MenuView: View {
                             .accessibilityHint(stringsConstants.configuracoes_hint)
                             .padding(.trailing,48)
                         NavigationLink(destination: {
-                            ComingSoonView()
-                                .navigationBarBackButtonHidden()
+                            Text(stringsConstants.carregando)
                         }) {
                             IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
                         }

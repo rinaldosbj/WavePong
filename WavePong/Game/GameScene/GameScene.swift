@@ -9,9 +9,8 @@ import Foundation
 import SpriteKit
 import UIKit
 
-
+/// Main game scene, responsable for all spritekit's actions
 class GameScene: SKScene {
-    
     var gameManager: GameManagerProtocol
     var ball: BallSprite?
     var paddle: Paddle?

@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 /// Class responsable for persisting and updating user info about the app
 class Player: PlayerProtocol {
     
@@ -57,35 +55,6 @@ class Player: PlayerProtocol {
 
     
     private let defaults: UserDefaultable
-    
-    
-    var selectedBall: PreviousBallSkin {
-        let intResult = defaults.integer(forKey: Constants.chosenBall)
-        
-        switch intResult {
-        case 0:
-            return .ball_yellow
-        case 1:
-            return .ball_green
-        case 2:
-            return .ball_cyan
-        case 3:
-            return .ball_blue
-        case 4:
-            return .ball_purple
-        case 5:
-            return .ball_red
-        case 6:
-            return .ball_orange
-        default:
-            return .ball_yellow
-        }
-        
-    }
-    
-    func changeBall(_ ball: PreviousBallSkin) {
-        defaults.set(ball.rawValue, forKey: Constants.chosenBall)
-    }
     
     
     func userTopScore(forDificulty dificulty: GameDifficulty) -> Int {
@@ -157,10 +126,6 @@ protocol PlayerScorePersistence {
 
 
 protocol PlayerPreferencesPersistence {
-
-    var selectedBall: PreviousBallSkin { get }
-    
-    func changeBall(_ ball: PreviousBallSkin)
     
     var soundMode: SoundMode { get }
     

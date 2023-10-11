@@ -2,6 +2,8 @@ import SwiftUI
 import SpriteKit
 import UIKit
 
+
+/// Heps to dismiss views and popToRoot
 struct NavigationUtil {
     static func popToRootView() {
         findNavigationController(viewController: UIApplication
@@ -17,7 +19,9 @@ struct NavigationUtil {
             .connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow }.last?.rootViewController)?
             .popViewController(animated: true)
+        
     }
+    
     static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {
         guard let viewController = viewController else {
             return nil

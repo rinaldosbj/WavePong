@@ -145,26 +145,4 @@ extension ConfigurationView {
         }
     }
     
-    var notificationToggleView: some View {
-        // MARK: This Notification is Unused
-        // We can't disable notifications in that way
-        HStack {
-            Text("Notificações")
-                .font(Font.wavePongPrimary(.body))
-                .layoutPriority(.greatestFiniteMagnitude)
-                .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                .accessibilityHidden(true)
-            if togleNotifications {
-                Toggle("", isOn: $togleNotifications)
-                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(Color(ColorConstants.shared.PURPLE_500)), offColor: .darkGray))
-                    .accessibilityLabel(Text("Desativar notificações"))
-                
-            }
-            else {
-                Toggle("", isOn: $togleNotifications)
-                    .toggleStyle(NotificationsCustomToggleStyle(onColor: UIColor(Color(ColorConstants.shared.PURPLE_500)), offColor: .darkGray))
-                    .accessibilityLabel(Text("Ativar notificações"))
-            }
-        }
-    }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View modifier that allows to change externaly the allowsDirectInteraction trait (for VoiceOver)
 struct AddAccessibilityDirectInteractionTrait: ViewModifier {
     var condition: Bool
     

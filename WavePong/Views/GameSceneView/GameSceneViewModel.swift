@@ -14,7 +14,6 @@ enum GameSceneViewState {
 
 class GameSceneViewModel: ObservableObject {
 
-
     @Published var size: CGSize = CGSize()
     @Published var state: GameSceneViewState = .game
     @Published var userScore: String = ""
@@ -43,19 +42,21 @@ class GameSceneViewModel: ObservableObject {
         state = .game
     }
 
-    
+    /// When refresh is clicked, reset the game and shows it
     func refreshPressed() {
         gameManager.resetGame()
         state = .game
         
     }
 
+    /// When home is pressed, saves data and goes to the MenuView
     func homeButtonPressed() {
         gameManager.restoreGameManager()
         state = .game
-        
+
     }
     
+    /// Ends the game when player put the app in background mode
     func appWillMoveToBackground() {
         gameManager.didLose()
         state = .gameOver

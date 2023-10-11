@@ -5,6 +5,9 @@
 //  Created by LoreVilaca on 06/09/23.
 //
 
+/// Storage image strings
+///
+/// String responsable to store all the image names on different strings constants, can be accessed anywhere
 struct ImageConstants {
     
     static let shared = ImageConstants()

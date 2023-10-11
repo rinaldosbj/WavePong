@@ -7,8 +7,7 @@
 
 import SpriteKit
 
-
-
+///  Responsable for managing colisions
 class PhysicsDetection: NSObject, SKPhysicsContactDelegate {
     
     struct ColliderType{

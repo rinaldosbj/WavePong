@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-
+/// View that shows the GameScene and different layers of the game as the Pause and Game over view
 struct GameSceneView: View {
     @Environment(\.presentationMode) var presentation
     

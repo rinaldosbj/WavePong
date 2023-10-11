@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// Enum for notification, here we define some structure of the notification for different kinds of notifications
 enum notificationType {
     
     case twoDays

@@ -5,6 +5,9 @@
 //  Created by rsbj on 05/09/23.
 //
 
+/// Storage localized strings
+///
+/// String responsable to store every localized string for internationalization, can be accessed anywhere
 struct StringsConstantsModel {
     
     // MARK: Onboarding

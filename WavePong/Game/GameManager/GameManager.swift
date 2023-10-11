@@ -87,29 +87,6 @@ class GameManager: GameManagerProtocol {
         self.physicsDetection.gameColisionDelegate = self
     }
     
-    public func getCurrentBall() -> String {
-        let currentBall = player.selectedBall
-        
-        switch currentBall {
-        case .ball_yellow:
-            return "ball_yellow"
-        case .ball_green:
-            return "ball_green"
-        case .ball_cyan:
-            return "ball_cyan"
-        case .ball_blue:
-            return "ball_blue"
-        case .ball_purple:
-            return "ball_purple"
-        case .ball_red:
-            return "ball_red"
-        case .ball_orange:
-            return "ball_orange"
-            
-        }
-        
-    }
-    
     /// Informs Game Scene to start game and implements necesseray logic
     public func startGame() {
         analyticsManager.logGameSession(panStyle: player.soundMode,

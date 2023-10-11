@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/// Protocol where we can use part of UserDefaults structure for mock making in tests
 protocol UserDefaultable {
     func bool(forKey: String) -> Bool
     

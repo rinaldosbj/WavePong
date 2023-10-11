@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-
+/// View that is showed before a game start, where the player can choose in what difficulty he wants to play
 struct SelectDifficultyView: View {
     
     @Environment(\.presentationMode) var presentation

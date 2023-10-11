@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocol where we can decribe the GameManager behavor for testing
 protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     
     var gameDifficulty: GameDifficulty { get }
@@ -24,8 +25,6 @@ protocol GameManagerProtocol: GameColisionDelegate, GameUserFeedbackProtocol {
     var gameManagerDelegate: GameManagerDelegate? { get set }
     
     var player: PlayerProtocol { get }
-    
-    func getCurrentBall() -> String 
     
     func startGame()
     
