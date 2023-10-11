@@ -21,56 +21,64 @@ struct MenuView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .accessibilityHidden(true)
-                VStack() {
-                    Image("Wave-pong")
-                        .accessibilityHidden(true)
-                    Spacer().frame(height: 192)
-                    NavigationLink {
-                        SelectDifficultyView()
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        LabelButton(buttonStyle: .start, buttonAction:{})
-                    }
-                    .foregroundColor(.yellow)
-                    .accessibilityLabel(stringsConstants.jogar)
-                    .accessibilityHint(stringsConstants.jogar_hint)
-                    Spacer().frame(height: 48)
-                    HStack {
-                        NavigationLink(destination: {
-                            ConfigurationView()
+                ScrollView {
+                    VStack() {
+                        Image("Wave-pong")
+                            .accessibilityHidden(true)
+                            .padding(.vertical,100)
+                        NavigationLink {
+                            SelectDifficultyView()
+                                .navigationBarTitleDisplayMode(.inline)
                                 .navigationBarBackButtonHidden()
-                        }) {
-                            IconButton(.settings, buttonType: .link, buttonAction: {})
+                        } label: {
+                            LabelButton(buttonStyle: .start, buttonAction:{})
                         }
+                        .foregroundColor(.yellow)
+                        .accessibilityLabel(stringsConstants.jogar)
+                        .accessibilityHint(stringsConstants.jogar_hint)
+                        .padding(.vertical, 48)
+                        HStack {
+                            NavigationLink(destination: {
+                                ConfigurationView()
+                                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                        .onEnded({ value in
+                                            if value.translation.width > 10 {
+                                                NavigationUtil.popToPreviusView()
+                                            }
+                                        }))
+                                    .navigationBarTitleDisplayMode(.inline)                                    .navigationBarBackButtonHidden()
+                            }) {
+                                IconButton(.settings, buttonType: .link, buttonAction: {})
+                            }
                             .foregroundColor(.yellow)
                             .accessibilityLabel(stringsConstants.configuracoes)
                             .accessibilityHint(stringsConstants.configuracoes_hint)
                             .padding(.trailing,48)
-                        NavigationLink(destination: {
-                            Text(stringsConstants.carregando)
-                        }) {
-                            IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
-                        }
+                            NavigationLink(destination: {
+                                Text(stringsConstants.carregando)
+                            }) {
+                                IconButton(.gameCenter, buttonType: .action, buttonAction: {isShowingGameCenter.toggle()})
+                            }
                             .foregroundColor(.yellow)
                             .accessibilityLabel(stringsConstants.game_center)
                             .accessibilityHint(stringsConstants.game_center_hint)
+                        }
+                    }
+                    .onAppear {
+                        if !OnboardingManager().onboradingHappend {
+                            playFistGame = true
+                            OnboardingManager().userFinishedOnboarding()
+                        }
                     }
                 }
-                .onAppear {
-                    if !OnboardingManager().onboradingHappend {
-                        playFistGame = true
-                        OnboardingManager().userFinishedOnboarding()
-                    }
+                .fullScreenCover(isPresented: $playFistGame, content: {
+                    GameSceneView(viewModel: SelectDifficultyViewModel().viewModelToBePresented(selectedDifficulty: .easy))
+                        .ignoresSafeArea()
+                })
+                .sheet(isPresented: $isShowingGameCenter) {
+                    GameCenterView(isPresented: $isShowingGameCenter).ignoresSafeArea()
                 }
             }
-            .fullScreenCover(isPresented: $playFistGame, content: {
-                GameSceneView(viewModel: SelectDifficultyViewModel().viewModelToBePresented(selectedDifficulty: .easy))
-                    .ignoresSafeArea()
-            })
-            .sheet(isPresented: $isShowingGameCenter) {
-                GameCenterView(isPresented: $isShowingGameCenter).ignoresSafeArea()
-            }
-            
         }
     }
 }

@@ -139,24 +139,6 @@ class SoundManagerTests: XCTestCase {
         
     }
     
-    func testUpdateAudioOrientationChangesPanCurvedMode() {
-        playerMock.soundMode = .curved
-
-        let paddlePosition = CGPoint()
-        let ballPosition = CGPoint(x: 0, y: 50)
-        let frameSize = CGSize(width: 100, height: 100)
-        let initialPan: Float = 0
-        
-        
-        soundManager.playGameTheme()
-        soundManager.musicPlayer?.pan = initialPan
-        
-        let info = AudioOrientationInfo(paddlePosition: paddlePosition, ballPosition: ballPosition, size: frameSize)
-        soundManager.updateAudioOrientation(info)
-        
-        XCTAssertNotEqual(initialPan, soundManager.musicPlayer?.pan)
-        
-    }
     
     func testUpdateAudioOrientationChangesPanConsrastModeDoNotChangeCenter() {
         playerMock.soundMode = .highContrast

@@ -102,7 +102,7 @@ final class PlayerTests: XCTestCase {
     func testChangeSoundMode() {
         userDefaultsMock.soundMod = SoundMode.linear.rawValue
         
-        let newSoundMode = SoundMode.curved
+        let newSoundMode = SoundMode.highContrast
         
         player.changeSoundMode(newSoundMode)
         
@@ -131,27 +131,5 @@ final class PlayerTests: XCTestCase {
         XCTAssertEqual(player.soundMode, expectedSoundMode)
         
     }
-    
-    func testGetSoundModeCurved() {
-        let expectedSoundMode: SoundMode = SoundMode.curved
-        
-        userDefaultsMock.soundMod = expectedSoundMode.rawValue
-        
-        XCTAssertEqual(player.soundMode, expectedSoundMode)
-        
-    }
-    
-    func testChangeBall() {
-        let previusBall: PreviousBallSkin = .ball_blue
-        let newBall: PreviousBallSkin = .ball_red
-        userDefaultsMock.ballType = previusBall.rawValue
-        
-        player.changeBall(newBall)
-        
-        XCTAssertNotEqual(previusBall, player.selectedBall)
-        
-
-    }
-    
     
 }

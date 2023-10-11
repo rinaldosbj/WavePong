@@ -99,6 +99,7 @@
 		D35EF54C2A8AA9B000BD946E /* PosicaoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */; };
 		D35EF54E2A8AA9BC00BD946E /* RebaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */; };
 		D35EF5502A8AAA3000BD946E /* PausarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35EF54F2A8AAA3000BD946E /* PausarView.swift */; };
+		D3742F192AD7117E001E0527 /* AdsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3742F182AD7117E001E0527 /* AdsView.swift */; };
 		D37939342AB2277600D22457 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D37939332AB2277600D22457 /* GoogleMobileAds */; };
 		D391191D2A958A4200CA3C9E /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191C2A958A4200CA3C9E /* explosion.wav */; };
 		D391191F2A958BC000CA3C9E /* pickupCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = D391191E2A958BC000CA3C9E /* pickupCoin.wav */; };
@@ -220,6 +221,7 @@
 		D35EF54B2A8AA9B000BD946E /* PosicaoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoView.swift; sourceTree = "<group>"; };
 		D35EF54D2A8AA9BC00BD946E /* RebaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebaterView.swift; sourceTree = "<group>"; };
 		D35EF54F2A8AAA3000BD946E /* PausarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausarView.swift; sourceTree = "<group>"; };
+		D3742F182AD7117E001E0527 /* AdsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsView.swift; sourceTree = "<group>"; };
 		D391191C2A958A4200CA3C9E /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		D391191E2A958BC000CA3C9E /* pickupCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickupCoin.wav; sourceTree = "<group>"; };
 		D3AC7C572A968B6600AFE1A7 /* AddAccessibilityDirectInteractionTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessibilityDirectInteractionTrait.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				0C376C5B2AB4E0B400BE393E /* AVAudioPlayer.swift */,
+				D3742F182AD7117E001E0527 /* AdsView.swift */,
 				0DF039102A93E11E0005551B /* NotificationType.swift */,
 				0C98A6552A9E8F67001CFF2B /* UserDefaulteble.swift */,
 				D30F4E812AA7A6C200554275 /* StringsConstantsModel.swift */,
@@ -743,6 +746,7 @@
 				D35EF54A2A8AA86700BD946E /* RaqueteView.swift in Sources */,
 				0DF638212A78496100CCC34B /* PhysicsDetection.swift in Sources */,
 				0C376C5C2AB4E0B400BE393E /* AVAudioPlayer.swift in Sources */,
+				D3742F192AD7117E001E0527 /* AdsView.swift in Sources */,
 				D35EF5482A8AA83600BD946E /* FoneView.swift in Sources */,
 				0C62531A2ABA1BA60051D5D5 /* SelectDifficultyLabel.swift in Sources */,
 				D32842CC2A7E9FBC007FF85B /* ConfigurationView.swift in Sources */,

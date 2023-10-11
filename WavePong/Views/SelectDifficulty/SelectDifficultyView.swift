@@ -24,50 +24,57 @@ struct SelectDifficultyView: View {
                     .ignoresSafeArea()
                     .accessibilityHidden(true)
                 
-                VStack {
-                    Text(viewModel.labelDifficulty)
-                        .font(Font.wavePongPrimary(.headline))
-                        .layoutPriority(.greatestFiniteMagnitude)
-                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                        .accessibilityLabel(viewModel.labelDifficultyHint)
+                ScrollView {
                     
-                    Spacer().frame(height: 48)
-
-                    
-                    VStack(spacing: 48) {
-                        ForEach(GameDifficulty.allCases, id: \.self) { difficulty in
-                            NavigationLink {
-                                GameSceneView(viewModel:
-                                                viewModel.viewModelToBePresented(selectedDifficulty: difficulty)
-                                    
-                                )
-                                .navigationBarBackButtonHidden()
-                            } label: {
-                                SelectDifficultyLabel(difficulty: difficulty)
-                            }
-
-                        }
-                    }
-                   
-                    
-                }
-                
-                HStack {
-                    VStack {
-                        Button {
-                            presentation.wrappedValue.dismiss()
-                        } label: {
-                            Text(viewModel.labelReturn)
-                                .font(Font.wavePongPrimary(.body))
+                    ZStack {
+                        
+                        VStack {
+                            
+                            Spacer().frame(height: 48)
+                            
+                            Text(viewModel.labelDifficulty)
+                                .font(Font.wavePongPrimary(.headline))
                                 .layoutPriority(.greatestFiniteMagnitude)
                                 .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                                .accessibilityLabel(viewModel.labelDifficultyHint)
+                                .padding(.vertical, 48)
+                            
+                            
+                            VStack(spacing: 48) {
+                                ForEach(GameDifficulty.allCases, id: \.self) { difficulty in
+                                    NavigationLink {
+                                        GameSceneView(viewModel:
+                                                        viewModel.viewModelToBePresented(selectedDifficulty: difficulty)
+                                                      
+                                        )
+                                        .navigationBarBackButtonHidden()
+                                    } label: {
+                                        SelectDifficultyLabel(difficulty: difficulty)
+                                    }
+                                    
+                                }
+                            }
+                            
+                            
                         }
-                        .accessibilityLabel(viewModel.labelReturnHint)
-                        Spacer()
+                        
+                        HStack {
+                            VStack {
+                                Button {
+                                    presentation.wrappedValue.dismiss()
+                                } label: {
+                                    Text(viewModel.labelReturn)
+                                        .font(Font.wavePongPrimary(.body))
+                                        .layoutPriority(.greatestFiniteMagnitude)
+                                        .foregroundColor(Color(ColorConstants.shared.WHITE_500))
+                                }
+                                .accessibilityLabel(viewModel.labelReturnHint)
+                                Spacer()
+                            }
+                            Spacer()
+                        }
                     }
-                    Spacer()
                 }
-                
             }
         }
         .navigationViewStyle(.stack)

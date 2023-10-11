@@ -38,7 +38,7 @@ struct ConfigurationView: View {
                         .padding(.top, 32)
                     
                     soundModeConfigView
-
+                    
                     relatedToPaddleTogle
                     
                     soundPreview
@@ -50,20 +50,13 @@ struct ConfigurationView: View {
                         presentation.wrappedValue.dismiss()
                     })
                     
-
+                    
                     // TODO: Find somewhere to put these
                     Spacer().frame(height: 1000)
-/*
-                    NavigationLink {
-                        SelectBallView()
-                    } label: {
-                        Text("Ball Color")
-                            .font(Font.wavePongPrimary(.body))
-                            .foregroundColor(Color(ColorConstants.shared.WHITE_500))
-                            .underline(color:Color(ColorConstants.shared.YELLOW_600))
-                    }
- */
-
+                    
+                    AdsView()
+                        .padding(.bottom, 50)
+                    
                 }.padding(.horizontal, 60)
             }
             
